@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-11-08",
+    "title": "The stranger button is back",
+    "angle": "omegle-nostalgia",
+    "summary": "A nostalgic 'remember the click-Next days?' opener that shows the same thrill with just a voice: no camera, no room tidying, one tap to skip.",
+    "hook": "Remember the stranger button?",
+    "scenes": "hook>pov>versus>match>call>appclip>end",
+    "names": [
+      "Sleepy Noodle"
+    ],
+    "status": "rendered"
+  },
+  {
     "date": "2026-11-09",
     "title": "Ten minutes for one hello",
     "angle": "introverts",
