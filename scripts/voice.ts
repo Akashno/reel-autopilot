@@ -73,35 +73,77 @@ async function geminiTake(texts: string[], out: string) {
   }
 }
 
-// Cut points between lines: the n-1 longest pauses, checked against where an even reading
-// pace would put each line end. Throws when the take doesn't line up with the script.
+// Cut points between lines: for each break, the long pause nearest where an even reading
+// pace puts it, chosen in order. Throws when the take doesn't line up with the script.
 function cutPoints(take: string, texts: string[]): number[] {
   const total = seconds(take)
   const detect = spawnSync('ffmpeg', ['-i', take, '-af', 'silencedetect=n=-40dB:d=0.25', '-f', 'null', '-'], { encoding: 'utf8' }).stderr
   const starts = [...detect.matchAll(/silence_start: ([\d.]+)/g)].map(m => Number(m[1]))
   const ends = [...detect.matchAll(/silence_end: ([\d.]+)/g)].map(m => Number(m[1]))
-  const pauses = starts.map((s, i) => [s, ends[i] ?? total] as const).filter(([s, e]) => s > 0.05 && e < total - 0.05)
-  const need = texts.length - 1
+  const all = starts.map((s, i) => [s, ends[i] ?? total] as const)
+  // Speech runs from the end of any leading silence to the start of any trailing one.
+  const from = all[0] && all[0][0] <= 0.05 ? all[0][1] : 0
+  const last = all.at(-1)
+  const to = last && last[1] >= total - 0.05 ? last[0] : total
+  const pauses = all.filter(([s, e]) => s > from && e < to && e - s >= 0.2).map(([s, e]) => ({ mid: (s + e) / 2, len: e - s }))
+  const n = texts.length
+  const need = n - 1
   if (pauses.length < need)
-    throw new Error(`take has ${pauses.length} pauses for ${texts.length} lines`)
-  const byLength = [...pauses].sort((a, b) => (b[1] - b[0]) - (a[1] - a[0]))
-  const chosen = byLength.slice(0, need).sort((a, b) => a[0] - b[0])
-  const shortest = Math.min(...chosen.map(([a, b]) => b - a))
-  const nextLongest = byLength[need] ? byLength[need][1] - byLength[need][0] : 0
-  if (nextLongest > 0 && shortest < nextLongest * 1.3)
-    throw new Error('pauses between lines are not clearly longer than pauses inside them')
-  // Each piece should be within a generous band of its share of the characters.
+    throw new Error(`take has ${pauses.length} pauses for ${n} lines`)
+
+  // Where each line break should fall: speech time split by characters, plus one typical
+  // between-line pause per break (the mean of the longest `need` pauses).
+  const gap = [...pauses].sort((a, b) => b.len - a.len).slice(0, need).reduce((s, p) => s + p.len, 0) / Math.max(1, need)
   const chars = texts.map(t => t.length)
   const sum = chars.reduce((a, b) => a + b, 0)
-  const bounds = [0, ...chosen.map(([a, b]) => (a + b) / 2), total]
+  const speech = Math.max(1, to - from - need * gap)
+  let acc = 0
+  const expected = chars.slice(0, need).map((c, k) => {
+    acc += c
+    return from + speech * acc / sum + k * gap + gap / 2
+  })
+
+  // Pick one pause per break, in order, closest to where it should be and favouring long
+  // pauses (dynamic programming over breaks x pauses).
+  const cost = (k: number, j: number) => Math.abs(pauses[j].mid - expected[k]) - 1.5 * pauses[j].len
+  const P = pauses.length
+  const best: number[][] = Array.from({ length: need }, () => Array.from({ length: P }, () => Infinity))
+  const prev: number[][] = Array.from({ length: need }, () => Array.from({ length: P }, () => -1))
+  for (let j = 0; j < P; j++) best[0][j] = cost(0, j)
+  for (let k = 1; k < need; k++) {
+    for (let j = k; j < P; j++) {
+      for (let i = k - 1; i < j; i++) {
+        const c = best[k - 1][i] + cost(k, j)
+        if (c < best[k][j]) {
+          best[k][j] = c
+          prev[k][j] = i
+        }
+      }
+    }
+  }
+  let j = best[need - 1].indexOf(Math.min(...best[need - 1]))
+  const picked: number[] = []
+  for (let k = need - 1; k >= 0; k--) {
+    picked.unshift(j)
+    j = prev[k][j]
+  }
+  const chosen = picked.map(i => pauses[i])
+  if (chosen.some(p => p.len < 0.3))
+    throw new Error('a line break falls on a very short pause; the take may not match the script')
+
+  // Each piece should be within a generous band of its share of the speech.
+  const bounds = [0, ...chosen.map(p => p.mid), total]
   texts.forEach((_, i) => {
     const got = bounds[i + 1] - bounds[i]
-    const expect = total * chars[i] / sum
-    if (got < expect * 0.45 || got > expect * 2.2)
+    const expect = speech * chars[i] / sum + gap
+    if (got < expect * 0.5 || got > expect * 2)
       throw new Error(`line ${i + 1} cut to ${got.toFixed(1)}s, expected about ${expect.toFixed(1)}s`)
   })
   return bounds
 }
+
+// Exported for testing the cuts against saved takes.
+export const _cutPoints = cutPoints
 
 function piper(text: string, out: string) {
   if (!existsSync(PIPER.bin) || !existsSync(PIPER.model))
