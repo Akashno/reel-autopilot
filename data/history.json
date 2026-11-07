@@ -34,5 +34,17 @@
       "Salty Mango"
     ],
     "status": "test"
+  },
+  {
+    "date": "2026-11-13",
+    "title": "Sunday, 400 contacts, zero calls",
+    "angle": "lonely-sunday",
+    "summary": "A quiet Sunday where your contact list has nobody free, solved by one tap and a stranger who is also doing nothing, told through a cozy chat about unremarkable Sunday plans.",
+    "hook": "Sunday, 3 PM. Nothing on. Nobody free.",
+    "scenes": "hook>versus>appclip>match>chat>rating>end",
+    "names": [
+      "Soggy Biscuit"
+    ],
+    "status": "test"
   }
 ]
