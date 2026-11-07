@@ -123,8 +123,47 @@ jobs:
           done
           echo "::error::$url is not serving video/mp4"; exit 1
 
-  report-failure:
+  # Schedules the video on every channel through Buffer. Off until the repo variable
+  # POSTING is "on" (gh variable set POSTING --body on), and never for test runs.
+  post:
     needs: [make, publish]
+    if: vars.POSTING == 'on' && !inputs.test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BUFFER_API_KEY_1: ${{ secrets.BUFFER_API_KEY_1 }}
+      BUFFER_API_KEY_2: ${{ secrets.BUFFER_API_KEY_2 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Schedule on Instagram, YouTube, Facebook and X
+        run: npx tsx scripts/post.ts "${{ needs.make.outputs.date }}"
+
+      - name: Commit what was scheduled
+        if: always()
+        run: |
+          git config user.name randomtalker-bot
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/posts/ data/history.json
+          git commit -qm "posted: ${{ needs.make.outputs.date }}" || echo "nothing to commit"
+          git pull -q --rebase origin main && git push -q origin HEAD:main
+
+      - name: Check yesterday's posts went out
+        run: |
+          y=$(date -u -d "${{ needs.make.outputs.date }} -1 day" +%F)
+          if [ -f "data/posts/$y.json" ]; then npx tsx scripts/post.ts "$y" --check; else echo "no posts for $y"; fi
+
+  report-failure:
+    needs: [make, publish, post]
     if: failure()
     runs-on: ubuntu-latest
     steps:

@@ -9,7 +9,8 @@
     "check": "tsx scripts/check.ts",
     "typecheck": "tsc",
     "write": "tsx scripts/write.ts",
-    "daily": "tsx scripts/daily.ts"
+    "daily": "tsx scripts/daily.ts",
+    "post": "tsx scripts/post.ts"
   },
   "dependencies": {
     "@remotion/cli": "4.0.539",

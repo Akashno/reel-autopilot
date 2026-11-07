@@ -66,10 +66,35 @@ Content stays between y=250 and y=1520 (Instagram covers the top and bottom with
 Captions sit at y=1390. Fonts, logo, avatars, game icons and sound effects are in `public/`;
 the clips in `public/clips/` are recordings of the real app.
 
+## Posting (Buffer)
+
+`scripts/post.ts` schedules the day's video on every channel in `data/channels.json` for 19:00
+India time: Instagram (reel), YouTube (Short), Facebook (reel) through Buffer account 1, and X through
+account 2. Buffer fetches the MP4 from GitHub Pages. What was scheduled is saved in
+`data/posts/<date>.json`, so a re-run never posts a channel twice.
+
+```bash
+npm run post -- 2026-11-20 --dry       # print what would be sent
+npm run post -- 2026-11-20             # schedule it
+npm run post -- 2026-11-20 --status    # sent / scheduled / error per channel
+npm run post -- 2026-11-20 --delete    # remove the scheduled posts
+```
+
+In the workflow, the `post` job runs only when the repo variable `POSTING` is `on`, and never for
+test runs. It also checks the previous day's posts and opens an issue if one failed.
+
+Go live:
+
+```bash
+sed -n 's/^BUFFER_API_KEY_1=//p' ~/iocod/projects/personal/env/buffer.env | tr -d '\n' | gh secret set BUFFER_API_KEY_1
+sed -n 's/^BUFFER_API_KEY_2=//p' ~/iocod/projects/personal/env/buffer.env | tr -d '\n' | gh secret set BUFFER_API_KEY_2
+gh variable set POSTING --body on      # off again: gh variable delete POSTING
+```
+
 ## Roadmap
 
 1. Scene library and renderer (done)
 2. Daily script from `claude -p` with the schema and history (done)
-3. GitHub Actions render and Release upload
-4. Buffer posting (account 1: Instagram, YouTube, Facebook; account 2: X)
+3. GitHub Actions render and Pages hosting (done)
+4. Buffer posting (done; switched on with `POSTING=on`)
 5. Dry-run week, then go live
