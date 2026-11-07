@@ -14,6 +14,10 @@ on:
         description: Mark it as a test in the history
         type: boolean
         default: false
+      post_now:
+        description: Post in about 5 minutes instead of at 19:00 India time
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -146,7 +150,7 @@ jobs:
       - run: npm ci --no-audit --no-fund
 
       - name: Schedule on Instagram, YouTube, Facebook and X
-        run: npx tsx scripts/post.ts "${{ needs.make.outputs.date }}"
+        run: npx tsx scripts/post.ts "${{ needs.make.outputs.date }}" ${{ inputs.post_now && '--now' || '' }}
 
       - name: Commit what was scheduled
         if: always()

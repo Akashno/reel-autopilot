@@ -4,6 +4,7 @@
 //   npm run post -- <date> --dry                   print what would be sent
 //   npm run post -- <date> --only instagram        one channel
 //   npm run post -- <date> --at 2026-12-20T13:30:00Z --url https://...mp4
+//   npm run post -- <date> --now                   post in about 5 minutes instead of at postAt
 //   npm run post -- <date> --status                show each saved post's status
 //   npm run post -- <date> --delete                delete the saved posts (tests)
 //
@@ -196,7 +197,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     await remove(date)
   }
   else {
-    const r = await post(date, { only: opt('--only'), at: opt('--at'), url: opt('--url'), dry: args.includes('--dry') })
+    // --now: a few minutes from now (Buffer needs a time in the future).
+    const at = args.includes('--now') ? new Date(Date.now() + 5 * 60e3).toISOString() : opt('--at')
+    const r = await post(date, { only: opt('--only'), at, url: opt('--url'), dry: args.includes('--dry') })
     if (r.failures.length) {
       console.error(`✗ ${r.failures.length} channel(s) failed:\n  ${r.failures.join('\n  ')}`)
       process.exit(1)
