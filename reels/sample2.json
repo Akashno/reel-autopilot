@@ -1,0 +1,23 @@
+{
+  "idea": {
+    "title": "The 2 AM stranger tier list",
+    "angle": "humour",
+    "summary": "Rates the kinds of people you meet on a late-night call, then shows a real match and chat."
+  },
+  "scenes": [
+    { "type": "pov", "text": "it's 2 AM, you can't sleep, and your friends are offline", "say": "It's two AM. Can't sleep. Friends are offline." },
+    { "type": "rating", "title": "2 AM strangers, rated", "items": [ { "label": "The philosopher", "stars": 5 }, { "label": "The \"so... hi\"", "stars": 2 }, { "label": "The UNO champion", "stars": 4 } ], "say": "The philosopher. The awkward hi. And the UNO champion." },
+    { "type": "appclip", "clip": "2am", "headline": "One tap. Someone's up.", "sub": "a real call, start to finish", "say": "One tap, and there's always someone awake." },
+    { "type": "chat", "avatar": "KenjiJP", "name": "Messy Toast", "messages": [ { "from": "them", "text": "why are you awake lol" }, { "from": "me", "text": "could ask you the same" }, { "from": "them", "text": "fair. favourite midnight snack?" } ], "say": "Prefer typing? Switch to text chat anytime." },
+    { "type": "call", "avatar": "SofiaMX", "name": "Quiet Clown", "label": "2:14 AM", "say": "Or just talk. No camera, no profile, just a voice." },
+    { "type": "list", "title": "Why it works at 2 AM", "items": ["No signup", "No camera", "Skip in one tap"], "say": "No signup. No camera. Skip in one tap." },
+    { "type": "question", "question": "Your 2 AM call vibe?", "a": "Deep talk", "b": "UNO rematch", "say": "So what's your vibe? Deep talk, or UNO rematch?" },
+    { "type": "end", "tagline": "Someone's always up.", "say": "Random Talker. Someone's always up." }
+  ],
+  "post": {
+    "caption": "Rate your last 2 AM conversation. On Random Talker someone is always awake: tap once, talk by voice, no camera, no signup. randomtalker.com (link in bio)",
+    "hashtags": ["#randomtalker", "#2am", "#cantsleep", "#talktostrangers", "#voicechat", "#latenight"],
+    "youtubeTitle": "2 AM strangers, rated #shorts",
+    "xText": "2 AM, can't sleep, friends offline? Someone's always up on Random Talker. Voice only, no signup: randomtalker.com"
+  }
+}

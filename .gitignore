@@ -1,0 +1,7 @@
+node_modules
+out
+.env
+# Per-run voice clips and props; the reel JSON itself is kept in reels/
+public/runs
+.venv
+voices

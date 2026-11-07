@@ -1,0 +1,106 @@
+{
+  "idea": {
+    "title": "No red pen",
+    "angle": "english-practice",
+    "summary": "Fear of mistakes is the real blocker: a call with another learner shows nobody is grading you, using a shared-mistake chat and the #english match instead of a tips list."
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Your English is",
+        "already enough",
+        "to say hello"
+      ],
+      "highlight": "already enough",
+      "say": "Your English is already enough to say hello."
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "In your head",
+        "text": "A strict exam. Every mistake counts."
+      },
+      "right": {
+        "label": "On a call",
+        "text": "Two people talking. Nobody's grading."
+      },
+      "say": "In your head, it's an exam. On a call, it's just talking."
+    },
+    {
+      "type": "appclip",
+      "clip": "english",
+      "headline": "Add #english, tap call",
+      "sub": "Meet someone practising too",
+      "say": "Add the english interest, and you meet someone practising too."
+    },
+    {
+      "type": "chat",
+      "avatar": "PriyaMumbai",
+      "name": "Salty Mango",
+      "messages": [
+        {
+          "from": "me",
+          "text": "Sorry, my English is not very good."
+        },
+        {
+          "from": "them",
+          "text": "Mine neither. Yesterday I said 'I am agree'."
+        },
+        {
+          "from": "me",
+          "text": "I say that also! Haha."
+        },
+        {
+          "from": "them",
+          "text": "Then we are the same team."
+        }
+      ],
+      "say": "Everyone here is learning. Nobody is holding a red pen."
+    },
+    {
+      "type": "rating",
+      "title": "Reactions to your mistakes",
+      "items": [
+        {
+          "label": "Laughs with you",
+          "stars": 5
+        },
+        {
+          "label": "Helps you kindly",
+          "stars": 5
+        },
+        {
+          "label": "Says 'wait, again?'",
+          "stars": 4
+        }
+      ],
+      "say": "Mostly, people are just happy someone's talking back."
+    },
+    {
+      "type": "question",
+      "question": "Practise English with...",
+      "a": "A strict teacher",
+      "b": "A stranger, no face",
+      "say": "Be honest. Which one sounds easier?"
+    },
+    {
+      "type": "end",
+      "tagline": "Speak first. Perfect later.",
+      "say": "Speak first. Perfect it later."
+    }
+  ],
+  "post": {
+    "caption": "You don't need perfect English to start talking. You just need someone who won't mind the mistakes. Which would you pick: a teacher or a stranger with no camera? Try a #english call at randomtalker.com (link in bio).",
+    "hashtags": [
+      "#randomtalker",
+      "#english",
+      "#englishspeaking",
+      "#learnenglish",
+      "#speakenglish",
+      "#englishpractice"
+    ],
+    "youtubeTitle": "Your English is already enough to start #shorts",
+    "xText": "You don't need perfect English to start talking. Add #english, meet someone practising too, and make mistakes together. randomtalker.com"
+  }
+}

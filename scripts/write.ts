@@ -1,0 +1,189 @@
+// Writes today's reel with headless Claude Code (your Claude subscription, no API key).
+//
+//   npm run write                         -> reels/<today>.json
+//   npm run write -- --date 2026-11-09    for another day (tests, catch-up)
+//
+// Claude gets the brief, today's angle (the one used least recently), and the recent history,
+// and must return JSON matching reel.schema.json. The result is checked (scripts/check.ts) and
+// compared with past ideas; if anything fails, Claude is told exactly what and asked again.
+import { spawnSync } from 'node:child_process'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { join, resolve } from 'node:path'
+import type { Reel } from '../src/types'
+import { checkReel } from './check'
+
+const ROOT = resolve(import.meta.dirname, '..')
+const read = (p: string) => readFileSync(join(ROOT, p), 'utf8')
+const MODEL = process.env.CLAUDE_MODEL ?? 'sonnet'
+const TRIES = 3
+
+export interface HistoryEntry {
+  date: string
+  title: string
+  angle: string
+  summary: string
+  hook: string
+  scenes: string // "pov>rating>appclip>...>end"
+  names?: string[] // stranger nicknames shown
+  status: 'test' | 'rendered' | 'posted' | 'failed'
+}
+export const HISTORY = join(ROOT, 'data/history.json')
+export const loadHistory = (): HistoryEntry[] => (existsSync(HISTORY) ? JSON.parse(readFileSync(HISTORY, 'utf8')) : [])
+
+// Today in India, where most of the audience is.
+export const today = () => new Date(Date.now() + 5.5 * 3600e3).toISOString().slice(0, 10)
+
+// ---- novelty -----------------------------------------------------------------------------
+
+const STOP = new Set('a an the and or but of to in on at for with your you my me i is it its it\'s are be this that just no not one random talker stranger strangers talk talking call voice'.split(' '))
+const words = (s: string) => new Set(s.toLowerCase().replace(/[^a-z0-9\s']/g, ' ').split(/\s+/).filter(w => w.length > 2 && !STOP.has(w)))
+function jaccard(a: Set<string>, b: Set<string>) {
+  if (!a.size || !b.size)
+    return 0
+  let n = 0
+  for (const w of a) if (b.has(w)) n++
+  return n / (a.size + b.size - n)
+}
+
+export function hookText(r: Reel) {
+  const s = r.scenes[0]
+  switch (s.type) {
+    case 'hook': return s.lines.join(' ')
+    case 'pov': return `POV: ${s.text.replace(/^\s*pov\s*[:\-]?\s*/i, '')}`
+    case 'bigword': return `${s.word} ${s.sub ?? ''}`.trim()
+    case 'question': return s.question
+    default: return s.say ?? ''
+  }
+}
+export const sceneList = (r: Reel) => r.scenes.map(s => s.type).join('>')
+export const namesIn = (r: Reel) => [...new Set(r.scenes.flatMap(s => ('name' in s ? [s.name] : [])))]
+
+function noveltyErrors(r: Reel, history: HistoryEntry[]): string[] {
+  const errors: string[] = []
+  const idea = words(`${r.idea.title} ${r.idea.summary} ${hookText(r)}`)
+  const hook = words(hookText(r))
+  for (const h of history.slice(-60)) {
+    const sim = jaccard(idea, words(`${h.title} ${h.summary} ${h.hook}`))
+    if (sim > 0.45)
+      errors.push(`too similar to "${h.title}" (${h.date}): pick a different concept`)
+    else if (jaccard(hook, words(h.hook)) > 0.6)
+      errors.push(`the hook is too close to "${h.hook}" (${h.date}): write a new hook`)
+  }
+  const used = new Set(history.slice(-30).flatMap(h => h.names ?? []).map(n => n.toLowerCase()))
+  for (const n of namesIn(r)) {
+    if (used.has(n.toLowerCase()))
+      errors.push(`nickname "${n}" was used recently: invent a new one`)
+  }
+  const structure = sceneList(r)
+  const same = history.slice(-14).find(h => h.scenes === structure)
+  if (same)
+    errors.push(`same scene sequence as "${same.title}" (${same.date}): vary the structure`)
+  const last = history.at(-1)
+  if (last && last.scenes.split('>')[0] === r.scenes[0].type && history.at(-2)?.scenes.split('>')[0] === r.scenes[0].type)
+    errors.push(`the last two videos also opened with "${r.scenes[0].type}": open with a different scene type`)
+  return errors
+}
+
+// ---- prompt ------------------------------------------------------------------------------
+
+function pickAngle(history: HistoryEntry[], date: string) {
+  const angles: Array<{ id: string, brief: string }> = JSON.parse(read('data/angles.json'))
+  const lastUsed = (id: string) => history.filter(h => h.angle === id).map(h => h.date).sort().at(-1) ?? ''
+  // Least recently used first; among never-used ones, rotate by date so the order varies.
+  const seed = Number(date.replaceAll('-', ''))
+  return [...angles].sort((a, b) => lastUsed(a.id).localeCompare(lastUsed(b.id)) || ((angles.indexOf(a) + seed) % angles.length) - ((angles.indexOf(b) + seed) % angles.length))[0]
+}
+
+function buildPrompt(date: string, angle: { id: string, brief: string }, history: HistoryEntry[]) {
+  const recent = history.slice(-30).reverse()
+  return [
+    read('prompts/brief.md'),
+    '# Today',
+    `Date: ${date}. Today's angle: **${angle.id}**: ${angle.brief}`,
+    'Set idea.angle to exactly this angle id. Find a fresh, specific concept inside it; surprise me.',
+    '# Recent videos (newest first). Do something clearly different from all of these.',
+    recent.length
+      ? recent.map(h => `- ${h.date} [${h.angle}] "${h.title}": ${h.summary} | hook: "${h.hook}" | scenes: ${h.scenes}`).join('\n')
+      : '(none yet: this is the first one)',
+    `Names already used: ${[...new Set(['Dizzy Wolf', 'Messy Toast', 'Quiet Clown', 'Biggie Pizza', ...history.slice(-30).flatMap(h => h.names ?? [])])].join(', ')}`,
+  ].join('\n\n')
+}
+
+// ---- claude ------------------------------------------------------------------------------
+
+function askClaude(prompt: string): { reel?: Reel, error?: string, tokens?: number } {
+  const schema = read('reel.schema.json')
+  const r = spawnSync('claude', [
+    '-p',
+    '--model', MODEL,
+    '--tools', '',
+    '--no-session-persistence',
+    '--strict-mcp-config',
+    '--disable-slash-commands',
+    '--output-format', 'json',
+    '--json-schema', schema,
+    '--system-prompt', read('prompts/system.md'),
+  ], { input: prompt, encoding: 'utf8', cwd: ROOT, timeout: 300_000, maxBuffer: 20 * 1024 * 1024 })
+  if (r.error)
+    return { error: `could not run claude: ${r.error.message}` }
+  let out: any
+  try {
+    out = JSON.parse(r.stdout)
+  }
+  catch {
+    return { error: `claude exited ${r.status}: ${(r.stderr || r.stdout).slice(0, 400)}` }
+  }
+  if (out.is_error || !out.structured_output)
+    return { error: `claude returned no reel (${out.subtype ?? 'error'}): ${String(out.result ?? '').slice(0, 300)}` }
+  const u = out.usage ?? {}
+  return { reel: out.structured_output, tokens: (u.input_tokens ?? 0) + (u.cache_creation_input_tokens ?? 0) + (u.cache_read_input_tokens ?? 0) + (u.output_tokens ?? 0) }
+}
+
+export async function write(date: string): Promise<{ ok: true, file: string, reel: Reel } | { ok: false, errors: string[] }> {
+  const history = loadHistory().filter(h => h.date < date)
+  const angle = pickAngle(history, date)
+  const base = buildPrompt(date, angle, history)
+  console.log(`Writing ${date}: angle "${angle.id}" (${MODEL})`)
+  let prompt = base
+  let errors: string[] = []
+  for (let attempt = 1; attempt <= TRIES; attempt++) {
+    const res = askClaude(prompt)
+    if (!res.reel) {
+      errors = [res.error!]
+      console.log(`  attempt ${attempt}: ${res.error}`)
+      continue
+    }
+    const reel = res.reel
+    errors = [...checkReel(reel), ...noveltyErrors(reel, history)]
+    if (reel.idea.angle !== angle.id)
+      reel.idea.angle = angle.id // keep the rotation honest even if the label drifts
+    console.log(`  attempt ${attempt}: "${reel.idea.title}" ${sceneList(reel)} (${res.tokens} tokens)${errors.length ? `, rejected:\n    ${errors.join('\n    ')}` : ''}`)
+    if (!errors.length) {
+      mkdirSync(join(ROOT, 'reels'), { recursive: true })
+      const file = join(ROOT, 'reels', `${date}.json`)
+      writeFileSync(file, `${JSON.stringify(reel, null, 2)}\n`)
+      return { ok: true, file, reel }
+    }
+    prompt = `${base}\n\n# Your previous attempt was rejected\n\n${errors.map(e => `- ${e}`).join('\n')}\n\nPrevious attempt:\n${JSON.stringify(reel)}\n\nFix every problem and return a complete new reel.`
+  }
+  return { ok: false, errors }
+}
+
+export function record(date: string, reel: Reel, status: HistoryEntry['status']) {
+  const history = loadHistory().filter(h => h.date !== date)
+  history.push({ date, title: reel.idea.title, angle: reel.idea.angle, summary: reel.idea.summary, hook: hookText(reel), scenes: sceneList(reel), names: namesIn(reel), status })
+  history.sort((a, b) => a.date.localeCompare(b.date))
+  mkdirSync(join(ROOT, 'data'), { recursive: true })
+  writeFileSync(HISTORY, `${JSON.stringify(history, null, 2)}\n`)
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const i = process.argv.indexOf('--date')
+  const date = i > 0 ? process.argv[i + 1] : today()
+  const r = await write(date)
+  if (!r.ok) {
+    console.error(`✗ no usable reel after ${TRIES} attempts:\n  ${r.errors.join('\n  ')}`)
+    process.exit(1)
+  }
+  console.log(`✓ ${r.file}`)
+}

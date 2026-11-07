@@ -1,0 +1,38 @@
+[
+  {
+    "date": "2026-11-09",
+    "title": "Ten minutes for one hello",
+    "angle": "introverts",
+    "summary": "A shy person rehearses a single hello, then finds that with no camera and no face, a nervous stranger is just as awkward and the call goes fine.",
+    "hook": "POV: you rehearsed one 'hello' for ten minutes before tapping call",
+    "scenes": "pov>versus>match>chat>call>question>end",
+    "status": "test",
+    "names": [
+      "Quiet Clown"
+    ]
+  },
+  {
+    "date": "2026-11-10",
+    "title": "Nine seconds of silence",
+    "angle": "games",
+    "summary": "A silent stranger on a call is rescued by a Tic-Tac-Toe invite, and the shy one turns into a trash-talker; the focus is the silence-to-banter shift rather than a games list.",
+    "hook": "9 sec of silence. Still counting.",
+    "scenes": "bigword>match>call>appclip>chat>question>end",
+    "status": "test",
+    "names": [
+      "Quiet Clown"
+    ]
+  },
+  {
+    "date": "2026-11-11",
+    "title": "No red pen",
+    "angle": "english-practice",
+    "summary": "Fear of mistakes is the real blocker: a call with another learner shows nobody is grading you, using a shared-mistake chat and the #english match instead of a tips list.",
+    "hook": "Your English is already enough to say hello",
+    "scenes": "hook>versus>appclip>chat>rating>question>end",
+    "status": "test",
+    "names": [
+      "Salty Mango"
+    ]
+  }
+]

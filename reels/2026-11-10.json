@@ -1,0 +1,84 @@
+{
+  "idea": {
+    "title": "Nine seconds of silence",
+    "angle": "games",
+    "summary": "A silent stranger on a call is rescued by a Tic-Tac-Toe invite, and the shy one turns into a trash-talker; the focus is the silence-to-banter shift rather than a games list."
+  },
+  "scenes": [
+    {
+      "type": "bigword",
+      "word": "9 sec",
+      "sub": "of silence. Still counting.",
+      "say": "Nine seconds of silence with a total stranger. Painful."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Quiet Clown",
+      "say": "You get matched, you say hi, and they say nothing."
+    },
+    {
+      "type": "call",
+      "avatar": "KenjiJP",
+      "name": "Quiet Clown",
+      "label": "0:09 and counting",
+      "say": "Nobody knows what to say. That's completely normal."
+    },
+    {
+      "type": "appclip",
+      "clip": "games",
+      "headline": "Skip small talk. Play.",
+      "sub": "Tic-Tac-Toe, right inside the call",
+      "say": "So skip the small talk and invite them to Tic-Tac-Toe."
+    },
+    {
+      "type": "chat",
+      "avatar": "KenjiJP",
+      "name": "Quiet Clown",
+      "messages": [
+        {
+          "from": "them",
+          "text": "ok I was NOT ready for that"
+        },
+        {
+          "from": "me",
+          "text": "you just lost in four moves"
+        },
+        {
+          "from": "them",
+          "text": "rematch. right now."
+        },
+        {
+          "from": "me",
+          "text": "and now you're talking, see?"
+        }
+      ],
+      "say": "Suddenly the quiet one is trash-talking you, and it's great."
+    },
+    {
+      "type": "question",
+      "question": "In a game, you're the...",
+      "a": "Sore loser",
+      "b": "Smug winner",
+      "say": "Be honest. Which one are you? Tell us below."
+    },
+    {
+      "type": "end",
+      "tagline": "Break the silence. Play a game.",
+      "say": "Random Talker. Break the silence with a game."
+    }
+  ],
+  "post": {
+    "caption": "The fastest way to fix an awkward silence? Make it a rematch. Tic-Tac-Toe, UNO, Ludo and more, right inside the call.\nAre you a sore loser or a smug winner?\nTry it at randomtalker.com (link in bio).",
+    "hashtags": [
+      "#randomtalker",
+      "#talktostrangers",
+      "#tictactoe",
+      "#games",
+      "#awkward",
+      "#voicechat"
+    ],
+    "youtubeTitle": "Awkward silence? Play Tic-Tac-Toe with a stranger #shorts",
+    "xText": "Awkward silence on a call with a stranger? Invite them to Tic-Tac-Toe. Instant banter. Sore loser or smug winner? randomtalker.com"
+  }
+}

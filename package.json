@@ -1,0 +1,32 @@
+{
+  "name": "randomtalker-autopilot",
+  "private": true,
+  "type": "module",
+  "description": "Writes, renders and schedules one Random Talker reel a day.",
+  "scripts": {
+    "studio": "remotion studio",
+    "make": "tsx scripts/make.ts",
+    "check": "tsx scripts/check.ts",
+    "typecheck": "tsc",
+    "write": "tsx scripts/write.ts",
+    "daily": "tsx scripts/daily.ts"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.539",
+    "@remotion/media-utils": "4.0.539",
+    "@remotion/transitions": "4.0.539",
+    "ajv": "8.17.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.539"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@types/react": "19.2.2",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}

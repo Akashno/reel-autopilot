@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Random Talker mark: black mynah on gold. Source for every icon in public/ —
+       regenerate them with `node scripts/generate-brand-icons.mjs`. -->
+  <rect width="120" height="120" fill="#FBD860"/>
+  <g transform="translate(-4 5)">
+    <path d="M46 36 Q44 22 54 15 Q54 26 58 33 Z" fill="#111110"/>
+    <path d="M54 34 Q58 20 70 18 Q63 26 64 33 Z" fill="#111110"/>
+    <circle cx="54" cy="62" r="30" fill="#111110"/>
+    <path d="M80 52 Q78 43 68 43 Q56 43 49 56 Q60 63 72 62 Q80 61 80 52 Z" fill="#FBD860"/>
+    <circle cx="69" cy="52.5" r="5" fill="#111110"/>
+    <circle cx="70.6" cy="50.9" r="1.5" fill="#F6F1E3"/>
+    <path d="M79 49 Q97 51 105 62 Q95 67 80 70 Z" fill="#FBD860" stroke="#111110" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+</svg>
