@@ -151,6 +151,9 @@ export async function write(date: string): Promise<{ ok: true, file: string, ree
     if (!res.reel) {
       errors = [res.error!]
       console.log(`  attempt ${attempt}: ${res.error}`)
+      // A login problem won't fix itself on retry.
+      if (/authenticat|401|invalid api key|oauth/i.test(res.error!))
+        break
       continue
     }
     const reel = res.reel
