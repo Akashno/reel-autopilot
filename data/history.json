@@ -30,9 +30,9 @@
     "summary": "Fear of mistakes is the real blocker: a call with another learner shows nobody is grading you, using a shared-mistake chat and the #english match instead of a tips list.",
     "hook": "Your English is already enough to say hello",
     "scenes": "hook>versus>appclip>chat>rating>question>end",
-    "status": "test",
     "names": [
       "Salty Mango"
-    ]
+    ],
+    "status": "test"
   }
 ]
