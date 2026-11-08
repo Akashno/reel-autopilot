@@ -29,7 +29,7 @@ Remotion needs a [paid licence](https://www.remotion.dev/license) for companies 
    claude setup-token                      # copy the token it prints
    gh secret set CLAUDE_CODE_OAUTH_TOKEN
    gh secret set BUFFER_API_KEY_1          # Buffer → Settings → API
-   gh secret set GEMINI_API_KEY            # optional, from aistudio.google.com
+   gh secret set GEMINI_API_KEY            # optional for voice over ( recommended ) , from aistudio.google.com
    ```
 3. **Turn on Pages:** Settings → Pages → Source: **GitHub Actions**.
 4. **Find your channels:** put the Buffer key in `.env` as `BUFFER_API_KEY_1=...`, then run
