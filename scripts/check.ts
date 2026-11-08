@@ -1,14 +1,16 @@
 // Validates a reel against reel.schema.json plus the rules a schema can't express.
-//   npm run check -- reels/sample.json
+//   npm run check -- brand/examples/sample.json
 import { readFileSync } from 'node:fs'
 import Ajv from 'ajv'
+import { BRAND } from '../src/brand'
 import type { Reel } from '../src/types'
+import { reelSchema } from './schema'
 
-const schema = JSON.parse(readFileSync(new URL('../reel.schema.json', import.meta.url), 'utf8'))
-const validate = new Ajv({ allErrors: true, strict: false }).compile(schema)
+const validate = new Ajv({ allErrors: true, strict: false }).compile(reelSchema())
 
-// Words that would make a claim the product can't back up.
-const BANNED = [/\bvideo (call|chat)/i, /\bmillions?\b/i, /\b\d{2,}[k%+]/i, /\bguarantee/i, /\bAI[- ]powered\b/i, /\bdating\b/i, /\bhook ?up\b/i, /\bomegle (is back|clone|alternative by)\b/i, /\b100% (free|safe)\b/i, /\bcompletely (free|safe)\b/i, /\buntraceable\b/i, /\b(never|not) recorded\b/i]
+// Claims the product can't back up (brand.json bannedClaims).
+const BANNED = BRAND.bannedClaims.map(r => new RegExp(r, 'i'))
+const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
 // Phrases that make a reel sound written by a machine or an ad agency. Viewers scroll past
 // them; the writer is told to say the thing plainly instead.
@@ -73,13 +75,13 @@ export function checkReel(reel: unknown): string[] {
     if (!DRAWABLE.test(t))
       errors.push(`on-screen text "${t}" has emoji or symbols; use plain words`)
   }
-  const shows = r.scenes.filter(s => ['match', 'call', 'chat', 'appclip', 'games'].includes(s.type)).length
-  if (!shows)
-    errors.push('no scene shows the product; use at least one match, call, chat, appclip or games')
+  const product = BRAND.productScenes.filter(t => BRAND.scenes.includes(t))
+  if (product.length && !r.scenes.some(s => product.includes(s.type)))
+    errors.push(`no scene shows the product; use at least one of: ${product.join(', ')}`)
   if (r.scenes.filter(s => s.type === 'features' || s.type === 'list').length > 1)
     errors.push('use at most one features or list scene')
-  if (!r.post.hashtags.some(h => h.toLowerCase() === '#randomtalker'))
-    errors.push('hashtags must include #randomtalker')
+  if (!r.post.hashtags.some(h => h.toLowerCase() === BRAND.hashtag.toLowerCase()))
+    errors.push(`hashtags must include ${BRAND.hashtag}`)
   const count = (t?: string) => (t ? t.split(/\s+/).filter(Boolean).length : 0)
   const words = r.scenes.reduce((n, s) => n + count(s.say), 0)
   if (words > 55)
@@ -122,8 +124,9 @@ export function checkReel(reel: unknown): string[] {
     if (re.test(text))
       errors.push(`claim not allowed: ${re}`)
   }
-  if (!/randomtalker\.com/i.test(r.post.caption) || !/randomtalker\.com/i.test(r.post.xText))
-    errors.push('caption and xText must mention randomtalker.com')
+  const site = new RegExp(escape(BRAND.site), 'i')
+  if (!site.test(r.post.caption) || !site.test(r.post.xText))
+    errors.push(`caption and xText must mention ${BRAND.site}`)
   return errors
 }
 

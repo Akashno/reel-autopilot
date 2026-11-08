@@ -1,6 +1,6 @@
 import { interpolate } from 'remotion'
 import type { Scene } from '../types'
-import { C, Card, Chip, Column, ease, fitSize, Headline, Icon, mix, Pop, SORA, Stage, stepTimes, useScene, useSpring, useT, withMarker } from '../ui'
+import { C, Card, Chip, Column, ease, fitSize, Headline, Icon, mix, Pop, DISPLAY, Stage, stepTimes, useScene, useSpring, useT, withMarker } from '../ui'
 
 type Of<T extends Scene['type']> = Extract<Scene, { type: T }>
 
@@ -34,12 +34,12 @@ export function Pov({ s: raw }: { s: Of<'pov'> }) {
   const typeEnd = Math.min(secs - 0.8, 0.5 + s.text.length * 0.035)
   const shown = Math.round(s.text.length * ease(t, 0.5, Math.max(0.3, typeEnd - 0.5)))
   const size = s.text.length > 44 ? 84 : 98
-  const text = { fontFamily: SORA, fontWeight: 800, fontSize: size, lineHeight: 1.12, letterSpacing: -2 } as const
+  const text = { fontFamily: DISPLAY, fontWeight: 800, fontSize: size, lineHeight: 1.12, letterSpacing: -2 } as const
   return (
     <Stage>
       <Column align="flex-start" gap={40} style={{ paddingBottom: 100 }}>
         <Pop at={0.05} from={0.8}>
-          <Chip dark style={{ fontFamily: SORA, fontWeight: 800, fontSize: 52, padding: '16px 38px' }}>POV</Chip>
+          <Chip dark style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: 52, padding: '16px 38px' }}>POV</Chip>
         </Pop>
         <div style={{ position: 'relative', ...text }}>
           <span style={{ opacity: 0 }}>{s.text}</span>
@@ -80,8 +80,8 @@ export function Question({ s }: { s: Of<'question'> }) {
   const opt = (label: string, text: string, tint: string, at: number) => (
     <Pop at={at} rise={80}>
       <Card style={{ width: 400, height: 400, background: tint, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 28, padding: 32 }}>
-        <div style={{ width: 104, height: 104, borderRadius: '50%', background: C.ink, color: '#FFF', fontFamily: SORA, fontWeight: 800, fontSize: 60, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{label}</div>
-        <div style={{ fontFamily: SORA, fontWeight: 800, fontSize: text.length > 14 ? 50 : 60, lineHeight: 1.1, textAlign: 'center', letterSpacing: -1 }}>{text}</div>
+        <div style={{ width: 104, height: 104, borderRadius: '50%', background: C.ink, color: '#FFF', fontFamily: DISPLAY, fontWeight: 800, fontSize: 60, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{label}</div>
+        <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: text.length > 14 ? 50 : 60, lineHeight: 1.1, textAlign: 'center', letterSpacing: -1 }}>{text}</div>
       </Card>
     </Pop>
   )
@@ -116,7 +116,7 @@ export function List({ s }: { s: Of<'list'> }) {
         {s.items.map((item, i) => (
           <Pop key={i} at={at[i]} rise={30} from={0.85}>
             <Card style={{ display: 'flex', alignItems: 'center', gap: 32, padding: '28px 36px', borderRadius: 36 }}>
-              <div style={{ width: 84, height: 84, borderRadius: '50%', background: C.gold, fontFamily: SORA, fontWeight: 800, fontSize: 46, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{i + 1}</div>
+              <div style={{ width: 84, height: 84, borderRadius: '50%', background: C.gold, fontFamily: DISPLAY, fontWeight: 800, fontSize: 46, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{i + 1}</div>
               <div style={{ fontSize: 52, fontWeight: 600, lineHeight: 1.15 }}>{item}</div>
             </Card>
           </Pop>
@@ -164,7 +164,7 @@ export function Versus({ s }: { s: Of<'versus'> }) {
     <Pop at={at} rise={50} from={0.9}>
       <Card style={{ height: 380, padding: '44px 48px', background: tint, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 28, alignItems: 'flex-start', opacity: dim ? mix(1, 0.55, ease(t, second + 0.3, 0.4)) : 1 }}>
         <Chip dark={!dim} style={{ fontSize: 36, padding: '10px 28px' }}>{side.label}</Chip>
-        <div style={{ fontFamily: SORA, fontWeight: 800, fontSize: side.text.length > 28 ? 66 : 78, lineHeight: 1.08, letterSpacing: -2 }}>{side.text}</div>
+        <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: side.text.length > 28 ? 66 : 78, lineHeight: 1.08, letterSpacing: -2 }}>{side.text}</div>
       </Card>
     </Pop>
   )
@@ -174,7 +174,7 @@ export function Versus({ s }: { s: Of<'versus'> }) {
       <Column align="stretch" gap={0}>
         {half(s.left, '#EFE8D6', 0.05, true)}
         <div style={{ display: 'flex', justifyContent: 'center', height: 40, position: 'relative', zIndex: 2 }}>
-          <div style={{ marginTop: -55, width: 150, height: 150, borderRadius: '50%', background: C.gold, boxShadow: '0 0 0 10px #FFF', fontFamily: SORA, fontWeight: 800, fontSize: 58, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${vs}) rotate(${interpolate(vs, [0, 1], [-30, 0])}deg)` }}>VS</div>
+          <div style={{ marginTop: -55, width: 150, height: 150, borderRadius: '50%', background: C.gold, boxShadow: '0 0 0 10px #FFF', fontFamily: DISPLAY, fontWeight: 800, fontSize: 58, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${vs}) rotate(${interpolate(vs, [0, 1], [-30, 0])}deg)` }}>VS</div>
         </div>
         {half(s.right, C.tints[2], second, false)}
       </Column>

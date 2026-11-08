@@ -8,12 +8,14 @@ import { execFileSync, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
+import { BRAND } from '../src/brand'
 import type { Reel } from '../src/types'
 
 const ROOT = resolve(import.meta.dirname, '..')
+// Voice and speaking style come from brand.json; the pause instruction is what makes the cut work.
 const GEMINI = {
-  voice: 'Achird',
-  style: 'Casual, warm and upbeat, like telling a friend about a fun app. Clear, normal speaking volume, natural relaxed pace. Never salesy, never whispery. Leave a long pause wherever it says <long pause>; never read that out.',
+  voice: BRAND.voice.gemini.voice,
+  style: `${BRAND.voice.gemini.style} Leave a long pause wherever it says <long pause>; never read that out.`,
   model: 'gemini-3.8-flash-tts',
   endpoint: 'https://generativelanguage.googleapis.com/v1beta/interactions',
 }

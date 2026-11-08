@@ -1,6 +1,6 @@
 // Contact sheet for layout checks: one frame per scene, with the platform UI zones drawn.
 //
-//   npx tsx scripts/stills.ts reels/allscenes.json [out/sheet.png]
+//   npx tsx scripts/stills.ts brand/examples/allscenes.json [out/sheet.png]
 //
 // Renders the reel silently (voice lengths guessed), grabs each scene near the end of its
 // animation with captions showing, and tiles them into one image.
@@ -9,9 +9,10 @@ import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { basename, join, resolve } from 'node:path'
 import type { Reel, ReelProps } from '../src/types'
 import { sceneSecs } from '../src/Reel'
+import { syncAssets } from './assets'
 
 const ROOT = resolve(import.meta.dirname, '..')
-const file = process.argv[2] ?? 'reels/allscenes.json'
+const file = process.argv[2] ?? 'brand/examples/allscenes.json'
 const id = basename(file, '.json')
 const sheet = process.argv[3] ?? join(ROOT, 'out', `${id}-sheet.png`)
 const reel: Reel = JSON.parse(readFileSync(file, 'utf8'))
@@ -19,6 +20,7 @@ const voSecs = reel.scenes.map(s => (s.say ? s.say.split(/\s+/).length * 0.36 : 
 const props: ReelProps = { reel, audioDir: null, voSecs, guides: !process.argv.includes('--clean') }
 const secs = sceneSecs(props)
 
+syncAssets()
 const dir = join(ROOT, 'out', `${id}-stills`)
 rmSync(dir, { recursive: true, force: true })
 mkdirSync(dir, { recursive: true })

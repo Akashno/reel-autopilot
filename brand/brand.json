@@ -1,0 +1,105 @@
+{
+  "name": "Random Talker",
+  "site": "randomtalker.com",
+  "hashtag": "#randomtalker",
+  "pitch": "random one-to-one voice calls with strangers, in the browser",
+  "goal": "makes people want to try talking to a stranger",
+  "audience": "18-28, many in India and many learning English, scrolling fast with the sound off",
+  "timezone": { "label": "India", "offsetMinutes": 330 },
+  "postAt": "19:00",
+  "endCard": { "sub": "Free to start · link in bio" },
+  "commonWords": ["stranger", "strangers", "talk", "talking", "call", "voice"],
+
+  "voice": {
+    "gemini": {
+      "voice": "Achird",
+      "style": "Casual, warm and upbeat, like telling a friend about a fun app. Clear, normal speaking volume, natural relaxed pace. Never salesy, never whispery."
+    }
+  },
+
+  "colors": {
+    "bg": "#F6F1E3",
+    "card": "#FFFDF7",
+    "border": "#E7DDC4",
+    "ink": "#111110",
+    "muted": "#5B5648",
+    "soft": "#8A8473",
+    "gold": "#FBD860",
+    "sun": "#F6E2A0",
+    "glow": "#F8EDC8",
+    "green": "#1D8A3A",
+    "callGreen": "#22A447",
+    "red": "#EF4444",
+    "tints": ["#DFE5FF", "#FDEAA0", "#D4F1CF", "#FCDCEA", "#E9DDFB", "#CDEFF7"]
+  },
+  "fonts": {
+    "display": "Sora",
+    "body": "Plus Jakarta Sans",
+    "files": [
+      { "family": "Sora", "file": "fonts/Sora-Bold.ttf", "weight": 700 },
+      { "family": "Sora", "file": "fonts/Sora-ExtraBold.ttf", "weight": 800 },
+      { "family": "Plus Jakarta Sans", "file": "fonts/PlusJakartaSans-Medium.ttf", "weight": 500 },
+      { "family": "Plus Jakarta Sans", "file": "fonts/PlusJakartaSans-SemiBold.ttf", "weight": 600 }
+    ]
+  },
+  "logo": "logo/mynah.svg",
+
+  "scenes": ["hook", "pov", "bigword", "question", "match", "call", "chat", "appclip", "games", "features", "list", "rating", "versus", "end"],
+  "productScenes": ["match", "call", "chat", "appclip", "games"],
+
+  "avatars": {
+    "AmaraLDN": { "file": "faces/AmaraLDN.svg", "tint": "#FCDCEA" },
+    "KenjiJP": { "file": "faces/KenjiJP.svg", "tint": "#DFE5FF" },
+    "LeoRio": { "file": "faces/LeoRio.svg", "tint": "#D4F1CF" },
+    "MayaDelhi": { "file": "faces/MayaDelhi.svg", "tint": "#FDEAA0" },
+    "PriyaMumbai": { "file": "faces/PriyaMumbai.svg", "tint": "#E9DDFB" },
+    "SofiaMX": { "file": "faces/SofiaMX.svg", "tint": "#CDEFF7" }
+  },
+  "clips": {
+    "2am": { "file": "clips/2am.mp4", "from": 0.4, "to": 9, "length": 16.5, "about": "tap call, searching, connected" },
+    "english": { "file": "clips/english.mp4", "from": 0.8, "to": 11.5, "length": 15.5, "about": "set the #english interest, matched with someone who shares it" },
+    "games": { "file": "clips/games.mp4", "from": 1, "to": 12, "length": 14.4, "about": "invite to Tic-Tac-Toe mid-call and win" },
+    "safety": { "file": "clips/safety.mp4", "from": 0.4, "to": 13.5, "length": 14.4, "about": "on a call, skip in one tap, next person" },
+    "translate": { "file": "clips/translate.mp4", "from": 0, "to": 14.5, "length": 15.3, "about": "Hindi message, tap to translate, reply in English" }
+  },
+  "games": [
+    { "id": "uno", "name": "UNO", "file": "games/uno.svg" },
+    { "id": "ludo", "name": "Ludo", "file": "games/ludo.svg" },
+    { "id": "tictactoe", "name": "Tic-Tac-Toe", "file": "games/tictactoe.svg" },
+    { "id": "chainreaction", "name": "Chain Reaction", "file": "games/chainreaction.svg" },
+    { "id": "battleship", "name": "Battleship", "file": "games/battleship-160.webp" },
+    { "id": "sudoku", "name": "Sudoku", "file": "games/sudoku-160.webp" },
+    { "id": "tetris", "name": "Tetris", "file": "games/tetris-160.webp" }
+  ],
+  "features": {
+    "voice": { "icon": "mic", "label": "Just your voice" },
+    "no-signup": { "icon": "user-round-x", "label": "No signup" },
+    "no-camera": { "icon": "video-off", "label": "No camera" },
+    "no-download": { "icon": "download", "label": "No download" },
+    "instant-match": { "icon": "zap", "label": "Matched in seconds" },
+    "games": { "icon": "gamepad", "label": "Games inside the call" },
+    "skip": { "icon": "skip-forward", "label": "Skip in one tap" },
+    "report": { "icon": "flag", "label": "Report in seconds" },
+    "interests": { "icon": "hash", "label": "Match by interests" },
+    "text-chat": { "icon": "message-circle", "label": "Text chat too" },
+    "translate": { "icon": "languages", "label": "Tap to translate" },
+    "add-friend": { "icon": "user-plus", "label": "Add them as a friend" },
+    "anonymous": { "icon": "venetian-mask", "label": "Stay anonymous" },
+    "humans-only": { "icon": "heart-handshake", "label": "No AI. Just humans." }
+  },
+
+  "bannedClaims": [
+    "\\bvideo (call|chat)",
+    "\\bmillions?\\b",
+    "\\b\\d{2,}[k%+]",
+    "\\bguarantee",
+    "\\bAI[- ]powered\\b",
+    "\\bdating\\b",
+    "\\bhook ?up\\b",
+    "\\bomegle (is back|clone|alternative by)\\b",
+    "\\b100% (free|safe)\\b",
+    "\\bcompletely (free|safe)\\b",
+    "\\buntraceable\\b",
+    "\\b(never|not) recorded\\b"
+  ]
+}

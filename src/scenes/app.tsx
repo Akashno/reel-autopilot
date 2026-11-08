@@ -1,6 +1,7 @@
 import { Img, OffthreadVideo, staticFile } from 'remotion'
-import type { Clip, Game, Scene } from '../types'
-import { Bubble, C, Card, Chip, Column, Dot, ease, Face, FEATURES, fitSize, FPS, Headline, Icon, mix, Mynah, PhoneFrame, Pop, SORA, Stage, stepTimes, useScene, useSpring, useT, Wave } from '../ui'
+import type { Scene } from '../types'
+import { asset, BRAND } from '../brand'
+import { Bubble, C, Card, Chip, Column, Dot, ease, Face, FEATURES, fitSize, FPS, Headline, Icon, mix, Logo, PhoneFrame, Pop, DISPLAY, Stage, stepTimes, useScene, useSpring, useT, Wave } from '../ui'
 
 type Of<T extends Scene['type']> = Extract<Scene, { type: T }>
 
@@ -24,7 +25,7 @@ function CallButtons() {
 function NameStatus({ name, status, size = 84 }: { name: string, status: string, size?: number }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
-      <div style={{ fontFamily: SORA, fontWeight: 800, fontSize: size, letterSpacing: -2, lineHeight: 1.05 }}>{name}</div>
+      <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: size, letterSpacing: -2, lineHeight: 1.05 }}>{name}</div>
       <div style={{ fontSize: 42, fontWeight: 600, color: C.green }}><Dot />{status}</div>
     </div>
   )
@@ -47,7 +48,7 @@ export function Match({ s }: { s: Of<'match'> }) {
             const p = ((t + i * 0.45) % 1.35) / 1.35
             return <div key={i} style={{ position: 'absolute', width: mix(200, 760, p), height: mix(200, 760, p), borderRadius: '50%', border: `6px solid ${C.ink}`, opacity: (1 - p) * 0.35 * searching }} />
           })}
-          <div style={{ position: 'absolute', opacity: searching, fontFamily: SORA, fontWeight: 800, fontSize: 64 }}>Matching{'.'.repeat(1 + Math.floor(t * 3) % 3)}</div>
+          <div style={{ position: 'absolute', opacity: searching, fontFamily: DISPLAY, fontWeight: 800, fontSize: 64 }}>Matching{'.'.repeat(1 + Math.floor(t * 3) % 3)}</div>
           <div style={{ position: 'absolute', transform: `scale(${card}) rotate(${(1 - card) * 10}deg)`, opacity: Math.min(1, card * 2) }}>
             <Face avatar={s.avatar} size={420} />
           </div>
@@ -92,7 +93,7 @@ export function Chat({ s }: { s: Of<'chat'> }) {
           <Card style={{ display: 'flex', alignItems: 'center', gap: 28, padding: '24px 32px', borderRadius: 36 }}>
             <Face avatar={s.avatar} size={100} />
             <div>
-              <div style={{ fontFamily: SORA, fontWeight: 800, fontSize: 52 }}>{s.name}</div>
+              <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: 52 }}>{s.name}</div>
               <div style={{ fontSize: 36, fontWeight: 600, color: C.green }}><Dot size={14} />Connected</div>
             </div>
           </Card>
@@ -107,17 +108,10 @@ export function Chat({ s }: { s: Of<'chat'> }) {
   )
 }
 
-// Real screen recordings: which part of each to play.
-const CLIPS: Record<Clip, { from: number, to: number, length: number }> = {
-  '2am': { from: 0.4, to: 9, length: 16.5 },
-  'english': { from: 0.8, to: 11.5, length: 15.5 },
-  'games': { from: 1, to: 12, length: 14.4 },
-  'safety': { from: 0.4, to: 13.5, length: 14.4 },
-  'translate': { from: 0, to: 14.5, length: 15.3 },
-}
+// Real screen recordings (brand.json clips): `from`-`to` is the part worth playing.
 export function AppClip({ s }: { s: Of<'appclip'> }) {
   const { secs } = useScene()
-  const c = CLIPS[s.clip]
+  const c = BRAND.clips[s.clip]
   // Fit the interesting part into the scene, never running past the end of the file.
   const rate = Math.min(3, Math.max(0.7, (c.to - c.from) / secs), (c.length - 0.2 - c.from) / secs)
   const phone = useSpring(0.1, { damping: 16, mass: 1, stiffness: 110 })
@@ -130,7 +124,7 @@ export function AppClip({ s }: { s: Of<'appclip'> }) {
         </Pop>
         <div style={{ transform: `translateY(${(1 - phone) * 500}px)` }}>
           <PhoneFrame width={s.sub ? 420 : 445}>
-            <OffthreadVideo src={staticFile(`clips/${s.clip}.mp4`)} startFrom={Math.round(c.from * FPS)} playbackRate={rate} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <OffthreadVideo src={staticFile(asset(c.file))} startFrom={Math.round(c.from * FPS)} playbackRate={rate} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </PhoneFrame>
         </div>
       </Column>
@@ -138,15 +132,6 @@ export function AppClip({ s }: { s: Of<'appclip'> }) {
   )
 }
 
-const GAMES: Array<{ id: Game, name: string, src: string }> = [
-  { id: 'uno', name: 'UNO', src: 'games/uno.svg' },
-  { id: 'ludo', name: 'Ludo', src: 'games/ludo.svg' },
-  { id: 'tictactoe', name: 'Tic-Tac-Toe', src: 'games/tictactoe.svg' },
-  { id: 'chainreaction', name: 'Chain Reaction', src: 'games/chainreaction.svg' },
-  { id: 'battleship', name: 'Battleship', src: 'games/battleship-160.webp' },
-  { id: 'sudoku', name: 'Sudoku', src: 'games/sudoku-160.webp' },
-  { id: 'tetris', name: 'Tetris', src: 'games/tetris-160.webp' },
-]
 // The in-call games; the picked one grows and gets a gold ring.
 export function Games({ s }: { s: Of<'games'> }) {
   const { secs } = useScene()
@@ -162,14 +147,14 @@ export function Games({ s }: { s: Of<'games'> }) {
           <Headline size={fitSize([headline], 96, 66)}>{headline}</Headline>
         </Pop>
         <div style={{ width: 840, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: 28, rowGap: 36 }}>
-          {GAMES.map((g, i) => {
+          {BRAND.games.map((g, i) => {
             const me = g.id === s.pick
             const dim = me ? 1 : mix(1, 0.4, ease(t, pickAt, 0.3))
             return (
               <Pop key={g.id} at={0.2 + i * 0.07} from={0.5} style={{ position: 'relative', zIndex: me ? 2 : 1 }}>
                 <div style={{ width: size, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, opacity: dim, transform: `scale(${me ? mix(1, 1.18, pick) : 1})` }}>
                   <Card style={{ width: size, height: size, borderRadius: 44, background: C.tints[i % C.tints.length], display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: me ? `0 0 0 ${10 * pick}px ${C.gold}, 0 30px 60px rgba(120,90,0,0.2)` : undefined }}>
-                    <Img src={staticFile(g.src)} style={{ width: size * 0.62, height: size * 0.62, objectFit: 'contain' }} />
+                    <Img src={staticFile(asset(g.file))} style={{ width: size * 0.62, height: size * 0.62, objectFit: 'contain' }} />
                   </Card>
                   <div style={{ width: size + 16, fontSize: 30, fontWeight: 600, lineHeight: 1.1, textAlign: 'center' }}>{g.name}</div>
                 </div>
@@ -200,7 +185,7 @@ export function Features({ s }: { s: Of<'features'> }) {
               <div style={{ width: 110, height: 110, borderRadius: 32, background: C.gold, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Icon name={FEATURES[f].icon} size={60} color={C.ink} />
               </div>
-              <div style={{ fontFamily: SORA, fontWeight: 800, fontSize: 56, letterSpacing: -1.5, lineHeight: 1.1 }}>{FEATURES[f].label}</div>
+              <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: 56, letterSpacing: -1.5, lineHeight: 1.1 }}>{FEATURES[f].label}</div>
             </Card>
           </Pop>
         ))}
@@ -215,13 +200,13 @@ export function End({ s }: { s: Of<'end'> }) {
   return (
     <Stage>
       <Column gap={56} style={{ paddingBottom: 60 }}>
-        <div style={{ transform: `scale(${logo}) rotate(${(1 - logo) * -14}deg)` }}><Mynah size={280} /></div>
+        <div style={{ transform: `scale(${logo}) rotate(${(1 - logo) * -14}deg)` }}><Logo size={280} /></div>
         <Pop at={0.35}>
           <Headline size={s.tagline.length > 20 ? 96 : 112}>{s.tagline}</Headline>
         </Pop>
         <Pop at={0.7} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
-          <div style={{ padding: '34px 64px', borderRadius: 999, background: C.ink, color: '#FFF', fontFamily: SORA, fontWeight: 800, fontSize: 60 }}>randomtalker.com</div>
-          <div style={{ fontSize: 42, fontWeight: 600, color: C.muted }}>Free to start · link in bio</div>
+          <div style={{ padding: '34px 64px', borderRadius: 999, background: C.ink, color: '#FFF', fontFamily: DISPLAY, fontWeight: 800, fontSize: 60 }}>{BRAND.site}</div>
+          <div style={{ fontSize: 42, fontWeight: 600, color: C.muted }}>{BRAND.endCard.sub}</div>
         </Pop>
       </Column>
     </Stage>

@@ -1,24 +1,44 @@
 // Schedules the day's video on every channel through Buffer.
 //
-//   npm run post -- <date>                         schedule for <date> at postAt (India time)
+//   npm run post -- <date>                         schedule for <date> at brand.json postAt
 //   npm run post -- <date> --dry                   print what would be sent
 //   npm run post -- <date> --only instagram        one channel
 //   npm run post -- <date> --at 2026-12-20T13:30:00Z --url https://...mp4
 //   npm run post -- <date> --now                   post in about 5 minutes instead of at postAt
+//   npm run post -- --channels                     list the Buffer channels for every BUFFER_API_KEY_*
 //   npm run post -- <date> --status                show each saved post's status
 //   npm run post -- <date> --delete                delete the saved posts (tests)
 //
 // Needs BUFFER_API_KEY_1 / BUFFER_API_KEY_2 (environment or .env). What was scheduled is saved
 // in data/posts/<date>.json, so a re-run never posts a channel twice.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { spawnSync } from 'node:child_process'
 import { join, resolve } from 'node:path'
+import { BRAND } from '../src/brand'
 import type { Reel } from '../src/types'
 
 const ROOT = resolve(import.meta.dirname, '..')
-const PAGES = process.env.PAGES_URL ?? 'https://akashno.github.io/randomtalker-autopilot'
+// Where GitHub Pages serves the videos. PAGES_URL wins (the workflow passes the deployed URL);
+// otherwise it's derived from the repository: in CI from GITHUB_REPOSITORY, locally from the
+// origin remote. https://<owner>.github.io/<repo>, or https://<owner>.github.io for a repo
+// named <owner>.github.io.
+export function pagesUrl() {
+  if (process.env.PAGES_URL)
+    return process.env.PAGES_URL.replace(/\/$/, '')
+  let repo = process.env.GITHUB_REPOSITORY
+  if (!repo) {
+    const r = spawnSync('git', ['remote', 'get-url', 'origin'], { cwd: ROOT, encoding: 'utf8' })
+    repo = r.stdout?.trim().match(/github\.com[:/]([^/]+\/[^/]+?)(\.git)?$/)?.[1]
+  }
+  if (!repo)
+    throw new Error('Cannot tell the GitHub Pages URL: set PAGES_URL or GITHUB_REPOSITORY (owner/repo)')
+  const [owner, name] = repo.split('/')
+  const host = `${owner.toLowerCase()}.github.io`
+  return name.toLowerCase() === host ? `https://${host}` : `https://${host}/${name}`
+}
 
 interface Channel { service: 'instagram' | 'youtube' | 'facebook' | 'twitter', name: string, id: string, key: string }
-interface Config { postAt: string, timezoneOffsetMinutes: number, channels: Channel[] }
+interface Config { channels: Channel[] }
 interface Saved { id: string, dueAt: string, status: string, error?: string }
 
 function loadEnv() {
@@ -75,7 +95,7 @@ export function postInput(ch: Channel, reel: Reel, url: string, dueAt: string) {
     mode: 'customScheduled',
     dueAt,
     needsApproval: false,
-    source: 'randomtalker-autopilot',
+    source: 'reel-autopilot',
     assets: [{ video: { url, metadata: { thumbnailOffset: 1200 } } }],
   }
   switch (ch.service) {
@@ -86,26 +106,26 @@ export function postInput(ch: Channel, reel: Reel, url: string, dueAt: string) {
     case 'youtube':
       return { ...base, text: caption, metadata: { youtube: { title: reel.post.youtubeTitle.slice(0, 100), categoryId: '22', privacy: 'public', madeForKids: false, notifySubscribers: true } } }
     case 'twitter': {
-      const extra = ' #randomtalker'
-      const text = reel.post.xText.length + extra.length <= 280 && !/#randomtalker/i.test(reel.post.xText) ? reel.post.xText + extra : reel.post.xText
+      const extra = ` ${BRAND.hashtag}`
+      const text = reel.post.xText.length + extra.length <= 280 && !reel.post.xText.toLowerCase().includes(BRAND.hashtag.toLowerCase()) ? reel.post.xText + extra : reel.post.xText
       return { ...base, text }
     }
   }
 }
 
-// postAt on `date` in India time, as UTC; never less than 10 minutes from now.
-export function dueAtFor(date: string, cfg: Config) {
-  const [h, m] = cfg.postAt.split(':').map(Number)
-  const at = Date.parse(`${date}T00:00:00Z`) + (h * 60 + m - cfg.timezoneOffsetMinutes) * 60e3
+// brand.json postAt on `date` in the brand's timezone, as UTC; never less than 10 minutes from now.
+export function dueAtFor(date: string) {
+  const [h, m] = BRAND.postAt.split(':').map(Number)
+  const at = Date.parse(`${date}T00:00:00Z`) + (h * 60 + m - BRAND.timezone.offsetMinutes) * 60e3
   return new Date(Math.max(at, Date.now() + 10 * 60e3)).toISOString()
 }
 
 export async function post(date: string, opts: { only?: string, at?: string, url?: string, dry?: boolean } = {}) {
   loadEnv()
-  const cfg: Config = JSON.parse(readFileSync(join(ROOT, 'data/channels.json'), 'utf8'))
+  const cfg: Config = JSON.parse(readFileSync(join(ROOT, 'brand/channels.json'), 'utf8'))
   const reel: Reel = JSON.parse(readFileSync(join(ROOT, 'reels', `${date}.json`), 'utf8'))
-  const url = opts.url ?? `${PAGES}/${date}.mp4`
-  const dueAt = opts.at ?? dueAtFor(date, cfg)
+  const url = opts.url ?? `${pagesUrl()}/${date}.mp4`
+  const dueAt = opts.at ?? dueAtFor(date)
   const savedFile = join(ROOT, 'data/posts', `${date}.json`)
   const saved: Record<string, Saved> = existsSync(savedFile) ? JSON.parse(readFileSync(savedFile, 'utf8')) : {}
 
@@ -145,7 +165,7 @@ export async function post(date: string, opts: { only?: string, at?: string, url
 
 export async function status(date: string) {
   loadEnv()
-  const cfg: Config = JSON.parse(readFileSync(join(ROOT, 'data/channels.json'), 'utf8'))
+  const cfg: Config = JSON.parse(readFileSync(join(ROOT, 'brand/channels.json'), 'utf8'))
   const savedFile = join(ROOT, 'data/posts', `${date}.json`)
   const saved: Record<string, Saved> = existsSync(savedFile) ? JSON.parse(readFileSync(savedFile, 'utf8')) : {}
   const out: Record<string, { status: string, link?: string, error?: string }> = {}
@@ -157,9 +177,34 @@ export async function status(date: string) {
   return out
 }
 
+// Every channel each BUFFER_API_KEY_* can post to, ready to copy into brand/channels.json.
+const ORGS = `{ account { organizations { id name } } }`
+const CHANNELS = `query Channels($input: ChannelsInput!) { channels(input: $input) { id service name displayName isDisconnected } }`
+async function listChannels() {
+  loadEnv()
+  const keys = Object.keys(process.env).filter(k => /^BUFFER_API_KEY_\w+$/.test(k)).sort()
+  if (!keys.length)
+    throw new Error('No BUFFER_API_KEY_* set (environment or .env)')
+  const out: Channel[] = []
+  for (const key of keys) {
+    const orgs = (await gql(key, ORGS, {})).account.organizations as Array<{ id: string, name: string }>
+    for (const org of orgs) {
+      const chans = (await gql(key, CHANNELS, { input: { organizationId: org.id } })).channels as Array<{ id: string, service: string, name: string, displayName?: string, isDisconnected?: boolean }>
+      console.log(`${key} · ${org.name}`)
+      for (const c of chans) {
+        console.log(`  ${c.service.padEnd(10)} ${c.id}  ${c.displayName || c.name}${c.isDisconnected ? '  (DISCONNECTED: reconnect it in Buffer)' : ''}`)
+        if (['instagram', 'youtube', 'facebook', 'twitter'].includes(c.service))
+          out.push({ service: c.service as Channel['service'], name: c.displayName || c.name, id: c.id, key })
+      }
+    }
+  }
+  console.log('\nFor brand/channels.json (keep one per service you want to post to):')
+  console.log(JSON.stringify({ channels: out }, null, 2))
+}
+
 async function remove(date: string) {
   loadEnv()
-  const cfg: Config = JSON.parse(readFileSync(join(ROOT, 'data/channels.json'), 'utf8'))
+  const cfg: Config = JSON.parse(readFileSync(join(ROOT, 'brand/channels.json'), 'utf8'))
   const savedFile = join(ROOT, 'data/posts', `${date}.json`)
   const saved: Record<string, Saved> = existsSync(savedFile) ? JSON.parse(readFileSync(savedFile, 'utf8')) : {}
   for (const [service, s] of Object.entries(saved)) {
@@ -179,8 +224,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     return i >= 0 ? args[i + 1] : undefined
   }
   const date = args[0]
+  if (args.includes('--channels')) {
+    await listChannels()
+    process.exit(0)
+  }
   if (!date || date.startsWith('--')) {
-    console.error('Usage: npm run post -- <date> [--dry] [--only <service>] [--at <ISO>] [--url <mp4>] [--status] [--delete]')
+    console.error('Usage: npm run post -- <date> [--dry] [--now] [--only <service>] [--at <ISO>] [--url <mp4>] [--status] [--check] [--delete]\n       npm run post -- --channels')
     process.exit(1)
   }
   if (args.includes('--status') || args.includes('--check')) {

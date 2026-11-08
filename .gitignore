@@ -5,3 +5,5 @@ out
 public/runs
 .venv
 voices
+# Generated from brand/assets/ by scripts/assets.ts
+public/brand

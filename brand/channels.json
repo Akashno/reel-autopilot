@@ -1,0 +1,28 @@
+{
+  "channels": [
+    {
+      "service": "instagram",
+      "name": "randomtalker_com",
+      "id": "6aacddd6ea19ca0bde75094c",
+      "key": "BUFFER_API_KEY_1"
+    },
+    {
+      "service": "youtube",
+      "name": "RandomTalker",
+      "id": "6aacde44ea19ca0bde750be8",
+      "key": "BUFFER_API_KEY_1"
+    },
+    {
+      "service": "facebook",
+      "name": "Random Talker",
+      "id": "6ab238ebea19ca0bdeb2c1bf",
+      "key": "BUFFER_API_KEY_1"
+    },
+    {
+      "service": "twitter",
+      "name": "randomtalkercom",
+      "id": "6ae8c417e29c69a1713b28e7",
+      "key": "BUFFER_API_KEY_2"
+    }
+  ]
+}

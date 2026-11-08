@@ -1,14 +1,15 @@
 // Reel JSON -> finished MP4.
 //
-//   npm run make -- reels/sample.json            check, voice, render, verify -> out/<name>.mp4
-//   npm run make -- reels/sample.json --piper    skip Gemini, voice with Piper
-//   npm run make -- reels/sample.json --silent   no voice (layout checks)
+//   npm run make -- brand/examples/sample.json            check, voice, render, verify -> out/<name>.mp4
+//   npm run make -- brand/examples/sample.json --piper    skip Gemini, voice with Piper
+//   npm run make -- brand/examples/sample.json --silent   no voice (layout checks)
 //
 // Exit codes: 2 reel failed the checks, 3 the rendered file failed verification.
 import { execFileSync, spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { basename, join, resolve } from 'node:path'
 import type { Reel, ReelProps } from '../src/types'
+import { syncAssets } from './assets'
 import { checkReel } from './check'
 import { voice } from './voice'
 
@@ -46,6 +47,7 @@ export async function make(file: string, opts: { silent?: boolean, piper?: boole
     engine = v.engine
   }
 
+  syncAssets()
   mkdirSync(join(ROOT, 'out'), { recursive: true })
   const props: ReelProps = { reel, audioDir: opts.silent ? null : runDir, voSecs }
   const propsFile = join(ROOT, 'out', `${id}.props.json`)

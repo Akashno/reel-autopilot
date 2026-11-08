@@ -1,21 +1,24 @@
 name: Daily reel
 
 # Every morning: Claude writes the reel, it's voiced and rendered, the history is committed,
-# and the MP4 is published on GitHub Pages for Buffer to fetch.
+# the MP4 is published on GitHub Pages, and (with POSTING=on) Buffer schedules it.
+#
+# The schedule runs only when the repo variable DAILY is "on" (gh variable set DAILY --body on),
+# so a fresh copy of the template does nothing until it's set up. Manual runs always work.
 on:
   schedule:
-    - cron: '30 0 * * *' # 06:00 in India
+    - cron: '30 0 * * *' # 00:30 UTC. Pick a time a few hours before brand.json postAt.
   workflow_dispatch:
     inputs:
       date:
-        description: Date (YYYY-MM-DD); empty means today in India
+        description: Date (YYYY-MM-DD); empty means today in the brand's timezone
         required: false
       test:
         description: Mark it as a test in the history
         type: boolean
         default: false
       post_now:
-        description: Post in about 5 minutes instead of at 19:00 India time
+        description: Post in about 5 minutes instead of at brand.json postAt
         type: boolean
         default: false
 
@@ -31,6 +34,7 @@ concurrency:
 
 jobs:
   make:
+    if: github.event_name == 'workflow_dispatch' || vars.DAILY == 'on'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     outputs:
@@ -86,7 +90,7 @@ jobs:
 
       - name: Commit the reel and history
         run: |
-          git config user.name randomtalker-bot
+          git config user.name reel-bot
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add reels/ data/history.json
           git commit -qm "reel: ${{ steps.daily.outputs.date }}" || echo "nothing to commit"
@@ -99,6 +103,8 @@ jobs:
     needs: make
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      page_url: ${{ steps.deploy.outputs.page_url }}
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}${{ needs.make.outputs.date }}.mp4
@@ -137,6 +143,7 @@ jobs:
     env:
       BUFFER_API_KEY_1: ${{ secrets.BUFFER_API_KEY_1 }}
       BUFFER_API_KEY_2: ${{ secrets.BUFFER_API_KEY_2 }}
+      PAGES_URL: ${{ needs.publish.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -149,13 +156,13 @@ jobs:
 
       - run: npm ci --no-audit --no-fund
 
-      - name: Schedule on Instagram, YouTube, Facebook and X
+      - name: Schedule on every channel in brand/channels.json
         run: npx tsx scripts/post.ts "${{ needs.make.outputs.date }}" ${{ inputs.post_now && '--now' || '' }}
 
       - name: Commit what was scheduled
         if: always()
         run: |
-          git config user.name randomtalker-bot
+          git config user.name reel-bot
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add data/posts/ data/history.json
           git commit -qm "posted: ${{ needs.make.outputs.date }}" || echo "nothing to commit"

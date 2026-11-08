@@ -5,7 +5,7 @@ import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from 'remo
 import type { ReelProps, Scene, SceneType } from './types'
 import { AppClip, Call, Chat, End, Features, Games, Match } from './scenes/app'
 import { BigWord, Hook, List, Pov, Question, Rating, Versus } from './scenes/text'
-import { BOX, C, CAPTIONED, FPS, Guides, SceneCtx, SORA, useFonts } from './ui'
+import { BOX, C, CAPTIONED, FPS, Guides, SceneCtx, DISPLAY, useFonts } from './ui'
 
 const T = 8 // crossfade frames
 const VO_AT = 0.25 // voice starts this far into its scene
@@ -95,7 +95,7 @@ function Captions({ text, secs }: { text: string, secs: number }) {
     return null
   return (
     <div style={{ position: 'absolute', left: BOX.left, right: BOX.right, top: BOX.captionTop, display: 'flex', justifyContent: 'center' }}>
-      <div style={{ padding: '18px 36px', borderRadius: 28, background: 'rgba(17,17,16,0.9)', fontFamily: SORA, fontWeight: 800, fontSize: 58, letterSpacing: -1, color: '#FFF', textAlign: 'center', lineHeight: 1.15 }}>
+      <div style={{ padding: '18px 36px', borderRadius: 28, background: 'rgba(17,17,16,0.9)', fontFamily: DISPLAY, fontWeight: 800, fontSize: 58, letterSpacing: -1, color: '#FFF', textAlign: 'center', lineHeight: 1.15 }}>
         {chunk.map((x, i) => (
           <span key={i} style={{ color: t >= x.start && t < x.end + 0.05 ? C.gold : '#FFF' }}>{i ? ' ' : ''}{x.w}</span>
         ))}

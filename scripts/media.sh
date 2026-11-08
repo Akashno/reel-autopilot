@@ -26,7 +26,7 @@ for f in "$dir"/????-??-??.*; do
 done
 # A plain index so the Pages root isn't a 404.
 {
-  echo '<!doctype html><meta charset="utf-8"><title>Random Talker reels</title><ul>'
+  echo '<!doctype html><meta charset="utf-8"><title>Reels</title><ul>'
   for f in $(ls "$dir" | grep -E '^[0-9-]{10}\.mp4$' | sort -r); do echo "<li><a href=\"$f\">$f</a></li>"; done
   echo '</ul>'
 } > "$dir/index.html"
@@ -34,7 +34,7 @@ done
 cd "$dir"
 git checkout -q --orphan media-new
 git add -A
-git -c user.name="randomtalker-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -qm "media: $date"
+git -c user.name="reel-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -qm "media: $date"
 git push -q -f origin HEAD:media
 cd - >/dev/null
 git worktree remove --force "$dir"

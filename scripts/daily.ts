@@ -1,11 +1,11 @@
 // The whole day: write the reel, render it, record it in data/history.json.
 //
-//   npm run daily                       today (India time)
+//   npm run daily                       today (in the brand.json timezone)
 //   npm run daily -- --date 2026-11-09  another day
 //   npm run daily -- --test             mark the history entry as a test
 //
 // If the render fails its checks, the day's reel is rewritten once and rendered again.
-// Posting is added in phase 4; for now a good render is recorded as "rendered".
+// A good render is recorded as "rendered"; scripts/post.ts marks it "posted".
 import { appendFileSync, existsSync, readFileSync } from 'node:fs'
 import { make } from './make'
 import { record, today, write } from './write'

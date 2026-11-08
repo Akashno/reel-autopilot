@@ -1,16 +1,19 @@
 {
-  "name": "randomtalker-autopilot",
+  "name": "reel-autopilot",
   "private": true,
+  "license": "MIT",
   "type": "module",
-  "description": "Writes, renders and schedules one Random Talker reel a day.",
+  "description": "Writes, renders and schedules one short vertical video a day for your product, with Claude Code.",
   "scripts": {
-    "studio": "remotion studio",
+    "studio": "tsx scripts/assets.ts && remotion studio",
     "make": "tsx scripts/make.ts",
     "check": "tsx scripts/check.ts",
     "typecheck": "tsc",
     "write": "tsx scripts/write.ts",
     "daily": "tsx scripts/daily.ts",
-    "post": "tsx scripts/post.ts"
+    "post": "tsx scripts/post.ts",
+    "stills": "tsx scripts/stills.ts",
+    "assets": "tsx scripts/assets.ts"
   },
   "dependencies": {
     "@remotion/cli": "4.0.539",

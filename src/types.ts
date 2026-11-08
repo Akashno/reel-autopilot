@@ -1,8 +1,9 @@
 // The daily reel as Claude writes it. Mirrors reel.schema.json, which is what actually checks it.
-export type Avatar = 'AmaraLDN' | 'KenjiJP' | 'LeoRio' | 'MayaDelhi' | 'PriyaMumbai' | 'SofiaMX'
-export type Feature = 'voice' | 'no-signup' | 'no-camera' | 'no-download' | 'instant-match' | 'games' | 'skip' | 'report' | 'interests' | 'text-chat' | 'translate' | 'add-friend' | 'anonymous' | 'humans-only'
-export type Game = 'uno' | 'ludo' | 'tictactoe' | 'chainreaction' | 'battleship' | 'sudoku' | 'tetris'
-export type Clip = '2am' | 'english' | 'games' | 'safety' | 'translate'
+// Ids from brand/brand.json (avatars, features, games, clips); the schema lists the allowed values.
+export type Avatar = string
+export type Feature = string
+export type Game = string
+export type Clip = string
 
 interface Base { say?: string }
 export type Scene = Base & (

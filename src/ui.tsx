@@ -1,25 +1,12 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AbsoluteFill, cancelRender, continueRender, delayRender, Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from 'remotion'
-import type { Avatar, Feature } from './types'
+import { asset, BRAND } from './brand'
 
-// Random Talker's "Sunny" theme (voicechat/frontend/assets/css/sunny.css).
-export const C = {
-  bg: '#F6F1E3',
-  card: '#FFFDF7',
-  border: '#E7DDC4',
-  ink: '#111110',
-  muted: '#5B5648',
-  soft: '#8A8473',
-  gold: '#FBD860',
-  sun: '#F6E2A0',
-  green: '#1D8A3A',
-  callGreen: '#22A447',
-  red: '#EF4444',
-  tints: ['#DFE5FF', '#FDEAA0', '#D4F1CF', '#FCDCEA', '#E9DDFB', '#CDEFF7'],
-}
-export const SORA = 'Sora, sans-serif'
-export const BODY = '"Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif'
+// Colours and fonts come from brand/brand.json.
+export const C = BRAND.colors
+export const DISPLAY = `"${BRAND.fonts.display}", sans-serif`
+export const BODY = `"${BRAND.fonts.body}", ui-sans-serif, system-ui, sans-serif`
 export const W = 1080
 export const H = 1920
 export const FPS = 30
@@ -58,18 +45,11 @@ export function Guides() {
   )
 }
 
-const FONTS = [
-  { family: 'Sora', src: 'brand/Sora-Bold.ttf', weight: 700 },
-  { family: 'Sora', src: 'brand/Sora-ExtraBold.ttf', weight: 800 },
-  { family: 'Plus Jakarta Sans', src: 'brand/PlusJakartaSans-Medium.ttf', weight: 500 },
-  { family: 'Plus Jakarta Sans', src: 'brand/PlusJakartaSans-SemiBold.ttf', weight: 600 },
-]
-
 // Holds rendering until the brand fonts have loaded.
 export function useFonts() {
   const [handle] = useState(() => delayRender('Loading fonts'))
   useEffect(() => {
-    Promise.all(FONTS.map(f => new FontFace(f.family, `url(${staticFile(f.src)})`, { weight: String(f.weight) }).load().then(face => document.fonts.add(face))))
+    Promise.all(BRAND.fonts.files.map(f => new FontFace(f.family, `url(${staticFile(asset(f.file))})`, { weight: String(f.weight) }).load().then(face => document.fonts.add(face))))
       .then(() => continueRender(handle))
       .catch(err => cancelRender(err))
   }, [handle])
@@ -107,7 +87,7 @@ export function Dot({ color = C.green, size = 18 }: { color?: string, size?: num
 // Cream page with the sun glow. Nothing else: the scene's content is the only thing to look at.
 export function Stage({ children, tint }: { children: ReactNode, seed?: number, tint?: string }) {
   return (
-    <AbsoluteFill style={{ background: `radial-gradient(130% 55% at 50% 0%, ${tint ?? C.sun} 0%, #F8EDC8 38%, ${C.bg} 72%)`, color: C.ink, fontFamily: BODY, overflow: 'hidden' }}>
+    <AbsoluteFill style={{ background: `radial-gradient(130% 55% at 50% 0%, ${tint ?? C.sun} 0%, ${C.glow} 38%, ${C.bg} 72%)`, color: C.ink, fontFamily: BODY, overflow: 'hidden' }}>
       {children}
     </AbsoluteFill>
   )
@@ -126,7 +106,7 @@ export function Pop({ at, children, style, from = 0.6, rise = 40 }: { at: number
 }
 
 export function Headline({ children, size = 112, style }: { children: ReactNode, size?: number, style?: CSSProperties }) {
-  return <div style={{ fontFamily: SORA, fontWeight: 800, fontSize: size, lineHeight: 1.05, letterSpacing: -size * 0.035, textAlign: 'center', ...style }}>{children}</div>
+  return <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: size, lineHeight: 1.05, letterSpacing: -size * 0.035, textAlign: 'center', ...style }}>{children}</div>
 }
 
 // Headline size that keeps the longest line on one row in the content column.
@@ -170,19 +150,20 @@ export function Bubble({ text, me, size = 52, style }: { text: string, me?: bool
   )
 }
 
-const AVATAR_TINT: Record<Avatar, string> = { AmaraLDN: '#FCDCEA', KenjiJP: '#DFE5FF', LeoRio: '#D4F1CF', MayaDelhi: '#FDEAA0', PriyaMumbai: '#E9DDFB', SofiaMX: '#CDEFF7' }
-export function Face({ avatar, size }: { avatar: Avatar, size: number }) {
+export function Face({ avatar, size }: { avatar: string, size: number }) {
+  const a = BRAND.avatars[avatar]
   return (
-    <div style={{ width: size, height: size, borderRadius: size * 0.28, background: AVATAR_TINT[avatar], overflow: 'hidden', boxShadow: `0 0 0 ${Math.max(4, size * 0.03)}px #FFF, 0 24px 50px rgba(120,90,0,0.22)` }}>
-      <Img src={staticFile(`faces/${avatar}.svg`)} style={{ width: '100%', height: '100%' }} />
+    <div style={{ width: size, height: size, borderRadius: size * 0.28, background: a?.tint ?? C.tints[0], overflow: 'hidden', boxShadow: `0 0 0 ${Math.max(4, size * 0.03)}px #FFF, 0 24px 50px rgba(120,90,0,0.22)` }}>
+      {a && <Img src={staticFile(asset(a.file))} style={{ width: '100%', height: '100%' }} />}
     </div>
   )
 }
 
-export function Mynah({ size }: { size: number }) {
+// The brand mark, as an app-icon tile.
+export function Logo({ size }: { size: number }) {
   return (
     <div style={{ width: size, height: size, borderRadius: size * 0.24, overflow: 'hidden', boxShadow: '0 40px 80px rgba(120,90,0,0.28), 0 10px 24px rgba(120,90,0,0.18)' }}>
-      <Img src={staticFile('brand/mynah.svg')} style={{ width: '100%', height: '100%' }} />
+      <Img src={staticFile(asset(BRAND.logo))} style={{ width: '100%', height: '100%' }} />
     </div>
   )
 }
@@ -204,6 +185,7 @@ export function Wave({ bars = 17, height = 120, color = C.ink, active = 1 }: { b
 // ---- icons (Lucide, ISC) -----------------------------------------------------------------
 
 const ICONS: Record<string, string> = {
+  // Lucide icons available to brand.json features. Add more from lucide.dev (ISC licence).
   'mic': '<path d="M12 19v3m7-12v2a7 7 0 0 1-14 0v-2"/><rect width="6" height="13" x="9" y="2" rx="3"/>',
   'mic-off': '<path d="M12 19v3m3-12.66V5a3 3 0 0 0-5.68-1.33M16.95 16.95A7 7 0 0 1 5 12v-2m13.89 3.23A7 7 0 0 0 19 12v-2M2 2l20 20M9 9v3a3 3 0 0 0 5.12 2.12"/>',
   'phone': '<path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/>',
@@ -228,23 +210,8 @@ export function Icon({ name, size, color = 'currentColor', fill }: { name: strin
   return <svg width={size} height={size} viewBox="0 0 24 24" fill={fill ?? 'none'} stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', flexShrink: 0 }} dangerouslySetInnerHTML={{ __html: ICONS[name] }} />
 }
 
-// Every feature the reel may mention, with its icon and the wording shown on screen.
-export const FEATURES: Record<Feature, { icon: string, label: string }> = {
-  'voice': { icon: 'mic', label: 'Just your voice' },
-  'no-signup': { icon: 'user-round-x', label: 'No signup' },
-  'no-camera': { icon: 'video-off', label: 'No camera' },
-  'no-download': { icon: 'download', label: 'No download' },
-  'instant-match': { icon: 'zap', label: 'Matched in seconds' },
-  'games': { icon: 'gamepad', label: 'Games inside the call' },
-  'skip': { icon: 'skip-forward', label: 'Skip in one tap' },
-  'report': { icon: 'flag', label: 'Report in seconds' },
-  'interests': { icon: 'hash', label: 'Match by interests' },
-  'text-chat': { icon: 'message-circle', label: 'Text chat too' },
-  'translate': { icon: 'languages', label: 'Tap to translate' },
-  'add-friend': { icon: 'user-plus', label: 'Add them as a friend' },
-  'anonymous': { icon: 'venetian-mask', label: 'Stay anonymous' },
-  'humans-only': { icon: 'heart-handshake', label: 'No AI. Just humans.' },
-}
+// Every feature the reel may mention, with its icon (a name from ICONS) and on-screen wording.
+export const FEATURES = BRAND.features
 
 // ---- phone -------------------------------------------------------------------------------
 

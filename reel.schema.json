@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Random Talker daily reel",
+  "title": "Daily reel",
   "description": "One short vertical video: an idea, 5-8 scenes built from a fixed library, and the post text for each network. Every scene may carry one voiceover line (`say`).",
   "type": "object",
   "additionalProperties": false,
@@ -68,7 +68,7 @@
         "caption": {
           "type": "string",
           "maxLength": 600,
-          "description": "Instagram and Facebook caption, ending with a call to action (randomtalker.com / link in bio). No hashtags here."
+          "description": "Instagram and Facebook caption, ending with a call to action (the brand's site / link in bio). No hashtags here."
         },
         "hashtags": {
           "type": "array",
@@ -87,7 +87,7 @@
         "xText": {
           "type": "string",
           "maxLength": 240,
-          "description": "Post for X, including randomtalker.com"
+          "description": "Post for X, including the brand's site"
         }
       }
     }
@@ -356,7 +356,7 @@
             "clip",
             "headline"
           ],
-          "description": "A real screen recording of the app in a phone. 2am: tap call, searching, connected. english: set #english interest, matched with someone who shares it. games: invite to Tic-Tac-Toe in a call and win. safety: a call, skip in one tap, next person. translate: Hindi message, tap to see translation, reply.",
+          "description": "A real screen recording of the product in a phone; the clips are listed in the brief.",
           "properties": {
             "type": {
               "const": "appclip"
@@ -391,7 +391,7 @@
             "type",
             "pick"
           ],
-          "description": "Grid of the in-call games; the picked one is highlighted.",
+          "description": "Grid of the games; the picked one is highlighted.",
           "properties": {
             "type": {
               "const": "games"
@@ -424,7 +424,7 @@
             "type",
             "items"
           ],
-          "description": "Three feature chips with icons. Only real features.",
+          "description": "2-4 feature cards with icons. Only real features.",
           "properties": {
             "type": {
               "const": "features"
@@ -585,7 +585,7 @@
             "type",
             "tagline"
           ],
-          "description": "Closing card: mynah logo, tagline, randomtalker.com. Always the last scene.",
+          "description": "Closing card: logo, tagline, the brand's site. Always the last scene.",
           "properties": {
             "type": {
               "const": "end"

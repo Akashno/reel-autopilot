@@ -10,7 +10,10 @@ import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import type { Reel } from '../src/types'
+import { BRAND } from '../src/brand'
 import { checkReel } from './check'
+import { prompt as loadPrompt } from './prompt'
+import { reelSchema } from './schema'
 
 const ROOT = resolve(import.meta.dirname, '..')
 const read = (p: string) => readFileSync(join(ROOT, p), 'utf8')
@@ -30,12 +33,16 @@ export interface HistoryEntry {
 export const HISTORY = join(ROOT, 'data/history.json')
 export const loadHistory = (): HistoryEntry[] => (existsSync(HISTORY) ? JSON.parse(readFileSync(HISTORY, 'utf8')) : [])
 
-// Today in India, where most of the audience is.
-export const today = () => new Date(Date.now() + 5.5 * 3600e3).toISOString().slice(0, 10)
+// Today in the brand's timezone (brand.json), where most of the audience is.
+export const today = () => new Date(Date.now() + BRAND.timezone.offsetMinutes * 60e3).toISOString().slice(0, 10)
 
 // ---- novelty -----------------------------------------------------------------------------
 
-const STOP = new Set('a an the and or but of to in on at for with your you my me i is it its it\'s are be this that just no not one random talker stranger strangers talk talking call voice'.split(' '))
+const STOP = new Set([
+  ...'a an the and or but of to in on at for with your you my me i is it its it\'s are be this that just no not one'.split(' '),
+  ...BRAND.name.toLowerCase().split(/\s+/),
+  ...BRAND.commonWords.map(w => w.toLowerCase()),
+])
 const words = (s: string) => new Set(s.toLowerCase().replace(/[^a-z0-9\s']/g, ' ').split(/\s+/).filter(w => w.length > 2 && !STOP.has(w)))
 function jaccard(a: Set<string>, b: Set<string>) {
   if (!a.size || !b.size)
@@ -87,7 +94,7 @@ function noveltyErrors(r: Reel, history: HistoryEntry[]): string[] {
 // ---- prompt ------------------------------------------------------------------------------
 
 function pickAngle(history: HistoryEntry[], date: string) {
-  const angles: Array<{ id: string, brief: string }> = JSON.parse(read('data/angles.json'))
+  const angles: Array<{ id: string, brief: string }> = JSON.parse(read('brand/angles.json'))
   const lastUsed = (id: string) => history.filter(h => h.angle === id).map(h => h.date).sort().at(-1) ?? ''
   // Least recently used first; among never-used ones, rotate by date so the order varies.
   const seed = Number(date.replaceAll('-', ''))
@@ -109,7 +116,8 @@ function rulesToday(history: HistoryEntry[]) {
 function buildPrompt(date: string, angle: { id: string, brief: string }, history: HistoryEntry[]) {
   const recent = history.slice(-30).reverse()
   return [
-    read('prompts/brief.md'),
+    loadPrompt('brand/brief.md'),
+    loadPrompt('prompts/craft.md'),
     '# Today',
     `Date: ${date}. Today's angle: **${angle.id}**: ${angle.brief}`,
     'Set idea.angle to exactly this angle id. Find a fresh, specific concept inside it; surprise me.',
@@ -118,7 +126,7 @@ function buildPrompt(date: string, angle: { id: string, brief: string }, history
       ? recent.map(h => `- ${h.date} [${h.angle}] "${h.title}": ${h.summary} | hook: "${h.hook}" | scenes: ${h.scenes}`).join('\n')
       : '(none yet: this is the first one)',
     rulesToday(history),
-    `Names already used: ${[...new Set(['Dizzy Wolf', 'Messy Toast', 'Quiet Clown', 'Biggie Pizza', ...history.slice(-30).flatMap(h => h.names ?? [])])].join(', ')}`,
+    `Names already used: ${[...new Set(history.slice(-30).flatMap(h => h.names ?? []))].join(', ') || '(none yet)'}`,
   ].join('\n\n')
 }
 
@@ -180,15 +188,15 @@ function script(r: Reel) {
 }
 
 function review(reel: Reel) {
-  return askClaude<Review>(`Today's reel, "${reel.idea.title}" (${reel.idea.summary})\n\n${script(reel)}`, REVIEW_SCHEMA, read('prompts/critic.md'))
+  return askClaude<Review>(`Today's reel, "${reel.idea.title}" (${reel.idea.summary})\n\n${script(reel)}`, REVIEW_SCHEMA, loadPrompt('prompts/critic.md'))
 }
 
 export async function write(date: string): Promise<{ ok: true, file: string, reel: Reel } | { ok: false, errors: string[] }> {
   const history = loadHistory().filter(h => h.date < date)
   const angle = pickAngle(history, date)
   const base = buildPrompt(date, angle, history)
-  const schema = read('reel.schema.json')
-  const system = read('prompts/system.md')
+  const schema = JSON.stringify(reelSchema())
+  const system = loadPrompt('prompts/system.md')
   console.log(`Writing ${date}: angle "${angle.id}" (${MODEL})`)
   let prompt = base
   let errors: string[] = []
