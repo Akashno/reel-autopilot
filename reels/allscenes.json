@@ -1,0 +1,20 @@
+{
+  "idea": { "title": "Layout test", "angle": "late-night", "summary": "Every scene type once, for layout checks." },
+  "scenes": [
+    { "type": "hook", "lines": ["Awake at 2am?", "Same."], "highlight": "2am", "say": "Awake at 2am? Same." },
+    { "type": "bigword", "word": "3 taps", "sub": "to a real voice", "say": "Three taps to a real voice." },
+    { "type": "pov", "text": "You said hi to a stranger and now it's been an hour", "say": "One hi turned into an hour." },
+    { "type": "match", "avatar": "MayaDelhi", "name": "Crispy Mango", "say": "Tap once and someone's there." },
+    { "type": "call", "avatar": "MayaDelhi", "name": "Crispy Mango", "label": "2:14 AM", "say": "She was up studying too." },
+    { "type": "chat", "avatar": "MayaDelhi", "name": "Crispy Mango", "messages": [ { "from": "them", "text": "ok which song are you on repeat" }, { "from": "me", "text": "dont judge me but its a jingle" }, { "from": "them", "text": "the biscuit one??" }, { "from": "me", "text": "THE BISCUIT ONE" } ], "say": "Then we found out we share a jingle." },
+    { "type": "appclip", "clip": "2am", "headline": "Tap. Wait. Hello.", "sub": "Matched in seconds", "say": "This is the whole app." },
+    { "type": "games", "pick": "ludo", "headline": "Bored? Play Ludo", "say": "Ran out of words? Play Ludo." },
+    { "type": "features", "headline": "No faces needed", "items": ["voice", "no-signup", "skip"], "say": "No camera, no signup." },
+    { "type": "list", "title": "Best 2am topics", "items": ["Worst haircut ever", "Your comfort food", "A song you hate", "Your weirdest dream"], "say": "Here's what works at night." },
+    { "type": "rating", "title": "Openers, rated", "items": [ { "label": "hi", "stars": 1 }, { "label": "rate my playlist", "stars": 5 }, { "label": "u up", "stars": 2 } ], "say": "Please don't open with hi." },
+    { "type": "versus", "left": { "label": "Texting", "text": "Seen. 3 hours later: lol" }, "right": { "label": "Voice", "text": "Laughing in 10 seconds" }, "say": "Voice just moves faster." },
+    { "type": "question", "question": "Who would you call at 2am?", "a": "A stranger", "b": "Your ex", "say": "Be honest. A or B?" },
+    { "type": "end", "tagline": "Someone's awake too", "say": "Someone's awake too." }
+  ],
+  "post": { "caption": "test randomtalker.com", "hashtags": ["#randomtalker", "#test", "#layout"], "youtubeTitle": "test", "xText": "test randomtalker.com" }
+}

@@ -5,11 +5,11 @@ import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from 'remo
 import type { ReelProps, Scene, SceneType } from './types'
 import { AppClip, Call, Chat, End, Features, Games, Match } from './scenes/app'
 import { BigWord, Hook, List, Pov, Question, Rating, Versus } from './scenes/text'
-import { C, FPS, SceneCtx, SORA, useFonts } from './ui'
+import { BOX, C, CAPTIONED, FPS, Guides, SceneCtx, SORA, useFonts } from './ui'
 
 const T = 8 // crossfade frames
 const VO_AT = 0.25 // voice starts this far into its scene
-const TAIL = 0.45 // breathing room after the voice ends
+const TAIL = 0.6 // breathing room after the voice ends
 const sec = (s: number) => Math.round(s * FPS)
 
 // How long a scene needs for its own animation, before the voice is taken into account.
@@ -69,8 +69,6 @@ function View({ s }: { s: Scene }) {
   }
 }
 
-// Scenes whose on-screen text already is the line; captions would only repeat it.
-const NO_CAPTIONS: SceneType[] = ['hook', 'bigword', 'pov', 'end']
 
 // Burned-in captions: a few words at a time, the current word in gold. Word timing is
 // estimated from character counts across the clip, which is close enough for speech.
@@ -96,8 +94,8 @@ function Captions({ text, secs }: { text: string, secs: number }) {
   if (!chunk || t > secs + 0.3)
     return null
   return (
-    <div style={{ position: 'absolute', left: 60, right: 60, top: 1390, display: 'flex', justifyContent: 'center' }}>
-      <div style={{ padding: '18px 34px', borderRadius: 28, background: 'rgba(17,17,16,0.88)', fontFamily: SORA, fontWeight: 800, fontSize: 54, letterSpacing: -1, color: '#FFF', textAlign: 'center', lineHeight: 1.15 }}>
+    <div style={{ position: 'absolute', left: BOX.left, right: BOX.right, top: BOX.captionTop, display: 'flex', justifyContent: 'center' }}>
+      <div style={{ padding: '18px 36px', borderRadius: 28, background: 'rgba(17,17,16,0.9)', fontFamily: SORA, fontWeight: 800, fontSize: 58, letterSpacing: -1, color: '#FFF', textAlign: 'center', lineHeight: 1.15 }}>
         {chunk.map((x, i) => (
           <span key={i} style={{ color: t >= x.start && t < x.end + 0.05 ? C.gold : '#FFF' }}>{i ? ' ' : ''}{x.w}</span>
         ))}
@@ -118,7 +116,7 @@ export function ReelVideo(props: ReelProps) {
           <TransitionSeries.Sequence key={`s${i}`} durationInFrames={sec(secs[i])} name={`${i} ${s.type}`}>
             <SceneCtx.Provider value={{ secs: secs[i], index: i }}>
               <View s={s} />
-              {s.say && voSecs[i] != null && !NO_CAPTIONS.includes(s.type) && (
+              {s.say && voSecs[i] != null && (CAPTIONED as readonly SceneType[]).includes(s.type) && (
                 <Sequence from={sec(VO_AT)} layout="none"><Captions text={s.say} secs={voSecs[i]!} /></Sequence>
               )}
             </SceneCtx.Provider>
@@ -135,9 +133,11 @@ export function ReelVideo(props: ReelProps) {
 
       {starts.slice(1).map((at, i) => (
         <Sequence key={`sfx${i}`} from={Math.max(0, at - 4)} durationInFrames={sec(1.2)} name="swoosh">
-          <Audio src={staticFile(i % 2 ? 'sfx/swipe.mp3' : 'sfx/swoosh.mp3')} volume={0.22} />
+          <Audio src={staticFile(i % 2 ? 'sfx/swipe.mp3' : 'sfx/swoosh.mp3')} volume={0.12} />
         </Sequence>
       ))}
+
+      {props.guides && <Guides />}
     </AbsoluteFill>
   )
 }

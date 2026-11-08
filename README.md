@@ -66,6 +66,28 @@ Content stays between y=250 and y=1520 (Instagram covers the top and bottom with
 Captions sit at y=1390. Fonts, logo, avatars, game icons and sound effects are in `public/`;
 the clips in `public/clips/` are recordings of the real app.
 
+## Quality gates
+
+- **Writer** (`prompts/brief.md`): hook rules with patterns and bad examples, a five-beat story
+  (hook, tension, product moment, payoff, end), word limits and a list of phrases that sound
+  machine-written. Claude brainstorms 4-6 hooks in `idea.hookOptions` before choosing one.
+- **Checker** (`scripts/check.ts`): hook at most 7 words, voice 25-55 words, no second opener,
+  one stranger keeps one avatar, no banned claims, no AI-sounding phrases.
+- **Critic** (`prompts/critic.md`): a second Claude call scores hook, clarity, human and payoff.
+  Below hook 8 or 7 on the rest, its fixes go back to the writer (up to 4 attempts); if none
+  passes, the best-scoring reel that passed the checker is used.
+
+## Layout
+
+Every scene lays out in one centred column (`BOX` in `src/ui.tsx`, 840 px wide), clear of the
+zones Instagram, Facebook and YouTube draw over (`SAFE`): the top 220 px, everything below
+1480 px, and the like/comment rail on the right from mid-height down. Captions appear only on
+match and call scenes; the others already show their words. To check a layout:
+
+```bash
+npx tsx scripts/stills.ts reels/allscenes.json   # out/allscenes-sheet.png, zones drawn in red
+```
+
 ## Posting (Buffer)
 
 `scripts/post.ts` schedules the day's video on every channel in `data/channels.json` for 19:00

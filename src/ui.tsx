@@ -23,8 +23,40 @@ export const BODY = '"Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif'
 export const W = 1080
 export const H = 1920
 export const FPS = 30
-// Instagram covers roughly the top 250px and bottom 400px with its own UI.
-export const SAFE = { top: 250, bottom: H - 400 }
+// Where Instagram, Facebook and YouTube draw their own UI over a 1080x1920 reel (the union
+// of the three): a header band at the top, caption/username/audio at the bottom, and the
+// like/comment/share rail on the right from about mid-height down. Content stays out of
+// these, but should otherwise use the space: don't shrink everything to a postage stamp.
+export const SAFE = { top: 220, bottom: 1480, side: 60, rail: { x: 960, y: 900 } }
+
+// The content column every scene lays out in: 840 wide, centred, clear of the right rail,
+// and vertically centred between the header band and the captions (or the bottom band).
+export const BOX = { left: 120, right: 120, top: 250, bottom: 1450, captionTop: 1300 }
+// Scenes with little text of their own get burned-in captions; the rest already show the words.
+export const CAPTIONED = ['match', 'call'] as const
+
+export function Column({ children, captions = false, gap = 44, align = 'center', style }: { children: ReactNode, captions?: boolean, gap?: number, align?: CSSProperties['alignItems'], style?: CSSProperties }) {
+  return (
+    <div style={{ position: 'absolute', left: BOX.left, right: BOX.right, top: BOX.top, bottom: H - (captions ? BOX.captionTop - 30 : BOX.bottom), display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: align, gap, ...style }}>
+      {children}
+    </div>
+  )
+}
+
+// Debug overlay of those zones (stills.ts draws it; never in a real render).
+export function Guides() {
+  const z = 'rgba(239,68,68,0.28)'
+  const box = (style: CSSProperties) => <div style={{ position: 'absolute', background: z, outline: '3px dashed rgba(200,0,0,0.7)', ...style }} />
+  return (
+    <AbsoluteFill style={{ pointerEvents: 'none' }}>
+      {box({ left: 0, right: 0, top: 0, height: SAFE.top })}
+      {box({ left: 0, right: 0, top: SAFE.bottom, bottom: 0 })}
+      {box({ left: SAFE.rail.x, right: 0, top: SAFE.rail.y, height: SAFE.bottom - SAFE.rail.y })}
+      {box({ left: 0, width: SAFE.side, top: SAFE.top, height: SAFE.bottom - SAFE.top, background: 'rgba(239,68,68,0.12)' })}
+      {box({ right: 0, width: SAFE.side, top: SAFE.top, height: SAFE.rail.y - SAFE.top, background: 'rgba(239,68,68,0.12)' })}
+    </AbsoluteFill>
+  )
+}
 
 const FONTS = [
   { family: 'Sora', src: 'brand/Sora-Bold.ttf', weight: 700 },
@@ -69,40 +101,13 @@ export function stepTimes(n: number, secs: number, lead = 0.25, tail = 0.9) {
 
 // ---- layout ------------------------------------------------------------------------------
 
-// Drawn, not typed: the render machine may have no font with these symbols.
-const DECOR = [
-  '<path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" fill="currentColor"/>',
-  '<circle cx="12" cy="12" r="9" fill="currentColor"/>',
-  '<path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>',
-  '<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="4"/>',
-  '<path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z" fill="currentColor"/>',
-]
 export function Dot({ color = C.green, size = 18 }: { color?: string, size?: number }) {
   return <span style={{ display: 'inline-block', width: size, height: size, borderRadius: '50%', background: color, marginRight: size * 0.6, verticalAlign: 'middle', position: 'relative', top: -size * 0.12 }} />
 }
-// Cream page with the sun glow and a few floating shapes; `seed` varies them per scene.
-export function Stage({ children, seed = 0, tint }: { children: ReactNode, seed?: number, tint?: string }) {
-  const f = useCurrentFrame()
-  const pieces = Array.from({ length: 5 }, (_, i) => {
-    const r = (n: number) => {
-      const x = Math.sin((seed + 1) * 9301 + i * 49297 + n * 233) * 43758.5453
-      return x - Math.floor(x)
-    }
-    const left = r(1) < 0.5
-    return {
-      ch: DECOR[Math.floor(r(2) * DECOR.length)],
-      x: left ? 30 + r(3) * 140 : W - 170 + r(3) * 120,
-      y: SAFE.top - 120 + r(4) * (SAFE.bottom - SAFE.top + 200),
-      c: C.tints[Math.floor(r(5) * C.tints.length)],
-      s: 50 + r(6) * 50,
-      p: r(7) * 6,
-    }
-  })
+// Cream page with the sun glow. Nothing else: the scene's content is the only thing to look at.
+export function Stage({ children, tint }: { children: ReactNode, seed?: number, tint?: string }) {
   return (
     <AbsoluteFill style={{ background: `radial-gradient(130% 55% at 50% 0%, ${tint ?? C.sun} 0%, #F8EDC8 38%, ${C.bg} 72%)`, color: C.ink, fontFamily: BODY, overflow: 'hidden' }}>
-      {pieces.map((p, i) => (
-        <svg key={i} width={p.s} height={p.s} viewBox="0 0 24 24" style={{ position: 'absolute', left: p.x, top: p.y + Math.sin(f / 24 + p.p) * 16, color: p.c, filter: 'saturate(2.2) brightness(0.9)', opacity: 0.6, transform: `rotate(${Math.sin(f / 40 + p.p) * 12}deg)` }} dangerouslySetInnerHTML={{ __html: p.ch }} />
-      ))}
       {children}
     </AbsoluteFill>
   )
@@ -124,8 +129,8 @@ export function Headline({ children, size = 112, style }: { children: ReactNode,
   return <div style={{ fontFamily: SORA, fontWeight: 800, fontSize: size, lineHeight: 1.05, letterSpacing: -size * 0.035, textAlign: 'center', ...style }}>{children}</div>
 }
 
-// Headline size that keeps the longest line on one row at 1080 wide.
-export function fitSize(lines: string[], max = 150, min = 72, width = 940) {
+// Headline size that keeps the longest line on one row in the content column.
+export function fitSize(lines: string[], max = 150, min = 72, width = 840) {
   const longest = Math.max(...lines.map(l => l.length), 1)
   return Math.round(Math.max(min, Math.min(max, width / (longest * 0.6))))
 }
@@ -159,7 +164,7 @@ export function Chip({ children, dark, style }: { children: ReactNode, dark?: bo
 
 export function Bubble({ text, me, size = 52, style }: { text: string, me?: boolean, size?: number, style?: CSSProperties }) {
   return (
-    <div style={{ maxWidth: 760, padding: `${size * 0.48}px ${size * 0.72}px`, borderRadius: size * 0.9, [me ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: size * 0.22, background: me ? C.ink : '#FFF', color: me ? '#FFF' : C.ink, fontSize: size, fontWeight: 600, lineHeight: 1.25, boxShadow: me ? '0 12px 30px rgba(0,0,0,0.18)' : '0 0 0 2px rgba(17,17,16,0.05), 0 12px 30px rgba(120,90,0,0.14)', ...style }}>
+    <div style={{ maxWidth: 700, padding: `${size * 0.48}px ${size * 0.72}px`, borderRadius: size * 0.9, [me ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: size * 0.22, background: me ? C.ink : '#FFF', color: me ? '#FFF' : C.ink, fontSize: size, fontWeight: 600, lineHeight: 1.25, boxShadow: me ? '0 12px 30px rgba(0,0,0,0.18)' : '0 0 0 2px rgba(17,17,16,0.05), 0 12px 30px rgba(120,90,0,0.14)', ...style }}>
       {text}
     </div>
   )

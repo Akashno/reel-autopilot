@@ -9,7 +9,7 @@
     { "type": "versus", "left": { "label": "Back then", "text": "Camera on, hoping for the best" }, "right": { "label": "Now", "text": "Just your voice. No camera." }, "say": "This time, no camera. Just your voice." },
     { "type": "match", "avatar": "MayaDelhi", "name": "Dizzy Wolf", "say": "Tap once, and you're talking to someone new in seconds." },
     { "type": "games", "pick": "uno", "headline": "Awkward silence?", "say": "Run out of things to say? Play UNO together, right in the call." },
-    { "type": "features", "headline": "Your call, your rules", "items": ["skip", "report", "anonymous"], "say": "Skip anyone in one tap, and stay anonymous the whole time." },
+    { "type": "features", "headline": "Your call, your rules", "items": ["skip", "report", "anonymous"], "say": "Skip anyone in one tap. Stay anonymous." },
     { "type": "end", "tagline": "Talk to anyone. Instantly.", "say": "Random Talker. Talk to anyone, instantly." }
   ],
   "post": {

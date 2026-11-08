@@ -4,205 +4,599 @@
   "description": "One short vertical video: an idea, 5-8 scenes built from a fixed library, and the post text for each network. Every scene may carry one voiceover line (`say`).",
   "type": "object",
   "additionalProperties": false,
-  "required": ["idea", "scenes", "post"],
+  "required": [
+    "idea",
+    "scenes",
+    "post"
+  ],
   "properties": {
     "idea": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["title", "angle", "summary"],
+      "required": [
+        "title",
+        "angle",
+        "summary"
+      ],
       "properties": {
-        "title": { "type": "string", "maxLength": 60, "description": "Short internal name for the idea" },
-        "angle": { "type": "string", "maxLength": 40, "description": "The theme bucket, e.g. late-night, games, language, safety, pov, humour, introverts" },
-        "summary": { "type": "string", "maxLength": 200, "description": "One sentence: what the video says and why it is different from earlier ones" }
+        "hookOptions": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 6,
+          "items": {
+            "type": "string",
+            "maxLength": 60
+          },
+          "description": "Brainstorm first: 5 hooks for this idea, each using a different pattern from the brief. Then open the reel with the strongest one."
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 60,
+          "description": "Short internal name for the idea"
+        },
+        "angle": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "The theme bucket, e.g. late-night, games, language, safety, pov, humour, introverts"
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "One sentence: what the video says and why it is different from earlier ones"
+        }
       }
     },
     "scenes": {
       "type": "array",
       "minItems": 5,
-      "maxItems": 8,
+      "maxItems": 7,
       "description": "In order. The first scene must be a hook, pov, bigword or question; the last must be end.",
-      "items": { "$ref": "#/definitions/scene" }
+      "items": {
+        "$ref": "#/definitions/scene"
+      }
     },
     "post": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["caption", "hashtags", "youtubeTitle", "xText"],
+      "required": [
+        "caption",
+        "hashtags",
+        "youtubeTitle",
+        "xText"
+      ],
       "properties": {
-        "caption": { "type": "string", "maxLength": 600, "description": "Instagram and Facebook caption, ending with a call to action (randomtalker.com / link in bio). No hashtags here." },
-        "hashtags": { "type": "array", "minItems": 3, "maxItems": 8, "items": { "type": "string", "pattern": "^#[A-Za-z0-9_]{2,30}$" } },
-        "youtubeTitle": { "type": "string", "maxLength": 90, "description": "YouTube Shorts title, may end with #shorts" },
-        "xText": { "type": "string", "maxLength": 240, "description": "Post for X, including randomtalker.com" }
+        "caption": {
+          "type": "string",
+          "maxLength": 600,
+          "description": "Instagram and Facebook caption, ending with a call to action (randomtalker.com / link in bio). No hashtags here."
+        },
+        "hashtags": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "pattern": "^#[A-Za-z0-9_]{2,30}$"
+          }
+        },
+        "youtubeTitle": {
+          "type": "string",
+          "maxLength": 90,
+          "description": "YouTube Shorts title, may end with #shorts"
+        },
+        "xText": {
+          "type": "string",
+          "maxLength": 240,
+          "description": "Post for X, including randomtalker.com"
+        }
       }
     }
   },
   "definitions": {
-    "say": { "type": "string", "minLength": 2, "maxLength": 120, "description": "Voiceover for this scene: one natural spoken sentence, at most ~12 words" },
-    "avatar": { "type": "string", "enum": ["AmaraLDN", "KenjiJP", "LeoRio", "MayaDelhi", "PriyaMumbai", "SofiaMX"] },
-    "nickname": { "type": "string", "maxLength": 16, "description": "App-style random nickname: Adjective + Noun, e.g. Dizzy Wolf, Messy Toast" },
+    "say": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 90,
+      "description": "Voiceover for this scene: one natural spoken sentence, at most ~12 words"
+    },
+    "avatar": {
+      "type": "string",
+      "enum": [
+        "AmaraLDN",
+        "KenjiJP",
+        "LeoRio",
+        "MayaDelhi",
+        "PriyaMumbai",
+        "SofiaMX"
+      ]
+    },
+    "nickname": {
+      "type": "string",
+      "maxLength": 16,
+      "description": "App-style random nickname: Adjective + Noun, e.g. Dizzy Wolf, Messy Toast"
+    },
     "feature": {
       "type": "string",
-      "enum": ["voice", "no-signup", "no-camera", "no-download", "instant-match", "games", "skip", "report", "interests", "text-chat", "translate", "add-friend", "anonymous", "humans-only"]
+      "enum": [
+        "voice",
+        "no-signup",
+        "no-camera",
+        "no-download",
+        "instant-match",
+        "games",
+        "skip",
+        "report",
+        "interests",
+        "text-chat",
+        "translate",
+        "add-friend",
+        "anonymous",
+        "humans-only"
+      ]
     },
     "scene": {
       "oneOf": [
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "lines"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "lines"
+          ],
           "description": "Big kinetic headline, 1-3 short lines. Use as the opening hook or a punchline.",
           "properties": {
-            "type": { "const": "hook" },
-            "lines": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "type": "string", "maxLength": 18 } },
-            "highlight": { "type": "string", "maxLength": 18, "description": "Exact words from one line to underline in gold" },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "hook"
+            },
+            "lines": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 3,
+              "items": {
+                "type": "string",
+                "maxLength": 18
+              }
+            },
+            "highlight": {
+              "type": "string",
+              "maxLength": 18,
+              "description": "Exact words from one line to underline in gold"
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "text"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "text"
+          ],
           "description": "\"POV:\" chip and a relatable situation typed out.",
           "properties": {
-            "type": { "const": "pov" },
-            "text": { "type": "string", "maxLength": 70 },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "pov"
+            },
+            "text": {
+              "type": "string",
+              "maxLength": 70
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "word"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "word"
+          ],
           "description": "One giant word or number with a small line under it.",
           "properties": {
-            "type": { "const": "bigword" },
-            "word": { "type": "string", "maxLength": 10 },
-            "sub": { "type": "string", "maxLength": 40 },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "bigword"
+            },
+            "word": {
+              "type": "string",
+              "maxLength": 10
+            },
+            "sub": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "question", "a", "b"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "question",
+            "a",
+            "b"
+          ],
           "description": "Would-you-rather style question with two option cards; the viewer is invited to comment.",
           "properties": {
-            "type": { "const": "question" },
-            "question": { "type": "string", "maxLength": 50 },
-            "a": { "type": "string", "maxLength": 22 },
-            "b": { "type": "string", "maxLength": 22 },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "question"
+            },
+            "question": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "a": {
+              "type": "string",
+              "maxLength": 22
+            },
+            "b": {
+              "type": "string",
+              "maxLength": 22
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "avatar", "name"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "avatar",
+            "name"
+          ],
           "description": "Matching radar pulses, then a stranger's card pops in: 'You are connected to <name>'.",
           "properties": {
-            "type": { "const": "match" },
-            "avatar": { "$ref": "#/definitions/avatar" },
-            "name": { "$ref": "#/definitions/nickname" },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "match"
+            },
+            "avatar": {
+              "$ref": "#/definitions/avatar"
+            },
+            "name": {
+              "$ref": "#/definitions/nickname"
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "avatar", "name"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "avatar",
+            "name"
+          ],
           "description": "On a voice call: avatar, live waveform, call timer, mute/end buttons.",
           "properties": {
-            "type": { "const": "call" },
-            "avatar": { "$ref": "#/definitions/avatar" },
-            "name": { "$ref": "#/definitions/nickname" },
-            "label": { "type": "string", "maxLength": 30, "description": "Small text above the call, e.g. '2:14 AM'" },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "call"
+            },
+            "avatar": {
+              "$ref": "#/definitions/avatar"
+            },
+            "name": {
+              "$ref": "#/definitions/nickname"
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 30,
+              "description": "Small text above the call, e.g. '2:14 AM'"
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "avatar", "name", "messages"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "avatar",
+            "name",
+            "messages"
+          ],
           "description": "Text-chat bubbles appearing one by one between me and a stranger.",
           "properties": {
-            "type": { "const": "chat" },
-            "avatar": { "$ref": "#/definitions/avatar" },
-            "name": { "$ref": "#/definitions/nickname" },
+            "type": {
+              "const": "chat"
+            },
+            "avatar": {
+              "$ref": "#/definitions/avatar"
+            },
+            "name": {
+              "$ref": "#/definitions/nickname"
+            },
             "messages": {
-              "type": "array", "minItems": 2, "maxItems": 5,
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 5,
               "items": {
-                "type": "object", "additionalProperties": false, "required": ["from", "text"],
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "from",
+                  "text"
+                ],
                 "properties": {
-                  "from": { "type": "string", "enum": ["me", "them"] },
-                  "text": { "type": "string", "maxLength": 48 }
+                  "from": {
+                    "type": "string",
+                    "enum": [
+                      "me",
+                      "them"
+                    ]
+                  },
+                  "text": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
                 }
               }
             },
-            "say": { "$ref": "#/definitions/say" }
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "clip", "headline"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "clip",
+            "headline"
+          ],
           "description": "A real screen recording of the app in a phone. 2am: tap call, searching, connected. english: set #english interest, matched with someone who shares it. games: invite to Tic-Tac-Toe in a call and win. safety: a call, skip in one tap, next person. translate: Hindi message, tap to see translation, reply.",
           "properties": {
-            "type": { "const": "appclip" },
-            "clip": { "type": "string", "enum": ["2am", "english", "games", "safety", "translate"] },
-            "headline": { "type": "string", "maxLength": 26 },
-            "sub": { "type": "string", "maxLength": 40 },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "appclip"
+            },
+            "clip": {
+              "type": "string",
+              "enum": [
+                "2am",
+                "english",
+                "games",
+                "safety",
+                "translate"
+              ]
+            },
+            "headline": {
+              "type": "string",
+              "maxLength": 26
+            },
+            "sub": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "pick"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "pick"
+          ],
           "description": "Grid of the in-call games; the picked one is highlighted.",
           "properties": {
-            "type": { "const": "games" },
-            "pick": { "type": "string", "enum": ["uno", "ludo", "tictactoe", "chainreaction", "battleship", "sudoku", "tetris"] },
-            "headline": { "type": "string", "maxLength": 26 },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "games"
+            },
+            "pick": {
+              "type": "string",
+              "enum": [
+                "uno",
+                "ludo",
+                "tictactoe",
+                "chainreaction",
+                "battleship",
+                "sudoku",
+                "tetris"
+              ]
+            },
+            "headline": {
+              "type": "string",
+              "maxLength": 26
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "items"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "items"
+          ],
           "description": "Three feature chips with icons. Only real features.",
           "properties": {
-            "type": { "const": "features" },
-            "headline": { "type": "string", "maxLength": 26 },
-            "items": { "type": "array", "minItems": 2, "maxItems": 4, "uniqueItems": true, "items": { "$ref": "#/definitions/feature" } },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "features"
+            },
+            "headline": {
+              "type": "string",
+              "maxLength": 26
+            },
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/definitions/feature"
+              }
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "title", "items"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "title",
+            "items"
+          ],
           "description": "A numbered list revealed item by item.",
           "properties": {
-            "type": { "const": "list" },
-            "title": { "type": "string", "maxLength": 30 },
-            "items": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "type": "string", "maxLength": 28 } },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "list"
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 30
+            },
+            "items": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 5,
+              "items": {
+                "type": "string",
+                "maxLength": 28
+              }
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "title", "items"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "title",
+            "items"
+          ],
           "description": "Rating cards: playful '1-5 stars' for types of people, situations or openers.",
           "properties": {
-            "type": { "const": "rating" },
-            "title": { "type": "string", "maxLength": 30 },
+            "type": {
+              "const": "rating"
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 30
+            },
             "items": {
-              "type": "array", "minItems": 2, "maxItems": 4,
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
               "items": {
-                "type": "object", "additionalProperties": false, "required": ["label", "stars"],
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "label",
+                  "stars"
+                ],
                 "properties": {
-                  "label": { "type": "string", "maxLength": 24 },
-                  "stars": { "type": "integer", "minimum": 1, "maximum": 5 }
+                  "label": {
+                    "type": "string",
+                    "maxLength": 24
+                  },
+                  "stars": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 5
+                  }
                 }
               }
             },
-            "say": { "$ref": "#/definitions/say" }
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "left", "right"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "left",
+            "right"
+          ],
           "description": "Split screen comparison: expectation vs reality, before vs after, them vs us.",
           "properties": {
-            "type": { "const": "versus" },
-            "left": { "type": "object", "additionalProperties": false, "required": ["label", "text"], "properties": { "label": { "type": "string", "maxLength": 14 }, "text": { "type": "string", "maxLength": 40 } } },
-            "right": { "type": "object", "additionalProperties": false, "required": ["label", "text"], "properties": { "label": { "type": "string", "maxLength": 14 }, "text": { "type": "string", "maxLength": 40 } } },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "versus"
+            },
+            "left": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "text"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "maxLength": 14
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 40
+                }
+              }
+            },
+            "right": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "text"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "maxLength": 14
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 40
+                }
+              }
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         },
         {
-          "type": "object", "additionalProperties": false, "required": ["type", "tagline"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "tagline"
+          ],
           "description": "Closing card: mynah logo, tagline, randomtalker.com. Always the last scene.",
           "properties": {
-            "type": { "const": "end" },
-            "tagline": { "type": "string", "maxLength": 32 },
-            "say": { "$ref": "#/definitions/say" }
+            "type": {
+              "const": "end"
+            },
+            "tagline": {
+              "type": "string",
+              "maxLength": 32
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
           }
         }
       ]

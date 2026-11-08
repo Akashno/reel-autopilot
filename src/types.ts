@@ -24,7 +24,7 @@ export type Scene = Base & (
 export type SceneType = Scene['type']
 
 export interface Reel {
-  idea: { title: string, angle: string, summary: string }
+  idea: { hookOptions?: string[], title: string, angle: string, summary: string }
   scenes: Scene[]
   post: { caption: string, hashtags: string[], youtubeTitle: string, xText: string }
 }
@@ -34,4 +34,5 @@ export interface ReelProps extends Record<string, unknown> {
   reel: Reel
   audioDir: string | null // under public/, e.g. runs/2026-11-08; null renders silent
   voSecs: Array<number | null> // per scene
+  guides?: boolean // draw the platform UI zones (layout checks only)
 }
