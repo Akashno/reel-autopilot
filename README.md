@@ -2,6 +2,8 @@
 
 Posts one short video a day for your product to Instagram, YouTube, Facebook and X, with no one in the loop.
 
+<p align="center"><img src="docs/demo.gif" width="260" alt="A generated reel, sped up"></p>
+
 ```mermaid
 flowchart LR
   A[Claude writes the script] --> B[Voiced and rendered to MP4]
@@ -63,5 +65,5 @@ If a run fails, GitHub opens an issue.
 
 ## License
 
-MIT for the code. Fonts are OFL, avatars CC0. The Random Talker logo, clips and game art are
+MIT for the code (`LICENSE`). Remotion and the bundled assets have their own terms (`NOTICE.md`): fonts are OFL, avatars CC0. The Random Talker logo, clips and game art are
 examples only (see `brand/ASSETS.md`).
