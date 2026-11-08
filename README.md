@@ -24,6 +24,7 @@ Only your **Claude Pro or Max subscription**. Everything else runs on free tiers
 about **20–50k tokens** in under 2 minutes. Most of that is cached prompt, which counts lightly
 against your limits. Roughly one short Claude Code chat a day, well within Pro.
 No API key or per-token bill. The Actions log shows the exact tokens for each call.
+
 Remotion needs a [paid licence](https://www.remotion.dev/license) for companies of more than 3 people.
 
 ## Setup
