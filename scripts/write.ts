@@ -18,7 +18,8 @@ import { reelSchema } from './schema'
 const ROOT = resolve(import.meta.dirname, '..')
 const read = (p: string) => readFileSync(join(ROOT, p), 'utf8')
 const MODEL = process.env.CLAUDE_MODEL ?? 'sonnet'
-const TRIES = 4
+// Drafts per day, counting ones rejected by the hard checks. More rarely helps: see the critic loop.
+const TRIES = 3
 
 export interface HistoryEntry {
   date: string
@@ -132,7 +133,7 @@ function buildPrompt(date: string, angle: { id: string, brief: string }, history
 
 // ---- claude ------------------------------------------------------------------------------
 
-function askClaude<T>(prompt: string, schema: string, system: string): { out?: T, error?: string, tokens?: number } {
+function askClaude<T>(prompt: string, schema: string, system: string): { out?: T, error?: string, tokens?: string } {
   const r = spawnSync('claude', [
     '-p',
     '--model', MODEL,
@@ -156,7 +157,10 @@ function askClaude<T>(prompt: string, schema: string, system: string): { out?: T
   if (out.is_error || !out.structured_output)
     return { error: `claude returned nothing usable (${out.subtype ?? 'error'}): ${String(out.result ?? '').slice(0, 300)}` }
   const u = out.usage ?? {}
-  return { out: out.structured_output, tokens: (u.input_tokens ?? 0) + (u.cache_creation_input_tokens ?? 0) + (u.cache_read_input_tokens ?? 0) + (u.output_tokens ?? 0) }
+  // Fresh input and output are what count against usage limits most; cache reads are cheap.
+  const n = (k: string) => u[k] ?? 0
+  const total = n('input_tokens') + n('cache_creation_input_tokens') + n('cache_read_input_tokens') + n('output_tokens')
+  return { out: out.structured_output, tokens: `${total} tokens: ${n('input_tokens')} in, ${n('cache_creation_input_tokens')} cache write, ${n('cache_read_input_tokens')} cache read, ${n('output_tokens')} out, ${Math.round((out.duration_ms ?? 0) / 1000)}s` }
 }
 
 // ---- critic ------------------------------------------------------------------------------
@@ -175,8 +179,9 @@ const REVIEW_SCHEMA = JSON.stringify({
     fixes: { type: 'array', maxItems: 3, items: { type: 'string', maxLength: 240 } },
   },
 })
-// The hook matters most; the rest must be solid.
-const passes = (r: Review) => r.hook >= 8 && Math.min(r.clarity, r.human, r.payoff) >= 7
+// The hook matters most; the rest must be solid. Matched to how the critic actually scores
+// (it calls 5-7 typical), so a strong first draft is kept instead of rewritten.
+const passes = (r: Review) => r.hook >= 7 && Math.min(r.clarity, r.human, r.payoff) >= 6
 const score = (r: Review) => r.hook * 2 + r.clarity + r.human + r.payoff
 
 // What the viewer actually sees and hears, in order, for the critic.
@@ -224,7 +229,7 @@ export async function write(date: string): Promise<{ ok: true, file: string, ree
       errors.push('idea.hookOptions is missing: brainstorm the hooks first')
     if (reel.idea.angle !== angle.id)
       reel.idea.angle = angle.id // keep the rotation honest even if the label drifts
-    console.log(`  attempt ${attempt}: "${reel.idea.title}" ${sceneList(reel)} (${res.tokens} tokens)${errors.length ? `, rejected:\n    ${errors.join('\n    ')}` : ''}`)
+    console.log(`  attempt ${attempt}: "${reel.idea.title}" ${sceneList(reel)} (${res.tokens})${errors.length ? `, rejected:\n    ${errors.join('\n    ')}` : ''}`)
     if (!errors.length) {
       const rv = review(reel)
       if (!rv.out) {
@@ -232,13 +237,18 @@ export async function write(date: string): Promise<{ ok: true, file: string, ree
         return save(reel)
       }
       const r = rv.out
-      console.log(`  critic: hook ${r.hook}, clarity ${r.clarity}, human ${r.human}, payoff ${r.payoff} (${rv.tokens} tokens)`)
+      console.log(`  critic: hook ${r.hook}, clarity ${r.clarity}, human ${r.human}, payoff ${r.payoff} (${rv.tokens})`)
       if (passes(r))
         return save(reel)
-      if (!best || score(r) > best.score)
-        best = { reel, score: score(r) }
+      // A rewrite that scores no better than the best draft so far means the critic's fixes
+      // have stopped helping; more rounds only burn tokens.
+      if (best && score(r) <= best.score) {
+        console.log(`  no better than the best draft so far (${score(r)} vs ${best.score}); stopping`)
+        break
+      }
+      best = { reel, score: score(r) }
       errors = [
-        `an editor scored it hook ${r.hook}/10, clarity ${r.clarity}/10, human ${r.human}/10, payoff ${r.payoff}/10; it needs hook 8+ and 7+ on the rest`,
+        `an editor scored it hook ${r.hook}/10, clarity ${r.clarity}/10, human ${r.human}/10, payoff ${r.payoff}/10; it needs hook 7+ and 6+ on the rest`,
         `weakest line: ${r.weakest}`,
         ...r.fixes.map(f => `fix: ${f}`),
       ]
