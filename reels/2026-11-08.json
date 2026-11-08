@@ -1,73 +1,98 @@
 {
   "idea": {
-    "title": "The stranger button is back",
+    "title": "Stop opening with asl",
     "angle": "omegle-nostalgia",
-    "summary": "A nostalgic 'remember the click-Next days?' opener that shows the same thrill with just a voice: no camera, no room tidying, one tap to skip."
+    "summary": "A cheeky dare to retire the old Omegle opener 'asl', ranked against better openers, then a voice-call chat where the better opener wins.",
+    "hookOptions": [
+      "Stop opening chats with asl.",
+      "Omegle shut down in 2023",
+      "I miss talking to random strangers",
+      "Nobody typed hello on Omegle",
+      "asl? That was the opener."
+    ]
   },
   "scenes": [
     {
       "type": "hook",
       "lines": [
-        "Remember the",
-        "stranger button?"
+        "Stop opening chats",
+        "with asl."
       ],
-      "highlight": "stranger button",
-      "say": "Remember the stranger button? The one that gave you butterflies?"
+      "highlight": "asl",
+      "say": "Please stop opening with asl. It's not 2012."
     },
     {
-      "type": "pov",
-      "text": "You, clicking Next until someone actually interesting showed up",
-      "say": "That little thrill of not knowing who's next. Gone in 2023."
-    },
-    {
-      "type": "versus",
-      "left": {
-        "label": "Then",
-        "text": "Tidy the room. Fix your hair. Panic."
-      },
-      "right": {
-        "label": "Now",
-        "text": "Just a voice. Nobody sees anything."
-      },
-      "say": "Here's the simpler version. No camera, no cleaning your room."
+      "type": "rating",
+      "title": "Stranger openers, ranked",
+      "items": [
+        {
+          "label": "asl?",
+          "stars": 1
+        },
+        {
+          "label": "hey",
+          "stars": 2
+        },
+        {
+          "label": "Best snack at 2am?",
+          "stars": 5
+        }
+      ],
+      "say": "Omegle's gone. The openers can improve."
     },
     {
       "type": "match",
-      "avatar": "LeoRio",
-      "name": "Sleepy Noodle",
-      "say": "Tap once, and a real stranger is there in seconds."
+      "avatar": "PriyaMumbai",
+      "name": "Salty Parrot",
+      "say": "Now it's one tap, and voice only."
     },
     {
-      "type": "call",
+      "type": "chat",
       "avatar": "PriyaMumbai",
-      "name": "Sleepy Noodle",
-      "label": "11:47 PM",
-      "say": "Turns out a voice is enough to make a great conversation."
+      "name": "Salty Parrot",
+      "messages": [
+        {
+          "from": "them",
+          "text": "asl?"
+        },
+        {
+          "from": "me",
+          "text": "ancient. try again"
+        },
+        {
+          "from": "them",
+          "text": "ok fine. best snack at 2am?"
+        },
+        {
+          "from": "me",
+          "text": "cold pizza, obviously"
+        }
+      ],
+      "say": "She said asl. I roasted her. She recovered with snacks."
     },
     {
       "type": "appclip",
-      "clip": "safety",
-      "headline": "Not feeling it? Skip.",
-      "sub": "One tap, next person",
-      "say": "Not feeling it? Skip in one tap. Same old Next button energy."
+      "clip": "2am",
+      "headline": "Tap. Talk. Skip.",
+      "sub": "No camera, no signup",
+      "say": "No camera. No signup. Just talk."
     },
     {
       "type": "end",
-      "tagline": "The stranger button, voice only.",
-      "say": "Random Talker. Same thrill, just voices."
+      "tagline": "Say better than asl.",
+      "say": "Random Talker. Open with pizza, not asl."
     }
   ],
   "post": {
-    "caption": "We all miss the thrill of not knowing who's on the other end. Same feeling, simpler: voice only, no signup, no camera.\nWhat's the weirdest thing a stranger ever said to you first?\nTry it free at randomtalker.com (link in bio).",
+    "caption": "Omegle is gone, but talking to a random stranger is still fun. Now it's just your voice. No camera, no signup. What was your go-to opener back then? Try it at randomtalker.com (link in bio).",
     "hashtags": [
       "#randomtalker",
       "#omegle",
-      "#nostalgia",
-      "#talktostrangers",
+      "#strangers",
       "#voicechat",
-      "#2000skid"
+      "#nostalgia"
     ],
-    "youtubeTitle": "Remember the stranger button? It's back, voice only #shorts",
-    "xText": "Remember clicking Next until someone interesting showed up? Same thrill, voice only, no camera, no signup. randomtalker.com"
+    "youtubeTitle": "Stop opening chats with asl #shorts",
+    "xText": "Omegle is gone. Talking to strangers isn't. Voice only, no camera, no signup. randomtalker.com"
   }
 }

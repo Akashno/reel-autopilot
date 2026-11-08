@@ -1,15 +1,15 @@
 [
   {
     "date": "2026-11-08",
-    "title": "The stranger button is back",
+    "title": "Stop opening with asl",
     "angle": "omegle-nostalgia",
-    "summary": "A nostalgic 'remember the click-Next days?' opener that shows the same thrill with just a voice: no camera, no room tidying, one tap to skip.",
-    "hook": "Remember the stranger button?",
-    "scenes": "hook>pov>versus>match>call>appclip>end",
+    "summary": "A cheeky dare to retire the old Omegle opener 'asl', ranked against better openers, then a voice-call chat where the better opener wins.",
+    "hook": "Stop opening chats with asl.",
+    "scenes": "hook>rating>match>chat>appclip>end",
     "names": [
-      "Sleepy Noodle"
+      "Salty Parrot"
     ],
-    "status": "posted"
+    "status": "rendered"
   },
   {
     "date": "2026-11-09",
