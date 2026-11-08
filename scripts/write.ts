@@ -117,8 +117,6 @@ function rulesToday(history: HistoryEntry[]) {
 function buildPrompt(date: string, angle: { id: string, brief: string }, history: HistoryEntry[]) {
   const recent = history.slice(-30).reverse()
   return [
-    loadPrompt('brand/brief.md'),
-    loadPrompt('prompts/craft.md'),
     '# Today',
     `Date: ${date}. Today's angle: **${angle.id}**: ${angle.brief}`,
     'Set idea.angle to exactly this angle id. Find a fresh, specific concept inside it; surprise me.',
@@ -201,7 +199,9 @@ export async function write(date: string): Promise<{ ok: true, file: string, ree
   const angle = pickAngle(history, date)
   const base = buildPrompt(date, angle, history)
   const schema = JSON.stringify(reelSchema())
-  const system = loadPrompt('prompts/system.md')
+  // Everything that's the same on every attempt goes in the system prompt, so Claude caches it
+  // once and later attempts only pay for what changed (today's context and the feedback).
+  const system = [loadPrompt('prompts/system.md'), loadPrompt('brand/brief.md'), loadPrompt('prompts/craft.md')].join('\n\n')
   console.log(`Writing ${date}: angle "${angle.id}" (${MODEL})`)
   let prompt = base
   let errors: string[] = []

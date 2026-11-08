@@ -25,6 +25,9 @@ export function reelSchema() {
       throw new Error(`brand.json enables the "${t}" scene but has no ${need[1]}; add some or remove "${t}" from scenes`)
   }
   s.definitions.scene.oneOf = s.definitions.scene.oneOf.filter((x: any) => BRAND.scenes.includes(x.properties.type.const))
+  // prompts/craft.md already describes each scene; don't send it twice on every call.
+  for (const x of s.definitions.scene.oneOf)
+    delete x.description
   s.definitions.avatar.enum = Object.keys(BRAND.avatars).length ? Object.keys(BRAND.avatars) : ['none']
   s.definitions.feature.enum = Object.keys(BRAND.features).length ? Object.keys(BRAND.features) : ['none']
   for (const x of s.definitions.scene.oneOf) {
