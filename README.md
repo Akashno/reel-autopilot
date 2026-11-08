@@ -19,6 +19,11 @@ and schedules it. Everything about your product lives in `brand/`. The example t
 
 Only your **Claude Pro or Max subscription**. Everything else runs on free tiers: Gemini voice
 (with Piper as the fallback), GitHub Actions and Pages, and Buffer.
+
+**Claude usage per video:** 2–6 short calls (one to write, one to review, repeated if a draft is weak),
+about **20–50k tokens** in under 2 minutes. Most of that is cached prompt, which counts lightly
+against your limits. Roughly one short Claude Code chat a day, well within Pro.
+No API key or per-token bill. The Actions log shows the exact tokens for each call.
 Remotion needs a [paid licence](https://www.remotion.dev/license) for companies of more than 3 people.
 
 ## Setup
