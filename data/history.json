@@ -13,15 +13,15 @@
   },
   {
     "date": "2026-11-09",
-    "title": "Ten minutes for one hello",
+    "title": "Shy, in a blanket fort",
     "angle": "introverts",
-    "summary": "A shy person rehearses a single hello, then finds that with no camera and no face, a nervous stranger is just as awkward and the call goes fine.",
-    "hook": "POV: you rehearsed one 'hello' for ten minutes before tapping call",
-    "scenes": "pov>versus>match>chat>call>question>end",
-    "status": "test",
+    "summary": "A shy person skips the face-on stress, uses voice only, and bonds with another shy stranger hiding under a blanket, a cozy confession story rather than a feature list.",
+    "hook": "I'm shy. I call strangers.",
+    "scenes": "hook>versus>match>chat>call>end",
     "names": [
-      "Quiet Clown"
-    ]
+      "Sleepy Noodle"
+    ],
+    "status": "rendered"
   },
   {
     "date": "2026-11-10",
