@@ -1,30 +1,29 @@
 name: Daily reel
 
-# Every morning: Claude writes the reel, it's voiced and rendered, the history is committed,
-# the MP4 is published on GitHub Pages, and (with POSTING=on) Buffer schedules it.
+# One video per slot in brand.json `slots` (India time): Claude writes the reel, it's voiced and
+# rendered, the history is committed, the MP4 is published on GitHub Pages, and (with POSTING=on)
+# Buffer schedules it for its slot.
 #
 # The schedule runs only when the repo variable DAILY is "on" (gh variable set DAILY --body on),
 # so a fresh copy of the template does nothing until it's set up. Manual runs always work.
 on:
-  # GitHub runs scheduled workflows late, and sometimes not at all, when it's busy (it is
-  # busiest on the hour and half hour). So there are several tries at odd minutes; the guard
-  # job skips any try once today's reel exists. Keep them all a few hours before postAt.
+  # Every hour, at odd minutes (GitHub delays or drops scheduled runs, most of all on the hour).
+  # Each run makes the next slot posting 40 min to 6 h from now that has no video yet, so every
+  # slot gets several tries; runs with nothing to do stop after a few seconds in the guard job.
   schedule:
-    - cron: '17 0 * * *' # 00:17 UTC
-    - cron: '47 2 * * *'
-    - cron: '23 5 * * *'
-    - cron: '53 7 * * *'
+    - cron: '17 */2 * * *'
+    - cron: '47 1-23/2 * * *'
   workflow_dispatch:
     inputs:
-      date:
-        description: Date (YYYY-MM-DD); empty means today in the brand's timezone
+      id:
+        description: Video id (YYYY-MM-DD-HHMM, a slot in brand.json); empty means the next free slot
         required: false
       test:
         description: Mark it as a test in the history
         type: boolean
         default: false
       post_now:
-        description: Post in about 5 minutes instead of at brand.json postAt
+        description: Post in about 5 minutes instead of at the slot time
         type: boolean
         default: false
 
@@ -39,32 +38,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Decides whether this run does anything: manual runs always do; scheduled ones only when
-  # DAILY is on and today's reel isn't made yet (an earlier try already did it).
+  # Decides whether this run does anything and which slot it makes: manual runs always do;
+  # scheduled ones only when DAILY is on and a slot in the next 6 hours has no video yet.
   guard:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
       go: ${{ steps.check.outputs.go }}
+      id: ${{ steps.check.outputs.id }}
     steps:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |
             brand
             data
+            scripts
       - id: check
         run: |
-          if [ "${{ github.event_name }}" = workflow_dispatch ]; then echo go=true >> "$GITHUB_OUTPUT"; exit 0; fi
-          if [ "${{ vars.DAILY }}" != on ]; then echo "DAILY is not on"; echo go=false >> "$GITHUB_OUTPUT"; exit 0; fi
-          node -e '
-            const fs = require("fs")
-            const b = JSON.parse(fs.readFileSync("brand/brand.json", "utf8"))
-            const day = new Date(Date.now() + b.timezone.offsetMinutes * 60e3).toISOString().slice(0, 10)
-            const h = fs.existsSync("data/history.json") ? JSON.parse(fs.readFileSync("data/history.json", "utf8")) : []
-            const done = h.some(e => e.date === day && (e.status === "rendered" || e.status === "posted"))
-            console.log(done ? `${day} is already done` : `${day} not made yet`)
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, `go=${!done}\n`)
-          '
+          if [ "${{ github.event_name }}" = workflow_dispatch ]; then
+            id="${{ inputs.id }}"; [ -n "$id" ] || id="$(node scripts/slot.mjs --any)"
+          elif [ "${{ vars.DAILY }}" != on ]; then
+            echo "DAILY is not on"; id=""
+          else
+            id="$(node scripts/slot.mjs)"
+          fi
+          echo "${id:-nothing to make now}"
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          [ -n "$id" ] && echo go=true >> "$GITHUB_OUTPUT" || echo go=false >> "$GITHUB_OUTPUT"
 
   make:
     needs: guard
@@ -111,7 +111,7 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: npx tsx scripts/daily.ts ${{ inputs.date && format('--date {0}', inputs.date) || '' }} ${{ inputs.test && '--test' || '' }}
+        run: npx tsx scripts/daily.ts --id "${{ needs.guard.outputs.id }}" ${{ inputs.test && '--test' || '' }}
 
       - name: Keep the video as a run artifact
         uses: actions/upload-artifact@v4
@@ -202,9 +202,9 @@ jobs:
           git commit -qm "posted: ${{ needs.make.outputs.date }}" || echo "nothing to commit"
           git pull -q --rebase origin main && git push -q origin HEAD:main
 
-      - name: Check yesterday's posts went out
+      - name: Check yesterday's post in this slot went out
         run: |
-          y=$(date -u -d "${{ needs.make.outputs.date }} -1 day" +%F)
+          id="${{ needs.make.outputs.date }}"; y="$(date -u -d "${id:0:10} -1 day" +%F)${id:10}"
           if [ -f "data/posts/$y.json" ]; then npx tsx scripts/post.ts "$y" --check; else echo "no posts for $y"; fi
 
   report-failure:

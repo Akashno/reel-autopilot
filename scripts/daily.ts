@@ -1,20 +1,21 @@
 // The whole day: write the reel, render it, record it in data/history.json.
 //
-//   npm run daily                       today (in the brand.json timezone)
-//   npm run daily -- --date 2026-11-09  another day
+//   npm run daily                            the next slot that needs a video (scripts/slot.mjs)
+//   npm run daily -- --id 2026-11-10-1900    a given slot
 //   npm run daily -- --test             mark the history entry as a test
 //
 // If the render fails its checks, the day's reel is rewritten once and rendered again.
 // A good render is recorded as "rendered"; scripts/post.ts marks it "posted".
 import { appendFileSync, existsSync, readFileSync } from 'node:fs'
 import { make } from './make'
-import { record, today, write } from './write'
+import { nextSlot } from './slot.mjs'
+import { record, write } from './write'
 
 const arg = (name: string) => {
   const i = process.argv.indexOf(name)
   return i > 0 ? process.argv[i + 1] : undefined
 }
-const date = arg('--date') ?? today()
+const date = arg('--id') ?? arg('--date') ?? nextSlot({ any: true })
 const test = process.argv.includes('--test')
 
 for (let round = 1; round <= 2; round++) {

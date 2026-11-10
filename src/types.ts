@@ -5,6 +5,9 @@ export type Feature = string
 export type Game = string
 export type Clip = string
 
+export type PropMove = 'pop' | 'float' | 'drop' | 'shake' | 'spin' | 'slide' | 'grow'
+export interface Prop { name: string, svg: string }
+
 interface Base { say?: string }
 export type Scene = Base & (
   | { type: 'hook', lines: string[], highlight?: string }
@@ -20,12 +23,16 @@ export type Scene = Base & (
   | { type: 'list', title: string, items: string[] }
   | { type: 'rating', title: string, items: Array<{ label: string, stars: number }> }
   | { type: 'versus', left: { label: string, text: string }, right: { label: string, text: string } }
+  | { type: 'prop', prop: string, move?: PropMove, on?: string, text?: string, textOn?: string, night?: boolean }
+  | { type: 'people', people: Array<{ avatar?: Avatar, prop?: string, label: string, on?: string }>, item?: string, text?: string, textOn?: string, night?: boolean }
+  | { type: 'count', items: Array<{ value: string, label: string, on?: string }> }
   | { type: 'end', tagline: string }
 )
 export type SceneType = Scene['type']
 
 export interface Reel {
-  idea: { hookOptions?: string[], title: string, angle: string, summary: string }
+  idea: { hookOptions?: string[], title: string, angle: string, summary: string, format?: 'skit' | 'story', sources?: string[] }
+  props?: Prop[]
   scenes: Scene[]
   post: { caption: string, hashtags: string[], youtubeTitle: string, xText: string }
 }

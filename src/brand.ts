@@ -9,8 +9,10 @@ export interface Brand {
   goal: string // what the videos should make people want
   audience: string
   timezone: { label: string, offsetMinutes: number }
-  postAt: string // HH:MM in that timezone
+  slots: string[] // HH:MM post times in that timezone, one video each (scripts/slot.mjs)
+  storySlots: string[] // slots that draw from the story angles (angles.json "format": "story")
   endCard: { sub: string }
+  reservedNames: string[] // example nicknames from the brief; never shown in a reel
   commonWords: string[] // words every video uses; ignored when comparing ideas for novelty
   voice: { gemini: { voice: string, style: string } }
   colors: { bg: string, card: string, border: string, ink: string, muted: string, soft: string, gold: string, sun: string, glow: string, green: string, callGreen: string, red: string, tints: string[] }

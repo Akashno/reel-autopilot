@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from 'react'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AbsoluteFill, cancelRender, continueRender, delayRender, Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from 'remotion'
 import { asset, BRAND } from './brand'
+import type { Prop } from './types'
 
 // Colours and fonts come from brand/brand.json.
 export const C = BRAND.colors
@@ -20,7 +21,9 @@ export const SAFE = { top: 220, bottom: 1480, side: 60, rail: { x: 960, y: 900 }
 // and vertically centred between the header band and the captions (or the bottom band).
 export const BOX = { left: 120, right: 120, top: 250, bottom: 1450, captionTop: 1300 }
 // Scenes with little text of their own get burned-in captions; the rest already show the words.
+// In a story the voice carries it, so the picture scenes are captioned too.
 export const CAPTIONED = ['match', 'call'] as const
+export const STORY_CAPTIONED = ['match', 'call', 'prop', 'people', 'count', 'bigword'] as const
 
 export function Column({ children, captions = false, gap = 44, align = 'center', style }: { children: ReactNode, captions?: boolean, gap?: number, align?: CSSProperties['alignItems'], style?: CSSProperties }) {
   return (
@@ -57,9 +60,30 @@ export function useFonts() {
 
 // ---- time --------------------------------------------------------------------------------
 
-// Each scene knows how long it runs, so timed steps (chat bubbles, list items) spread over it.
-export const SceneCtx = createContext({ secs: 4, index: 0 })
+// Each scene knows how long it runs, so timed steps (chat bubbles, list items) spread over it,
+// and its voice line, so a thing can appear on the word that names it.
+export const VO_AT = 0.25 // voice starts this far into its scene
+export const SceneCtx = createContext<{ secs: number, index: number, say?: string, vo?: number | null, props?: Prop[] }>({ secs: 4, index: 0 })
 export const useScene = () => useContext(SceneCtx)
+
+// When (seconds into the scene) `word` is spoken, estimated from where it sits in the line, the
+// same way the captions are timed. `fallback` if there's no voice or the word isn't in it.
+export function useWordAt(word: string | undefined, fallback: number) {
+  const { say, vo } = useScene()
+  if (!word || !say || !vo)
+    return fallback
+  const norm = (w: string) => w.toLowerCase().replace(/[^\p{L}\p{N}']+/gu, '')
+  const target = norm(word.split(/\s+/)[0])
+  const words = say.split(/\s+/).filter(Boolean)
+  const total = words.reduce((n, w) => n + w.length + 1, 0)
+  let acc = 0
+  for (const w of words) {
+    if (target && norm(w).startsWith(target))
+      return VO_AT + (acc / total) * vo
+    acc += w.length + 1
+  }
+  return fallback
+}
 export const useT = () => useCurrentFrame() / FPS
 
 const clamp = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const
@@ -84,10 +108,14 @@ export function stepTimes(n: number, secs: number, lead = 0.25, tail = 0.9) {
 export function Dot({ color = C.green, size = 18 }: { color?: string, size?: number }) {
   return <span style={{ display: 'inline-block', width: size, height: size, borderRadius: '50%', background: color, marginRight: size * 0.6, verticalAlign: 'middle', position: 'relative', top: -size * 0.12 }} />
 }
-// Cream page with the sun glow. Nothing else: the scene's content is the only thing to look at.
-export function Stage({ children, tint }: { children: ReactNode, seed?: number, tint?: string }) {
+// Cream page with the sun glow (or a deep-blue night sky). Nothing else: the scene's content is
+// the only thing to look at.
+export function Stage({ children, tint, night }: { children: ReactNode, seed?: number, tint?: string, night?: boolean }) {
+  const bg = night
+    ? 'radial-gradient(130% 55% at 50% 0%, #3B4A7A 0%, #222B4D 40%, #151A30 75%)'
+    : `radial-gradient(130% 55% at 50% 0%, ${tint ?? C.sun} 0%, ${C.glow} 38%, ${C.bg} 72%)`
   return (
-    <AbsoluteFill style={{ background: `radial-gradient(130% 55% at 50% 0%, ${tint ?? C.sun} 0%, ${C.glow} 38%, ${C.bg} 72%)`, color: C.ink, fontFamily: BODY, overflow: 'hidden' }}>
+    <AbsoluteFill style={{ background: bg, color: night ? '#FFF' : C.ink, fontFamily: BODY, overflow: 'hidden' }}>
       {children}
     </AbsoluteFill>
   )

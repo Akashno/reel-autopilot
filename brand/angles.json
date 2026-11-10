@@ -22,5 +22,10 @@
   { "id": "world-tour", "brief": "Meet people from different places and time zones; what time is it there?" },
   { "id": "expectation-reality", "brief": "Expectation vs reality of talking to a stranger online, played for laughs." },
   { "id": "tiny-challenges", "brief": "A playful challenge for viewers: ask your next stranger X, comment what they said." },
-  { "id": "lonely-sunday", "brief": "Quiet weekend, nothing on, nobody to call; one tap and you're talking." }
+  { "id": "lonely-sunday", "brief": "Quiet weekend, nothing on, nobody to call; one tap and you're talking." },
+  { "id": "true-stranger-stories", "format": "story", "true": true, "brief": "A real, well-documented moment where strangers changed each other's lives: a wrong-number text that became a family tradition, the 1914 Christmas truce, a message in a bottle answered decades later, a ham radio operator who relayed a rescue. Told through the people, with a turn." },
+  { "id": "stranger-science", "format": "story", "true": true, "brief": "A real, published psychology study about talking to strangers, told as a story with a surprise result: the liking gap (people like you more after a chat than you think), commuters asked to talk to the person next to them enjoying the ride more than they predicted, weak ties and happiness. Name the researchers and the year only if you are sure." },
+  { "id": "history-of-stranger-chat", "format": "story", "true": true, "brief": "A true, surprising moment from the history of talking to strangers: telephone party lines and operators, CB and ham radio, pen pals, IRC and 'asl', Chatroulette (2009), Omegle (2009 to 2023). Facts only; Omegle only as history." },
+  { "id": "english-word-stories", "format": "story", "true": true, "brief": "The surprising true origin of an everyday English word or phrase a learner uses all the time (hello, OK, goodbye, nice, mortgage, sandwich), for people practising spoken English. Only origins that good dictionaries agree on; say so when one is uncertain." },
+  { "id": "mini-drama", "format": "story", "brief": "A short, clearly fictional mini-drama told by a narrator: two strangers on a voice call, a misunderstanding, a turn, a warm or funny ending. Written as a story, not a testimonial: never claim it happened or that a user said it." }
 ]

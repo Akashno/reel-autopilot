@@ -1,10 +1,10 @@
 // Schedules the day's video on every channel through Buffer.
 //
-//   npm run post -- <date>                         schedule for <date> at brand.json postAt
+//   npm run post -- <id>                           schedule video <id> (e.g. 2026-11-10-1900) at its slot time
 //   npm run post -- <date> --dry                   print what would be sent
 //   npm run post -- <date> --only instagram        one channel
 //   npm run post -- <date> --at 2026-12-20T13:30:00Z --url https://...mp4
-//   npm run post -- <date> --now                   post in about 5 minutes instead of at postAt
+//   npm run post -- <date> --now                   post in about 5 minutes instead of at its slot time
 //   npm run post -- --channels                     list the Buffer channels for every BUFFER_API_KEY_*
 //   npm run post -- <date> --status                show each saved post's status
 //   npm run post -- <date> --delete                delete the saved posts (tests)
@@ -16,6 +16,7 @@ import { spawnSync } from 'node:child_process'
 import { join, resolve } from 'node:path'
 import { BRAND } from '../src/brand'
 import type { Reel } from '../src/types'
+import { postTime } from './slot.mjs'
 
 const ROOT = resolve(import.meta.dirname, '..')
 // Where GitHub Pages serves the videos. PAGES_URL wins (the workflow passes the deployed URL);
@@ -113,10 +114,9 @@ export function postInput(ch: Channel, reel: Reel, url: string, dueAt: string) {
   }
 }
 
-// brand.json postAt on `date` in the brand's timezone, as UTC; never less than 10 minutes from now.
+// The video's slot time (its id is <date>-<HHMM>, see scripts/slot.mjs) as UTC; never less than 10 minutes from now.
 export function dueAtFor(date: string) {
-  const [h, m] = BRAND.postAt.split(':').map(Number)
-  const at = Date.parse(`${date}T00:00:00Z`) + (h * 60 + m - BRAND.timezone.offsetMinutes) * 60e3
+  const at = postTime(date)
   return new Date(Math.max(at, Date.now() + 10 * 60e3)).toISOString()
 }
 

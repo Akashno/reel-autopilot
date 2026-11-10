@@ -1,7 +1,7 @@
 // Writes today's reel with headless Claude Code (your Claude subscription, no API key).
 //
-//   npm run write                         -> reels/<today>.json
-//   npm run write -- --date 2026-11-09    for another day (tests, catch-up)
+//   npm run write                              -> reels/<next slot>.json (scripts/slot.mjs)
+//   npm run write -- --id 2026-11-10-1900      a given slot
 //
 // Claude gets the brief, today's angle (the one used least recently), and the recent history,
 // and must return JSON matching reel.schema.json. The result is checked (scripts/check.ts) and
@@ -12,6 +12,7 @@ import { join, resolve } from 'node:path'
 import type { Reel } from '../src/types'
 import { BRAND } from '../src/brand'
 import { checkReel } from './check'
+import { nextSlot } from './slot.mjs'
 import { prompt as loadPrompt } from './prompt'
 import { reelSchema } from './schema'
 
@@ -78,8 +79,11 @@ function noveltyErrors(r: Reel, history: HistoryEntry[]): string[] {
       errors.push(`the hook is too close to "${h.hook}" (${h.date}): write a new hook`)
   }
   const used = new Set(history.slice(-30).flatMap(h => h.names ?? []).map(n => n.toLowerCase()))
+  const reserved = new Set(BRAND.reservedNames.map(n => n.toLowerCase()))
   for (const n of namesIn(r)) {
-    if (used.has(n.toLowerCase()))
+    if (reserved.has(n.toLowerCase()))
+      errors.push(`nickname "${n}" is an example from the brief: invent a new one`)
+    else if (used.has(n.toLowerCase()))
       errors.push(`nickname "${n}" was used recently: invent a new one`)
   }
   const structure = sceneList(r)
@@ -94,8 +98,16 @@ function noveltyErrors(r: Reel, history: HistoryEntry[]): string[] {
 
 // ---- prompt ------------------------------------------------------------------------------
 
-function pickAngle(history: HistoryEntry[], date: string) {
-  const angles: Array<{ id: string, brief: string }> = JSON.parse(read('brand/angles.json'))
+interface Angle { id: string, brief: string, format?: 'skit' | 'story', true?: boolean }
+
+// A slot listed in brand.json storySlots (the id's HHMM) gets a story angle; the others a skit.
+const isStorySlot = (id: string) => id.length > 10 && BRAND.storySlots.some(s => s.replace(':', '') === id.slice(11))
+
+function pickAngle(history: HistoryEntry[], date: string): Angle {
+  const all: Angle[] = JSON.parse(read('brand/angles.json'))
+  const story = isStorySlot(date)
+  const pool = all.filter(a => (a.format === 'story') === story)
+  const angles = pool.length ? pool : all
   const lastUsed = (id: string) => history.filter(h => h.angle === id).map(h => h.date).sort().at(-1) ?? ''
   // Least recently used first; among never-used ones, rotate by date so the order varies.
   const seed = Number(date.replaceAll('-', ''))
@@ -114,18 +126,20 @@ function rulesToday(history: HistoryEntry[]) {
   return lines.length ? `# Rules for today\n\n${lines.join('\n')}` : ''
 }
 
-function buildPrompt(date: string, angle: { id: string, brief: string }, history: HistoryEntry[]) {
+function buildPrompt(date: string, angle: Angle, history: HistoryEntry[]) {
   const recent = history.slice(-30).reverse()
+  const format = angle.format ?? 'skit'
   return [
     '# Today',
     `Date: ${date}. Today's angle: **${angle.id}**: ${angle.brief}`,
-    'Set idea.angle to exactly this angle id. Find a fresh, specific concept inside it; surprise me.',
+    `Set idea.angle to exactly this angle id and idea.format to "${format}". Find a fresh, specific concept inside it; surprise me.`,
+    ...(format === 'story' ? [`Today is a **story** reel: follow "Story reels" in the brief.${angle.true ? ' It must be TRUE and well documented: fill idea.sources, and every name, date and number you use must be in them.' : ' It is fiction: never present it as something that happened or that a user said.'}`] : []),
     '# Recent videos (newest first). Do something clearly different from all of these.',
     recent.length
       ? recent.map(h => `- ${h.date} [${h.angle}] "${h.title}": ${h.summary} | hook: "${h.hook}" | scenes: ${h.scenes}`).join('\n')
       : '(none yet: this is the first one)',
     rulesToday(history),
-    `Names already used: ${[...new Set(history.slice(-30).flatMap(h => h.names ?? []))].join(', ') || '(none yet)'}`,
+    `Names already used: ${[...new Set([...BRAND.reservedNames, ...history.slice(-30).flatMap(h => h.names ?? [])])].join(', ')}`,
   ].join('\n\n')
 }
 
@@ -191,7 +205,8 @@ function script(r: Reel) {
 }
 
 function review(reel: Reel) {
-  return askClaude<Review>(`Today's reel, "${reel.idea.title}" (${reel.idea.summary})\n\n${script(reel)}`, REVIEW_SCHEMA, loadPrompt('prompts/critic.md'))
+  const kind = reel.idea.format === 'story' ? `A STORY reel${reel.idea.sources?.length ? `, told as true; sources: ${reel.idea.sources.join(' | ')}` : ''}` : 'A skit reel'
+  return askClaude<Review>(`${kind}: "${reel.idea.title}" (${reel.idea.summary})\n\n${script(reel)}`, REVIEW_SCHEMA, loadPrompt('prompts/critic.md'))
 }
 
 export async function write(date: string): Promise<{ ok: true, file: string, reel: Reel } | { ok: false, errors: string[] }> {
@@ -224,11 +239,14 @@ export async function write(date: string): Promise<{ ok: true, file: string, ree
       continue
     }
     const reel = res.out
+    if (reel.idea.angle !== angle.id)
+      reel.idea.angle = angle.id // keep the rotation honest even if the label drifts
+    reel.idea.format = angle.format ?? 'skit'
     errors = [...checkReel(reel), ...noveltyErrors(reel, history)]
     if (!reel.idea.hookOptions?.length)
       errors.push('idea.hookOptions is missing: brainstorm the hooks first')
-    if (reel.idea.angle !== angle.id)
-      reel.idea.angle = angle.id // keep the rotation honest even if the label drifts
+    if (angle.true && !reel.idea.sources?.length)
+      errors.push('this is a true story: list your sources in idea.sources')
     console.log(`  attempt ${attempt}: "${reel.idea.title}" ${sceneList(reel)} (${res.tokens})${errors.length ? `, rejected:\n    ${errors.join('\n    ')}` : ''}`)
     if (!errors.length) {
       const rv = review(reel)
@@ -272,8 +290,8 @@ export function record(date: string, reel: Reel, status: HistoryEntry['status'])
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const i = process.argv.indexOf('--date')
-  const date = i > 0 ? process.argv[i + 1] : today()
+  const i = Math.max(process.argv.indexOf('--id'), process.argv.indexOf('--date'))
+  const date = i > 0 ? process.argv[i + 1] : nextSlot({ any: true })
   const r = await write(date)
   if (!r.ok) {
     console.error(`✗ no usable reel after ${TRIES} attempts:\n  ${r.errors.join('\n  ')}`)

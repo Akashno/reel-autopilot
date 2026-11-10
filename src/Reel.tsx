@@ -5,10 +5,10 @@ import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from 'remo
 import type { ReelProps, Scene, SceneType } from './types'
 import { AppClip, Call, Chat, End, Features, Games, Match } from './scenes/app'
 import { BigWord, Hook, List, Pov, Question, Rating, Versus } from './scenes/text'
-import { BOX, C, CAPTIONED, FPS, Guides, SceneCtx, DISPLAY, useFonts } from './ui'
+import { Count, People, PropScene } from './scenes/story'
+import { BOX, C, CAPTIONED, DISPLAY, FPS, Guides, SceneCtx, STORY_CAPTIONED, useFonts, VO_AT } from './ui'
 
 const T = 8 // crossfade frames
-const VO_AT = 0.25 // voice starts this far into its scene
 const TAIL = 0.6 // breathing room after the voice ends
 const sec = (s: number) => Math.round(s * FPS)
 
@@ -28,6 +28,9 @@ function minSecs(s: Scene): number {
     case 'list': return 1.4 + s.items.length * 0.8
     case 'rating': return 1.4 + s.items.length * 0.95
     case 'versus': return 3.4
+    case 'prop': return 2.6
+    case 'people': return 2.4 + s.people.length * 0.3
+    case 'count': return 1.4 + s.items.length * 0.8
     case 'end': return 3.2
   }
 }
@@ -65,6 +68,9 @@ function View({ s }: { s: Scene }) {
     case 'list': return <List s={s} />
     case 'rating': return <Rating s={s} />
     case 'versus': return <Versus s={s} />
+    case 'prop': return <PropScene s={s} />
+    case 'people': return <People s={s} />
+    case 'count': return <Count s={s} />
     case 'end': return <End s={s} />
   }
 }
@@ -109,14 +115,15 @@ export function ReelVideo(props: ReelProps) {
   const { reel, audioDir, voSecs } = props
   const secs = sceneSecs(props)
   const { starts } = layout(secs)
+  const captioned: readonly SceneType[] = reel.idea.format === 'story' ? STORY_CAPTIONED : CAPTIONED
   return (
     <AbsoluteFill style={{ background: C.bg }}>
       <TransitionSeries>
         {reel.scenes.flatMap((s, i) => [
           <TransitionSeries.Sequence key={`s${i}`} durationInFrames={sec(secs[i])} name={`${i} ${s.type}`}>
-            <SceneCtx.Provider value={{ secs: secs[i], index: i }}>
+            <SceneCtx.Provider value={{ secs: secs[i], index: i, say: s.say, vo: voSecs[i], props: reel.props }}>
               <View s={s} />
-              {s.say && voSecs[i] != null && (CAPTIONED as readonly SceneType[]).includes(s.type) && (
+              {s.say && voSecs[i] != null && captioned.includes(s.type) && (
                 <Sequence from={sec(VO_AT)} layout="none"><Captions text={s.say} secs={voSecs[i]!} /></Sequence>
               )}
             </SceneCtx.Provider>

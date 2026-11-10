@@ -1,0 +1,92 @@
+{
+  "idea": {
+    "title": "The bottle that took 108 years",
+    "angle": "true-stranger-stories",
+    "format": "story",
+    "summary": "A bottle thrown into the sea in 1906 is found on a German beach in 2015 by a stranger who mails the card back, closing on how little waiting a call needs.",
+    "hookOptions": [
+      "A stranger replied to a bottle note 108 years later",
+      "Someone threw a bottle in the sea. 108 years later, a reply.",
+      "Nobody replied for 108 years. Then someone did.",
+      "A note from 1906 finally got an answer"
+    ],
+    "sources": [
+      "Wikipedia: Message in a bottle: oldest message found at the time, released 1906 by the Marine Biological Association (Plymouth, England) in a current study, found 2015 by Marianne Winkler on the German island of Amrum, about 108 years.",
+      "Wikipedia: Message in a bottle: the bottle held a postcard asking the finder to return it to the Association."
+    ]
+  },
+  "props": [
+    {
+      "name": "bottle",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"368\" rx=\"110\" ry=\"16\" fill=\"#000\" opacity=\".15\"/><rect x=\"170\" y=\"40\" width=\"60\" height=\"40\" rx=\"8\" fill=\"#a9743d\"/><path d=\"M175 78h50v70c0 20 55 40 55 90v110c0 12-10 22-22 22H142c-12 0-22-10-22-22V238c0-50 55-70 55-90z\" fill=\"#5fb7a5\"/><path d=\"M185 90h12v62c0 24-50 40-50 88v100c0 6 4 10 8 10-8-4-8-8-8-14V238c0-50 38-66 38-90z\" fill=\"#a8e6d8\"/><rect x=\"170\" y=\"210\" width=\"60\" height=\"130\" rx=\"30\" fill=\"#f4e6c0\"/><rect x=\"182\" y=\"230\" width=\"36\" height=\"6\" rx=\"3\" fill=\"#c9a96a\"/><rect x=\"182\" y=\"250\" width=\"28\" height=\"6\" rx=\"3\" fill=\"#c9a96a\"/><rect x=\"182\" y=\"270\" width=\"32\" height=\"6\" rx=\"3\" fill=\"#c9a96a\"/></svg>"
+    },
+    {
+      "name": "beachwalker",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"372\" rx=\"120\" ry=\"14\" fill=\"#000\" opacity=\".15\"/><path d=\"M70 380c0-80 40-120 130-120s130 40 130 120z\" fill=\"#e8a33d\"/><path d=\"M90 380c0-60 30-100 70-112-30 24-40 60-40 112z\" fill=\"#f5c46b\"/><rect x=\"175\" y=\"220\" width=\"50\" height=\"50\" rx=\"12\" fill=\"#e6b48f\"/><circle cx=\"200\" cy=\"170\" r=\"62\" fill=\"#f0c3a0\"/><path d=\"M135 170c-10-70 40-95 80-90 45 5 65 40 50 95-10-40-40-60-70-60-30 0-50 20-60 55z\" fill=\"#8a5a36\"/><path d=\"M150 130c20-25 50-30 70-25-30 0-55 10-70 25z\" fill=\"#a9764c\"/><circle cx=\"178\" cy=\"175\" r=\"6\" fill=\"#333\"/><circle cx=\"222\" cy=\"175\" r=\"6\" fill=\"#333\"/><path d=\"M180 200c12 12 28 12 40 0\" stroke=\"#b5533c\" stroke-width=\"6\" fill=\"none\" stroke-linecap=\"round\"/></svg>"
+    }
+  ],
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "A bottle note",
+        "answered after",
+        "108 years"
+      ],
+      "highlight": "108 years",
+      "say": "Someone threw a bottle in the sea, and a stranger replied 108 years later."
+    },
+    {
+      "type": "prop",
+      "prop": "bottle",
+      "move": "drop",
+      "on": "tossed",
+      "text": "1906",
+      "textOn": "1906",
+      "say": "A research group in England tossed it in the water in 1906."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "label": "Marianne Winkler",
+          "prop": "beachwalker",
+          "on": "Marianne"
+        }
+      ],
+      "say": "Marianne Winkler found it on a German island beach in 2015."
+    },
+    {
+      "type": "prop",
+      "prop": "bottle",
+      "move": "shake",
+      "on": "opened",
+      "text": "PLEASE SEND ME BACK",
+      "textOn": "card",
+      "say": "She opened it. The card said please send me back."
+    },
+    {
+      "type": "bigword",
+      "word": "She did",
+      "sub": "She mailed it back",
+      "say": "So she did."
+    },
+    {
+      "type": "end",
+      "tagline": "Someone will answer.",
+      "say": "That bottle waited 108 years for a stranger. Your call waits seconds."
+    }
+  ],
+  "post": {
+    "caption": "A bottle thrown into the sea in 1906 got its reply in 2015, from a stranger on a beach. Would you have mailed it back? Your reply doesn't have to wait 108 years: randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#truestory",
+      "#strangers",
+      "#messageinabottle",
+      "#storytime"
+    ],
+    "youtubeTitle": "A stranger replied to a bottle note 108 years later #shorts",
+    "xText": "A bottle note from 1906 got a reply 108 years later. A call takes seconds: randomtalker.com"
+  }
+}

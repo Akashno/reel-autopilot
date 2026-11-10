@@ -6,8 +6,10 @@
   "goal": "makes people want to try talking to a stranger",
   "audience": "18-28, many in India and many learning English, scrolling fast with the sound off",
   "timezone": { "label": "India", "offsetMinutes": 330 },
-  "postAt": "19:00",
+  "slots": ["13:00", "19:00", "22:00"],
+  "storySlots": ["13:00"],
   "endCard": { "sub": "Free to start · link in bio" },
+  "reservedNames": ["Dizzy Wolf", "Messy Toast", "Quiet Clown", "Biggie Pizza"],
   "commonWords": ["stranger", "strangers", "talk", "talking", "call", "voice"],
 
   "voice": {
@@ -44,7 +46,7 @@
   },
   "logo": "logo/mynah.svg",
 
-  "scenes": ["hook", "pov", "bigword", "question", "match", "call", "chat", "appclip", "games", "features", "list", "rating", "versus", "end"],
+  "scenes": ["hook", "pov", "bigword", "question", "match", "call", "chat", "appclip", "games", "features", "list", "rating", "versus", "prop", "people", "count", "end"],
   "productScenes": ["match", "call", "chat", "appclip", "games"],
 
   "avatars": {

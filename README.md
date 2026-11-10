@@ -1,6 +1,6 @@
 # Reel Autopilot
 
-Posts one short video a day for your product to Instagram, YouTube, Facebook and X, with no one in the loop.
+Posts three short videos a day for your product to Instagram, YouTube, Facebook and X, with no one in the loop.
 
 <p align="center"><img src="docs/demo.gif" width="260" alt="A generated reel, sped up"></p>
 
@@ -11,7 +11,7 @@ flowchart LR
   C --> D[Buffer posts it everywhere]
 ```
 
-Every morning a GitHub Action asks Claude Code for a new idea, checks it, voices it, renders it
+Before each posting slot a GitHub Action asks Claude Code for a new idea, checks it, voices it, renders it
 and schedules it. Everything about your product lives in `brand/`. The example there is
 [Random Talker](https://randomtalker.com).
 
@@ -22,7 +22,7 @@ Only your **Claude Pro or Max subscription**. Everything else runs on free tiers
 
 **Claude usage per video:** 2–6 short calls (one to write, one to review, repeated if a draft is weak),
 about **20–50k tokens** in under 2 minutes. Most of that is cached prompt, which counts lightly
-against your limits. Roughly one short Claude Code chat a day, well within Pro.
+against your limits. Roughly three short Claude Code chats a day (one per video).
 No API key or per-token bill. The Actions log shows the exact tokens for each call.
 
 Remotion needs a [paid licence](https://www.remotion.dev/license) for companies of more than 3 people.
@@ -41,16 +41,18 @@ Remotion needs a [paid licence](https://www.remotion.dev/license) for companies 
 4. **Find your channels:** put the Buffer key in `.env` as `BUFFER_API_KEY_1=...`, then run
    `npm run post -- --channels` and paste the output into `brand/channels.json`.
 5. **Describe your product** in `brand/`:
-   - `brand.json`: name, site, colours, logo, posting time
+   - `brand.json`: name, site, colours, logo, `slots` (posting times) and `storySlots`
    - `brief.md`: facts, tone, what never to claim
-   - `angles.json`: themes to rotate through
+   - `angles.json`: themes to rotate through. Most are **skits** (a punchy product reel); ones marked
+     `"format": "story"` are narrated **stories** with a twist (`"true": true` means it must be a real,
+     sourced story). Slots in `storySlots` get a story; the others get a skit.
 
    Then clear the example's history:
    `rm -f reels/20*.json data/posts/*.json && echo '[]' > data/history.json`
 6. **Test it:** `gh workflow run daily.yml -f test=true`, then watch the run in Actions.
 7. **Go live:**
    ```bash
-   gh variable set DAILY --body on      # make a video every morning
+   gh variable set DAILY --body on      # make a video for every slot
    gh variable set POSTING --body on    # post it
    ```
 
@@ -67,7 +69,7 @@ If a run fails, GitHub opens an issue.
 - **401 / auth error:** the Claude token expired (it lasts about a year). Run `claude setup-token`
   again and update the secret.
 - **Gemini 429 or 402:** quota or billing problem. Videos fall back to the Piper voice automatically.
-- **Post failed:** reconnect the channel in Buffer, then run `npm run post -- <date>`.
+- **Post failed:** reconnect the channel in Buffer, then run `npm run post -- <id>` (e.g. `2026-11-10-1900`).
 
 ## License
 

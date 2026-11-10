@@ -12,9 +12,10 @@ import { sceneSecs } from '../src/Reel'
 import { syncAssets } from './assets'
 
 const ROOT = resolve(import.meta.dirname, '..')
-const file = process.argv[2] ?? 'brand/examples/allscenes.json'
+const args = process.argv.slice(2).filter(a => !a.startsWith('--'))
+const file = args[0] ?? 'brand/examples/allscenes.json'
 const id = basename(file, '.json')
-const sheet = process.argv[3] ?? join(ROOT, 'out', `${id}-sheet.png`)
+const sheet = args[1] ?? join(ROOT, 'out', `${id}-sheet.png`)
 const reel: Reel = JSON.parse(readFileSync(file, 'utf8'))
 const voSecs = reel.scenes.map(s => (s.say ? s.say.split(/\s+/).length * 0.36 : null))
 const props: ReelProps = { reel, audioDir: null, voSecs, guides: !process.argv.includes('--clean') }
