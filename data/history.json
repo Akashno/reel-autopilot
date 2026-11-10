@@ -25,15 +25,15 @@
   },
   {
     "date": "2026-11-10",
-    "title": "Nine seconds of silence",
+    "title": "Forty seconds of chewing",
     "angle": "games",
-    "summary": "A silent stranger on a call is rescued by a Tic-Tac-Toe invite, and the shy one turns into a trash-talker; the focus is the silence-to-banter shift rather than a games list.",
-    "hook": "9 sec of silence. Still counting.",
-    "scenes": "bigword>match>call>appclip>chat>question>end",
-    "status": "test",
+    "summary": "A call opens with a painful silence where you can hear the stranger chewing, until a Tic-Tac-Toe challenge turns it into banter and a rematch.",
+    "hook": "POV: Call connects. He says hi. Then nothing.",
+    "scenes": "pov>match>games>chat>call>end",
     "names": [
-      "Quiet Clown"
-    ]
+      "Soggy Pancake"
+    ],
+    "status": "rendered"
   },
   {
     "date": "2026-11-11",
