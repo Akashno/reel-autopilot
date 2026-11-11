@@ -58,6 +58,18 @@
     "status": "rendered"
   },
   {
+    "date": "2026-11-11-1900",
+    "title": "Same taste in movies, 40 minutes",
+    "angle": "interests",
+    "summary": "A call matched on #movies where two strangers argue about the best ending of a film, showing shared interests skip small talk; opens with a question, not a hook.",
+    "hook": "Who do you tell about the movie you just watched?",
+    "scenes": "question>chat>match>call>features>end",
+    "names": [
+      "Grumpy Ramen"
+    ],
+    "status": "rendered"
+  },
+  {
     "date": "2026-11-13",
     "title": "Sunday, 400 contacts, zero calls",
     "angle": "lonely-sunday",

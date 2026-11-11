@@ -1,0 +1,88 @@
+{
+  "idea": {
+    "title": "Same taste in movies, 40 minutes",
+    "angle": "interests",
+    "format": "skit",
+    "summary": "A call matched on #movies where two strangers argue about the best ending of a film, showing shared interests skip small talk; opens with a question, not a hook.",
+    "hookOptions": [
+      "Who has the best movie ending?",
+      "I added #movies and lost my evening",
+      "Small talk is dead if you share a movie",
+      "Nobody at home watched that film",
+      "POV: your stranger loves your weird movie"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "question",
+      "question": "Who do you tell about the movie you just watched?",
+      "a": "Nobody, it's too weird",
+      "b": "A stranger who gets it",
+      "say": "Be honest, the group chat never replies."
+    },
+    {
+      "type": "chat",
+      "avatar": "KenjiJP",
+      "name": "Grumpy Ramen",
+      "messages": [
+        {
+          "from": "them",
+          "text": "wait you added #movies too?"
+        },
+        {
+          "from": "me",
+          "text": "yes. the ending of that film. thoughts"
+        },
+        {
+          "from": "them",
+          "text": "i cried in the car for ten minutes"
+        },
+        {
+          "from": "me",
+          "text": "ok we're friends now"
+        }
+      ],
+      "say": "No small talk. You're already in the middle of it."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Grumpy Ramen",
+      "say": "Add one interest, and the match comes with a topic."
+    },
+    {
+      "type": "call",
+      "avatar": "KenjiJP",
+      "name": "Grumpy Ramen",
+      "label": "41 minutes in",
+      "say": "Forty minutes later, you're still arguing about the sequel."
+    },
+    {
+      "type": "features",
+      "headline": "Pick what you love",
+      "items": [
+        "interests",
+        "voice",
+        "skip"
+      ],
+      "say": "Wrong match? Skip."
+    },
+    {
+      "type": "end",
+      "tagline": "Find your movie person.",
+      "say": "Someone out there watched it too."
+    }
+  ],
+  "post": {
+    "caption": "Add #movies, #music or #books and get matched with someone who already cares. What's the one film you can't shut up about?\n\nTry it at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#movies",
+      "#talktostrangers",
+      "#interests",
+      "#voicechat"
+    ],
+    "youtubeTitle": "Who do you tell about the movie you just watched? #shorts",
+    "xText": "Add #movies, get matched with someone who loved the same ending. randomtalker.com"
+  }
+}
