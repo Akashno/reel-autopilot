@@ -1,0 +1,104 @@
+{
+  "idea": {
+    "title": "The 132-year bottle",
+    "angle": "true-stranger-stories",
+    "format": "story",
+    "summary": "A message in a bottle thrown from a German ship in 1886 is read by a stranger on an Australian beach in 2018, closing on how quickly strangers pick up today.",
+    "hookOptions": [
+      "This bottle waited 132 years for a reader",
+      "A note sat at sea for 132 years",
+      "Nobody read this note for 132 years",
+      "A stranger finally read it, 132 years late"
+    ],
+    "sources": [
+      "Wikipedia, Message in a bottle: oldest known message in a bottle, thrown overboard in 1886 from the German barque Paula, found in 2018 by Tonya Illman on a beach in Western Australia, after 132 years.",
+      "Western Australian Museum reports 2018: the bottle held a printed German form asking the finder to note where and when it was found and return it."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "This bottle waited",
+        "132 years"
+      ],
+      "highlight": "132 years",
+      "say": "This bottle waited 132 years for a reader."
+    },
+    {
+      "type": "prop",
+      "prop": "bottle",
+      "move": "drop",
+      "on": "ship",
+      "say": "A German ship, the Paula, threw it overboard in 1886."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "2018",
+          "label": "found on a beach",
+          "on": "2018"
+        }
+      ],
+      "say": "It washed up in Western Australia in 2018."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "label": "Tonya Illman",
+          "prop": "tonya",
+          "on": "Tonya"
+        }
+      ],
+      "say": "Tonya Illman spotted it on a beach."
+    },
+    {
+      "type": "prop",
+      "prop": "note",
+      "move": "pop",
+      "on": "form",
+      "text": "WHERE DID YOU FIND ME?",
+      "textOn": "where",
+      "say": "Inside was a form asking the finder to say where."
+    },
+    {
+      "type": "bigword",
+      "word": "Finally",
+      "sub": "years late, but someone read it",
+      "say": "The sailors were long gone. But a stranger on a beach finally read it."
+    },
+    {
+      "type": "end",
+      "tagline": "Strangers answer faster now.",
+      "say": "That stranger took 132 years. On Random Talker, someone picks up in seconds."
+    }
+  ],
+  "props": [
+    {
+      "name": "bottle",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"360\" rx=\"110\" ry=\"18\" fill=\"#000\" opacity=\".15\"/><rect x=\"175\" y=\"40\" width=\"50\" height=\"40\" rx=\"8\" fill=\"#b5793c\"/><path d=\"M180 80h40v60c0 20 50 40 50 90v100c0 15-10 25-25 25h-90c-15 0-25-10-25-25V230c0-50 50-70 50-90z\" fill=\"#3fa57a\" opacity=\".85\"/><path d=\"M135 230c0-40 35-60 45-90v-60h10v60c-10 40-40 60-40 100v110c-10 0-15-8-15-20z\" fill=\"#9be3c0\" opacity=\".7\"/><rect x=\"170\" y=\"210\" width=\"60\" height=\"110\" rx=\"8\" fill=\"#f6e7b8\"/><rect x=\"178\" y=\"225\" width=\"44\" height=\"6\" fill=\"#c9a95a\"/><rect x=\"178\" y=\"245\" width=\"36\" height=\"6\" fill=\"#c9a95a\"/><rect x=\"178\" y=\"265\" width=\"44\" height=\"6\" fill=\"#c9a95a\"/><path d=\"M250 250c15 20 15 80 5 110h15c10-30 10-90-5-120z\" fill=\"#256f50\"/></svg>"
+    },
+    {
+      "name": "tonya",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"370\" rx=\"120\" ry=\"16\" fill=\"#000\" opacity=\".15\"/><path d=\"M70 380c0-80 50-120 130-120s130 40 130 120z\" fill=\"#e8744f\"/><path d=\"M90 380c0-60 30-95 70-110l-20 110z\" fill=\"#f19a7a\"/><rect x=\"175\" y=\"220\" width=\"50\" height=\"50\" fill=\"#d9a077\"/><path d=\"M120 150c0-60 40-95 80-95s80 35 80 95v50c0 30-20 40-80 40s-80-10-80-40z\" fill=\"#7a4a2a\"/><ellipse cx=\"200\" cy=\"170\" rx=\"62\" ry=\"72\" fill=\"#efb88e\"/><path d=\"M135 150c10-45 50-60 90-50 30 8 45 30 42 50-30-30-80-35-132 0z\" fill=\"#7a4a2a\"/><circle cx=\"178\" cy=\"175\" r=\"7\" fill=\"#3a2418\"/><circle cx=\"222\" cy=\"175\" r=\"7\" fill=\"#3a2418\"/><path d=\"M178 207c14 14 30 14 44 0\" stroke=\"#a8442f\" stroke-width=\"6\" fill=\"none\" stroke-linecap=\"round\"/><ellipse cx=\"165\" cy=\"135\" rx=\"20\" ry=\"10\" fill=\"#9a6238\"/></svg>"
+    },
+    {
+      "name": "note",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"360\" rx=\"130\" ry=\"14\" fill=\"#000\" opacity=\".15\"/><path d=\"M90 50h210l30 30v270H90z\" fill=\"#f3e2b3\"/><path d=\"M300 50v30h30z\" fill=\"#d1b673\"/><path d=\"M90 50h120l-120 120z\" fill=\"#fff6d8\" opacity=\".6\"/><rect x=\"120\" y=\"110\" width=\"170\" height=\"10\" rx=\"5\" fill=\"#6b5530\"/><rect x=\"120\" y=\"150\" width=\"140\" height=\"10\" rx=\"5\" fill=\"#6b5530\"/><rect x=\"120\" y=\"190\" width=\"180\" height=\"10\" rx=\"5\" fill=\"#6b5530\"/><rect x=\"120\" y=\"230\" width=\"120\" height=\"10\" rx=\"5\" fill=\"#6b5530\"/><rect x=\"120\" y=\"290\" width=\"80\" height=\"30\" rx=\"4\" fill=\"#b3402e\" opacity=\".8\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "Somebody threw a note into the sea in 1886 and a stranger finally read it in 2018. Would you have picked it up?\n\nTalk to someone new, no waiting 132 years: randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#truestory",
+      "#messageinabottle",
+      "#strangers",
+      "#history"
+    ],
+    "youtubeTitle": "This bottle waited 132 years for a reader #shorts",
+    "xText": "A note thrown into the sea in 1886 was read in 2018. Strangers pick up faster now: randomtalker.com"
+  }
+}

@@ -48,6 +48,16 @@
     "status": "test"
   },
   {
+    "date": "2026-11-11-1300",
+    "title": "The 132-year bottle",
+    "angle": "true-stranger-stories",
+    "summary": "A message in a bottle thrown from a German ship in 1886 is read by a stranger on an Australian beach in 2018, closing on how quickly strangers pick up today.",
+    "hook": "This bottle waited 132 years",
+    "scenes": "hook>prop>count>people>prop>bigword>end",
+    "names": [],
+    "status": "rendered"
+  },
+  {
     "date": "2026-11-13",
     "title": "Sunday, 400 contacts, zero calls",
     "angle": "lonely-sunday",
