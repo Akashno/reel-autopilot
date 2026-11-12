@@ -1,0 +1,81 @@
+{
+  "idea": {
+    "title": "Have you eaten?",
+    "angle": "language-exchange",
+    "format": "skit",
+    "summary": "A stranger's first Hindi message is 'have you eaten?', a caring way to say hello; translate in chat and a call teach the reply.",
+    "hookOptions": [
+      "A stranger's first Hindi message: aapne khana khaya?",
+      "In India, hello can be a question about dinner",
+      "She texted me in Hindi. I only knew namaste.",
+      "A stranger taught me one Hindi phrase"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "pov",
+      "text": "A stranger's first Hindi message: aapne khana khaya?",
+      "say": "A stranger opened with 'have you eaten?' Not hello."
+    },
+    {
+      "type": "match",
+      "avatar": "PriyaMumbai",
+      "name": "Sunny Kettle",
+      "say": "Random call, Tuesday night."
+    },
+    {
+      "type": "chat",
+      "avatar": "PriyaMumbai",
+      "name": "Sunny Kettle",
+      "messages": [
+        {
+          "from": "them",
+          "text": "aapne khana khaya?"
+        },
+        {
+          "from": "me",
+          "text": "translate says: have you eaten?"
+        },
+        {
+          "from": "them",
+          "text": "say haan if yes!"
+        },
+        {
+          "from": "me",
+          "text": "haan!"
+        }
+      ],
+      "say": "One tap translated it. That's how she says she cares."
+    },
+    {
+      "type": "call",
+      "avatar": "PriyaMumbai",
+      "name": "Sunny Kettle",
+      "label": "She laughed for a minute",
+      "say": "I said haan out loud and she laughed."
+    },
+    {
+      "type": "bigword",
+      "word": "Haan!",
+      "sub": "Yes, I've eaten. Thanks for asking.",
+      "say": "Haan means yes. Now I'm basically family."
+    },
+    {
+      "type": "end",
+      "tagline": "Learn hello from a stranger",
+      "say": "Your next phrase is one call away."
+    }
+  ],
+  "post": {
+    "caption": "In a lot of Indian homes, 'have you eaten?' means 'I care about you'. A stranger can teach you that in one chat. What's a phrase you learned from someone new? Try it at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#hindi",
+      "#languageexchange",
+      "#learnhindi",
+      "#talktostrangers"
+    ],
+    "youtubeTitle": "A stranger opened with 'have you eaten?' #shorts",
+    "xText": "Her first message wasn't hello. It was 'have you eaten?' Learn a phrase from a stranger: randomtalker.com"
+  }
+}

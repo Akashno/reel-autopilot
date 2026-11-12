@@ -94,6 +94,18 @@
     "status": "rendered"
   },
   {
+    "date": "2026-11-12-2200",
+    "title": "Have you eaten?",
+    "angle": "language-exchange",
+    "summary": "A stranger's first Hindi message is 'have you eaten?', a caring way to say hello; translate in chat and a call teach the reply.",
+    "hook": "POV: A stranger's first Hindi message: aapne khana khaya?",
+    "scenes": "pov>match>chat>call>bigword>end",
+    "names": [
+      "Sunny Kettle"
+    ],
+    "status": "rendered"
+  },
+  {
     "date": "2026-11-13",
     "title": "Sunday, 400 contacts, zero calls",
     "angle": "lonely-sunday",
