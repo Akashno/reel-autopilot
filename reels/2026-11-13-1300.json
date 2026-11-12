@@ -1,0 +1,96 @@
+{
+  "idea": {
+    "title": "Two teens, one year",
+    "angle": "history-of-stranger-chat",
+    "format": "story",
+    "summary": "Two teenagers launched Omegle and Chatroulette months apart in 2009, closing on how people still want to meet someone new.",
+    "hookOptions": [
+      "Two teenagers made stranger chat in 2009",
+      "A 17-year-old in Moscow built Chatroulette",
+      "Omegle was made by an 18-year-old",
+      "Stranger chat started with two teens"
+    ],
+    "sources": [
+      "Wikipedia: Omegle: launched March 25, 2009 by Leif K-Brooks, then 18, from Vermont; shut down November 8, 2023, after 14 years.",
+      "Wikipedia: Chatroulette: created November 2009 by Andrey Ternovskiy, then 17, a Russian student living in Moscow."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Two teenagers",
+        "made stranger chat",
+        "in 2009"
+      ],
+      "highlight": "stranger chat",
+      "say": "Two teenagers started stranger chat sites in the same year."
+    },
+    {
+      "type": "prop",
+      "prop": "laptop",
+      "move": "drop",
+      "on": "Omegle",
+      "text": "Omegle, March 2009",
+      "textOn": "launched",
+      "say": "In March 2009, eighteen-year-old Leif K-Brooks in Vermont launched Omegle."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "label": "Andrey, 17",
+          "prop": "teen",
+          "on": "Andrey"
+        }
+      ],
+      "text": "Chatroulette, Moscow",
+      "textOn": "Chatroulette",
+      "say": "That November, seventeen-year-old Andrey Ternovskiy launched Chatroulette from Moscow."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "14",
+          "label": "years Omegle ran",
+          "on": "fourteen"
+        }
+      ],
+      "say": "Omegle ran for fourteen years, until it shut down in November 2023."
+    },
+    {
+      "type": "bigword",
+      "word": "Hello?",
+      "sub": "Still the best opener",
+      "say": "But wanting to talk to someone new didn't shut down with it."
+    },
+    {
+      "type": "end",
+      "tagline": "Someone new is one tap away.",
+      "say": "Someone new is one tap away at randomtalker.com."
+    }
+  ],
+  "props": [
+    {
+      "name": "laptop",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"330\" rx=\"150\" ry=\"18\" fill=\"#000\" opacity=\".15\"/><rect x=\"80\" y=\"80\" width=\"240\" height=\"170\" rx=\"14\" fill=\"#3b4a6b\"/><rect x=\"94\" y=\"94\" width=\"212\" height=\"142\" rx=\"6\" fill=\"#7fd1f5\"/><polygon points=\"94,94 200,94 150,236 94,236\" fill=\"#b5e6fa\"/><path d=\"M50 260 H350 L370 305 Q370 318 356 318 H44 Q30 318 30 305 Z\" fill=\"#9aa7c2\"/><path d=\"M50 260 H350 L356 272 H44 Z\" fill=\"#c5cfe3\"/><rect x=\"165\" y=\"290\" width=\"70\" height=\"12\" rx=\"6\" fill=\"#7b88a6\"/></svg>"
+    },
+    {
+      "name": "teen",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"350\" rx=\"130\" ry=\"16\" fill=\"#000\" opacity=\".15\"/><path d=\"M70 350 Q70 250 200 250 Q330 250 330 350 Z\" fill=\"#e2574c\"/><path d=\"M70 350 Q70 250 160 252 Q110 280 120 350 Z\" fill=\"#f07b70\"/><rect x=\"175\" y=\"215\" width=\"50\" height=\"45\" rx=\"12\" fill=\"#e0a780\"/><circle cx=\"200\" cy=\"160\" r=\"70\" fill=\"#f0b992\"/><path d=\"M130 150 Q135 85 205 90 Q270 90 272 150 Q240 115 200 120 Q160 118 130 150 Z\" fill=\"#4a3326\"/><circle cx=\"175\" cy=\"165\" r=\"8\" fill=\"#2b2b2b\"/><circle cx=\"225\" cy=\"165\" r=\"8\" fill=\"#2b2b2b\"/><path d=\"M175 195 Q200 215 225 195\" stroke=\"#a4504a\" stroke-width=\"7\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"150\" cy=\"150\" r=\"10\" fill=\"#fff\" opacity=\".25\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "Stranger chat started with two teenagers in 2009. Years later, people still want to talk to someone new. What was your first stranger chat? Try a voice call at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#omegle",
+      "#chatroulette",
+      "#internethistory",
+      "#talktostrangers"
+    ],
+    "youtubeTitle": "Two teenagers made stranger chat in 2009 #shorts",
+    "xText": "Two teenagers, one year, two stranger chat sites. People still want to talk to someone new. randomtalker.com"
+  }
+}

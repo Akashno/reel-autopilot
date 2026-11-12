@@ -116,5 +116,15 @@
       "Soggy Biscuit"
     ],
     "status": "test"
+  },
+  {
+    "date": "2026-11-13-1300",
+    "title": "Two teens, one year",
+    "angle": "history-of-stranger-chat",
+    "summary": "Two teenagers launched Omegle and Chatroulette months apart in 2009, closing on how people still want to meet someone new.",
+    "hook": "Two teenagers made stranger chat in 2009",
+    "scenes": "hook>prop>people>count>bigword>end",
+    "names": [],
+    "status": "rendered"
   }
 ]
