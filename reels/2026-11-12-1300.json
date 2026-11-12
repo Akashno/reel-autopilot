@@ -1,0 +1,99 @@
+{
+  "idea": {
+    "title": "The liking gap",
+    "angle": "stranger-science",
+    "format": "story",
+    "summary": "A 2018 psychology study found that after a short chat, strangers liked each other more than each person guessed, which closes on the nerves before a first call.",
+    "hookOptions": [
+      "Strangers like you more than you think",
+      "After one chat, they liked you more",
+      "You overthink every first conversation",
+      "Psychologists measured how awkward you feel"
+    ],
+    "sources": [
+      "Boothby, E. J., Cooney, G., Sandstrom, G. M., & Clark, M. S. (2018). The Liking Gap in Conversations: Do People Like Us More Than We Think? Psychological Science.",
+      "Finding: after getting to know a stranger in conversation, people consistently underestimated how much their partner liked them; the researchers named this the liking gap."
+    ]
+  },
+  "props": [
+    {
+      "name": "bubble",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"350\" rx=\"120\" ry=\"14\" fill=\"#000\" opacity=\".15\"/><circle cx=\"110\" cy=\"310\" r=\"14\" fill=\"#cbd5e1\"/><circle cx=\"140\" cy=\"270\" r=\"22\" fill=\"#cbd5e1\"/><ellipse cx=\"200\" cy=\"160\" rx=\"150\" ry=\"100\" fill=\"#e2e8f0\"/><circle cx=\"110\" cy=\"170\" r=\"70\" fill=\"#e2e8f0\"/><circle cx=\"290\" cy=\"170\" r=\"70\" fill=\"#e2e8f0\"/><circle cx=\"200\" cy=\"100\" r=\"70\" fill=\"#f1f5f9\"/><ellipse cx=\"140\" cy=\"110\" rx=\"50\" ry=\"26\" fill=\"#fff\" opacity=\".7\"/><circle cx=\"160\" cy=\"170\" r=\"9\" fill=\"#334155\"/><circle cx=\"240\" cy=\"170\" r=\"9\" fill=\"#334155\"/><path d=\"M165 218 Q200 195 235 218\" fill=\"none\" stroke=\"#334155\" stroke-width=\"9\" stroke-linecap=\"round\"/></svg>"
+    }
+  ],
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Strangers like",
+        "you more than",
+        "you think"
+      ],
+      "highlight": "more than",
+      "say": "After a first chat, people like you more than you think."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "label": "Stranger one",
+          "avatar": "MayaDelhi",
+          "on": "strangers"
+        },
+        {
+          "label": "Stranger two",
+          "avatar": "LeoRio",
+          "on": "chat"
+        }
+      ],
+      "say": "In 2018, Erica Boothby and colleagues had strangers chat, then answer questions."
+    },
+    {
+      "type": "prop",
+      "prop": "bubble",
+      "move": "float",
+      "on": "guessed",
+      "text": "I WAS SO AWKWARD",
+      "textOn": "low",
+      "say": "Each person guessed how much the other liked them, and guessed low."
+    },
+    {
+      "type": "bigword",
+      "word": "Wrong",
+      "sub": "They liked each other more",
+      "say": "Their partners actually liked them more than they'd guessed."
+    },
+    {
+      "type": "prop",
+      "prop": "bubble",
+      "move": "pop",
+      "on": "liking",
+      "text": "THE LIKING GAP",
+      "textOn": "gap",
+      "say": "They named it the liking gap: your worry is louder than their opinion."
+    },
+    {
+      "type": "match",
+      "avatar": "PriyaMumbai",
+      "name": "Cozy Pickle",
+      "say": "So if you're nervous before a first hello, remember the gap."
+    },
+    {
+      "type": "end",
+      "tagline": "Go on, they'll like you.",
+      "say": "Go find out."
+    }
+  ],
+  "post": {
+    "caption": "Psychologists found that after a chat, strangers liked each other more than each person expected. It's called the liking gap. Have you felt it?\n\nTry a voice chat with someone new: randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#psychology",
+      "#strangers",
+      "#likinggap",
+      "#talktostrangers"
+    ],
+    "youtubeTitle": "Strangers like you more than you think #shorts",
+    "xText": "A 2018 study found people like you more after a chat than you think. It's called the liking gap. randomtalker.com"
+  }
+}

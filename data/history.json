@@ -70,6 +70,18 @@
     "status": "rendered"
   },
   {
+    "date": "2026-11-12-1300",
+    "title": "The liking gap",
+    "angle": "stranger-science",
+    "summary": "A 2018 psychology study found that after a short chat, strangers liked each other more than each person guessed, which closes on the nerves before a first call.",
+    "hook": "Strangers like you more than you think",
+    "scenes": "hook>people>prop>bigword>prop>match>end",
+    "names": [
+      "Cozy Pickle"
+    ],
+    "status": "rendered"
+  },
+  {
     "date": "2026-11-13",
     "title": "Sunday, 400 contacts, zero calls",
     "angle": "lonely-sunday",
