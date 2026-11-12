@@ -19,15 +19,16 @@ fi
 cp "$mp4" "$dir/$date.mp4"
 cp "$reel" "$dir/$date.json"
 touch "$dir/.nojekyll"
-cutoff="$(date -u -d "$date -$keep days" +%F 2>/dev/null || date -u -j -v-"$keep"d -f %F "$date" +%F)"
-for f in "$dir"/????-??-??.*; do
+day="${date:0:10}"   # ids are <YYYY-MM-DD>-<HHMM>; date(1) only understands the day part
+cutoff="$(date -u -d "$day -$keep days" +%F 2>/dev/null || date -u -j -v-"$keep"d -f %F "$day" +%F)"
+for f in "$dir"/????-??-??*.*; do
   d="$(basename "$f" | cut -c1-10)"
   [[ "$d" < "$cutoff" ]] && rm -f "$f"
 done
 # A plain index so the Pages root isn't a 404.
 {
   echo '<!doctype html><meta charset="utf-8"><title>Reels</title><ul>'
-  for f in $(ls "$dir" | grep -E '^[0-9-]{10}\.mp4$' | sort -r); do echo "<li><a href=\"$f\">$f</a></li>"; done
+  for f in $(ls "$dir" | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}(-[0-9]{4})?\.mp4$' | sort -r); do echo "<li><a href=\"$f\">$f</a></li>"; done
   echo '</ul>'
 } > "$dir/index.html"
 
