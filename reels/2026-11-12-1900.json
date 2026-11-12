@@ -1,0 +1,76 @@
+{
+  "idea": {
+    "title": "Dinner meets breakfast",
+    "angle": "world-tour",
+    "format": "skit",
+    "summary": "At 7 PM a call lands on someone eating breakfast on the other side of the world, and the clocks become the joke.",
+    "hookOptions": [
+      "It's 7 PM here. It's breakfast there.",
+      "I had breakfast with a stranger at 7 PM",
+      "What time is it where you are?",
+      "Someone is eating toast while you eat dinner"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "bigword",
+      "word": "7 PM",
+      "sub": "Dinner here. Breakfast somewhere else.",
+      "say": "It's seven PM here. Somewhere, it's breakfast."
+    },
+    {
+      "type": "chat",
+      "avatar": "KenjiJP",
+      "name": "Rainy Biscuit",
+      "messages": [
+        {
+          "from": "me",
+          "text": "hi! what time is it there?"
+        },
+        {
+          "from": "them",
+          "text": "7 am, eating toast before work"
+        },
+        {
+          "from": "me",
+          "text": "7 pm here, eating dinner"
+        },
+        {
+          "from": "them",
+          "text": "so your dinner is my breakfast?"
+        }
+      ],
+      "say": "I said it's dinner. She said it's breakfast."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Rainy Biscuit",
+      "say": "One tap, and she's on the other side of the world."
+    },
+    {
+      "type": "call",
+      "avatar": "KenjiJP",
+      "name": "Rainy Biscuit",
+      "label": "Her morning, your night",
+      "say": "She's pouring tea. I'm finishing rice. Same call."
+    },
+    {
+      "type": "end",
+      "tagline": "Someone is always up.",
+      "say": "Seven PM, and I just had breakfast with a stranger."
+    }
+  ],
+  "post": {
+    "caption": "Your dinner is somebody else's breakfast. What time is it where you are?\nSay hi to someone new, free to start, at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#timezones",
+      "#talktostrangers",
+      "#worldtour",
+      "#voicechat"
+    ],
+    "youtubeTitle": "It's 7 PM here. It's breakfast there. #shorts",
+    "xText": "Your dinner is someone else's breakfast. Say hi at randomtalker.com"
+  }
+}

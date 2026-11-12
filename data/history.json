@@ -82,6 +82,18 @@
     "status": "rendered"
   },
   {
+    "date": "2026-11-12-1900",
+    "title": "Dinner meets breakfast",
+    "angle": "world-tour",
+    "summary": "At 7 PM a call lands on someone eating breakfast on the other side of the world, and the clocks become the joke.",
+    "hook": "7 PM Dinner here. Breakfast somewhere else.",
+    "scenes": "bigword>chat>match>call>end",
+    "names": [
+      "Rainy Biscuit"
+    ],
+    "status": "rendered"
+  },
+  {
     "date": "2026-11-13",
     "title": "Sunday, 400 contacts, zero calls",
     "angle": "lonely-sunday",
