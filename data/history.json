@@ -138,5 +138,17 @@
       "Crispy Otter"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-13-2200",
+    "title": "Two thousand bottle caps",
+    "angle": "anonymity",
+    "summary": "A funny confession: a secret hobby you'd never tell friends is easy to say to a stranger who only knows your nickname, and they confess something weirder.",
+    "hook": "POV: I have 2,000 bottle caps and I've never told anyone",
+    "scenes": "pov>rating>match>chat>features>end",
+    "names": [
+      "Soft Walrus"
+    ],
+    "status": "rendered"
   }
 ]
