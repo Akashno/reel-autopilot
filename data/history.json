@@ -126,5 +126,17 @@
     "scenes": "hook>prop>people>count>bigword>end",
     "names": [],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-13-1900",
+    "title": "Ten minutes, one name",
+    "angle": "boredom",
+    "summary": "Trade ten minutes of forgettable scrolling for a call with someone you actually remember, ending on a count of what you kept.",
+    "hook": "47 reels Name one. Anything.",
+    "scenes": "bigword>versus>match>call>count>end",
+    "names": [
+      "Crispy Otter"
+    ],
+    "status": "rendered"
   }
 ]
