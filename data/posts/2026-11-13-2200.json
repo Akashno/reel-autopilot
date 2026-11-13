@@ -1,0 +1,22 @@
+{
+  "instagram": {
+    "id": "6af6f6f39a21933ffad0631b",
+    "dueAt": "2026-11-13T16:30:00.000Z",
+    "status": "scheduled"
+  },
+  "youtube": {
+    "id": "6af6f6f47828e7ae1b0785f3",
+    "dueAt": "2026-11-13T16:30:00.000Z",
+    "status": "scheduled"
+  },
+  "facebook": {
+    "id": "6af6f6f47828e7ae1b078624",
+    "dueAt": "2026-11-13T16:30:00.000Z",
+    "status": "scheduled"
+  },
+  "twitter": {
+    "id": "6af6f6f4bd1182b0d3edd4cf",
+    "dueAt": "2026-11-13T16:30:00.000Z",
+    "status": "scheduled"
+  }
+}
