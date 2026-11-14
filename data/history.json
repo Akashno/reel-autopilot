@@ -174,5 +174,17 @@
       "Plucky Dumpling"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-14-2200",
+    "title": "The 3 AM fridge light",
+    "angle": "late-night",
+    "summary": "A relatable 3 AM ritual of standing in the fridge light with nothing to do, where a stranger is also awake and doing the same thing; opens on a question, not a hook.",
+    "hook": "3 AM, wide awake. What do you do?",
+    "scenes": "question>rating>match>chat>call>end",
+    "names": [
+      "Lazy Pretzel"
+    ],
+    "status": "rendered"
   }
 ]
