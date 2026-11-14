@@ -1,0 +1,98 @@
+{
+  "idea": {
+    "title": "Stop opening with asl",
+    "angle": "omegle-nostalgia",
+    "summary": "A cheeky dare to retire the old Omegle opener 'asl', ranked against better openers, then a voice-call chat where the better opener wins.",
+    "hookOptions": [
+      "Stop opening chats with asl.",
+      "Omegle shut down in 2023",
+      "I miss talking to random strangers",
+      "Nobody typed hello on Omegle",
+      "asl? That was the opener."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Stop opening chats",
+        "with asl."
+      ],
+      "highlight": "asl",
+      "say": "Please stop opening with asl. It's not 2012."
+    },
+    {
+      "type": "rating",
+      "title": "Stranger openers, ranked",
+      "items": [
+        {
+          "label": "asl?",
+          "stars": 1
+        },
+        {
+          "label": "hey",
+          "stars": 2
+        },
+        {
+          "label": "Best snack at 2am?",
+          "stars": 5
+        }
+      ],
+      "say": "Omegle's gone. The openers can improve."
+    },
+    {
+      "type": "match",
+      "avatar": "PriyaMumbai",
+      "name": "Salty Parrot",
+      "say": "Now it's one tap, and voice only."
+    },
+    {
+      "type": "chat",
+      "avatar": "PriyaMumbai",
+      "name": "Salty Parrot",
+      "messages": [
+        {
+          "from": "them",
+          "text": "asl?"
+        },
+        {
+          "from": "me",
+          "text": "ancient. try again"
+        },
+        {
+          "from": "them",
+          "text": "ok fine. best snack at 2am?"
+        },
+        {
+          "from": "me",
+          "text": "cold pizza, obviously"
+        }
+      ],
+      "say": "She said asl. I roasted her. She recovered with snacks."
+    },
+    {
+      "type": "appclip",
+      "clip": "2am",
+      "headline": "Tap. Talk. Skip.",
+      "sub": "No camera, no signup",
+      "say": "No camera. No signup. Just talk."
+    },
+    {
+      "type": "end",
+      "tagline": "Say better than asl.",
+      "say": "Random Talker. Open with pizza, not asl."
+    }
+  ],
+  "post": {
+    "caption": "Omegle is gone, but talking to a random stranger is still fun. Now it's just your voice. No camera, no signup. What was your go-to opener back then? Try it at randomtalker.com (link in bio).",
+    "hashtags": [
+      "#randomtalker",
+      "#omegle",
+      "#strangers",
+      "#voicechat",
+      "#nostalgia"
+    ],
+    "youtubeTitle": "Stop opening chats with asl #shorts",
+    "xText": "Omegle is gone. Talking to strangers isn't. Voice only, no camera, no signup. randomtalker.com"
+  }
+}
