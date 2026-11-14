@@ -150,5 +150,17 @@
       "Soft Walrus"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-14-1300",
+    "title": "Nice was an insult",
+    "angle": "english-word-stories",
+    "summary": "The word nice meant foolish when English borrowed it from French, and slowly turned into a compliment; closes on saying nice to meet you to a stranger.",
+    "hook": "Nice used to mean stupid.",
+    "scenes": "hook>prop>bigword>count>match>end",
+    "names": [
+      "Cheeky Lemon"
+    ],
+    "status": "rendered"
   }
 ]

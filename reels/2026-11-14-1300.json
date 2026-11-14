@@ -1,0 +1,90 @@
+{
+  "idea": {
+    "title": "Nice was an insult",
+    "angle": "english-word-stories",
+    "format": "story",
+    "summary": "The word nice meant foolish when English borrowed it from French, and slowly turned into a compliment; closes on saying nice to meet you to a stranger.",
+    "hookOptions": [
+      "Nice used to mean stupid",
+      "You say nice all day. It was an insult.",
+      "I called him nice. In 1290 that was rude.",
+      "The nicest word in English started as an insult"
+    ],
+    "sources": [
+      "Etymonline 'nice': late 13c., 'foolish, stupid, senseless', from Old French nice 'silly, foolish', from Latin nescius 'ignorant', from nescire 'not know'.",
+      "Etymonline 'nice': meaning shifted over centuries, with senses like 'kind, thoughtful' by the 1700s (Merriam-Webster also notes the shift from foolish to pleasant)."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Nice used to",
+        "mean stupid."
+      ],
+      "highlight": "stupid",
+      "say": "The word nice used to mean stupid."
+    },
+    {
+      "type": "prop",
+      "prop": "fool-cap",
+      "move": "pop",
+      "on": "foolish",
+      "text": "NICE = FOOLISH",
+      "textOn": "silly",
+      "say": "In the 1200s, English borrowed it from French, where it meant silly or foolish."
+    },
+    {
+      "type": "bigword",
+      "word": "Latin",
+      "sub": "nescius: not knowing",
+      "say": "The root is Latin, nescius, which means ignorant."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "1200s",
+          "label": "Foolish",
+          "on": "insult"
+        },
+        {
+          "value": "1700s",
+          "label": "Kind",
+          "on": "kind"
+        }
+      ],
+      "say": "For centuries it was an insult, until the 1700s, when it slowly turned kind."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Cheeky Lemon",
+      "say": "So when you tell a stranger nice to meet you, that word changed sides."
+    },
+    {
+      "type": "end",
+      "tagline": "Say nice to meet you.",
+      "say": "Go say it to someone new."
+    }
+  ],
+  "props": [
+    {
+      "name": "fool-cap",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"350\" rx=\"130\" ry=\"20\" fill=\"#000\" opacity=\".15\"/><path d=\"M90 300 L70 120 Q110 80 160 190 Z\" fill=\"#e63946\"/><path d=\"M310 300 L330 120 Q290 80 240 190 Z\" fill=\"#2a6fdb\"/><path d=\"M130 300 L200 70 L270 300 Z\" fill=\"#f4b400\"/><path d=\"M150 290 L200 110 L215 160 L180 290 Z\" fill=\"#ffd95e\"/><rect x=\"90\" y=\"290\" width=\"220\" height=\"45\" rx=\"20\" fill=\"#7b2cbf\"/><rect x=\"100\" y=\"295\" width=\"90\" height=\"12\" rx=\"6\" fill=\"#a45ee0\"/><circle cx=\"70\" cy=\"110\" r=\"24\" fill=\"#ffd95e\"/><circle cx=\"330\" cy=\"110\" r=\"24\" fill=\"#ffd95e\"/><circle cx=\"200\" cy=\"62\" r=\"26\" fill=\"#ffd95e\"/><circle cx=\"62\" cy=\"102\" r=\"8\" fill=\"#fff3b0\"/><circle cx=\"192\" cy=\"54\" r=\"8\" fill=\"#fff3b0\"/><circle cx=\"322\" cy=\"102\" r=\"8\" fill=\"#fff3b0\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "Nice started as an insult. It meant foolish in the 1200s. Which English word surprised you most? Say nice to meet you to someone new at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#english",
+      "#learnenglish",
+      "#wordorigins",
+      "#etymology",
+      "#spokenenglish"
+    ],
+    "youtubeTitle": "Nice used to mean stupid #shorts",
+    "xText": "Nice used to mean stupid. Say it to someone new: randomtalker.com"
+  }
+}
