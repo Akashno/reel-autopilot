@@ -162,5 +162,17 @@
       "Cheeky Lemon"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-14-1900",
+    "title": "A friend I've never seen",
+    "angle": "make-a-friend",
+    "summary": "A confession that your friend is someone you've never seen: a late-night call, an add-friend tap, and a friendship built on voice alone.",
+    "hook": "I have a friend I've never seen",
+    "scenes": "hook>match>call>chat>features>end",
+    "names": [
+      "Plucky Dumpling"
+    ],
+    "status": "rendered"
   }
 ]
