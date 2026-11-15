@@ -186,5 +186,18 @@
       "Lazy Pretzel"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-15-1300",
+    "title": "The wrong kind of speech",
+    "angle": "mini-drama",
+    "summary": "Fiction: a best man rehearses his wedding speech on a stranger who hears it as a goodbye, then helps him fix the ending.",
+    "hook": "Wedding speech, read to a stranger",
+    "scenes": "hook>prop>chat>people>match>end",
+    "names": [
+      "Wobbly Lantern",
+      "Mellow Kite"
+    ],
+    "status": "rendered"
   }
 ]
