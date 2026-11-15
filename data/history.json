@@ -199,5 +199,17 @@
       "Mellow Kite"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-15-1900",
+    "title": "Deep talk, soup debate",
+    "angle": "expectation-reality",
+    "summary": "Expecting a deep life talk with a stranger, you get a ridiculous soup debate that turns into the best call of the week.",
+    "hook": "Wanted deep talk. Got a soup debate.",
+    "scenes": "hook>versus>match>chat>bigword>end",
+    "names": [
+      "Rowdy Muffin"
+    ],
+    "status": "rendered"
   }
 ]
