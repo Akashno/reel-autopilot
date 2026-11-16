@@ -211,5 +211,15 @@
       "Rowdy Muffin"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-16-1300",
+    "title": "The wrong-number Thanksgiving",
+    "angle": "true-stranger-stories",
+    "summary": "A grandmother's mistyped Thanksgiving invite reaches a teenage stranger in 2016, he asks if he can still come, and they keep sharing the holiday.",
+    "hook": "Wrong number, right dinner",
+    "scenes": "bigword>prop>people>prop>count>bigword>end",
+    "names": [],
+    "status": "rendered"
   }
 ]
