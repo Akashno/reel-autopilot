@@ -221,5 +221,17 @@
     "scenes": "bigword>prop>people>prop>count>bigword>end",
     "names": [],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-16-1900",
+    "title": "He reviewed his cheese",
+    "angle": "stranger-types",
+    "summary": "A field guide to stranger types where the funniest one, the snack narrator, plays out live in a chat, and the viewer is a type too.",
+    "hook": "A stranger just narrated his cheese",
+    "scenes": "hook>rating>match>chat>question>end",
+    "names": [
+      "Fuzzy Comet"
+    ],
+    "status": "rendered"
   }
 ]

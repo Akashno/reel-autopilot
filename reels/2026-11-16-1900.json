@@ -1,0 +1,103 @@
+{
+  "idea": {
+    "title": "He reviewed his cheese",
+    "angle": "stranger-types",
+    "format": "skit",
+    "summary": "A field guide to stranger types where the funniest one, the snack narrator, plays out live in a chat, and the viewer is a type too.",
+    "hookOptions": [
+      "A stranger just narrated his cheese",
+      "I called a stranger and he reviewed his cheese",
+      "The stranger who only says hmm",
+      "Which stranger are you on a call?"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "A stranger",
+        "just narrated",
+        "his cheese"
+      ],
+      "highlight": "his cheese",
+      "say": "I called a stranger and he reviewed his cheese."
+    },
+    {
+      "type": "rating",
+      "title": "Strangers I've met, rated",
+      "items": [
+        {
+          "label": "The hmm guy",
+          "stars": 2
+        },
+        {
+          "label": "The over-explainer",
+          "stars": 3
+        },
+        {
+          "label": "Instant best friend",
+          "stars": 5
+        },
+        {
+          "label": "The snack guy",
+          "stars": 4
+        }
+      ],
+      "say": "Hmm guy, 2 stars. Best friend, 5. Snack guy? Wait."
+    },
+    {
+      "type": "match",
+      "avatar": "AmaraLDN",
+      "name": "Fuzzy Comet",
+      "say": "Then the call connected, and there he was."
+    },
+    {
+      "type": "chat",
+      "avatar": "AmaraLDN",
+      "name": "Fuzzy Comet",
+      "messages": [
+        {
+          "from": "them",
+          "text": "ok so this cheese is incredible"
+        },
+        {
+          "from": "me",
+          "text": "you're eating cheese right now?"
+        },
+        {
+          "from": "them",
+          "text": "yes. do you want a review"
+        },
+        {
+          "from": "me",
+          "text": "honestly yes"
+        }
+      ],
+      "say": "Best review of my week."
+    },
+    {
+      "type": "question",
+      "question": "Which stranger are you?",
+      "a": "The over-explainer",
+      "b": "The hmm person",
+      "say": "And you? Probably the over-explainer. Sorry."
+    },
+    {
+      "type": "end",
+      "tagline": "Everyone's a type. Say hi.",
+      "say": "Everyone's a type. Find yours."
+    }
+  ],
+  "post": {
+    "caption": "Which stranger are you: the over-explainer, the hmm person, or the snack guy? Tell us below.\n\nMeet your type at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#strangers",
+      "#voicechat",
+      "#funny",
+      "#talktostrangers"
+    ],
+    "youtubeTitle": "A stranger reviewed his cheese on a call #shorts",
+    "xText": "I called a stranger and he reviewed his cheese. Which type are you? randomtalker.com"
+  }
+}
