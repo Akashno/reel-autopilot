@@ -245,5 +245,17 @@
       "Breezy Moose"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-17-2200",
+    "title": "What's on your desk",
+    "angle": "conversation-starters",
+    "summary": "Ditch 'how are you' for a small, specific question about what's in front of you right now, and watch a stranger's call take off.",
+    "hook": "Never ask a stranger how are you",
+    "scenes": "hook>versus>match>chat>call>end",
+    "names": [
+      "Plain Walrus"
+    ],
+    "status": "rendered"
   }
 ]
