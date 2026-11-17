@@ -233,5 +233,17 @@
       "Fuzzy Comet"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-17-1300",
+    "title": "Mistakenly seeking solitude",
+    "angle": "stranger-science",
+    "summary": "Epley and Schroeder's 2014 commuter study: people expected a quiet ride alone to be better, but those asked to talk to a stranger enjoyed it more. Opens as a question so the viewer guesses first.",
+    "hook": "Talk to a stranger on the train?",
+    "scenes": "question>prop>people>bigword>call>end",
+    "names": [
+      "Breezy Moose"
+    ],
+    "status": "rendered"
   }
 ]
