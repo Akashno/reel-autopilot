@@ -279,5 +279,17 @@
       "Brave Pigeon"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-18-2200",
+    "title": "No fake phone call needed",
+    "angle": "skip-culture",
+    "summary": "Escaping a boring conversation in real life needs excuses; here one tap skips, and the next person turns out to be a sandwich debater.",
+    "hook": "Stuck in small talk?",
+    "scenes": "hook>versus>appclip>match>chat>end",
+    "names": [
+      "Chatty Gecko"
+    ],
+    "status": "rendered"
   }
 ]
