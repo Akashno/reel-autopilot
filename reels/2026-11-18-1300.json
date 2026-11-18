@@ -1,0 +1,105 @@
+{
+  "idea": {
+    "title": "The undertaker's dial",
+    "angle": "history-of-stranger-chat",
+    "format": "story",
+    "summary": "Almon Strowger, a Kansas City undertaker, believed an operator was steering his callers away and invented the automatic phone exchange, so calls no longer needed a human go-between.",
+    "hookOptions": [
+      "An undertaker invented the phone dial",
+      "He thought the operator stole his customers",
+      "Phone dials exist because of a funeral home",
+      "Nobody trusted the operator, so he built a dial"
+    ],
+    "sources": [
+      "Wikipedia: Almon Strowger: Kansas City undertaker who believed operators diverted his business to a competitor; patented the step-by-step switch in 1891.",
+      "Wikipedia: Almon Strowger / Strowger switch: first automatic exchange opened in La Porte, Indiana, in 1892."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "An undertaker",
+        "invented the",
+        "phone dial"
+      ],
+      "highlight": "phone dial",
+      "say": "An undertaker invented the phone dial because he thought an operator was stealing customers."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "label": "Almon Strowger",
+          "prop": "undertaker",
+          "on": "Strowger"
+        }
+      ],
+      "say": "Almon Strowger ran a funeral business in Kansas City, and he believed the operator sent his callers elsewhere.",
+      "textOn": "believed",
+      "text": "Where did my calls go?"
+    },
+    {
+      "type": "prop",
+      "prop": "phone",
+      "move": "pop",
+      "on": "operator",
+      "say": "Back then, a human operator plugged in every call by hand."
+    },
+    {
+      "type": "bigword",
+      "word": "1891",
+      "sub": "He patents a switch",
+      "say": "So in 1891, he patented a switch that let callers connect themselves."
+    },
+    {
+      "type": "prop",
+      "prop": "dial",
+      "move": "spin",
+      "on": "dial",
+      "say": "No operator needed, just a dial and your finger."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "1892",
+          "label": "La Porte, Indiana",
+          "on": "1892"
+        }
+      ],
+      "say": "The first exchange like it opened in La Porte, Indiana, in 1892."
+    },
+    {
+      "type": "end",
+      "tagline": "No middleman. Just say hello.",
+      "say": "Today it's one tap, and a stranger picks up."
+    }
+  ],
+  "props": [
+    {
+      "name": "undertaker",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"360\" rx=\"140\" ry=\"20\" fill=\"#000\" opacity=\".15\"/><path d=\"M70 360 L80 270 Q200 220 320 270 L330 360 Z\" fill=\"#2b2b3a\"/><path d=\"M170 245 L200 320 L230 245 Z\" fill=\"#f4f4f4\"/><path d=\"M195 262 L205 262 L210 315 L200 325 L190 315 Z\" fill=\"#8a1c2b\"/><rect x=\"175\" y=\"215\" width=\"50\" height=\"40\" fill=\"#e8b48c\"/><circle cx=\"200\" cy=\"170\" r=\"60\" fill=\"#f2c29b\"/><circle cx=\"180\" cy=\"165\" r=\"7\" fill=\"#222\"/><circle cx=\"220\" cy=\"165\" r=\"7\" fill=\"#222\"/><path d=\"M180 200 Q200 215 220 200\" stroke=\"#8a3b2b\" stroke-width=\"6\" fill=\"none\"/><path d=\"M165 150 Q200 135 235 150 Q240 195 200 205 Q160 195 165 150Z\" fill=\"#5a3b25\" opacity=\".0\"/><rect x=\"150\" y=\"85\" width=\"100\" height=\"15\" fill=\"#15151f\"/><rect x=\"165\" y=\"30\" width=\"70\" height=\"60\" fill=\"#1d1d2b\"/><path d=\"M165 85 L235 85 L235 100 L165 100Z\" fill=\"#3a3a52\"/><path d=\"M85 275 Q120 250 150 262\" stroke=\"#4a4a63\" stroke-width=\"10\" fill=\"none\"/></svg>"
+    },
+    {
+      "name": "phone",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"360\" rx=\"120\" ry=\"18\" fill=\"#000\" opacity=\".15\"/><rect x=\"150\" y=\"330\" width=\"100\" height=\"22\" rx=\"8\" fill=\"#3b2a1d\"/><rect x=\"185\" y=\"130\" width=\"30\" height=\"205\" fill=\"#6b4a2f\"/><rect x=\"190\" y=\"130\" width=\"8\" height=\"205\" fill=\"#9a6f48\"/><rect x=\"140\" y=\"80\" width=\"120\" height=\"60\" rx=\"12\" fill=\"#c9a227\"/><rect x=\"150\" y=\"88\" width=\"40\" height=\"12\" rx=\"6\" fill=\"#f0d86a\"/><rect x=\"185\" y=\"40\" width=\"30\" height=\"45\" fill=\"#3b2a1d\"/><path d=\"M255 120 Q320 130 310 200\" stroke=\"#222\" stroke-width=\"6\" fill=\"none\"/><rect x=\"295\" y=\"170\" width=\"40\" height=\"90\" rx=\"16\" fill=\"#222\" transform=\"rotate(-10 315 215)\"/><rect x=\"300\" y=\"175\" width=\"10\" height=\"70\" rx=\"5\" fill=\"#555\" transform=\"rotate(-10 315 215)\"/></svg>"
+    },
+    {
+      "name": "dial",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"365\" rx=\"130\" ry=\"18\" fill=\"#000\" opacity=\".15\"/><circle cx=\"200\" cy=\"195\" r=\"150\" fill=\"#1f1f1f\"/><circle cx=\"185\" cy=\"180\" r=\"140\" fill=\"#2c2c2c\"/><circle cx=\"200\" cy=\"195\" r=\"115\" fill=\"#f4efe0\"/><circle cx=\"200\" cy=\"195\" r=\"35\" fill=\"#c9a227\"/><circle cx=\"195\" cy=\"190\" r=\"22\" fill=\"#f0d86a\"/><g fill=\"#2c2c2c\"><circle cx=\"200\" cy=\"100\" r=\"16\"/><circle cx=\"245\" cy=\"112\" r=\"16\"/><circle cx=\"278\" cy=\"145\" r=\"16\"/><circle cx=\"290\" cy=\"195\" r=\"16\"/><circle cx=\"278\" cy=\"245\" r=\"16\"/><circle cx=\"245\" cy=\"278\" r=\"16\"/><circle cx=\"200\" cy=\"290\" r=\"16\"/><circle cx=\"155\" cy=\"278\" r=\"16\"/><circle cx=\"122\" cy=\"245\" r=\"16\"/><circle cx=\"110\" cy=\"195\" r=\"16\"/></g><path d=\"M95 145 Q80 190 110 262\" stroke=\"#8a8a8a\" stroke-width=\"10\" fill=\"none\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "Phone dials exist because one undertaker didn't trust the operator. Funny how we've gone from fighting the middleman to one tap and a stranger on the line. Would you have picked up? Try it at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#history",
+      "#storytime",
+      "#didyouknow",
+      "#telephone"
+    ],
+    "youtubeTitle": "An undertaker invented the phone dial #shorts",
+    "xText": "An undertaker invented the phone dial because he thought the operator was stealing his customers. Now it's one tap. randomtalker.com"
+  }
+}

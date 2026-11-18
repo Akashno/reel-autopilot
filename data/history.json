@@ -257,5 +257,15 @@
       "Plain Walrus"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-18-1300",
+    "title": "The undertaker's dial",
+    "angle": "history-of-stranger-chat",
+    "summary": "Almon Strowger, a Kansas City undertaker, believed an operator was steering his callers away and invented the automatic phone exchange, so calls no longer needed a human go-between.",
+    "hook": "An undertaker invented the phone dial",
+    "scenes": "hook>people>prop>bigword>prop>count>end",
+    "names": [],
+    "status": "rendered"
   }
 ]
