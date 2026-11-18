@@ -267,5 +267,17 @@
     "scenes": "hook>people>prop>bigword>prop>count>end",
     "names": [],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-18-1900",
+    "title": "The oldest thing you own",
+    "angle": "tiny-challenges",
+    "summary": "A tiny challenge: ask your next stranger what the oldest thing they own is, and comment the answer. Ours was a cereal spoon.",
+    "hook": "POV: I asked a stranger: what's the oldest thing you own?",
+    "scenes": "pov>match>chat>call>question>end",
+    "names": [
+      "Brave Pigeon"
+    ],
+    "status": "rendered"
   }
 ]
