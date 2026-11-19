@@ -316,5 +316,17 @@
       "Jolly Anchor"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-19-2200",
+    "title": "Sorry for my own voice",
+    "angle": "confidence",
+    "summary": "A shaky first call where you apologise for your own voice, met by a fellow first-timer; confidence is a gym and the first rep is just saying hi.",
+    "hook": "I said sorry for my own voice",
+    "scenes": "hook>versus>match>chat>count>end",
+    "names": [
+      "Timid Cactus"
+    ],
+    "status": "rendered"
   }
 ]
