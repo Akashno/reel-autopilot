@@ -44,7 +44,7 @@
       { "family": "Plus Jakarta Sans", "file": "fonts/PlusJakartaSans-SemiBold.ttf", "weight": 600 }
     ]
   },
-  "logo": "logo/mynah.svg",
+  "logo": "logo/mynah-3d.png",
 
   "scenes": ["hook", "pov", "bigword", "question", "match", "call", "chat", "appclip", "games", "features", "list", "rating", "versus", "prop", "people", "count", "end"],
   "productScenes": ["match", "call", "chat", "appclip", "games"],
