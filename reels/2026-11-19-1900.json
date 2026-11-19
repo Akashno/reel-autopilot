@@ -1,0 +1,92 @@
+{
+  "idea": {
+    "title": "The k. problem",
+    "angle": "texting-vs-voice",
+    "format": "skit",
+    "summary": "A one-letter text 'k.' has no tone, so you overthink it; a stranger on a call laughs and settles the mystery in seconds.",
+    "hookOptions": [
+      "She texted me 'k.' Am I in trouble?",
+      "I overthought one letter for an hour",
+      "Nobody can hear your 'lol'",
+      "Texting hides the one thing you need"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "bigword",
+      "word": "k.",
+      "sub": "Angry? Fine? Nobody knows.",
+      "say": "She texted me 'k.' Am I in trouble?"
+    },
+    {
+      "type": "chat",
+      "avatar": "AmaraLDN",
+      "name": "Tipsy Teapot",
+      "messages": [
+        {
+          "from": "me",
+          "text": "we're good, right?"
+        },
+        {
+          "from": "them",
+          "text": "k."
+        },
+        {
+          "from": "me",
+          "text": "are you mad??"
+        },
+        {
+          "from": "them",
+          "text": "no lol"
+        },
+        {
+          "from": "me",
+          "text": "that lol sounded mad"
+        }
+      ],
+      "say": "One hour of overthinking. Zero answers."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Jolly Anchor",
+      "say": "So I called a stranger and asked for a second opinion."
+    },
+    {
+      "type": "call",
+      "avatar": "KenjiJP",
+      "name": "Jolly Anchor",
+      "label": "0:07",
+      "say": "He laughed: 'Bro, I'm fine, I just type short.' Mystery solved."
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "Text",
+        "text": "ok."
+      },
+      "right": {
+        "label": "Voice",
+        "text": "okay! haha, yeah, totally"
+      },
+      "say": "Same word. Totally different sound."
+    },
+    {
+      "type": "end",
+      "tagline": "Hear what they meant.",
+      "say": "Hear what people actually mean."
+    }
+  ],
+  "post": {
+    "caption": "A text can say 'ok' in ten different moods. A voice can't hide it. Which text have you overthought the most? Try a voice call with someone new at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#texting",
+      "#voicecall",
+      "#talktostrangers",
+      "#overthinking"
+    ],
+    "youtubeTitle": "She texted me 'k.' Am I in trouble? #shorts",
+    "xText": "Nobody can hear your 'lol' in a text. A voice call fixes that. randomtalker.com"
+  }
+}

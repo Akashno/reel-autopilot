@@ -303,5 +303,18 @@
       "Humble Falcon"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-19-1900",
+    "title": "The k. problem",
+    "angle": "texting-vs-voice",
+    "summary": "A one-letter text 'k.' has no tone, so you overthink it; a stranger on a call laughs and settles the mystery in seconds.",
+    "hook": "k. Angry? Fine? Nobody knows.",
+    "scenes": "bigword>chat>match>call>versus>end",
+    "names": [
+      "Tipsy Teapot",
+      "Jolly Anchor"
+    ],
+    "status": "rendered"
   }
 ]
