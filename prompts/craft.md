@@ -118,7 +118,7 @@ fit (an old woman, a soldier in 1914) is a prop too, used in `people`.
 - `prop`: a big close-up of one of your drawn `props` that moves (`move`: pop, float, drop, shake, spin, slide, grow) on the word `on`, with an optional paper slip `text` (<=28 chars) on `textOn`. `night: true` for a night sky.
 - `people`: 1-3 people with name `label`s (<=18 chars), each an app avatar or one of your props (a drawn person: a grandmother, a soldier), popping on their `on` word; optional `item` prop with them and a slip `text`.
 - `count`: 1-3 big number cards (`value` <=8 chars, `label`), each popping on its `on` word. Perfect for the payoff.
-- `end`: logo, your tagline (<=32 chars), {{site}}. Always last, only once.
+- `end`: logo, your tagline (<=32 chars), {{site}}. Always last, only once. Its voice line always says {{site}} out loud as the last words of the reel, in a short natural line that fits the story ("Find yours on {{site}}.", "Try it tonight on {{site}}."), 8 words at most.
 
 Avatars: {{avatars}}.
 No two scenes of the same type back to back.

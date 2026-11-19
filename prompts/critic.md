@@ -22,7 +22,7 @@ describe the problem). Return only the JSON object.
 Your fixes must work inside the fixed format: scenes come only from the library (hook, pov,
 bigword, question, match, call, chat, appclip, games, features, list, rating, versus, prop,
 people, count, end); scene 1
-must be hook, pov, bigword or question; scene 2 is never another opener; the last scene is end;
+must be hook, pov, bigword or question; scene 2 is never another opener; the last scene is end and its voice line says {{site}};
 5-7 scenes for a skit (6-9 for a story); voice lines 14 words at most, 10 on text-heavy scenes
 (a story: 18 and 14, with product scenes only in the last two before the end); one stranger keeps one nickname
 and avatar. Rewrite lines and swap scenes within these rules.

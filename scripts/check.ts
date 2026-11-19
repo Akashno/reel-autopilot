@@ -217,6 +217,10 @@ export function checkReel(reel: unknown): string[] {
   const site = new RegExp(escape(BRAND.site), 'i')
   if (!site.test(r.post.caption) || !site.test(r.post.xText))
     errors.push(`caption and xText must mention ${BRAND.site}`)
+  // the brand is said out loud at the end, so sound-on viewers hear where to go
+  const last = r.scenes[r.scenes.length - 1]
+  if (last?.type === 'end' && !site.test(last.say ?? ''))
+    errors.push(`the end scene's voice line must say ${BRAND.site} (e.g. "Try it tonight on ${BRAND.site}.")`)
   return errors
 }
 
