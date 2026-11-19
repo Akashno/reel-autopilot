@@ -328,5 +328,17 @@
       "Timid Cactus"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-20-1300",
+    "title": "The rice cooker beep",
+    "angle": "mini-drama",
+    "summary": "Fiction: a stranger keeps vanishing mid-call and he thinks he's boring, but it's her rice cooker beeping, and she ends up talking him through his first pot of rice.",
+    "hook": "\"One second.\" Then she vanished.",
+    "scenes": "hook>prop>chat>people>call>end",
+    "names": [
+      "Steamy Owl"
+    ],
+    "status": "test"
   }
 ]
