@@ -291,5 +291,17 @@
       "Chatty Gecko"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-19-1300",
+    "title": "Goodbye was a blessing",
+    "angle": "english-word-stories",
+    "summary": "Goodbye began as the blessing God be with ye, squashed into one word in the 1500s; closes on every stranger's bye being a small well-wish.",
+    "hook": "Goodbye used to be a prayer",
+    "scenes": "hook>prop>count>bigword>call>end",
+    "names": [
+      "Humble Falcon"
+    ],
+    "status": "rendered"
   }
 ]
