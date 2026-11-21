@@ -352,5 +352,15 @@
       "Tiny Bagel"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-21-1300",
+    "title": "The 1914 Christmas truce",
+    "angle": "true-stranger-stories",
+    "summary": "On Christmas Eve 1914, enemy soldiers on the Western Front sang carols across the trenches and met in no man's land: strangers choosing to talk.",
+    "hook": "Soldiers stopped a war for Christmas",
+    "scenes": "hook>prop>people>bigword>count>end",
+    "names": [],
+    "status": "rendered"
   }
 ]
