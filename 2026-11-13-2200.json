@@ -1,0 +1,98 @@
+{
+  "idea": {
+    "title": "Two thousand bottle caps",
+    "angle": "anonymity",
+    "format": "skit",
+    "summary": "A funny confession: a secret hobby you'd never tell friends is easy to say to a stranger who only knows your nickname, and they confess something weirder.",
+    "hookOptions": [
+      "I have 2,000 bottle caps. Nobody knows.",
+      "I told a stranger what I never tell friends",
+      "Nobody here knows my name",
+      "Confession: I'm more honest with strangers",
+      "You can tell Soft Walrus anything"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "pov",
+      "text": "I have 2,000 bottle caps and I've never told anyone",
+      "say": "I have two thousand bottle caps. Nobody knows."
+    },
+    {
+      "type": "rating",
+      "title": "Who can you tell?",
+      "items": [
+        {
+          "label": "Your friends",
+          "stars": 2
+        },
+        {
+          "label": "Your family",
+          "stars": 1
+        },
+        {
+          "label": "A stranger",
+          "stars": 5
+        }
+      ],
+      "say": "Friends laugh. Family worries. A stranger said, show me."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Soft Walrus",
+      "say": "No profile, no face, just a nickname and a cartoon."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Soft Walrus",
+      "messages": [
+        {
+          "from": "me",
+          "text": "i collect bottle caps. like 2000 of them"
+        },
+        {
+          "from": "them",
+          "text": "wait that's amazing, show me the best one"
+        },
+        {
+          "from": "me",
+          "text": "you're not laughing?"
+        },
+        {
+          "from": "them",
+          "text": "i knit sweaters for my plants"
+        }
+      ],
+      "say": "He knits for plants. I collect caps."
+    },
+    {
+      "type": "features",
+      "headline": "Be nobody. Be yourself.",
+      "items": [
+        "anonymous",
+        "no-camera",
+        "no-signup"
+      ],
+      "say": "Nobody's judging a face they can't see."
+    },
+    {
+      "type": "end",
+      "tagline": "Nobody knows you. Say it anyway.",
+      "say": "Say the weird thing. Someone's waiting to say theirs."
+    }
+  ],
+  "post": {
+    "caption": "What's the weird thing you'd finally admit to a stranger? Tell us below.\nNo profile, no face, just a nickname. Try it at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#anonymous",
+      "#talktostrangers",
+      "#voicechat",
+      "#introvert"
+    ],
+    "youtubeTitle": "I have 2,000 bottle caps and nobody knows #shorts",
+    "xText": "No name, no face, just a nickname. Say the weird thing. randomtalker.com"
+  }
+}

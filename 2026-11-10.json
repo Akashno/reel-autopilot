@@ -1,0 +1,78 @@
+{
+  "idea": {
+    "title": "Forty seconds of chewing",
+    "angle": "games",
+    "summary": "A call opens with a painful silence where you can hear the stranger chewing, until a Tic-Tac-Toe challenge turns it into banter and a rematch.",
+    "hookOptions": [
+      "Call connects. He says hi. Then nothing.",
+      "I could hear him chewing for forty seconds",
+      "Awkward silence? Play Tic-Tac-Toe",
+      "I beat a stranger at Tic-Tac-Toe instead of small talk",
+      "Nobody knows what to say in the first ten seconds"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "pov",
+      "text": "Call connects. He says hi. Then nothing.",
+      "say": "Forty seconds of silence. I could hear him chewing."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Soggy Pancake",
+      "say": "His name was Soggy Pancake. I had nothing."
+    },
+    {
+      "type": "games",
+      "pick": "tictactoe",
+      "headline": "Pick a game instead",
+      "say": "So I skipped small talk and sent a game invite."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Soggy Pancake",
+      "messages": [
+        {
+          "from": "them",
+          "text": "wait you went first, that's cheating"
+        },
+        {
+          "from": "me",
+          "text": "that's called strategy"
+        },
+        {
+          "from": "them",
+          "text": "rematch. now."
+        }
+      ],
+      "say": "He accused me of cheating. We were friends now."
+    },
+    {
+      "type": "call",
+      "avatar": "LeoRio",
+      "name": "Soggy Pancake",
+      "label": "0:41 in, still talking",
+      "say": "He stopped chewing to trash talk me."
+    },
+    {
+      "type": "end",
+      "tagline": "Talk to someone new",
+      "say": "Random Talker. Talk to someone new."
+    }
+  ],
+  "post": {
+    "caption": "Nobody knows what to say in the first 10 seconds. A game fixes that. UNO, Ludo, Tic-Tac-Toe and more, right inside the call.\nWhich game would you open with?\nTry it free at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#talktostrangers",
+      "#icebreaker",
+      "#tictactoe",
+      "#onlinegames",
+      "#voicechat"
+    ],
+    "youtubeTitle": "Call connects. He says hi. Then nothing. #shorts",
+    "xText": "Awkward silence with a stranger? Challenge them to Tic-Tac-Toe. randomtalker.com"
+  }
+}

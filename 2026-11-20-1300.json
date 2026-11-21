@@ -1,0 +1,103 @@
+{
+  "idea": {
+    "title": "The rice cooker beep",
+    "angle": "mini-drama",
+    "format": "story",
+    "summary": "Fiction: a stranger keeps vanishing mid-call and he thinks he's boring, but it's her rice cooker beeping, and she ends up talking him through his first pot of rice.",
+    "hookOptions": [
+      "She kept saying one second, then vanished",
+      "The stranger kept disappearing every ten minutes",
+      "Why does she keep leaving the call?",
+      "He thought he was boring her"
+    ]
+  },
+  "props": [
+    {
+      "name": "rice-cooker",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"340\" rx=\"130\" ry=\"20\" fill=\"#000\" opacity=\".15\"/><rect x=\"80\" y=\"170\" width=\"240\" height=\"160\" rx=\"40\" fill=\"#f4efe6\"/><path d=\"M280 170 H320 V290 Q320 330 280 330 Z\" fill=\"#d9d1c2\"/><path d=\"M90 180 Q200 60 310 180 Z\" fill=\"#e85d4a\"/><path d=\"M110 175 Q170 105 230 100 Q150 120 125 180 Z\" fill=\"#f58a79\"/><circle cx=\"200\" cy=\"92\" r=\"16\" fill=\"#555\"/><rect x=\"150\" y=\"230\" width=\"100\" height=\"50\" rx=\"12\" fill=\"#3b3b4f\"/><circle cx=\"175\" cy=\"255\" r=\"9\" fill=\"#ffd447\"/><circle cx=\"205\" cy=\"255\" r=\"9\" fill=\"#6fd18b\"/><rect x=\"98\" y=\"190\" width=\"30\" height=\"120\" rx=\"14\" fill=\"#fff\" opacity=\".6\"/><path d=\"M170 60 Q150 30 175 10 M230 60 Q250 30 225 10\" stroke=\"#bbb\" stroke-width=\"8\" fill=\"none\" stroke-linecap=\"round\"/></svg>"
+    }
+  ],
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "\"One second.\"",
+        "Then she vanished."
+      ],
+      "highlight": "vanished",
+      "say": "A stranger kept saying one second, then going quiet for a whole minute."
+    },
+    {
+      "type": "prop",
+      "prop": "rice-cooker",
+      "move": "shake",
+      "on": "rice cooker",
+      "text": "BEEP BEEP",
+      "textOn": "beeping",
+      "say": "It was her rice cooker, beeping from the kitchen, and he thought she was bored."
+    },
+    {
+      "type": "chat",
+      "avatar": "PriyaMumbai",
+      "name": "Steamy Owl",
+      "messages": [
+        {
+          "from": "me",
+          "text": "you keep leaving. am i that boring"
+        },
+        {
+          "from": "them",
+          "text": "no!! the rice cooker keeps beeping"
+        },
+        {
+          "from": "me",
+          "text": "i have never made rice in my life"
+        }
+      ],
+      "say": "So he finally said it out loud."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "avatar": "PriyaMumbai",
+          "label": "Steamy Owl",
+          "on": "She"
+        },
+        {
+          "avatar": "KenjiJP",
+          "label": "Late Spoon",
+          "on": "he"
+        }
+      ],
+      "item": "rice-cooker",
+      "text": "RICE FOR TWO",
+      "textOn": "rice",
+      "say": "She laughed, because he'd been eating cereal for dinner, and said fine, rice, now."
+    },
+    {
+      "type": "call",
+      "avatar": "PriyaMumbai",
+      "name": "Steamy Owl",
+      "label": "Two kitchens, one pot",
+      "say": "She talked him through it, one beep at a time, until both kitchens smelled the same."
+    },
+    {
+      "type": "end",
+      "tagline": "Someone's kitchen is calling",
+      "say": "Find yours on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "A tiny made-up story about a beep, a misunderstanding and a first pot of rice. What would you have guessed was going on? Tap once and talk to someone new at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#minidrama",
+      "#strangers",
+      "#voicechat",
+      "#storytime"
+    ],
+    "youtubeTitle": "She kept saying \"one second\" and vanishing #shorts",
+    "xText": "A short made-up story: she kept vanishing mid-call, and it wasn't him. randomtalker.com"
+  }
+}

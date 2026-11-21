@@ -1,0 +1,78 @@
+{
+  "idea": {
+    "title": "Ten minutes, one name",
+    "angle": "boredom",
+    "format": "skit",
+    "summary": "Trade ten minutes of forgettable scrolling for a call with someone you actually remember, ending on a count of what you kept.",
+    "hookOptions": [
+      "You watched 47 reels. Name one.",
+      "Bored of scrolling at 7 PM?",
+      "I scrolled for an hour and remember nothing",
+      "Ten minutes of scrolling or one conversation"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "bigword",
+      "word": "47 reels",
+      "sub": "Name one. Anything.",
+      "say": "You watched 47 reels. Name one."
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "Scrolling",
+        "text": "10 minutes, remember nothing"
+      },
+      "right": {
+        "label": "Calling",
+        "text": "10 minutes, remember a name"
+      },
+      "say": "Same ten minutes. Pick one."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Crispy Otter",
+      "say": "I tapped call instead and got Crispy Otter, also bored."
+    },
+    {
+      "type": "call",
+      "avatar": "KenjiJP",
+      "name": "Crispy Otter",
+      "label": "7:12 PM",
+      "say": "He ranked cereals for ten minutes. Honey Loops won, obviously."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "47 reels",
+          "label": "forgotten"
+        },
+        {
+          "value": "1 guy",
+          "label": "Crispy Otter, kept"
+        }
+      ],
+      "say": "47 reels, gone. His cereal tier list stays."
+    },
+    {
+      "type": "end",
+      "tagline": "Swap the scroll for a hello.",
+      "say": "Swap the scroll for a hello."
+    }
+  ],
+  "post": {
+    "caption": "Ten minutes of scrolling vanishes. Ten minutes with a stranger sticks. What's the last random chat you still remember? Try one at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#boredom",
+      "#doomscrolling",
+      "#talktostrangers",
+      "#voicechat"
+    ],
+    "youtubeTitle": "You watched 47 reels. Name one. #shorts",
+    "xText": "Swap ten minutes of scrolling for one real conversation. randomtalker.com"
+  }
+}

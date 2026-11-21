@@ -1,0 +1,91 @@
+{
+  "idea": {
+    "title": "Shy, in a blanket fort",
+    "angle": "introverts",
+    "summary": "A shy person skips the face-on stress, uses voice only, and bonds with another shy stranger hiding under a blanket, a cozy confession story rather than a feature list.",
+    "hookOptions": [
+      "I'm shy. I call strangers.",
+      "Too shy to talk? Same.",
+      "Nobody sees your face. Nobody.",
+      "My hair is a mess and I'm on a call",
+      "Social battery low? Come anyway"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "I'm shy.",
+        "I call strangers."
+      ],
+      "highlight": "call strangers",
+      "say": "I'm shy, and I still call strangers."
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "Face on screen",
+        "text": "Fix hair. Clean room. Panic."
+      },
+      "right": {
+        "label": "Voice only",
+        "text": "Blanket on. Hair whatever."
+      },
+      "say": "Guess which one I picked."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Sleepy Noodle",
+      "say": "Matched in seconds. No camera, no face."
+    },
+    {
+      "type": "chat",
+      "avatar": "KenjiJP",
+      "name": "Sleepy Noodle",
+      "messages": [
+        {
+          "from": "me",
+          "text": "sorry, I'm kind of shy"
+        },
+        {
+          "from": "them",
+          "text": "same, I'm hiding under a blanket"
+        },
+        {
+          "from": "me",
+          "text": "blanket fort gang"
+        },
+        {
+          "from": "them",
+          "text": "ok fort meeting begins"
+        }
+      ],
+      "say": "Shy gets easier when nobody's watching."
+    },
+    {
+      "type": "call",
+      "avatar": "KenjiJP",
+      "name": "Sleepy Noodle",
+      "label": "An hour later",
+      "say": "An hour later, I forgot I was shy."
+    },
+    {
+      "type": "end",
+      "tagline": "Shy is fine. Just say hi.",
+      "say": "Just your voice. Come say hi."
+    }
+  ],
+  "post": {
+    "caption": "Shy people, we see you. No camera, no face, just your voice and a random nickname.\nWhat's your blanket fort setup?\nTry it free to start at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#introvert",
+      "#shy",
+      "#talktostrangers",
+      "#voicechat"
+    ],
+    "youtubeTitle": "I'm shy. I call strangers. #shorts",
+    "xText": "Shy? No camera, no face, just your voice. Blanket optional. randomtalker.com"
+  }
+}

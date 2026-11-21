@@ -1,0 +1,86 @@
+{
+  "idea": {
+    "title": "Goodbye was a blessing",
+    "angle": "english-word-stories",
+    "format": "story",
+    "summary": "Goodbye began as the blessing God be with ye, squashed into one word in the 1500s; closes on every stranger's bye being a small well-wish.",
+    "hookOptions": [
+      "Goodbye used to be a prayer",
+      "Goodbye has God hiding inside it",
+      "You say a blessing every time you hang up",
+      "Goodbye is a prayer in disguise"
+    ],
+    "sources": [
+      "Etymonline: goodbye, 1570s, contraction of God be with ye, with good altered by good day, good night",
+      "Merriam-Webster: goodbye is a contraction of God be with you",
+      "Uncertain part: the influence of good day and good night is described as likely, not certain"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Goodbye used to",
+        "be a prayer"
+      ],
+      "highlight": "a prayer",
+      "say": "You say goodbye every day. It began as a prayer."
+    },
+    {
+      "type": "prop",
+      "prop": "waving-hand",
+      "move": "shake",
+      "on": "God",
+      "text": "God be with ye",
+      "textOn": "ye",
+      "say": "People used to part by saying, God be with ye."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "1570s",
+          "label": "first written as goodbye",
+          "on": "1570s"
+        }
+      ],
+      "say": "By the 1570s, people had mashed it into one word: goodbye."
+    },
+    {
+      "type": "bigword",
+      "word": "good",
+      "sub": "probably from good day",
+      "say": "Dictionaries think good crept in from good day and good night."
+    },
+    {
+      "type": "call",
+      "avatar": "KenjiJP",
+      "name": "Humble Falcon",
+      "label": "Call ending",
+      "say": "So when a stranger says bye, it's a tiny well-wish. Still."
+    },
+    {
+      "type": "end",
+      "tagline": "Every bye is a blessing.",
+      "say": "Next time you say bye, mean it."
+    }
+  ],
+  "props": [
+    {
+      "name": "waving-hand",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"360\" rx=\"110\" ry=\"20\" fill=\"#000\" opacity=\".15\"/><rect x=\"140\" y=\"280\" width=\"120\" height=\"80\" rx=\"16\" fill=\"#3b6fd4\"/><rect x=\"150\" y=\"280\" width=\"30\" height=\"80\" rx=\"14\" fill=\"#5a8af0\"/><rect x=\"105\" y=\"170\" width=\"40\" height=\"110\" rx=\"20\" fill=\"#e8a87c\" transform=\"rotate(-15 125 225)\"/><rect x=\"150\" y=\"70\" width=\"40\" height=\"170\" rx=\"20\" fill=\"#e8a87c\"/><rect x=\"195\" y=\"55\" width=\"40\" height=\"180\" rx=\"20\" fill=\"#e8a87c\"/><rect x=\"240\" y=\"75\" width=\"40\" height=\"165\" rx=\"20\" fill=\"#e8a87c\"/><rect x=\"280\" y=\"110\" width=\"36\" height=\"140\" rx=\"18\" fill=\"#e8a87c\" transform=\"rotate(10 298 180)\"/><rect x=\"140\" y=\"170\" width=\"150\" height=\"130\" rx=\"50\" fill=\"#f2b58a\"/><ellipse cx=\"185\" cy=\"210\" rx=\"28\" ry=\"40\" fill=\"#ffd2b0\" opacity=\".7\"/><rect x=\"158\" y=\"80\" width=\"10\" height=\"90\" rx=\"5\" fill=\"#ffd2b0\"/><rect x=\"203\" y=\"65\" width=\"10\" height=\"90\" rx=\"5\" fill=\"#ffd2b0\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "Goodbye started as God be with ye. Every time you hang up, you're sending a tiny blessing. Which word's story should we do next? Talk to someone new at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#english",
+      "#learnenglish",
+      "#etymology",
+      "#wordorigins"
+    ],
+    "youtubeTitle": "Goodbye used to be a prayer #shorts",
+    "xText": "Goodbye started as God be with ye. Every bye is a tiny blessing. randomtalker.com"
+  }
+}

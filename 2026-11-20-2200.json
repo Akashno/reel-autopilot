@@ -1,0 +1,107 @@
+{
+  "idea": {
+    "title": "Four boxes before hello",
+    "angle": "no-signup",
+    "format": "skit",
+    "summary": "Counting the forms other apps want before you can talk to anyone, versus opening a tab, allowing the mic and talking; a stranger jokes about passwords.",
+    "hookOptions": [
+      "Every app wants your email before hello",
+      "I filled four boxes to talk to nobody",
+      "Password first, conversation never",
+      "POV: sign-up form, again"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "pov",
+      "text": "You just want to talk to someone, but first: email, password, birthday",
+      "say": "I only wanted a chat with someone."
+    },
+    {
+      "type": "list",
+      "title": "Boxes before hello",
+      "items": [
+        "Email",
+        "Password",
+        "Birthday",
+        "Prove you're human"
+      ],
+      "say": "Four boxes in, and still nobody to talk to."
+    },
+    {
+      "type": "appclip",
+      "clip": "2am",
+      "headline": "Tap. Allow mic. Talk.",
+      "sub": "No signup, no download",
+      "say": "So I opened a tab and pressed one button."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Tiny Bagel",
+      "say": "Seconds later, Tiny Bagel said hi."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Tiny Bagel",
+      "messages": [
+        {
+          "from": "them",
+          "text": "wait, no account? no password?"
+        },
+        {
+          "from": "me",
+          "text": "nope, just allowed the mic"
+        },
+        {
+          "from": "them",
+          "text": "i forgot my library card password twice"
+        },
+        {
+          "from": "me",
+          "text": "ok you're my favourite stranger"
+        }
+      ],
+      "say": "Passwords are a shared enemy."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "0",
+          "label": "emails",
+          "on": "Zero"
+        },
+        {
+          "value": "0",
+          "label": "passwords",
+          "on": "passwords"
+        },
+        {
+          "value": "1",
+          "label": "tap",
+          "on": "tap"
+        }
+      ],
+      "say": "Zero emails, zero passwords, one tap."
+    },
+    {
+      "type": "end",
+      "tagline": "Skip the form. Say hi.",
+      "say": "Say hi on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "How many boxes do you fill in before you can actually talk to someone? Here it's a browser tab, your mic and one tap. Free to start.\n\nTry it on randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#talktostrangers",
+      "#nosignup",
+      "#voicechat",
+      "#randomchat"
+    ],
+    "youtubeTitle": "I only wanted a chat, not an account #shorts",
+    "xText": "No email. No password. Just a tab, your mic and a stranger saying hi. randomtalker.com"
+  }
+}

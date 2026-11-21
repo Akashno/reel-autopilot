@@ -1,0 +1,88 @@
+{
+  "idea": {
+    "title": "Silent stranger or loud stranger",
+    "angle": "would-you-rather",
+    "format": "skit",
+    "summary": "A this-or-that about which stranger you'd get: one who talks nonstop or one who only answers 'cool', played out in one chat, ending on a comment prompt.",
+    "hookOptions": [
+      "Would you rather get a stranger who never stops talking?",
+      "Nonstop talker or one-word answers?",
+      "Which stranger are you getting tonight?",
+      "I got a stranger who only said 'cool'",
+      "Awake at 10 PM? Pick your stranger"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "question",
+      "question": "Which stranger would you rather get?",
+      "a": "Talks nonstop",
+      "b": "Only says 'cool'",
+      "say": "Be honest. You already have a favourite."
+    },
+    {
+      "type": "match",
+      "avatar": "AmaraLDN",
+      "name": "Nosy Crumpet",
+      "say": "Say this one connects. Now it's decision time."
+    },
+    {
+      "type": "chat",
+      "avatar": "AmaraLDN",
+      "name": "Nosy Crumpet",
+      "messages": [
+        {
+          "from": "them",
+          "text": "ok so my cousin has a goat, right"
+        },
+        {
+          "from": "them",
+          "text": "and the goat hates Tuesdays"
+        },
+        {
+          "from": "me",
+          "text": "wait why Tuesdays"
+        },
+        {
+          "from": "them",
+          "text": "i'm getting there, so Monday..."
+        }
+      ],
+      "say": "Talkers carry the whole call for you."
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "Nonstop",
+        "text": "You just nod and laugh"
+      },
+      "right": {
+        "label": "One word",
+        "text": "You work for every answer"
+      },
+      "say": "Both have their charm."
+    },
+    {
+      "type": "bigword",
+      "word": "A or B?",
+      "sub": "Comment your pick and why.",
+      "say": "Comment A or B, and tell us why."
+    },
+    {
+      "type": "end",
+      "tagline": "Your stranger. Your pick.",
+      "say": "Meet one on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "Nonstop talker or one-word answers? Which would you rather get on a call? Comment A or B.\n\nTry your luck at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#wouldyourather",
+      "#talktostrangers",
+      "#voicechat"
+    ],
+    "youtubeTitle": "Nonstop talker or one-word stranger? #shorts",
+    "xText": "Would you rather get a stranger who never stops talking, or one who only says 'cool'? randomtalker.com"
+  }
+}

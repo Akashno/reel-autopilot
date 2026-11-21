@@ -1,0 +1,87 @@
+{
+  "idea": {
+    "title": "No fake phone call needed",
+    "angle": "skip-culture",
+    "format": "skit",
+    "summary": "Escaping a boring conversation in real life needs excuses; here one tap skips, and the next person turns out to be a sandwich debater.",
+    "hookOptions": [
+      "Stuck in small talk?",
+      "How do you leave a boring talk?",
+      "I faked a phone call at a party once",
+      "Nobody teaches you how to end a chat"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Stuck in",
+        "small talk?"
+      ],
+      "highlight": "small talk?",
+      "say": "Stuck in small talk with nobody coming to rescue you?"
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "At a party",
+        "text": "Fake a phone call. Hide by the snacks."
+      },
+      "right": {
+        "label": "Here",
+        "text": "Tap skip. Next person. No excuses."
+      },
+      "say": "One of these takes twelve minutes and a lie."
+    },
+    {
+      "type": "appclip",
+      "clip": "safety",
+      "headline": "Skip in one tap",
+      "sub": "Next person connects right away",
+      "say": "Not feeling it? Tap once. Nobody's offended."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Chatty Gecko",
+      "say": "And the next voice is already saying hi."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Chatty Gecko",
+      "messages": [
+        {
+          "from": "them",
+          "text": "ok random, but best sandwich ever?"
+        },
+        {
+          "from": "me",
+          "text": "toasted cheese. no debate."
+        },
+        {
+          "from": "them",
+          "text": "finally, a serious person"
+        }
+      ],
+      "say": "Sometimes the skip was the whole plot twist."
+    },
+    {
+      "type": "end",
+      "tagline": "Not feeling it? Tap again.",
+      "say": "Skip freely. Somebody good is next."
+    }
+  ],
+  "post": {
+    "caption": "No fake phone calls. No awkward goodbyes. Just tap and move on. What's the worst way you've escaped a boring conversation?\n\nTry it at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#talktostrangers",
+      "#voicechat",
+      "#smalltalk",
+      "#introvert"
+    ],
+    "youtubeTitle": "Stuck in small talk? Just tap skip #shorts",
+    "xText": "Leaving a boring chat shouldn't need a fake phone call. One tap, next person. randomtalker.com"
+  }
+}

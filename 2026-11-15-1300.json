@@ -1,0 +1,103 @@
+{
+  "idea": {
+    "title": "The wrong kind of speech",
+    "angle": "mini-drama",
+    "format": "story",
+    "summary": "Fiction: a best man rehearses his wedding speech on a stranger who hears it as a goodbye, then helps him fix the ending.",
+    "hookOptions": [
+      "A man read his wedding speech to a stranger, and she cried.",
+      "She cried at a speech that wasn't sad.",
+      "Best man, one night, no audience.",
+      "He rehearsed on a stranger by mistake."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Wedding speech,",
+        "read to a stranger"
+      ],
+      "highlight": "stranger",
+      "say": "A man read his wedding speech to a stranger, and she started crying."
+    },
+    {
+      "type": "prop",
+      "prop": "speech-cards",
+      "move": "float",
+      "on": "cards",
+      "text": "BEST MAN SPEECH",
+      "textOn": "night",
+      "say": "The night before, the best man had a messy stack of cards and no audience."
+    },
+    {
+      "type": "chat",
+      "avatar": "PriyaMumbai",
+      "name": "Wobbly Lantern",
+      "messages": [
+        {
+          "from": "me",
+          "text": "Tomorrow my best friend's life changes forever."
+        },
+        {
+          "from": "them",
+          "text": "oh no. are you ok? i'm so sorry"
+        },
+        {
+          "from": "me",
+          "text": "He's marrying Meera. I'm the speech guy."
+        },
+        {
+          "from": "them",
+          "text": "ahh. i cried for nothing"
+        }
+      ],
+      "say": "He practised on a random call, and she heard a breakup speech."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "avatar": "LeoRio",
+          "label": "Brave Spoon",
+          "on": "fixed"
+        },
+        {
+          "avatar": "PriyaMumbai",
+          "label": "Wobbly Lantern",
+          "on": "laughed"
+        }
+      ],
+      "say": "She laughed, then fixed his ending, and the next day the whole room cried properly."
+    },
+    {
+      "type": "match",
+      "avatar": "AmaraLDN",
+      "name": "Mellow Kite",
+      "say": "Nervous about something? Say it out loud to someone who's never heard it."
+    },
+    {
+      "type": "end",
+      "tagline": "Say it out loud first.",
+      "say": "Rehearse it on a stranger."
+    }
+  ],
+  "props": [
+    {
+      "name": "speech-cards",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"340\" rx=\"140\" ry=\"22\" fill=\"#000\" opacity=\".15\"/><g transform=\"rotate(-12 200 200)\"><rect x=\"70\" y=\"90\" width=\"240\" height=\"170\" rx=\"12\" fill=\"#d9cfae\"/></g><g transform=\"rotate(8 200 200)\"><rect x=\"90\" y=\"100\" width=\"240\" height=\"170\" rx=\"12\" fill=\"#f2e8c9\"/></g><rect x=\"80\" y=\"110\" width=\"240\" height=\"180\" rx=\"12\" fill=\"#fffaf0\"/><rect x=\"84\" y=\"114\" width=\"110\" height=\"60\" rx=\"8\" fill=\"#fff\" opacity=\".7\"/><rect x=\"110\" y=\"150\" width=\"180\" height=\"10\" rx=\"5\" fill=\"#3a5ba0\"/><rect x=\"110\" y=\"178\" width=\"150\" height=\"10\" rx=\"5\" fill=\"#3a5ba0\"/><rect x=\"110\" y=\"206\" width=\"170\" height=\"10\" rx=\"5\" fill=\"#3a5ba0\"/><path d=\"M110 250 Q150 230 190 250 T270 250\" stroke=\"#d94f4f\" stroke-width=\"8\" fill=\"none\" stroke-linecap=\"round\"/><path d=\"M300 120 L300 290 L320 290 Q320 130 300 120Z\" fill=\"#000\" opacity=\".08\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "A little fiction for your Sunday. Ever practised something out loud on someone who doesn't know you? Say it to a stranger first at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#minidrama",
+      "#strangers",
+      "#storytime",
+      "#voicechat"
+    ],
+    "youtubeTitle": "He read his wedding speech to a stranger #shorts",
+    "xText": "A best man rehearsed his speech on a stranger. She cried. (A short fiction.) randomtalker.com"
+  }
+}

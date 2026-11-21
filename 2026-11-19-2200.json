@@ -1,0 +1,107 @@
+{
+  "idea": {
+    "title": "Sorry for my own voice",
+    "angle": "confidence",
+    "format": "skit",
+    "summary": "A shaky first call where you apologise for your own voice, met by a fellow first-timer; confidence is a gym and the first rep is just saying hi.",
+    "hookOptions": [
+      "I said sorry for my own voice",
+      "My voice shook on my first call",
+      "Shy? Start with one hello",
+      "Nobody is good at call one",
+      "Confidence is a gym"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "I said sorry",
+        "for my own voice"
+      ],
+      "highlight": "my own voice",
+      "say": "My first call, my voice shook so bad I apologised."
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "In my head",
+        "text": "Smooth. Calm. Very cool."
+      },
+      "right": {
+        "label": "Out loud",
+        "text": "Hi... um... sorry... hi."
+      },
+      "say": "Confidence is a gym. Rep one: just say hi."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Timid Cactus",
+      "say": "Call one. Heart going fast."
+    },
+    {
+      "type": "chat",
+      "avatar": "KenjiJP",
+      "name": "Timid Cactus",
+      "messages": [
+        {
+          "from": "me",
+          "text": "sorry, my voice is so shaky lol"
+        },
+        {
+          "from": "them",
+          "text": "mine too, this is my first call"
+        },
+        {
+          "from": "me",
+          "text": "ok good, we can be shaky together"
+        },
+        {
+          "from": "them",
+          "text": "deal. favourite snack, go"
+        }
+      ],
+      "say": "Two nervous people, zero judges."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "1",
+          "label": "call",
+          "on": "call"
+        },
+        {
+          "value": "1",
+          "label": "big laugh",
+          "on": "laugh"
+        },
+        {
+          "value": "1",
+          "label": "new favourite snack",
+          "on": "snack"
+        }
+      ],
+      "say": "One call, one big laugh, one new favourite snack."
+    },
+    {
+      "type": "end",
+      "tagline": "Small hellos. Bigger voice.",
+      "say": "Your next rep is one tap away."
+    }
+  ],
+  "post": {
+    "caption": "Confidence isn't a switch, it's reps. One small hello at a time, with someone who has no idea who you are. What would your first rep be? Try one at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#confidence",
+      "#shy",
+      "#talktostrangers",
+      "#socialanxiety",
+      "#voicechat"
+    ],
+    "youtubeTitle": "I said sorry for my own voice #shorts",
+    "xText": "Confidence is just reps. Start with one hello to a stranger. randomtalker.com"
+  }
+}
