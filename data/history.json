@@ -374,5 +374,17 @@
       "Giggly Parsnip"
     ],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-21-2200",
+    "title": "Silent stranger or loud stranger",
+    "angle": "would-you-rather",
+    "summary": "A this-or-that about which stranger you'd get: one who talks nonstop or one who only answers 'cool', played out in one chat, ending on a comment prompt.",
+    "hook": "Which stranger would you rather get?",
+    "scenes": "question>match>chat>versus>bigword>end",
+    "names": [
+      "Nosy Crumpet"
+    ],
+    "status": "rendered"
   }
 ]
