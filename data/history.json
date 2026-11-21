@@ -362,5 +362,17 @@
     "scenes": "hook>prop>people>bigword>count>end",
     "names": [],
     "status": "posted"
+  },
+  {
+    "date": "2026-11-21-1900",
+    "title": "Both said hello at once",
+    "angle": "pov-moments",
+    "summary": "The first seconds of a first call: both say hello together, both say sorry, then laugh, showing nerves are shared and fade fast.",
+    "hook": "POV: You and a stranger both say hello at the exact same time",
+    "scenes": "pov>rating>match>call>bigword>end",
+    "names": [
+      "Giggly Parsnip"
+    ],
+    "status": "rendered"
   }
 ]
