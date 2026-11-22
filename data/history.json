@@ -410,5 +410,18 @@
       "Sleepy Mango"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-22-2200",
+    "title": "Blurred until you tap",
+    "angle": "safety-control",
+    "summary": "A stranger sends a photo you didn't ask for; it stays blurred, you skip in one tap, and the next call is just snack talk.",
+    "hook": "A stranger sends a photo you didn't ask for.",
+    "scenes": "question>chat>appclip>match>bigword>end",
+    "names": [
+      "Salty Panda",
+      "Wavy Pudding"
+    ],
+    "status": "rendered"
   }
 ]
