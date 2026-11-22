@@ -1,0 +1,101 @@
+{
+  "idea": {
+    "title": "Is efficiency overrated",
+    "angle": "stranger-science",
+    "format": "story",
+    "summary": "Sandstrom and Dunn's 2014 coffee shop study: customers told to chat with the barista felt happier and more belonging than those told to be efficient; closes on a stranger who wants to talk.",
+    "hookOptions": [
+      "Rushing your coffee order is costing you",
+      "People who chatted with their barista felt happier",
+      "Chat with the barista. Science says so.",
+      "I stopped rushing my coffee order"
+    ],
+    "sources": [
+      "Sandstrom & Dunn (2014), 'Is efficiency overrated?', Social Psychological and Personality Science: coffee shop customers told to have a genuine chat with the cashier vs be efficient; chatters reported more positive mood and belonging."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Chat with the",
+        "barista.",
+        "Don't rush."
+      ],
+      "highlight": "Don't rush.",
+      "say": "People who chatted with their barista felt happier than people who rushed."
+    },
+    {
+      "type": "prop",
+      "prop": "coffee-cup",
+      "move": "pop",
+      "on": "coffee",
+      "say": "In 2014, researchers asked coffee shop customers to buy coffee two ways.",
+      "text": "TWO WAYS TO ORDER",
+      "textOn": "two"
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "label": "Be efficient",
+          "avatar": "KenjiJP",
+          "on": "efficient"
+        },
+        {
+          "label": "Smile and chat",
+          "avatar": "AmaraLDN",
+          "on": "chat"
+        }
+      ],
+      "say": "One group was told to be efficient, the other to smile, make eye contact and chat."
+    },
+    {
+      "type": "bigword",
+      "word": "Happier",
+      "sub": "the chatters, and they belonged more",
+      "say": "The chatters left in a better mood, and felt more like they belonged."
+    },
+    {
+      "type": "prop",
+      "prop": "barista",
+      "move": "float",
+      "on": "barista",
+      "say": "And that was with a barista they'd probably never see again."
+    },
+    {
+      "type": "match",
+      "avatar": "SofiaMX",
+      "name": "Calm Noodle",
+      "say": "Now imagine the stranger is actually there to talk."
+    },
+    {
+      "type": "end",
+      "tagline": "Small chats count.",
+      "say": "Find yours on randomtalker.com."
+    }
+  ],
+  "props": [
+    {
+      "name": "coffee-cup",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"350\" rx=\"120\" ry=\"20\" fill=\"#000\" opacity=\".15\"/><path d=\"M95 130 L305 130 L280 330 Q278 345 262 345 L138 345 Q122 345 120 330 Z\" fill=\"#e8e2d6\"/><path d=\"M105 190 L295 190 L283 320 Q281 335 265 335 L135 335 Q119 335 117 320 Z\" fill=\"#2f8f5b\"/><path d=\"M95 130 L115 335 L135 335 L112 130 Z\" fill=\"#fff\" opacity=\".5\"/><rect x=\"85\" y=\"105\" width=\"230\" height=\"34\" rx=\"14\" fill=\"#f4f0e8\"/><rect x=\"95\" y=\"108\" width=\"110\" height=\"10\" rx=\"5\" fill=\"#fff\" opacity=\".7\"/><circle cx=\"200\" cy=\"262\" r=\"32\" fill=\"#f4f0e8\"/><path d=\"M170 70 Q160 45 180 30 M215 70 Q205 45 225 30\" stroke=\"#bbb\" stroke-width=\"8\" fill=\"none\" stroke-linecap=\"round\"/></svg>"
+    },
+    {
+      "name": "barista",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"365\" rx=\"130\" ry=\"18\" fill=\"#000\" opacity=\".15\"/><path d=\"M70 360 Q70 250 200 250 Q330 250 330 360 Z\" fill=\"#2f8f5b\"/><path d=\"M70 360 Q70 270 130 258 L130 360 Z\" fill=\"#46ad74\"/><path d=\"M160 252 L200 310 L240 252 Z\" fill=\"#f4f0e8\"/><rect x=\"180\" y=\"220\" width=\"40\" height=\"40\" rx=\"10\" fill=\"#d9a073\"/><circle cx=\"200\" cy=\"170\" r=\"68\" fill=\"#e8b384\"/><path d=\"M140 150 Q150 90 205 95 Q260 100 262 150 Q230 120 140 150 Z\" fill=\"#4a2f20\"/><path d=\"M140 130 Q160 85 210 90 Q170 100 150 140 Z\" fill=\"#6b4630\"/><circle cx=\"175\" cy=\"175\" r=\"7\" fill=\"#3a2418\"/><circle cx=\"225\" cy=\"175\" r=\"7\" fill=\"#3a2418\"/><path d=\"M170 200 Q200 230 230 200\" stroke=\"#a0503a\" stroke-width=\"8\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"160\" cy=\"195\" r=\"10\" fill=\"#e58a7a\" opacity=\".5\"/><circle cx=\"240\" cy=\"195\" r=\"10\" fill=\"#e58a7a\" opacity=\".5\"/><path d=\"M140 108 Q200 60 262 108 L262 118 Q200 85 140 118 Z\" fill=\"#f4f0e8\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "Researchers asked coffee shop customers to either rush or chat with the cashier. The chatters felt happier. Would you try it? Or talk to someone new on randomtalker.com.",
+    "hashtags": [
+      "#randomtalker",
+      "#psychology",
+      "#talktostrangers",
+      "#smalltalk",
+      "#wellbeing",
+      "#coffee"
+    ],
+    "youtubeTitle": "Chatting with your barista makes you happier #shorts",
+    "xText": "A 2014 study: people who chatted with their barista felt happier than people who rushed. Talk to someone new: randomtalker.com"
+  }
+}

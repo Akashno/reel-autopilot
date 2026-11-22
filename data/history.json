@@ -386,5 +386,17 @@
       "Nosy Crumpet"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-22-1300",
+    "title": "Is efficiency overrated",
+    "angle": "stranger-science",
+    "summary": "Sandstrom and Dunn's 2014 coffee shop study: customers told to chat with the barista felt happier and more belonging than those told to be efficient; closes on a stranger who wants to talk.",
+    "hook": "Chat with the barista. Don't rush.",
+    "scenes": "hook>prop>people>bigword>prop>match>end",
+    "names": [
+      "Calm Noodle"
+    ],
+    "status": "rendered"
   }
 ]
