@@ -398,5 +398,17 @@
       "Calm Noodle"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-22-1900",
+    "title": "Five-minute study break",
+    "angle": "study-break",
+    "summary": "Swap a reel scroll that eats forty minutes for a five-minute call with another stressed student, then both go back to studying.",
+    "hook": "Exam tomorrow. Still on your phone?",
+    "scenes": "hook>count>match>chat>bigword>end",
+    "names": [
+      "Sleepy Mango"
+    ],
+    "status": "rendered"
   }
 ]

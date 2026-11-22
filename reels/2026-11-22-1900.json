@@ -1,0 +1,95 @@
+{
+  "idea": {
+    "title": "Five-minute study break",
+    "angle": "study-break",
+    "format": "skit",
+    "summary": "Swap a reel scroll that eats forty minutes for a five-minute call with another stressed student, then both go back to studying.",
+    "hookOptions": [
+      "Stuck on your phone instead of studying?",
+      "Exam tomorrow? Take a better break",
+      "I opened reels for 5 minutes. It was an hour.",
+      "Your brain needs a break, not a scroll"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Exam tomorrow.",
+        "Still on your",
+        "phone?"
+      ],
+      "highlight": "phone?",
+      "say": "Stuck on your phone instead of studying?"
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "40 min",
+          "label": "Reel break",
+          "on": "forty"
+        },
+        {
+          "value": "5 min",
+          "label": "Stranger break",
+          "on": "five"
+        }
+      ],
+      "say": "Reels: forty minutes gone. A stranger: five minutes."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Sleepy Mango",
+      "say": "Someone else is hiding from their textbook too."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Sleepy Mango",
+      "messages": [
+        {
+          "from": "me",
+          "text": "biology at 9 and my brain is soup"
+        },
+        {
+          "from": "them",
+          "text": "chemistry at 10. soup with extra salt"
+        },
+        {
+          "from": "me",
+          "text": "tell me one thing you actually know"
+        },
+        {
+          "from": "them",
+          "text": "salt is sodium chloride. i'm an expert now"
+        }
+      ],
+      "say": "He explains salt. I explain nothing. Perfect."
+    },
+    {
+      "type": "bigword",
+      "word": "Back.",
+      "sub": "Both of us. Actually studying.",
+      "say": "Timer beeped. Sleepy Mango said \"sodium chloride, bye.\" I opened biology."
+    },
+    {
+      "type": "end",
+      "tagline": "A break with a human.",
+      "say": "Take yours on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "Five minutes with a stranger beats forty minutes of scrolling. Set a timer, talk, then go back to the books. What's your exam this week?\nTake your break on randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#studybreak",
+      "#examseason",
+      "#studytok",
+      "#studentlife"
+    ],
+    "youtubeTitle": "Stuck on your phone instead of studying? #shorts",
+    "xText": "Exam tomorrow? Take a five-minute break with a real person instead of another reel. randomtalker.com"
+  }
+}
