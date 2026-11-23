@@ -423,5 +423,17 @@
       "Wavy Pudding"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-23-1300",
+    "title": "Ahoy or hello",
+    "angle": "history-of-stranger-chat",
+    "summary": "Alexander Graham Bell promoted 'ahoy' as the phone greeting while Edison pushed 'hello' in an 1877 letter, so the first word to an unseen stranger started as a fight.",
+    "hook": "Phones almost answered with Ahoy",
+    "scenes": "hook>prop>count>prop>bigword>match>end",
+    "names": [
+      "Lucky Spoon"
+    ],
+    "status": "rendered"
   }
 ]
