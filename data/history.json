@@ -435,5 +435,17 @@
       "Lucky Spoon"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-23-2200",
+    "title": "The ASL line",
+    "angle": "omegle-nostalgia",
+    "summary": "Old-school stranger chat opened with 'asl?'; now you skip the typing and just hear a voice, shown as a then-vs-now versus and a call with a stranger who still says it.",
+    "hook": "Remember typing asl? to strangers?",
+    "scenes": "hook>versus>match>chat>call>end",
+    "names": [
+      "Grumpy Noodle"
+    ],
+    "status": "rendered"
   }
 ]

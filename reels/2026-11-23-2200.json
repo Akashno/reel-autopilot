@@ -1,0 +1,91 @@
+{
+  "idea": {
+    "title": "The ASL line",
+    "angle": "omegle-nostalgia",
+    "format": "skit",
+    "summary": "Old-school stranger chat opened with 'asl?'; now you skip the typing and just hear a voice, shown as a then-vs-now versus and a call with a stranger who still says it.",
+    "hookOptions": [
+      "Remember typing asl? to strangers?",
+      "Omegle is gone. Strangers aren't.",
+      "You used to type asl first",
+      "I miss the old stranger chat"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Remember typing",
+        "asl? to strangers?"
+      ],
+      "highlight": "asl?",
+      "say": "Remember when every stranger chat started with asl?"
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "Then",
+        "text": "asl? ... Stranger disconnected."
+      },
+      "right": {
+        "label": "Now",
+        "text": "Tap once. Say hi out loud."
+      },
+      "say": "Omegle is gone, but strangers aren't."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Grumpy Noodle",
+      "say": "So I tapped, and got Grumpy Noodle."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Grumpy Noodle",
+      "messages": [
+        {
+          "from": "them",
+          "text": "asl?"
+        },
+        {
+          "from": "me",
+          "text": "just say hi, we have voices now"
+        },
+        {
+          "from": "them",
+          "text": "hi. wow. this is weird"
+        },
+        {
+          "from": "me",
+          "text": "good weird though"
+        }
+      ],
+      "say": "He still opened with the classic."
+    },
+    {
+      "type": "call",
+      "avatar": "LeoRio",
+      "name": "Grumpy Noodle",
+      "label": "0:47",
+      "say": "Forty seconds later we were arguing about old usernames."
+    },
+    {
+      "type": "end",
+      "tagline": "Old thrill. Just your voice.",
+      "say": "Find yours on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "Omegle is gone, but meeting someone totally random still feels great. This time it's just voices. What was your first message to a stranger?\n\nTry it at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#omegle",
+      "#nostalgia",
+      "#strangers",
+      "#voicechat"
+    ],
+    "youtubeTitle": "Remember typing asl? to strangers? #shorts",
+    "xText": "Omegle is gone. Talking to strangers isn't. Voice only, no camera. randomtalker.com"
+  }
+}
