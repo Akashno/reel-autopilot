@@ -1,0 +1,730 @@
+{
+  "2026-11-08": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 4,
+        "comments": 0,
+        "engagementRate": 2.82,
+        "views": 199,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 19.77,
+        "averageTimeWatched": 6.94,
+        "reach": 142
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 254,
+        "reach": 229,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-09": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 6,
+        "comments": 0,
+        "engagementRate": 4.2,
+        "views": 237,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 19.43,
+        "averageTimeWatched": 6.2,
+        "reach": 143
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 1,
+        "reach": 1,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-10": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 5,
+        "comments": 0,
+        "engagementRate": 3.88,
+        "views": 205,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 12.93,
+        "averageTimeWatched": 4.73,
+        "reach": 129
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 283,
+        "reach": 268,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-13-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 4,
+        "comments": 0,
+        "engagementRate": 2.84,
+        "views": 212,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 17.56,
+        "averageTimeWatched": 6.46,
+        "reach": 141
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 282,
+        "reach": 243,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-13-1900": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 7,
+        "comments": 0,
+        "engagementRate": 5.47,
+        "views": 212,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 21.78,
+        "averageTimeWatched": 8.49,
+        "reach": 128
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 241,
+        "reach": 223,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-13-2200": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 4,
+        "comments": 0,
+        "engagementRate": 3.45,
+        "views": 176,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 14.75,
+        "averageTimeWatched": 6.46,
+        "reach": 116
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 233,
+        "reach": 219,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-14-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 9,
+        "comments": 0,
+        "engagementRate": 6.43,
+        "views": 199,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 21.23,
+        "averageTimeWatched": 8.27,
+        "reach": 140
+      },
+      "facebook": {
+        "reactions": 1,
+        "comments": 0,
+        "engagementRate": 0.61,
+        "impressions": 165,
+        "reach": 149,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-14-1900": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 5,
+        "comments": 0,
+        "engagementRate": 3.6,
+        "views": 216,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 15.92,
+        "averageTimeWatched": 5.83,
+        "reach": 139
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 1,
+        "reach": 1,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-14-2200": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 2,
+        "comments": 0,
+        "engagementRate": 1.41,
+        "views": 189,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 10.04,
+        "averageTimeWatched": 3.84,
+        "reach": 142
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0.48,
+        "impressions": 207,
+        "reach": 197,
+        "shares": 0,
+        "clicks": 1
+      }
+    }
+  },
+  "2026-11-15-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 4,
+        "comments": 0,
+        "engagementRate": 4.17,
+        "views": 167,
+        "shares": 0,
+        "saves": 1,
+        "totalTimeWatched": 14.39,
+        "averageTimeWatched": 6.35,
+        "reach": 120
+      },
+      "facebook": {
+        "reactions": 1,
+        "comments": 0,
+        "engagementRate": 0.46,
+        "impressions": 218,
+        "reach": 197,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-15-1900": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": true,
+    "stats": {
+      "instagram": {
+        "reactions": 3,
+        "comments": 0,
+        "engagementRate": 2.21,
+        "views": 191,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 13.99,
+        "averageTimeWatched": 5.71,
+        "reach": 136
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 218,
+        "reach": 207,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-16-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 5,
+        "comments": 0,
+        "engagementRate": 4.4,
+        "views": 208,
+        "shares": 0,
+        "saves": 2,
+        "totalTimeWatched": 24.53,
+        "averageTimeWatched": 8.51,
+        "reach": 159
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0.43,
+        "impressions": 230,
+        "reach": 218,
+        "shares": 0,
+        "clicks": 1
+      }
+    }
+  },
+  "2026-11-16-1900": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 2,
+        "comments": 0,
+        "engagementRate": 1.54,
+        "views": 161,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 10.63,
+        "averageTimeWatched": 4.53,
+        "reach": 130
+      },
+      "facebook": {
+        "reactions": 1,
+        "comments": 0,
+        "engagementRate": 0.47,
+        "impressions": 215,
+        "reach": 206,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-17-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 2,
+        "comments": 0,
+        "engagementRate": 1.47,
+        "views": 175,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 18.16,
+        "averageTimeWatched": 7.73,
+        "reach": 136
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 202,
+        "reach": 199,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-17-2200": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 4,
+        "comments": 0,
+        "engagementRate": 2.68,
+        "views": 194,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 19.95,
+        "averageTimeWatched": 7.67,
+        "reach": 149
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 207,
+        "reach": 188,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-18-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 1,
+        "comments": 0,
+        "engagementRate": 3.85,
+        "views": 55,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 3.54,
+        "averageTimeWatched": 5.9,
+        "reach": 26
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 212,
+        "reach": 194,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-18-1900": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 3,
+        "comments": 0,
+        "engagementRate": 4.76,
+        "views": 124,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 8.08,
+        "averageTimeWatched": 5.51,
+        "reach": 63
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 149,
+        "reach": 141,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-18-2200": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 3,
+        "comments": 0,
+        "engagementRate": 2.83,
+        "views": 165,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 13.22,
+        "averageTimeWatched": 5.88,
+        "reach": 106
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 211,
+        "reach": 204,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-19-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 4,
+        "comments": 0,
+        "engagementRate": 2.34,
+        "views": 245,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 30.34,
+        "averageTimeWatched": 9.38,
+        "reach": 171
+      },
+      "facebook": {
+        "reactions": 5,
+        "comments": 0,
+        "engagementRate": 2.04,
+        "impressions": 245,
+        "reach": 228,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-19-1900": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 4,
+        "comments": 0,
+        "engagementRate": 4.27,
+        "views": 167,
+        "shares": 0,
+        "saves": 1,
+        "totalTimeWatched": 20.2,
+        "averageTimeWatched": 8.78,
+        "reach": 117
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 216,
+        "reach": 204,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-19-2200": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 4,
+        "comments": 0,
+        "engagementRate": 3.17,
+        "views": 168,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 11.92,
+        "averageTimeWatched": 4.96,
+        "reach": 126
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0.17,
+        "impressions": 603,
+        "reach": 568,
+        "shares": 0,
+        "clicks": 1
+      }
+    }
+  },
+  "2026-11-20-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 3,
+        "comments": 0,
+        "engagementRate": 2.54,
+        "views": 178,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 14.03,
+        "averageTimeWatched": 6.05,
+        "reach": 118
+      },
+      "facebook": {
+        "reactions": 5,
+        "comments": 0,
+        "engagementRate": 0.33,
+        "impressions": 1536,
+        "reach": 1390,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-20-2200": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 2,
+        "comments": 0,
+        "engagementRate": 3.13,
+        "views": 123,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 8.18,
+        "averageTimeWatched": 5.11,
+        "reach": 64
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 220,
+        "reach": 204,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-21-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 5,
+        "comments": 0,
+        "engagementRate": 4.48,
+        "views": 189,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 18.31,
+        "averageTimeWatched": 7.18,
+        "reach": 134
+      },
+      "facebook": {
+        "reactions": 1,
+        "comments": 0,
+        "engagementRate": 0.75,
+        "impressions": 268,
+        "reach": 251,
+        "shares": 0,
+        "clicks": 1
+      }
+    }
+  },
+  "2026-11-21-1900": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 5,
+        "comments": 0,
+        "engagementRate": 4.07,
+        "views": 179,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 13.84,
+        "averageTimeWatched": 5.69,
+        "reach": 123
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 220,
+        "reach": 210,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-22-1300": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 2,
+        "comments": 0,
+        "engagementRate": 1.18,
+        "views": 212,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 29.12,
+        "averageTimeWatched": 9.55,
+        "reach": 169
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 280,
+        "reach": 259,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-22-1900": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 5,
+        "comments": 0,
+        "engagementRate": 4.46,
+        "views": 167,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 11.19,
+        "averageTimeWatched": 5.29,
+        "reach": 112
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 0,
+        "reach": 0,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-22-2200": {
+    "fetchedAt": "2026-11-23T15:37:40.273Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 2,
+        "comments": 0,
+        "engagementRate": 8.7,
+        "views": 48,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 2.15,
+        "averageTimeWatched": 4.03,
+        "reach": 23
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 2,
+        "reach": 0,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  }
+}

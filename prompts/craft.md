@@ -93,10 +93,50 @@ fit (an old woman, a soldier in 1914) is a prop too, used in `people`.
 - **Fiction** (mini-drama): clearly a story, told by a narrator. Never "this happened to me", never
   "a user told us", no fake reviews or numbers.
 
+## Thread reels (idea.format "thread")
+
+The whole video is ONE chat between "me" and a stranger on {{name}}, in a single `thread` scene,
+then the end card (optionally one `bigword` or `question` between them). People watch to find
+out how it ends, and send it to a friend because it is funny, sweet or "this is so us".
+
+- `hook` (pinned above the chat from the first frame, 9 words at most): the reason to keep
+  watching, in plain words. "he thought i was a bot for 20 minutes", "she asked me one question
+  and i overshared", "we argued about chai for an hour". Optional `highlight`: 1-2 words of it.
+  The thread's `say` (optional, 10 words at most) reads the hook aloud.
+- 6-14 messages, each 60 characters at most, lowercase texting style, no emoji. Two clear voices.
+  Escalate: each message raises the stakes or the joke. Mark a dramatic pause with `"beat": true`
+  on the message after it (once or twice, not more).
+- **The last message is the twist or punchline** (it lands with a thud and a glow). Plan it first,
+  then write backwards. Never end on a plain "bye" or "nice talking to you".
+- Clearly fiction, a skit: never "this happened to me", never "a user sent us this".
+- No product pitch inside the chat. The app is only the chat window's label and the end card.
+- The end card's tagline closes the loop with the hook.
+
+## Share reels (idea.format "share")
+
+Made to be forwarded: a viewer sees one card and thinks "this is literally my friend", and
+sends it. Structure: an opener (`hook`, `pov`, `bigword` or `question`) that calls out who it's
+about, then one `cards` scene, then the end card (optionally a `question` before it).
+
+- `title` (pinned): the list, 44 characters at most. "types of people on a 2am call",
+  "which stranger are you on a first call", "your friend group as callers".
+- 3-6 `items`: `title` 30 characters at most (the type, funny and specific: "the 'five more
+  minutes' one", "voice note novelist", "says hmm to everything"), `line` 64 at most (the
+  tell-tale detail that makes people laugh in recognition). Optional `avatar`.
+- `cta` (34 characters at most): the nudge to send it, naming the card. "send this to your #3",
+  "tag the one who is #2". The cards scene `say` (optional, 30 words at most) names each card
+  in order, with each item's `on` word in it, so cards swipe on the word.
+- **The last card is the punchline**, the one people send: a twist type that is unexpectedly the
+  viewer ("you, watching this instead of sleeping"), or the most absurd and specific one. Plan it
+  first. The cards `say` reads the funniest detail of each card, not just the labels.
+- About people and everyday moments, not the product. Affectionate, never mean, never about
+  looks, gender, religion or caste.
+- Hinglish is welcome when it fits the joke ("bas 5 min", "arre yaar"), written in Latin letters.
+
 ## Post text
 
 - Caption (post.caption): 1-3 short lines that add to the video, a question that invites comments
-  when it fits, then the call to action with {{site}}. Hashtags separately: 3-8, always
+  when it fits (share reels: "send this to the friend who..."; thread reels: "how would you reply?"), then the call to action with {{site}}. Hashtags separately: 3-8, always
   including {{hashtag}}.
 - youtubeTitle: the hook, sharpened, plus #shorts. xText: one punchy line plus {{site}}.
 
@@ -118,6 +158,8 @@ fit (an old woman, a soldier in 1914) is a prop too, used in `people`.
 - `prop`: a big close-up of one of your drawn `props` that moves (`move`: pop, float, drop, shake, spin, slide, grow) on the word `on`, with an optional paper slip `text` (<=28 chars) on `textOn`. `night: true` for a night sky.
 - `people`: 1-3 people with name `label`s (<=18 chars), each an app avatar or one of your props (a drawn person: a grandmother, a soldier), popping on their `on` word; optional `item` prop with them and a slip `text`.
 - `count`: 1-3 big number cards (`value` <=8 chars, `label`), each popping on its `on` word. Perfect for the payoff.
+- `thread`: a whole chat with a pinned hook, message by message, twist in the last message. Only in thread reels.
+- `cards`: cards that swipe in under a pinned title, then a send-this-to nudge. Only in share reels.
 - `end`: logo, your tagline (<=32 chars), {{site}}. Always last, only once. Its voice line always says {{site}} out loud as the last words of the reel, in a short natural line that fits the story ("Find yours on {{site}}.", "Try it tonight on {{site}}."), 8 words at most.
 
 Avatars: {{avatars}}.

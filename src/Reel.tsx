@@ -6,7 +6,8 @@ import type { ReelProps, Scene, SceneType } from './types'
 import { AppClip, Call, Chat, End, Features, Games, Match } from './scenes/app'
 import { BigWord, Hook, List, Pov, Question, Rating, Versus } from './scenes/text'
 import { Count, People, PropScene } from './scenes/story'
-import { BOX, C, CAPTIONED, DISPLAY, FPS, Guides, SceneCtx, STORY_CAPTIONED, useFonts, VO_AT } from './ui'
+import { Cards, cardsMinSecs, Thread, threadTimes } from './scenes/thread'
+import { BOX, C, CAPTIONED, DISPLAY, ease, FPS, mix, Guides, SceneCtx, STORY_CAPTIONED, THEME, useFonts, VO_AT } from './ui'
 
 const T = 8 // crossfade frames
 const TAIL = 0.6 // breathing room after the voice ends
@@ -31,6 +32,8 @@ function minSecs(s: Scene): number {
     case 'prop': return 2.6
     case 'people': return 2.4 + s.people.length * 0.3
     case 'count': return 1.4 + s.items.length * 0.8
+    case 'thread': return threadTimes(s.messages).end
+    case 'cards': return cardsMinSecs(s)
     case 'end': return 3.2
   }
 }
@@ -71,6 +74,8 @@ function View({ s }: { s: Scene }) {
     case 'prop': return <PropScene s={s} />
     case 'people': return <People s={s} />
     case 'count': return <Count s={s} />
+    case 'thread': return <Thread s={s} />
+    case 'cards': return <Cards s={s} />
     case 'end': return <End s={s} />
   }
 }
@@ -101,10 +106,11 @@ function Captions({ text, secs }: { text: string, secs: number }) {
     return null
   return (
     <div style={{ position: 'absolute', left: BOX.left, right: BOX.right, top: BOX.captionTop, display: 'flex', justifyContent: 'center' }}>
-      <div style={{ padding: '18px 36px', borderRadius: 28, background: 'rgba(17,17,16,0.9)', fontFamily: DISPLAY, fontWeight: 800, fontSize: 58, letterSpacing: -1, color: '#FFF', textAlign: 'center', lineHeight: 1.15 }}>
-        {chunk.map((x, i) => (
-          <span key={i} style={{ color: t >= x.start && t < x.end + 0.05 ? C.gold : '#FFF' }}>{i ? ' ' : ''}{x.w}</span>
-        ))}
+      <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: 72, letterSpacing: -1.5, color: '#FFF', textAlign: 'center', lineHeight: 1.12, textTransform: 'uppercase', WebkitTextStroke: '10px #000', paintOrder: 'stroke fill', textShadow: '0 8px 24px rgba(0,0,0,0.6)', transform: `scale(${mix(0.86, 1, ease(t, chunk[0].start, 0.12))})` }}>
+        {chunk.map((x, i) => {
+          const on = t >= x.start && t < x.end + 0.05
+          return <span key={i} style={{ display: 'inline-block', color: on ? C.gold : '#FFF', transform: `scale(${on ? 1.08 : 1})`, margin: '0 0.12em' }}>{x.w}</span>
+        })}
       </div>
     </div>
   )
@@ -117,7 +123,7 @@ export function ReelVideo(props: ReelProps) {
   const { starts } = layout(secs)
   const captioned: readonly SceneType[] = reel.idea.format === 'story' ? STORY_CAPTIONED : CAPTIONED
   return (
-    <AbsoluteFill style={{ background: C.bg }}>
+    <AbsoluteFill style={{ background: THEME.bg }}>
       <TransitionSeries>
         {reel.scenes.flatMap((s, i) => [
           <TransitionSeries.Sequence key={`s${i}`} durationInFrames={sec(secs[i])} name={`${i} ${s.type}`}>

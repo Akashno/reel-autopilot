@@ -9,12 +9,13 @@
 import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
-import type { Reel } from '../src/types'
+import type { Format, Reel } from '../src/types'
 import { BRAND } from '../src/brand'
 import { checkReel } from './check'
 import { nextSlot } from './slot.mjs'
 import { prompt as loadPrompt } from './prompt'
 import { reelSchema } from './schema'
+import { scoreboard } from './metrics'
 
 const ROOT = resolve(import.meta.dirname, '..')
 const read = (p: string) => readFileSync(join(ROOT, p), 'utf8')
@@ -61,6 +62,7 @@ export function hookText(r: Reel) {
     case 'pov': return `POV: ${s.text.replace(/^\s*pov\s*[:\-]?\s*/i, '')}`
     case 'bigword': return `${s.word} ${s.sub ?? ''}`.trim()
     case 'question': return s.question
+    case 'thread': return s.hook
     default: return s.say ?? ''
   }
 }
@@ -86,6 +88,9 @@ function noveltyErrors(r: Reel, history: HistoryEntry[]): string[] {
     else if (used.has(n.toLowerCase()))
       errors.push(`nickname "${n}" was used recently: invent a new one`)
   }
+  // Thread and share reels have a fixed shape by design; only the words must be new.
+  if (r.idea.format === 'thread' || r.idea.format === 'share')
+    return errors
   const structure = sceneList(r)
   const same = history.slice(-14).find(h => h.scenes === structure)
   if (same)
@@ -98,15 +103,22 @@ function noveltyErrors(r: Reel, history: HistoryEntry[]): string[] {
 
 // ---- prompt ------------------------------------------------------------------------------
 
-interface Angle { id: string, brief: string, format?: 'skit' | 'story', true?: boolean }
+interface Angle { id: string, brief: string, format?: Format, true?: boolean }
 
-// A slot listed in brand.json storySlots (the id's HHMM) gets a story angle; the others a skit.
-const isStorySlot = (id: string) => id.length > 10 && BRAND.storySlots.some(s => s.replace(':', '') === id.slice(11))
+// The format a slot gets: brand.json slotFormats (a list rotates by day), else storySlots
+// (story) and skit for the rest.
+export function formatFor(id: string): Format {
+  const hhmm = id.length > 10 ? `${id.slice(11, 13)}:${id.slice(13, 15)}` : ''
+  const f = BRAND.slotFormats?.[hhmm]
+  if (f)
+    return Array.isArray(f) ? f[Math.floor(Date.parse(id.slice(0, 10)) / 864e5) % f.length] : f
+  return hhmm && BRAND.storySlots.includes(hhmm) ? 'story' : 'skit'
+}
 
 function pickAngle(history: HistoryEntry[], date: string): Angle {
   const all: Angle[] = JSON.parse(read('brand/angles.json'))
-  const story = isStorySlot(date)
-  const pool = all.filter(a => (a.format === 'story') === story)
+  const format = formatFor(date)
+  const pool = all.filter(a => (a.format ?? 'skit') === format)
   const angles = pool.length ? pool : all
   const lastUsed = (id: string) => history.filter(h => h.angle === id).map(h => h.date).sort().at(-1) ?? ''
   // Least recently used first; among never-used ones, rotate by date so the order varies.
@@ -133,12 +145,15 @@ function buildPrompt(date: string, angle: Angle, history: HistoryEntry[]) {
     '# Today',
     `Date: ${date}. Today's angle: **${angle.id}**: ${angle.brief}`,
     `Set idea.angle to exactly this angle id and idea.format to "${format}". Find a fresh, specific concept inside it; surprise me.`,
+    ...(format === 'thread' ? ['Today is a **thread** reel: follow "Thread reels" in the brief. Write the last message first.'] : []),
+    ...(format === 'share' ? ['Today is a **share** reel: follow "Share reels" in the brief. Every card must make someone think of one specific friend.'] : []),
     ...(format === 'story' ? [`Today is a **story** reel: follow "Story reels" in the brief.${angle.true ? ' It must be TRUE and well documented: fill idea.sources, and every name, date and number you use must be in them.' : ' It is fiction: never present it as something that happened or that a user said.'}`] : []),
     '# Recent videos (newest first). Do something clearly different from all of these.',
     recent.length
       ? recent.map(h => `- ${h.date} [${h.angle}] "${h.title}": ${h.summary} | hook: "${h.hook}" | scenes: ${h.scenes}`).join('\n')
       : '(none yet: this is the first one)',
     rulesToday(history),
+    scoreboard(history.slice(-40)),
     `Names already used: ${[...new Set([...BRAND.reservedNames, ...history.slice(-30).flatMap(h => h.names ?? [])])].join(', ')}`,
   ].join('\n\n')
 }
@@ -205,7 +220,7 @@ function script(r: Reel) {
 }
 
 function review(reel: Reel) {
-  const kind = reel.idea.format === 'story' ? `A STORY reel${reel.idea.sources?.length ? `, told as true; sources: ${reel.idea.sources.join(' | ')}` : ''}` : 'A skit reel'
+  const kind = reel.idea.format === 'thread' ? 'A THREAD reel' : reel.idea.format === 'share' ? 'A SHARE reel' : reel.idea.format === 'story' ? `A STORY reel${reel.idea.sources?.length ? `, told as true; sources: ${reel.idea.sources.join(' | ')}` : ''}` : 'A skit reel'
   return askClaude<Review>(`${kind}: "${reel.idea.title}" (${reel.idea.summary})\n\n${script(reel)}`, REVIEW_SCHEMA, loadPrompt('prompts/critic.md'))
 }
 

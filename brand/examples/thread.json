@@ -1,0 +1,44 @@
+{
+  "idea": {
+    "title": "He thought I was a bot",
+    "angle": "thread-bot-or-human",
+    "format": "thread",
+    "summary": "A stranger keeps testing whether I am a bot; the last message flips it on him.",
+    "hookOptions": ["he thought i was a bot for 20 minutes", "prove you're human. go.", "he tested me like a captcha", "i failed a bot test on a call"]
+  },
+  "scenes": [
+    {
+      "type": "thread",
+      "hook": "he was sure i was a bot",
+      "highlight": "a bot",
+      "avatar": "KenjiJP",
+      "name": "Toasty Comet",
+      "say": "He was sure I was a bot.",
+      "messages": [
+        { "from": "them", "text": "ok be honest. are you a bot" },
+        { "from": "me", "text": "no?? why" },
+        { "from": "them", "text": "you said hello with a full stop" },
+        { "from": "me", "text": "that's just grammar" },
+        { "from": "them", "text": "a bot would say that" },
+        { "from": "me", "text": "ask me anything then" },
+        { "from": "them", "text": "what did you have for dinner" },
+        { "from": "me", "text": "cold maggi. standing up. at 1am" },
+        { "from": "them", "text": "ok you're human", "beat": true },
+        { "from": "them", "text": "no bot would admit to cold maggi" },
+        { "from": "me", "text": "wait. you never said hello at all", "beat": true },
+        { "from": "them", "text": "beep boop. goodnight" }
+      ]
+    },
+    {
+      "type": "end",
+      "tagline": "Humans only. Mostly.",
+      "say": "Prove you're human on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "He ran a full bot test on me and then this happened.\nHow would you prove you're human? Comment it.\nTalk to a stranger tonight: randomtalker.com",
+    "hashtags": ["#randomtalker", "#strangerchat", "#2amthoughts", "#relatable"],
+    "youtubeTitle": "He was sure I was a bot #shorts",
+    "xText": "He was sure I was a bot. Then the last message. randomtalker.com"
+  }
+}

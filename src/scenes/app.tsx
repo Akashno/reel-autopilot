@@ -1,7 +1,7 @@
 import { Img, OffthreadVideo, staticFile } from 'remotion'
 import type { Scene } from '../types'
 import { asset, BRAND } from '../brand'
-import { Bubble, C, Card, Chip, Column, Dot, ease, Face, FEATURES, fitSize, FPS, Headline, Icon, mix, Logo, PhoneFrame, Pop, DISPLAY, Stage, stepTimes, useScene, useSpring, useT, Wave } from '../ui'
+import { Bubble, C, THEME, Card, Chip, Column, Dot, ease, Face, FEATURES, fitSize, FPS, Headline, Icon, mix, Logo, PhoneFrame, Pop, DISPLAY, Stage, stepTimes, useScene, useSpring, useT, Wave } from '../ui'
 
 type Of<T extends Scene['type']> = Extract<Scene, { type: T }>
 
@@ -26,7 +26,7 @@ function NameStatus({ name, status, size = 84 }: { name: string, status: string,
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
       <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: size, letterSpacing: -2, lineHeight: 1.05 }}>{name}</div>
-      <div style={{ fontSize: 42, fontWeight: 600, color: C.green }}><Dot />{status}</div>
+      <div style={{ fontSize: 42, fontWeight: 600, color: THEME.ok }}><Dot color={THEME.ok} />{status}</div>
     </div>
   )
 }
@@ -46,7 +46,7 @@ export function Match({ s }: { s: Of<'match'> }) {
         <div style={{ position: 'relative', width: 420, height: 420, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {[0, 1, 2].map(i => {
             const p = ((t + i * 0.45) % 1.35) / 1.35
-            return <div key={i} style={{ position: 'absolute', width: mix(200, 760, p), height: mix(200, 760, p), borderRadius: '50%', border: `6px solid ${C.ink}`, opacity: (1 - p) * 0.35 * searching }} />
+            return <div key={i} style={{ position: 'absolute', width: mix(200, 760, p), height: mix(200, 760, p), borderRadius: '50%', border: `6px solid ${THEME.text}`, opacity: (1 - p) * 0.35 * searching }} />
           })}
           <div style={{ position: 'absolute', opacity: searching, fontFamily: DISPLAY, fontWeight: 800, fontSize: 64 }}>Matching{'.'.repeat(1 + Math.floor(t * 3) % 3)}</div>
           <div style={{ position: 'absolute', transform: `scale(${card}) rotate(${(1 - card) * 10}deg)`, opacity: Math.min(1, card * 2) }}>
@@ -67,7 +67,7 @@ export function Call({ s }: { s: Of<'call'> }) {
   const t = useT()
   const start = 37 + (index * 13) % 50
   return (
-    <Stage tint="#F3E3B0">
+    <Stage>
       <Column captions gap={40}>
         {s.label && <Pop at={0.05}><Chip dark style={{ fontSize: 42 }}>{s.label}</Chip></Pop>}
         <Pop at={0.1}><Face avatar={s.avatar} size={s.label ? 300 : 340} /></Pop>
@@ -120,7 +120,7 @@ export function AppClip({ s }: { s: Of<'appclip'> }) {
       <Column gap={44}>
         <Pop at={0.05}>
           <Headline size={fitSize([s.headline], 96, 66)}>{s.headline}</Headline>
-          {s.sub && <div style={{ marginTop: 14, fontSize: 44, fontWeight: 600, color: C.muted, textAlign: 'center' }}>{s.sub}</div>}
+          {s.sub && <div style={{ marginTop: 14, fontSize: 44, fontWeight: 600, color: THEME.sub, textAlign: 'center' }}>{s.sub}</div>}
         </Pop>
         <div style={{ transform: `translateY(${(1 - phone) * 500}px)` }}>
           <PhoneFrame width={s.sub ? 420 : 445}>
@@ -153,7 +153,7 @@ export function Games({ s }: { s: Of<'games'> }) {
             return (
               <Pop key={g.id} at={0.2 + i * 0.07} from={0.5} style={{ position: 'relative', zIndex: me ? 2 : 1 }}>
                 <div style={{ width: size, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, opacity: dim, transform: `scale(${me ? mix(1, 1.18, pick) : 1})` }}>
-                  <Card style={{ width: size, height: size, borderRadius: 44, background: C.tints[i % C.tints.length], display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: me ? `0 0 0 ${10 * pick}px ${C.gold}, 0 30px 60px rgba(120,90,0,0.2)` : undefined }}>
+                  <Card style={{ width: size, height: size, borderRadius: 44, background: C.tints[i % C.tints.length], display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: me ? `0 0 0 ${10 * pick}px ${C.gold}, 0 30px 60px rgba(0,0,0,0.45)` : undefined }}>
                     <Img src={staticFile(asset(g.file))} style={{ width: size * 0.62, height: size * 0.62, objectFit: 'contain' }} />
                   </Card>
                   <div style={{ width: size + 16, fontSize: 30, fontWeight: 600, lineHeight: 1.1, textAlign: 'center' }}>{g.name}</div>
@@ -205,8 +205,8 @@ export function End({ s }: { s: Of<'end'> }) {
           <Headline size={s.tagline.length > 20 ? 96 : 112}>{s.tagline}</Headline>
         </Pop>
         <Pop at={0.7} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
-          <div style={{ padding: '34px 64px', borderRadius: 999, background: C.ink, color: '#FFF', fontFamily: DISPLAY, fontWeight: 800, fontSize: 60 }}>{BRAND.site}</div>
-          <div style={{ fontSize: 42, fontWeight: 600, color: C.muted }}>{BRAND.endCard.sub}</div>
+          <div style={{ padding: '34px 64px', borderRadius: 999, background: C.gold, color: C.ink, fontFamily: DISPLAY, fontWeight: 800, fontSize: 60, boxShadow: `0 0 60px ${C.gold}66` }}>{BRAND.site}</div>
+          <div style={{ fontSize: 42, fontWeight: 600, color: THEME.sub }}>{BRAND.endCard.sub}</div>
         </Pop>
       </Column>
     </Stage>

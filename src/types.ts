@@ -26,12 +26,16 @@ export type Scene = Base & (
   | { type: 'prop', prop: string, move?: PropMove, on?: string, text?: string, textOn?: string, night?: boolean }
   | { type: 'people', people: Array<{ avatar?: Avatar, prop?: string, label: string, on?: string }>, item?: string, text?: string, textOn?: string, night?: boolean }
   | { type: 'count', items: Array<{ value: string, label: string, on?: string }> }
+  | { type: 'thread', hook: string, highlight?: string, avatar: Avatar, name: string, messages: Array<{ from: 'me' | 'them', text: string, beat?: boolean }> }
+  | { type: 'cards', title: string, items: Array<{ title: string, line?: string, avatar?: Avatar, on?: string }>, cta: string }
   | { type: 'end', tagline: string }
 )
 export type SceneType = Scene['type']
+// skit: a product skit; story: a narrated story; thread: one chat with a twist; share: cards made to be sent to a friend
+export type Format = 'skit' | 'story' | 'thread' | 'share'
 
 export interface Reel {
-  idea: { hookOptions?: string[], title: string, angle: string, summary: string, format?: 'skit' | 'story', sources?: string[] }
+  idea: { hookOptions?: string[], title: string, angle: string, summary: string, format?: Format, sources?: string[] }
   props?: Prop[]
   scenes: Scene[]
   post: { caption: string, hashtags: string[], youtubeTitle: string, xText: string }

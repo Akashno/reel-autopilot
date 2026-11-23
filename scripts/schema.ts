@@ -11,6 +11,7 @@ const NEEDS: Record<string, [keyof typeof BRAND, string]> = {
   match: ['avatars', 'avatars'],
   call: ['avatars', 'avatars'],
   chat: ['avatars', 'avatars'],
+  thread: ['avatars', 'avatars'],
   appclip: ['clips', 'clips'],
   games: ['games', 'games'],
   features: ['features', 'features'],

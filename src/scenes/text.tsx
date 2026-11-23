@@ -1,6 +1,6 @@
 import { interpolate } from 'remotion'
 import type { Scene } from '../types'
-import { C, Card, Chip, Column, ease, fitSize, Headline, Icon, mix, Pop, DISPLAY, Stage, stepTimes, useScene, useSpring, useT, withMarker } from '../ui'
+import { C, THEME, Card, Chip, Column, ease, fitSize, Headline, Icon, mix, Pop, DISPLAY, Stage, stepTimes, useScene, useSpring, useT, withMarker } from '../ui'
 
 type Of<T extends Scene['type']> = Extract<Scene, { type: T }>
 
@@ -15,8 +15,8 @@ export function Hook({ s }: { s: Of<'hook'> }) {
     <Stage>
       <Column gap={0} style={{ paddingBottom: 120, transform: `scale(${zoom})` }}>
         {s.lines.map((line, i) => (
-          <Pop key={i} at={0.08 + i * 0.22} rise={70}>
-            <Headline size={size}>{withMarker(line, s.highlight, 0.3 + s.lines.length * 0.22)}</Headline>
+          <Pop key={i} at={-0.3 + i * 0.2} rise={70}>
+            <Headline size={size}>{withMarker(line, s.highlight, 0.1 + s.lines.length * 0.2)}</Headline>
           </Pop>
         ))}
       </Column>
@@ -45,7 +45,7 @@ export function Pov({ s: raw }: { s: Of<'pov'> }) {
           <span style={{ opacity: 0 }}>{s.text}</span>
           <div style={{ position: 'absolute', inset: 0 }}>
             {s.text.slice(0, shown)}
-            <span style={{ display: 'inline-block', width: 8, height: size * 0.9, marginLeft: 6, verticalAlign: 'text-bottom', background: C.ink, opacity: Math.floor(t * 2.5) % 2 ? 0 : 1 }} />
+            <span style={{ display: 'inline-block', width: 8, height: size * 0.9, marginLeft: 6, verticalAlign: 'text-bottom', background: C.gold, opacity: Math.floor(t * 2.5) % 2 ? 0 : 1 }} />
           </div>
         </div>
       </Column>
@@ -66,7 +66,7 @@ export function BigWord({ s }: { s: Of<'bigword'> }) {
         </div>
         {s.sub && (
           <Pop at={0.55}>
-            <div style={{ fontSize: 58, fontWeight: 600, color: C.muted, textAlign: 'center' }}>{s.sub}</div>
+            <div style={{ fontSize: 58, fontWeight: 600, color: THEME.sub, textAlign: 'center' }}>{s.sub}</div>
           </Pop>
         )}
       </Column>
@@ -172,7 +172,7 @@ export function Versus({ s }: { s: Of<'versus'> }) {
   return (
     <Stage>
       <Column align="stretch" gap={0}>
-        {half(s.left, '#EFE8D6', 0.05, true)}
+        {half(s.left, '#E9E6F5', 0.05, true)}
         <div style={{ display: 'flex', justifyContent: 'center', height: 40, position: 'relative', zIndex: 2 }}>
           <div style={{ marginTop: -55, width: 150, height: 150, borderRadius: '50%', background: C.gold, boxShadow: '0 0 0 10px #FFF', fontFamily: DISPLAY, fontWeight: 800, fontSize: 58, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${vs}) rotate(${interpolate(vs, [0, 1], [-30, 0])}deg)` }}>VS</div>
         </div>

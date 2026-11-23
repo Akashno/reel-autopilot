@@ -112,7 +112,7 @@ export function People({ s }: { s: Of<'people'> }) {
                 {p.avatar
                   ? <Face avatar={p.avatar} size={size} />
                   : (
-                      <div style={{ width: size, height: size, borderRadius: size * 0.28, background: C.tints[(i + 1) % C.tints.length], boxShadow: `0 0 0 ${Math.max(4, size * 0.03)}px #FFF, 0 24px 50px rgba(120,90,0,0.22)`, overflow: 'hidden', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+                      <div style={{ width: size, height: size, borderRadius: size * 0.28, background: C.tints[(i + 1) % C.tints.length], boxShadow: `0 0 0 ${Math.max(4, size * 0.03)}px #FFF, 0 24px 50px rgba(0,0,0,0.45)`, overflow: 'hidden', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
                         {p.prop && <PropArt name={p.prop} size={size * 0.95} />}
                       </div>
                     )}

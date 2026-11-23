@@ -48,9 +48,11 @@
           "type": "string",
           "enum": [
             "skit",
-            "story"
+            "story",
+            "thread",
+            "share"
           ],
-          "description": "skit: a punchy product reel. story: one flowing narrated story with a twist (see the brief). Use today's format."
+          "description": "skit: a punchy product reel. story: one flowing narrated story with a twist. thread: one chat between two strangers with a twist at the end. share: cards made to be sent to a friend. Use today's format."
         },
         "sources": {
           "type": "array",
@@ -65,7 +67,7 @@
     },
     "scenes": {
       "type": "array",
-      "minItems": 5,
+      "minItems": 2,
       "maxItems": 9,
       "description": "In order. The first scene must be a hook, pov, bigword or question; the last must be end. Skits use 5-7 scenes, stories 6-9.",
       "items": {
@@ -758,6 +760,131 @@
             },
             "say": {
               "$ref": "#/definitions/say"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "hook",
+            "avatar",
+            "name",
+            "messages"
+          ],
+          "description": "A whole chat between me and a stranger, message by message, with the hook pinned above it and a twist in the last message.",
+          "properties": {
+            "type": {
+              "const": "thread"
+            },
+            "hook": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 48
+            },
+            "highlight": {
+              "type": "string",
+              "maxLength": 20
+            },
+            "avatar": {
+              "$ref": "#/definitions/avatar"
+            },
+            "name": {
+              "$ref": "#/definitions/nickname"
+            },
+            "messages": {
+              "type": "array",
+              "minItems": 6,
+              "maxItems": 14,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "from",
+                  "text"
+                ],
+                "properties": {
+                  "from": {
+                    "type": "string",
+                    "enum": [
+                      "me",
+                      "them"
+                    ]
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  },
+                  "beat": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "title",
+            "items",
+            "cta"
+          ],
+          "description": "Cards that swipe in one by one under a pinned title, then a send-this-to nudge.",
+          "properties": {
+            "type": {
+              "const": "cards"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 44
+            },
+            "items": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "title"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "line": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "avatar": {
+                    "$ref": "#/definitions/avatar"
+                  },
+                  "on": {
+                    "$ref": "#/definitions/spoken"
+                  }
+                }
+              }
+            },
+            "cta": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 34
+            },
+            "say": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 200,
+              "description": "Optional: one line that names each card in order (each card's `on` word is in it), 30 words at most"
             }
           }
         },

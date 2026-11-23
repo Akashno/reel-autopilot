@@ -1,5 +1,6 @@
 // Everything about the product being advertised lives in brand/. Code reads it only through here.
 import raw from '../brand/brand.json'
+import type { Format } from './types'
 
 export interface Brand {
   name: string
@@ -11,10 +12,12 @@ export interface Brand {
   timezone: { label: string, offsetMinutes: number }
   slots: string[] // HH:MM post times in that timezone, one video each (scripts/slot.mjs)
   storySlots: string[] // slots that draw from the story angles (angles.json "format": "story")
+  slotFormats?: Record<string, Format | Format[]> // HH:MM -> the format that slot gets (a list rotates by day); wins over storySlots
   endCard: { sub: string }
   reservedNames: string[] // example nicknames from the brief; never shown in a reel
   commonWords: string[] // words every video uses; ignored when comparing ideas for novelty
   voice: { gemini: { voice: string, style: string } }
+  theme?: 'light' | 'dark' // page colours; light by default
   colors: { bg: string, card: string, border: string, ink: string, muted: string, soft: string, gold: string, sun: string, glow: string, green: string, callGreen: string, red: string, tints: string[] }
   fonts: { display: string, body: string, files: Array<{ family: string, file: string, weight: number }> }
   logo: string

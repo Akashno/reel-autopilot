@@ -181,8 +181,26 @@ export async function voice(reel: Reel, runDir: string, prefer: Engine = 'gemini
         lines.forEach((l, k) => clean(take, join(dir, `s${l.i}.wav`), bounds[k], bounds[k + 1]))
       }
       catch (err) {
-        console.log(`  Gemini voice failed (${(err as Error).message}); using Piper`)
-        engine = 'piper'
+        // Thread and share reels have only 2-3 voice lines, where a pause inside a line can
+        // look like the break between lines. One take per line has nothing to cut.
+        let fixed = false
+        if (lines.length <= 3) {
+          try {
+            for (const l of lines) {
+              const take = join(dir, `take-s${l.i}.wav`)
+              await geminiTake([l.text], take)
+              clean(take, join(dir, `s${l.i}.wav`))
+              rmSync(take)
+            }
+            fixed = true
+            console.log(`  Gemini one take failed (${(err as Error).message}); voiced each line on its own`)
+          }
+          catch {}
+        }
+        if (!fixed) {
+          console.log(`  Gemini voice failed (${(err as Error).message}); using Piper`)
+          engine = 'piper'
+        }
       }
     }
     if (engine === 'piper') {

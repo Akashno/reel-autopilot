@@ -8,6 +8,11 @@ import type { Prop } from './types'
 export const C = BRAND.colors
 export const DISPLAY = `"${BRAND.fonts.display}", sans-serif`
 export const BODY = `"${BRAND.fonts.body}", ui-sans-serif, system-ui, sans-serif`
+// Page colours. brand.json "theme": "light" (default) is dark text on the brand's cream page;
+// "dark" is light text on near-black. Cards stay light with dark text in both.
+const LIGHT = { bg: C.bg, text: C.ink, sub: C.muted, panel: '#FFFFFF', line: 'rgba(17,17,16,0.08)', ok: C.green, glowA: C.sun, glowB: '#D9CCFF', glowAlpha: ['FF', '99'], shadow: 'rgba(120,90,0,0.18)' }
+const DARK = { bg: '#0B0B0F', text: '#FFFFFF', sub: 'rgba(255,255,255,0.7)', panel: '#1B1B22', line: 'rgba(255,255,255,0.12)', ok: '#4ADE80', glowA: '#FBD860', glowB: '#7C5CFF', glowAlpha: ['40', '48'], shadow: 'rgba(0,0,0,0.5)' }
+export const THEME = BRAND.theme === 'dark' ? DARK : LIGHT
 export const W = 1080
 export const H = 1920
 export const FPS = 30
@@ -108,14 +113,21 @@ export function stepTimes(n: number, secs: number, lead = 0.25, tail = 0.9) {
 export function Dot({ color = C.green, size = 18 }: { color?: string, size?: number }) {
   return <span style={{ display: 'inline-block', width: size, height: size, borderRadius: '50%', background: color, marginRight: size * 0.6, verticalAlign: 'middle', position: 'relative', top: -size * 0.12 }} />
 }
-// Cream page with the sun glow (or a deep-blue night sky). Nothing else: the scene's content is
-// the only thing to look at.
-export function Stage({ children, tint, night }: { children: ReactNode, seed?: number, tint?: string, night?: boolean }) {
-  const bg = night
-    ? 'radial-gradient(130% 55% at 50% 0%, #3B4A7A 0%, #222B4D 40%, #151A30 75%)'
-    : `radial-gradient(130% 55% at 50% 0%, ${tint ?? C.sun} 0%, ${C.glow} 38%, ${C.bg} 72%)`
+// Near-black page with two slow drifting glows and a moving film grain, so even a still
+// headline is never a dead frame. `night` swaps the glows for a deep-blue sky.
+const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="240" height="240" filter="url(#n)" opacity="0.55"/></svg>')}")`
+export function Stage({ children, seed = 0, tint, night }: { children: ReactNode, seed?: number, tint?: string, night?: boolean }) {
+  const t = useT() + seed * 3.7
+  const { index } = useScene()
+  const k = (index * 0.37) % 1
+  const ax = 30 + Math.sin(t * 0.35 + k * 6) * 18, ay = 8 + Math.cos(t * 0.27 + k * 4) * 6
+  const bx = 70 + Math.cos(t * 0.31 + k * 5) * 18, by = 86 + Math.sin(t * 0.23 + k * 3) * 6
+  const [ga, gb] = night ? ['#3B4A7A', '#1E2A55'] : [tint ?? THEME.glowA, THEME.glowB]
+  const bg = `radial-gradient(70% 38% at ${ax}% ${ay}%, ${ga}${night ? 'CC' : THEME.glowAlpha[0]} 0%, transparent 70%), radial-gradient(75% 40% at ${bx}% ${by}%, ${gb}${night ? 'AA' : THEME.glowAlpha[1]} 0%, transparent 70%), ${night ? '#10152A' : THEME.bg}`
+  const f = useCurrentFrame()
   return (
-    <AbsoluteFill style={{ background: bg, color: night ? '#FFF' : C.ink, fontFamily: BODY, overflow: 'hidden' }}>
+    <AbsoluteFill style={{ background: bg, color: night ? '#FFF' : THEME.text, fontFamily: BODY, overflow: 'hidden' }}>
+      <AbsoluteFill style={{ backgroundImage: GRAIN, backgroundPosition: `${(f * 37) % 240}px ${(f * 53) % 240}px`, opacity: 0.07, mixBlendMode: 'overlay' }} />
       {children}
     </AbsoluteFill>
   )
@@ -143,12 +155,12 @@ export function fitSize(lines: string[], max = 150, min = 72, width = 840) {
   return Math.round(Math.max(min, Math.min(max, width / (longest * 0.6))))
 }
 
-// Gold marker swept under a phrase from `at` seconds.
+// Gold highlighter swept across a phrase from `at` seconds; the words turn dark on it.
 export function Marker({ at, children }: { at: number, children: ReactNode }) {
-  const p = ease(useT(), at, 0.5)
+  const p = ease(useT(), at, 0.35)
   return (
-    <span style={{ position: 'relative', display: 'inline-block' }}>
-      <span style={{ position: 'absolute', left: -10, right: -10, bottom: '0.06em', height: '0.38em', background: C.gold, borderRadius: 12, transformOrigin: 'left', transform: `scaleX(${p})` }} />
+    <span style={{ position: 'relative', display: 'inline-block', color: p > 0.5 ? C.ink : undefined }}>
+      <span style={{ position: 'absolute', left: '-0.12em', right: '-0.12em', top: '0.04em', bottom: '-0.02em', background: C.gold, borderRadius: '0.14em', transformOrigin: 'left', transform: `scaleX(${p}) rotate(-1.2deg)` }} />
       <span style={{ position: 'relative' }}>{children}</span>
     </span>
   )
@@ -163,16 +175,16 @@ export function withMarker(text: string, highlight: string | undefined, at: numb
 }
 
 export function Card({ children, style }: { children: ReactNode, style?: CSSProperties }) {
-  return <div style={{ background: C.card, borderRadius: 44, boxShadow: '0 0 0 2px rgba(80,60,0,0.06), 0 30px 60px rgba(120,90,0,0.16), 0 8px 20px rgba(120,90,0,0.08)', ...style }}>{children}</div>
+  return <div style={{ background: C.card, color: C.ink, borderRadius: 44, boxShadow: `0 0 0 2px ${THEME.line}, 0 30px 70px ${THEME.shadow}`, ...style }}>{children}</div>
 }
 
 export function Chip({ children, dark, style }: { children: ReactNode, dark?: boolean, style?: CSSProperties }) {
-  return <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, padding: '16px 30px', borderRadius: 999, background: dark ? C.ink : C.card, color: dark ? '#FFF' : C.ink, fontSize: 40, fontWeight: 600, boxShadow: '0 0 0 2px rgba(17,17,16,0.06), 0 10px 24px rgba(120,90,0,0.12)', ...style }}>{children}</div>
+  return <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, padding: '16px 30px', borderRadius: 999, background: dark ? C.gold : C.card, color: C.ink, fontSize: 40, fontWeight: 600, boxShadow: `0 10px 30px ${THEME.shadow}`, ...style }}>{children}</div>
 }
 
 export function Bubble({ text, me, size = 52, style }: { text: string, me?: boolean, size?: number, style?: CSSProperties }) {
   return (
-    <div style={{ maxWidth: 700, padding: `${size * 0.48}px ${size * 0.72}px`, borderRadius: size * 0.9, [me ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: size * 0.22, background: me ? C.ink : '#FFF', color: me ? '#FFF' : C.ink, fontSize: size, fontWeight: 600, lineHeight: 1.25, boxShadow: me ? '0 12px 30px rgba(0,0,0,0.18)' : '0 0 0 2px rgba(17,17,16,0.05), 0 12px 30px rgba(120,90,0,0.14)', ...style }}>
+    <div style={{ maxWidth: 700, padding: `${size * 0.48}px ${size * 0.72}px`, borderRadius: size * 0.9, [me ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: size * 0.22, background: me ? C.gold : THEME.panel, color: me ? C.ink : THEME.text, fontSize: size, fontWeight: 600, lineHeight: 1.25, boxShadow: me ? `0 12px 30px ${THEME.shadow}` : `0 0 0 2px ${THEME.line}, 0 12px 30px ${THEME.shadow}`, ...style }}>
       {text}
     </div>
   )
@@ -181,7 +193,7 @@ export function Bubble({ text, me, size = 52, style }: { text: string, me?: bool
 export function Face({ avatar, size }: { avatar: string, size: number }) {
   const a = BRAND.avatars[avatar]
   return (
-    <div style={{ width: size, height: size, borderRadius: size * 0.28, background: a?.tint ?? C.tints[0], overflow: 'hidden', boxShadow: `0 0 0 ${Math.max(4, size * 0.03)}px #FFF, 0 24px 50px rgba(120,90,0,0.22)` }}>
+    <div style={{ width: size, height: size, borderRadius: size * 0.28, background: a?.tint ?? C.tints[0], overflow: 'hidden', boxShadow: `0 0 0 ${Math.max(4, size * 0.03)}px #FFF, 0 24px 50px ${THEME.shadow}` }}>
       {a && <Img src={staticFile(asset(a.file))} style={{ width: '100%', height: '100%' }} />}
     </div>
   )
@@ -190,14 +202,14 @@ export function Face({ avatar, size }: { avatar: string, size: number }) {
 // The brand mark, as an app-icon tile.
 export function Logo({ size }: { size: number }) {
   return (
-    <div style={{ width: size, height: size, borderRadius: size * 0.24, overflow: 'hidden', boxShadow: '0 40px 80px rgba(120,90,0,0.28), 0 10px 24px rgba(120,90,0,0.18)' }}>
+    <div style={{ width: size, height: size, borderRadius: size * 0.24, overflow: 'hidden', boxShadow: `0 0 90px ${C.gold}55, 0 30px 60px rgba(0,0,0,0.5)` }}>
       <Img src={staticFile(asset(BRAND.logo))} style={{ width: '100%', height: '100%' }} />
     </div>
   )
 }
 
 // Live-looking voice waveform.
-export function Wave({ bars = 17, height = 120, color = C.ink, active = 1 }: { bars?: number, height?: number, color?: string, active?: number }) {
+export function Wave({ bars = 17, height = 120, color = THEME.text, active = 1 }: { bars?: number, height?: number, color?: string, active?: number }) {
   const t = useT()
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, height }}>
@@ -231,6 +243,7 @@ const ICONS: Record<string, string> = {
   'user-plus': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6m3-3h-6"/>',
   'venetian-mask': '<path d="M18 11c-1.5 0-2.5.5-3 2M4 6a2 2 0 0 0-2 2v4a5 5 0 0 0 5 5a8 8 0 0 1 5 2a8 8 0 0 1 5-2a5 5 0 0 0 5-5V8a2 2 0 0 0-2-2h-3a8 8 0 0 0-5 2a8 8 0 0 0-5-2zm2 5c1.5 0 2.5.5 3 2"/>',
   'heart-handshake': '<path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676a.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052zm-9.414-5L8 11.5a2.5 2.5 0 1 0 3.5 3.5l1.5-1.5m1 3.5l2-2m-4.5-.5l2-2"/>',
+  'send': '<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147l-10.94 10.939"/>',
   'star': '<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.12 2.12 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.12 2.12 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.12 2.12 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.12 2.12 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.12 2.12 0 0 0 1.597-1.16z"/>',
 }
 
@@ -248,7 +261,7 @@ export function PhoneFrame({ width, children, style }: { width: number, children
   const bezel = width * 0.035
   const h = width * (1688 / 780)
   return (
-    <div style={{ width: width + bezel * 2, height: h + bezel * 2, padding: bezel, borderRadius: width * 0.15, background: C.ink, boxShadow: '0 50px 100px rgba(80,60,0,0.30), 0 14px 30px rgba(80,60,0,0.18)', ...style }}>
+    <div style={{ width: width + bezel * 2, height: h + bezel * 2, padding: bezel, borderRadius: width * 0.15, background: '#26262E', boxShadow: `0 0 0 3px ${THEME.line}, 0 50px 100px ${THEME.shadow}`, ...style }}>
       <div style={{ position: 'relative', width, height: h, borderRadius: width * 0.12, overflow: 'hidden', background: C.bg }}>
         {children}
       </div>

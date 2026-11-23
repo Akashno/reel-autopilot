@@ -47,6 +47,8 @@ function onScreen(r: Reel): string[] {
       case 'prop': return [s.text ?? '']
       case 'people': return [...s.people.map(p => p.label), s.text ?? '']
       case 'count': return s.items.flatMap(i => [i.value, i.label])
+      case 'thread': return [s.hook, s.highlight ?? '', s.name, ...s.messages.map(m => m.text)]
+      case 'cards': return [s.title, s.cta, ...s.items.flatMap(i => [i.title, i.line ?? ''])]
       case 'end': return [s.tagline]
     }
   }).concat(r.scenes.map(s => s.say ?? ''))
@@ -104,7 +106,7 @@ function checkCues(r: Reel): string[] {
     const said = (s.say ?? '').split(/\s+/).map(norm)
     const cues = s.type === 'prop' || s.type === 'people'
       ? [s.type === 'prop' ? s.on : undefined, s.textOn, ...(s.type === 'people' ? s.people.map(p => p.on) : [])]
-      : s.type === 'count' ? s.items.map(x => x.on) : []
+      : s.type === 'count' || s.type === 'cards' ? s.items.map(x => x.on) : []
     for (const cue of cues) {
       const w = cue && norm(cue.split(/\s+/)[0])
       if (w && !said.some(x => x.startsWith(w)))
@@ -119,12 +121,27 @@ export function checkReel(reel: unknown): string[] {
     return (validate.errors ?? []).slice(0, 12).map(e => `${e.instancePath || '/'} ${e.message}`)
   const r = reel as Reel
   const errors: string[] = []
-  const story = r.idea.format === 'story'
+  const format = r.idea.format ?? 'skit'
+  const story = format === 'story'
   const n = r.scenes.length
-  if (story ? n < 6 || n > 9 : n > 7)
-    errors.push(`${n} scenes; ${story ? 'a story uses 6-9' : 'a skit uses 5-7'} including the end`)
   const first = r.scenes[0].type
-  if (!['hook', 'pov', 'bigword', 'question'].includes(first))
+  const threads = r.scenes.filter(s => s.type === 'thread').length
+  const cards = r.scenes.filter(s => s.type === 'cards').length
+  if (format === 'thread') {
+    // The chat is the whole video: the hook is pinned above it, so it opens the reel.
+    if (first !== 'thread' || threads !== 1 || n < 2 || n > 3)
+      errors.push('a thread reel is the thread scene, optionally one bigword or question after it, then end')
+  }
+  else if (format === 'share') {
+    if (cards !== 1 || n < 3 || n > 4 || r.scenes[1]?.type !== 'cards')
+      errors.push('a share reel is an opener (hook, pov, bigword or question), the cards scene, optionally one question, then end')
+  }
+  else if (threads || cards) {
+    errors.push(`thread and cards scenes belong to the thread and share formats, not a ${format}`)
+  }
+  if (format === 'skit' || story ? (story ? n < 6 || n > 9 : n < 5 || n > 7) : false)
+    errors.push(`${n} scenes; ${story ? 'a story uses 6-9' : 'a skit uses 5-7'} including the end`)
+  if (format !== 'thread' && !['hook', 'pov', 'bigword', 'question'].includes(first))
     errors.push(`scene 1 is "${first}"; it must be hook, pov, bigword or question`)
   if (r.scenes[r.scenes.length - 1].type !== 'end')
     errors.push('the last scene must be "end"')
@@ -137,6 +154,12 @@ export function checkReel(reel: unknown): string[] {
       errors.push(`scenes ${i} and ${i + 1} are both "${r.scenes[i].type}"`)
   }
   r.scenes.forEach((s, i) => {
+    if (s.type === 'thread' && s.highlight && !s.hook.toLowerCase().includes(s.highlight.toLowerCase()))
+      errors.push(`scene ${i + 1}: highlight "${s.highlight}" is not in the hook`)
+    if (s.type === 'thread' && s.hook.split(/\s+/).length > 9)
+      errors.push(`scene ${i + 1}: the pinned hook is ${s.hook.split(/\s+/).length} words; 9 at most`)
+    if (s.type === 'thread' && !s.messages.some(m => m.from === 'me') || s.type === 'thread' && !s.messages.some(m => m.from === 'them'))
+      errors.push(`scene ${i + 1}: the thread needs messages from both me and them`)
     if (s.type === 'hook' && s.highlight && !s.lines.some(l => l.toLowerCase().includes(s.highlight!.toLowerCase())))
       errors.push(`scene ${i + 1}: highlight "${s.highlight}" is not in any line`)
   })
@@ -158,7 +181,7 @@ export function checkReel(reel: unknown): string[] {
         errors.push(`scene ${i + 1} (${s.type}) shows the product mid-story; in a story the product only appears in the last two scenes before the end`)
     })
   }
-  else if (product.length && !r.scenes.some(s => product.includes(s.type))) {
+  else if (format === 'skit' && product.length && !r.scenes.some(s => product.includes(s.type))) {
     errors.push(`no scene shows the product; use at least one of: ${product.join(', ')}`)
   }
   if (r.scenes.filter(s => s.type === 'features' || s.type === 'list').length > 1)
@@ -169,16 +192,21 @@ export function checkReel(reel: unknown): string[] {
   const words = r.scenes.reduce((n, s) => n + count(s.say), 0)
   if (story && (words < 50 || words > 85))
     errors.push(`the story is ${words} words; tell it in 55-80 so it flows but still moves`)
-  if (!story && words > 55)
+  if (!story && format !== 'share' && words > 55)
     errors.push(`voiceover is ${words} words; keep it to 25-55 so the video breathes`)
   const maxSay = story ? 18 : 14, maxBusy = story ? 14 : 10
   r.scenes.forEach((s, i) => {
     if (story && !s.say)
       errors.push(`scene ${i + 1} has no voice line; in a story every scene carries the next part of it`)
+    if (s.type === 'cards') {
+      if (count(s.say) > 30)
+        errors.push(`scene ${i + 1} (cards): the voice line has ${count(s.say)} words; 30 at most`)
+      return
+    }
     if (count(s.say) > maxSay)
       errors.push(`scene ${i + 1}: the voice line has ${count(s.say)} words; ${maxSay} at most`)
     // Text-heavy scenes: the screen already talks, so the voice stays short.
-    if (['versus', 'list', 'rating', 'features', 'question', 'chat', 'pov'].includes(s.type) && count(s.say) > maxBusy)
+    if (['versus', 'list', 'rating', 'features', 'question', 'chat', 'pov', 'thread'].includes(s.type) && count(s.say) > maxBusy)
       errors.push(`scene ${i + 1} (${s.type}) already has text on screen; keep its voice line to ${maxBusy} words`)
   })
   // The hook must land in a glance.

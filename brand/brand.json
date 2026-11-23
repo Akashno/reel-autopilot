@@ -8,6 +8,7 @@
   "timezone": { "label": "India", "offsetMinutes": 330 },
   "slots": ["13:00", "19:00", "22:00"],
   "storySlots": ["13:00"],
+  "slotFormats": { "13:00": "story", "19:00": "thread", "22:00": "share" },
   "endCard": { "sub": "Free to start · link in bio" },
   "reservedNames": ["Dizzy Wolf", "Messy Toast", "Quiet Clown", "Biggie Pizza"],
   "commonWords": ["stranger", "strangers", "talk", "talking", "call", "voice"],
@@ -19,6 +20,7 @@
     }
   },
 
+  "theme": "light",
   "colors": {
     "bg": "#F6F1E3",
     "card": "#FFFDF7",
@@ -46,8 +48,8 @@
   },
   "logo": "logo/mynah-3d.png",
 
-  "scenes": ["hook", "pov", "bigword", "question", "match", "call", "chat", "appclip", "games", "features", "list", "rating", "versus", "prop", "people", "count", "end"],
-  "productScenes": ["match", "call", "chat", "appclip", "games"],
+  "scenes": ["hook", "pov", "bigword", "question", "match", "call", "chat", "appclip", "games", "features", "list", "rating", "versus", "prop", "people", "count", "thread", "cards", "end"],
+  "productScenes": ["match", "call", "chat", "appclip", "games", "thread"],
 
   "avatars": {
     "AmaraLDN": { "file": "faces/AmaraLDN.svg", "tint": "#FCDCEA" },

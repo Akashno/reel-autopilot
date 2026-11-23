@@ -12,6 +12,7 @@
     "write": "tsx scripts/write.ts",
     "daily": "tsx scripts/daily.ts",
     "post": "tsx scripts/post.ts",
+    "metrics": "tsx scripts/metrics.ts",
     "stills": "tsx scripts/stills.ts",
     "assets": "tsx scripts/assets.ts"
   },
