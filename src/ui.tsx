@@ -28,7 +28,7 @@ export const BOX = { left: 120, right: 120, top: 250, bottom: 1450, captionTop: 
 // Scenes with little text of their own get burned-in captions; the rest already show the words.
 // In a story the voice carries it, so the picture scenes are captioned too.
 export const CAPTIONED = ['match', 'call'] as const
-export const STORY_CAPTIONED = ['match', 'call', 'prop', 'people', 'count', 'bigword'] as const
+export const STORY_CAPTIONED = ['match', 'call', 'prop', 'people', 'count', 'bigword', 'photo'] as const
 
 export function Column({ children, captions = false, gap = 44, align = 'center', style }: { children: ReactNode, captions?: boolean, gap?: number, align?: CSSProperties['alignItems'], style?: CSSProperties }) {
   return (
@@ -68,7 +68,7 @@ export function useFonts() {
 // Each scene knows how long it runs, so timed steps (chat bubbles, list items) spread over it,
 // and its voice line, so a thing can appear on the word that names it.
 export const VO_AT = 0.25 // voice starts this far into its scene
-export const SceneCtx = createContext<{ secs: number, index: number, say?: string, vo?: number | null, props?: Prop[] }>({ secs: 4, index: 0 })
+export const SceneCtx = createContext<{ secs: number, index: number, say?: string, vo?: number | null, props?: Prop[], photos?: Record<string, { src: string, width: number, height: number }> }>({ secs: 4, index: 0 })
 export const useScene = () => useContext(SceneCtx)
 
 // When (seconds into the scene) `word` is spoken, estimated from where it sits in the line, the

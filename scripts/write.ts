@@ -16,6 +16,7 @@ import { nextSlot } from './slot.mjs'
 import { prompt as loadPrompt } from './prompt'
 import { reelSchema } from './schema'
 import { scoreboard } from './metrics'
+import { credits, resolvePhotos } from './photos'
 
 const ROOT = resolve(import.meta.dirname, '..')
 const read = (p: string) => readFileSync(join(ROOT, p), 'utf8')
@@ -215,7 +216,9 @@ const score = (r: Review) => r.hook * 2 + r.clarity + r.human + r.payoff
 function script(r: Reel) {
   return r.scenes.map((s, i) => {
     const { type, say, ...rest } = s as any
-    return `${i + 1}. [${type}] screen: ${JSON.stringify(rest)}${say ? ` | voice: "${say}"` : ''}`
+    // The critic checks the photo really shows what the line is about.
+    const photo = type === 'photo' ? r.photos?.find(p => p.query === rest.query) : undefined
+    return `${i + 1}. [${type}] screen: ${JSON.stringify(rest)}${photo ? ` | photo found: ${photo.title}: "${photo.description}"` : ''}${say ? ` | voice: "${say}"` : ''}`
   }).join('\n')
 }
 
@@ -228,7 +231,7 @@ export async function write(date: string): Promise<{ ok: true, file: string, ree
   const history = loadHistory().filter(h => h.date < date)
   const angle = pickAngle(history, date)
   const base = buildPrompt(date, angle, history)
-  const schema = JSON.stringify(reelSchema())
+  const schema = JSON.stringify(reelSchema({ forWriter: true }))
   // Everything that's the same on every attempt goes in the system prompt, so Claude caches it
   // once and later attempts only pay for what changed (today's context and the feedback).
   const system = [loadPrompt('prompts/system.md'), loadPrompt('brand/brief.md'), loadPrompt('prompts/craft.md')].join('\n\n')
@@ -238,6 +241,10 @@ export async function write(date: string): Promise<{ ok: true, file: string, ree
   // The best reel that passed every hard check, in case the critic never fully approves.
   let best: { reel: Reel, score: number } | undefined
   const save = (reel: Reel) => {
+    // CC BY and CC BY-SA photos must be credited; the caption is where the post can.
+    const credit = credits(reel.photos ?? [])
+    if (credit && !reel.post.caption.includes(credit))
+      reel.post.caption = `${reel.post.caption}\n\n${credit}`.slice(0, 600)
     mkdirSync(join(ROOT, 'reels'), { recursive: true })
     const file = join(ROOT, 'reels', `${date}.json`)
     writeFileSync(file, `${JSON.stringify(reel, null, 2)}\n`)
@@ -263,6 +270,14 @@ export async function write(date: string): Promise<{ ok: true, file: string, ree
     if (angle.true && !reel.idea.sources?.length)
       errors.push('this is a true story: list your sources in idea.sources')
     console.log(`  attempt ${attempt}: "${reel.idea.title}" ${sceneList(reel)} (${res.tokens})${errors.length ? `, rejected:\n    ${errors.join('\n    ')}` : ''}`)
+    if (!errors.length && reel.scenes.some(s => s.type === 'photo')) {
+      const found = await resolvePhotos(reel)
+      reel.photos = found.photos
+      errors = found.errors
+      for (const p of found.photos) console.log(`  photo "${p.query}": ${p.title} (${p.licence})`)
+      if (errors.length)
+        console.log(`    ${errors.join('\n    ')}`)
+    }
     if (!errors.length) {
       const rv = review(reel)
       if (!rv.out) {

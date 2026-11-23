@@ -48,7 +48,7 @@
   },
   "logo": "logo/mynah-3d.png",
 
-  "scenes": ["hook", "pov", "bigword", "question", "match", "call", "chat", "appclip", "games", "features", "list", "rating", "versus", "prop", "people", "count", "thread", "cards", "end"],
+  "scenes": ["hook", "pov", "bigword", "question", "match", "call", "chat", "appclip", "games", "features", "list", "rating", "versus", "prop", "people", "count", "photo", "thread", "cards", "end"],
   "productScenes": ["match", "call", "chat", "appclip", "games", "thread"],
 
   "avatars": {

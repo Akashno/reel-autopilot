@@ -47,9 +47,10 @@ function onScreen(r: Reel): string[] {
       case 'prop': return [s.text ?? '']
       case 'people': return [...s.people.map(p => p.label), s.text ?? '']
       case 'count': return s.items.flatMap(i => [i.value, i.label])
+      case 'photo': return [s.caption ?? '']
       case 'thread': return [s.hook, s.highlight ?? '', s.name, ...s.messages.map(m => m.text)]
       case 'cards': return [s.title, s.cta, ...s.items.flatMap(i => [i.title, i.line ?? ''])]
-      case 'end': return [s.tagline]
+      case 'end': return [s.tagline, s.ask ?? '']
     }
   }).concat(r.scenes.map(s => s.say ?? ''))
 }
@@ -104,7 +105,7 @@ function checkCues(r: Reel): string[] {
   const errors: string[] = []
   r.scenes.forEach((s, i) => {
     const said = (s.say ?? '').split(/\s+/).map(norm)
-    const cues = s.type === 'prop' || s.type === 'people'
+    const cues = s.type === 'photo' ? [s.on] : s.type === 'prop' || s.type === 'people'
       ? [s.type === 'prop' ? s.on : undefined, s.textOn, ...(s.type === 'people' ? s.people.map(p => p.on) : [])]
       : s.type === 'count' || s.type === 'cards' ? s.items.map(x => x.on) : []
     for (const cue of cues) {
@@ -145,6 +146,9 @@ export function checkReel(reel: unknown): string[] {
     errors.push(`scene 1 is "${first}"; it must be hook, pov, bigword or question`)
   if (r.scenes[r.scenes.length - 1].type !== 'end')
     errors.push('the last scene must be "end"')
+  const end = r.scenes[r.scenes.length - 1]
+  if (end?.type === 'end' && !end.ask)
+    errors.push('the end card has no `ask`: give people one specific question to answer in the comments')
   if (r.scenes.slice(0, -1).some(s => s.type === 'end'))
     errors.push('"end" may only be the last scene')
   if (!r.scenes.some(s => s.say))
@@ -168,10 +172,14 @@ export function checkReel(reel: unknown): string[] {
       errors.push(`on-screen text "${t}" has emoji or symbols; use plain words`)
   }
   errors.push(...checkProps(r), ...checkCues(r))
-  if (story && !r.scenes.some(s => s.type === 'prop' || (s.type === 'people' && (s.item || s.people.some(p => p.prop)))))
-    errors.push('a story must SHOW its own objects: draw 1-3 props and use them in prop or people scenes')
-  if (story && r.scenes.filter(s => ['prop', 'people', 'count'].includes(s.type)).length < 2)
-    errors.push('use at least 2 picture scenes (prop, people, count) so the viewer sees the story')
+  if (story && !r.scenes.some(s => s.type === 'photo' || s.type === 'prop' || (s.type === 'people' && (s.item || s.people.some(p => p.prop)))))
+    errors.push('a story must SHOW its own objects: a real photo, or 1-3 drawn props used in prop or people scenes')
+  if (story && r.scenes.filter(s => ['prop', 'people', 'count', 'photo'].includes(s.type)).length < 2)
+    errors.push('use at least 2 picture scenes (photo, prop, people, count) so the viewer sees the story')
+  if (!story && r.scenes.some(s => s.type === 'photo'))
+    errors.push('photo scenes are for story reels only')
+  if (r.scenes.filter(s => s.type === 'photo').length > 3)
+    errors.push('use at most 3 photo scenes')
   const product = BRAND.productScenes.filter(t => BRAND.scenes.includes(t))
   if (story) {
     // The story is the video; the product only closes it (the last two scenes before the end card).

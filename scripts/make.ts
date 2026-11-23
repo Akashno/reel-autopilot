@@ -12,6 +12,7 @@ import type { Reel, ReelProps } from '../src/types'
 import { syncAssets } from './assets'
 import { checkReel } from './check'
 import { voice } from './voice'
+import { downloadPhotos, resolvePhotos } from './photos'
 
 const ROOT = resolve(import.meta.dirname, '..')
 
@@ -47,9 +48,21 @@ export async function make(file: string, opts: { silent?: boolean, piper?: boole
     engine = v.engine
   }
 
+  // Real photos: found by the writer (reel.photos); found here if it didn't, then downloaded.
+  let photoFiles: Record<string, string> | undefined
+  if (reel.scenes.some(s => s.type === 'photo')) {
+    if (reel.scenes.some(s => s.type === 'photo' && !reel.photos?.some(p => p.query === s.query))) {
+      const found = await resolvePhotos(reel)
+      if (found.errors.length)
+        return { ok: false as const, code: 2, errors: found.errors }
+      reel.photos = found.photos
+    }
+    photoFiles = await downloadPhotos(reel.photos!, ROOT, runDir)
+  }
+
   syncAssets()
   mkdirSync(join(ROOT, 'out'), { recursive: true })
-  const props: ReelProps = { reel, audioDir: opts.silent ? null : runDir, voSecs }
+  const props: ReelProps = { reel, audioDir: opts.silent ? null : runDir, voSecs, photoFiles }
   const propsFile = join(ROOT, 'out', `${id}.props.json`)
   writeFileSync(propsFile, JSON.stringify(props))
   const mp4 = join(ROOT, 'out', `${id}.mp4`)

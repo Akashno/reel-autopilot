@@ -132,6 +132,13 @@
           }
         }
       }
+    },
+    "photos": {
+      "type": "array",
+      "description": "Filled in by the pipeline, never by the writer",
+      "items": {
+        "type": "object"
+      }
     }
   },
   "definitions": {
@@ -725,6 +732,44 @@
           "additionalProperties": false,
           "required": [
             "type",
+            "query"
+          ],
+          "description": "A real photo from Wikimedia Commons, framed big with a slow zoom or pan.",
+          "properties": {
+            "type": {
+              "const": "photo"
+            },
+            "query": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 70,
+              "description": "What to search Wikimedia Commons for: the specific event, place, object or famous person, in the words a museum caption would use"
+            },
+            "caption": {
+              "$ref": "#/definitions/slip"
+            },
+            "on": {
+              "$ref": "#/definitions/spoken"
+            },
+            "move": {
+              "type": "string",
+              "enum": [
+                "in",
+                "out",
+                "left",
+                "right"
+              ]
+            },
+            "say": {
+              "$ref": "#/definitions/say"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
             "items"
           ],
           "description": "1-3 big number slips that pop in on their words.",
@@ -906,6 +951,12 @@
             },
             "say": {
               "$ref": "#/definitions/say"
+            },
+            "ask": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 40,
+              "description": "A specific question people want to answer in the comments"
             }
           }
         }

@@ -66,10 +66,24 @@ The rules above still apply, except these:
   because of one wrong text." / "Soldiers stopped a war to play football with the enemy."
 - 6-9 scenes including the end, 55-80 words of voice, up to 18 per scene (14 on scenes that show
   text). Every scene has a voice line, and **every picture shows exactly what its line is about**:
-  `prop` for the story's objects (the text message, the football, the bottle), `people` for who it
+  `photo` for a real photo of the event, place, object or famous person, `prop` for the story's objects (the text message, the football, the bottle), `people` for who it
   happened to, `count` or `bigword` for a year or a number, `chat` for a message exchange. At least
-  2 picture scenes (prop, people, count), and at least one drawn prop. `on` words make each thing
+  2 picture scenes (photo, prop, people, count), and at least one photo or drawn prop. `on` words make each thing
   appear as it is said; they must be words in that scene's `say`.
+
+### Real photos (`photo`)
+
+A true story looks true with real photos: prefer them over drawings whenever the story has one
+(the 1914 truce, Bell's telephone, a famous ship, a city, a museum object). Use 1-3 `photo` scenes.
+- `query`: a precise Wikimedia Commons search, the way a museum caption would name it: the event,
+  year or place, and what is in it ("Christmas truce 1914 British German soldiers", "Strowger
+  switch telephone exchange"). Never a mood ("friendship", "loneliness").
+- The pipeline finds a freely licensed photo and credits its author in the post. If none
+  matches, you will be asked for another search or a drawn prop.
+- Never photos of private, living people; history, places, objects and famous people only.
+- Optional `caption`: a short museum-label slip (28 characters at most): "No Man's Land, 1914".
+  `move`: in (zoom in, default), out, left or right. `on`: the word in its `say` it lands on.
+- Fiction stories use drawn props, never photos.
 
 ### Drawing props (`props`)
 
@@ -133,6 +147,14 @@ about, then one `cards` scene, then the end card (optionally a `question` before
   looks, gender, religion or caste.
 - Hinglish is welcome when it fits the joke ("bas 5 min", "arre yaar"), written in Latin letters.
 
+## Give people a reason to comment
+
+Every reel ends with one specific, easy question people want to answer, as the end card's `ask`
+(<=40 chars), echoed in the caption. Answerable in a few words, about the viewer, tied to this
+video: "what would you reply?", "which one is your best friend?", "ask your next stranger this,
+tell me what they said", "A or B?", "what word would you bring back?". Never "thoughts?", "agree?"
+or "let me know in the comments".
+
 ## Post text
 
 - Caption (post.caption): 1-3 short lines that add to the video, a question that invites comments
@@ -155,12 +177,13 @@ about, then one `cards` scene, then the end card (optionally a `question` before
 - `list`: numbered list of 3-5 short items.
 - `rating`: 2-4 things rated 1-5 stars (types of people, openers, situations).
 - `versus`: top vs bottom comparison (expectation/reality, before/after, old way/new way).
+- `photo`: a real photo from Wikimedia Commons by `query`, framed big with a slow zoom or pan, landing on `on`, with an optional label `caption`. Story reels only.
 - `prop`: a big close-up of one of your drawn `props` that moves (`move`: pop, float, drop, shake, spin, slide, grow) on the word `on`, with an optional paper slip `text` (<=28 chars) on `textOn`. `night: true` for a night sky.
 - `people`: 1-3 people with name `label`s (<=18 chars), each an app avatar or one of your props (a drawn person: a grandmother, a soldier), popping on their `on` word; optional `item` prop with them and a slip `text`.
 - `count`: 1-3 big number cards (`value` <=8 chars, `label`), each popping on its `on` word. Perfect for the payoff.
 - `thread`: a whole chat with a pinned hook, message by message, twist in the last message. Only in thread reels.
 - `cards`: cards that swipe in under a pinned title, then a send-this-to nudge. Only in share reels.
-- `end`: logo, your tagline (<=32 chars), {{site}}. Always last, only once. Its voice line always says {{site}} out loud as the last words of the reel, in a short natural line that fits the story ("Find yours on {{site}}.", "Try it tonight on {{site}}."), 8 words at most.
+- `end`: logo, your tagline (<=32 chars), {{site}}, and `ask`: the comment prompt (see "Give people a reason to comment"). Always last, only once. Its voice line always says {{site}} out loud as the last words of the reel, in a short natural line that fits the story ("Find yours on {{site}}.", "Try it tonight on {{site}}."), 8 words at most.
 
 Avatars: {{avatars}}.
 No two scenes of the same type back to back.

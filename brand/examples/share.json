@@ -4,12 +4,21 @@
     "angle": "share-2am-friends",
     "format": "share",
     "summary": "Five kinds of friends on a 2 AM call, made to be sent to the one who is number three.",
-    "hookOptions": ["send this to your 2am friend", "every friend group has a number 3", "your friends at 2am, ranked", "which one are you at 2am"]
+    "hookOptions": [
+      "send this to your 2am friend",
+      "every friend group has a number 3",
+      "your friends at 2am, ranked",
+      "which one are you at 2am"
+    ]
   },
   "scenes": [
     {
       "type": "hook",
-      "lines": ["Every friend", "group has", "a number 3"],
+      "lines": [
+        "Every friend",
+        "group has",
+        "a number 3"
+      ],
       "highlight": "number 3",
       "say": "Every friend group has a number three."
     },
@@ -17,11 +26,31 @@
       "type": "cards",
       "title": "your friends at 2am",
       "items": [
-        { "title": "bas 5 min", "line": "says it at 1:58. still talking at 4:10", "on": "five" },
-        { "title": "the hmm machine", "line": "you pour your heart out. they say hmm", "on": "hmm" },
-        { "title": "voice note novelist", "line": "sends a 9 minute voice note. starts with 'ok so'", "on": "novelist" },
-        { "title": "asleep mid sentence", "line": "'wait i have to tell you som'", "on": "asleep" },
-        { "title": "always online", "line": "replies in 2 seconds. never says why they're up", "on": "online" }
+        {
+          "title": "bas 5 min",
+          "line": "says it at 1:58. still talking at 4:10",
+          "on": "five"
+        },
+        {
+          "title": "the hmm machine",
+          "line": "you pour your heart out. they say hmm",
+          "on": "hmm"
+        },
+        {
+          "title": "voice note novelist",
+          "line": "sends a 9 minute voice note. starts with 'ok so'",
+          "on": "novelist"
+        },
+        {
+          "title": "asleep mid sentence",
+          "line": "'wait i have to tell you som'",
+          "on": "asleep"
+        },
+        {
+          "title": "always online",
+          "line": "replies in 2 seconds. never says why they're up",
+          "on": "online"
+        }
       ],
       "cta": "send this to your #3",
       "say": "Bas five minutes. The hmm machine. The voice note novelist. Asleep mid sentence. And the one always online."
@@ -29,12 +58,19 @@
     {
       "type": "end",
       "tagline": "Someone's always up.",
-      "say": "Find them on randomtalker.com."
+      "say": "Find them on randomtalker.com.",
+      "ask": "which number are you?"
     }
   ],
   "post": {
     "caption": "Send this to the friend who is #3. You know who.\nWhich one are you?\nSomeone's always up on randomtalker.com",
-    "hashtags": ["#randomtalker", "#2am", "#friends", "#relatable", "#desimemes"],
+    "hashtags": [
+      "#randomtalker",
+      "#2am",
+      "#friends",
+      "#relatable",
+      "#desimemes"
+    ],
     "youtubeTitle": "Every friend group has a number 3 #shorts",
     "xText": "Every friend group has a number 3. randomtalker.com"
   }

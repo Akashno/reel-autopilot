@@ -2,7 +2,7 @@
 // Claude as small SVGs (reel.props), the people in it, and the numbers that matter. Each thing
 // appears on the word that names it (`on`), so the picture follows the voice.
 import type { ReactNode } from 'react'
-import { Img } from 'remotion'
+import { AbsoluteFill, Img } from 'remotion'
 import type { PropMove, Scene } from '../types'
 import { C, Card, Chip, Column, DISPLAY, ease, Face, fitSize, Headline, mix, Pop, Stage, stepTimes, useScene, useSpring, useT, useWordAt } from '../ui'
 
@@ -147,6 +147,38 @@ export function Count({ s }: { s: Of<'count'> }) {
             </Card>
           </Pop>
         ))}
+      </Column>
+    </Stage>
+  )
+}
+
+// A real photo (Wikimedia Commons, scripts/photos.ts), framed big with a slow documentary
+// zoom or pan, over a soft blurred copy of itself. The photo is there from the start (an empty
+// frame loses people); its label lands on the `on` word.
+export function PhotoScene({ s }: { s: Of<'photo'> }) {
+  const { secs, photos } = useScene()
+  const t = useT()
+  const p = photos?.[s.query]
+  const at = useWordAt(s.on, 0.05)
+  const land = useSpring(-0.1, { damping: 15, mass: 0.9, stiffness: 120 })
+  const k = Math.min(1, t / Math.max(1, secs))
+  const move = s.move ?? 'in'
+  const scale = move === 'out' ? mix(1.2, 1.04, k) : mix(1.04, 1.2, k)
+  const x = move === 'left' ? mix(4, -4, k) : move === 'right' ? mix(-4, 4, k) : 0
+  const w = 960
+  const h = Math.round(Math.max(780, Math.min(1040, p ? w * p.height / p.width : 800)))
+  return (
+    <Stage>
+      {p && (
+        <AbsoluteFill style={{ opacity: 0.55 }}>
+          <Img src={p.src} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'blur(40px) saturate(1.2)', transform: 'scale(1.25)' }} />
+        </AbsoluteFill>
+      )}
+      <Column captions gap={40}>
+        <div style={{ width: w, height: h, borderRadius: 36, overflow: 'hidden', background: '#2A2A30', boxShadow: '0 0 0 10px #FFF, 0 40px 90px rgba(0,0,0,0.35)', opacity: Math.min(1, land * 2), transform: `scale(${mix(0.85, 1, land)}) rotate(${mix(-3, -1, land)}deg)` }}>
+          {p && <Img src={p.src} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${scale}) translateX(${x}%)` }} />}
+        </div>
+        {s.caption && <div style={{ marginTop: -90, zIndex: 2 }}><Slip text={s.caption} at={Math.max(0.4, at)} tilt={2} /></div>}
       </Column>
     </Stage>
   )

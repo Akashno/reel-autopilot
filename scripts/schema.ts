@@ -17,7 +17,7 @@ const NEEDS: Record<string, [keyof typeof BRAND, string]> = {
   features: ['features', 'features'],
 }
 
-export function reelSchema() {
+export function reelSchema({ forWriter = false } = {}) {
   const s = JSON.parse(readFileSync(join(ROOT, 'reel.schema.json'), 'utf8'))
   for (const t of BRAND.scenes) {
     const need = NEEDS[t]
@@ -25,6 +25,9 @@ export function reelSchema() {
     if (need && (!list || !Object.keys(list).length))
       throw new Error(`brand.json enables the "${t}" scene but has no ${need[1]}; add some or remove "${t}" from scenes`)
   }
+  // The pipeline fills in photos (scripts/photos.ts); the writer only asks for them.
+  if (forWriter)
+    delete s.properties.photos
   s.definitions.scene.oneOf = s.definitions.scene.oneOf.filter((x: any) => BRAND.scenes.includes(x.properties.type.const))
   // prompts/craft.md already describes each scene; don't send it twice on every call.
   for (const x of s.definitions.scene.oneOf)

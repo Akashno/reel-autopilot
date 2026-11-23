@@ -197,10 +197,11 @@ export function Features({ s }: { s: Of<'features'> }) {
 // Closing card: mynah, tagline, site.
 export function End({ s }: { s: Of<'end'> }) {
   const logo = useSpring(0.05, { damping: 11, mass: 0.8, stiffness: 130 })
+  const t = useT()
   return (
     <Stage>
-      <Column gap={56} style={{ paddingBottom: 60 }}>
-        <div style={{ transform: `scale(${logo}) rotate(${(1 - logo) * -14}deg)` }}><Logo size={280} /></div>
+      <Column gap={s.ask ? 44 : 56} style={{ paddingBottom: 60 }}>
+        <div style={{ transform: `scale(${logo}) rotate(${(1 - logo) * -14}deg)` }}><Logo size={s.ask ? 200 : 280} /></div>
         <Pop at={0.35}>
           <Headline size={s.tagline.length > 20 ? 96 : 112}>{s.tagline}</Headline>
         </Pop>
@@ -208,6 +209,15 @@ export function End({ s }: { s: Of<'end'> }) {
           <div style={{ padding: '34px 64px', borderRadius: 999, background: C.gold, color: C.ink, fontFamily: DISPLAY, fontWeight: 800, fontSize: 60, boxShadow: `0 0 60px ${C.gold}66` }}>{BRAND.site}</div>
           <div style={{ fontSize: 42, fontWeight: 600, color: THEME.sub }}>{BRAND.endCard.sub}</div>
         </Pop>
+        {s.ask && (
+          // The comment prompt: a speech bubble that gives people one easy thing to answer.
+          <Pop at={1.1} from={0.6}>
+            <Card style={{ maxWidth: 840, display: 'flex', alignItems: 'center', gap: 24, padding: '30px 42px', borderRadius: 44, borderBottomLeftRadius: 10, transform: `rotate(${Math.sin(t * 3) * 1.2}deg)` }}>
+              <Icon name="message-circle" size={64} color={C.ink} />
+              <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: s.ask.length > 26 ? 48 : 56, lineHeight: 1.12, letterSpacing: -1 }}>{s.ask}</div>
+            </Card>
+          </Pop>
+        )}
       </Column>
     </Stage>
   )

@@ -5,7 +5,7 @@ import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from 'remo
 import type { ReelProps, Scene, SceneType } from './types'
 import { AppClip, Call, Chat, End, Features, Games, Match } from './scenes/app'
 import { BigWord, Hook, List, Pov, Question, Rating, Versus } from './scenes/text'
-import { Count, People, PropScene } from './scenes/story'
+import { Count, People, PhotoScene, PropScene } from './scenes/story'
 import { Cards, cardsMinSecs, Thread, threadTimes } from './scenes/thread'
 import { BOX, C, CAPTIONED, DISPLAY, ease, FPS, mix, Guides, SceneCtx, STORY_CAPTIONED, THEME, useFonts, VO_AT } from './ui'
 
@@ -32,6 +32,7 @@ function minSecs(s: Scene): number {
     case 'prop': return 2.6
     case 'people': return 2.4 + s.people.length * 0.3
     case 'count': return 1.4 + s.items.length * 0.8
+    case 'photo': return 3
     case 'thread': return threadTimes(s.messages).end
     case 'cards': return cardsMinSecs(s)
     case 'end': return 3.2
@@ -74,6 +75,7 @@ function View({ s }: { s: Scene }) {
     case 'prop': return <PropScene s={s} />
     case 'people': return <People s={s} />
     case 'count': return <Count s={s} />
+    case 'photo': return <PhotoScene s={s} />
     case 'thread': return <Thread s={s} />
     case 'cards': return <Cards s={s} />
     case 'end': return <End s={s} />
@@ -109,7 +111,7 @@ function Captions({ text, secs }: { text: string, secs: number }) {
       <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: 72, letterSpacing: -1.5, color: '#FFF', textAlign: 'center', lineHeight: 1.12, textTransform: 'uppercase', WebkitTextStroke: '10px #000', paintOrder: 'stroke fill', textShadow: '0 8px 24px rgba(0,0,0,0.6)', transform: `scale(${mix(0.86, 1, ease(t, chunk[0].start, 0.12))})` }}>
         {chunk.map((x, i) => {
           const on = t >= x.start && t < x.end + 0.05
-          return <span key={i} style={{ display: 'inline-block', color: on ? C.gold : '#FFF', transform: `scale(${on ? 1.08 : 1})`, margin: '0 0.12em' }}>{x.w}</span>
+          return <span key={i} style={{ display: 'inline-block', color: on ? C.gold : '#FFF', transform: `scale(${on ? 1.08 : 1})`, margin: '0 0.2em' }}>{x.w}</span>
         })}
       </div>
     </div>
@@ -121,13 +123,15 @@ export function ReelVideo(props: ReelProps) {
   const { reel, audioDir, voSecs } = props
   const secs = sceneSecs(props)
   const { starts } = layout(secs)
+  // Downloaded copies when rendering for real; the Commons URL for quick previews.
+  const photos = Object.fromEntries((reel.photos ?? []).map(p => [p.query, { src: props.photoFiles?.[p.query] ? staticFile(props.photoFiles[p.query]) : p.url, width: p.width, height: p.height }]))
   const captioned: readonly SceneType[] = reel.idea.format === 'story' ? STORY_CAPTIONED : CAPTIONED
   return (
     <AbsoluteFill style={{ background: THEME.bg }}>
       <TransitionSeries>
         {reel.scenes.flatMap((s, i) => [
           <TransitionSeries.Sequence key={`s${i}`} durationInFrames={sec(secs[i])} name={`${i} ${s.type}`}>
-            <SceneCtx.Provider value={{ secs: secs[i], index: i, say: s.say, vo: voSecs[i], props: reel.props }}>
+            <SceneCtx.Provider value={{ secs: secs[i], index: i, say: s.say, vo: voSecs[i], props: reel.props, photos }}>
               <View s={s} />
               {s.say && voSecs[i] != null && captioned.includes(s.type) && (
                 <Sequence from={sec(VO_AT)} layout="none"><Captions text={s.say} secs={voSecs[i]!} /></Sequence>

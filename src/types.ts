@@ -7,6 +7,8 @@ export type Clip = string
 
 export type PropMove = 'pop' | 'float' | 'drop' | 'shake' | 'spin' | 'slide' | 'grow'
 export interface Prop { name: string, svg: string }
+// A real photo found on Wikimedia Commons for a `photo` scene (scripts/photos.ts), with its credit.
+export interface Photo { query: string, title: string, url: string, page: string, width: number, height: number, licence: string, artist: string, description: string }
 
 interface Base { say?: string }
 export type Scene = Base & (
@@ -25,10 +27,11 @@ export type Scene = Base & (
   | { type: 'versus', left: { label: string, text: string }, right: { label: string, text: string } }
   | { type: 'prop', prop: string, move?: PropMove, on?: string, text?: string, textOn?: string, night?: boolean }
   | { type: 'people', people: Array<{ avatar?: Avatar, prop?: string, label: string, on?: string }>, item?: string, text?: string, textOn?: string, night?: boolean }
+  | { type: 'photo', query: string, caption?: string, on?: string, move?: 'in' | 'out' | 'left' | 'right' }
   | { type: 'count', items: Array<{ value: string, label: string, on?: string }> }
   | { type: 'thread', hook: string, highlight?: string, avatar: Avatar, name: string, messages: Array<{ from: 'me' | 'them', text: string, beat?: boolean }> }
   | { type: 'cards', title: string, items: Array<{ title: string, line?: string, avatar?: Avatar, on?: string }>, cta: string }
-  | { type: 'end', tagline: string }
+  | { type: 'end', tagline: string, ask?: string }
 )
 export type SceneType = Scene['type']
 // skit: a product skit; story: a narrated story; thread: one chat with a twist; share: cards made to be sent to a friend
@@ -37,6 +40,7 @@ export type Format = 'skit' | 'story' | 'thread' | 'share'
 export interface Reel {
   idea: { hookOptions?: string[], title: string, angle: string, summary: string, format?: Format, sources?: string[] }
   props?: Prop[]
+  photos?: Photo[] // filled in by scripts/write.ts from Commons, never by Claude
   scenes: Scene[]
   post: { caption: string, hashtags: string[], youtubeTitle: string, xText: string }
 }
@@ -46,5 +50,6 @@ export interface ReelProps extends Record<string, unknown> {
   reel: Reel
   audioDir: string | null // under public/, e.g. runs/2026-11-08; null renders silent
   voSecs: Array<number | null> // per scene
+  photoFiles?: Record<string, string> // photo query -> downloaded file under public/ (scripts/make.ts)
   guides?: boolean // draw the platform UI zones (layout checks only)
 }

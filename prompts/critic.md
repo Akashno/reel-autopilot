@@ -20,12 +20,16 @@ For a THREAD reel, judge it like a viral chat story: does the pinned hook make y
 does every message escalate, and is the last message a real twist or punchline? For a SHARE reel:
 would someone forward this to a specific friend? Each card must be instantly recognisable.
 
+A photo scene shows "photo found: <title>: <description>": if that photo does not clearly show
+what its line is about, say so and give a better search. The end card's `ask` must be a question
+people would actually answer in a comment.
+
 Then name the single weakest line, and give up to 3 concrete fixes (rewrite the line, don't just
 describe the problem). Return only the JSON object.
 
 Your fixes must work inside the fixed format: scenes come only from the library (hook, pov,
 bigword, question, match, call, chat, appclip, games, features, list, rating, versus, prop,
-people, count, thread, cards, end); scene 1
+people, count, photo, thread, cards, end); scene 1
 must be hook, pov, bigword or question (a thread reel opens with its thread); scene 2 is never another opener; the last scene is end and its voice line says {{site}};
 5-7 scenes for a skit (6-9 for a story; a thread reel is thread then end, optionally one bigword or question between; a share reel is an opener, cards, optionally a question, then end, and the cards voice line may be 30 words); voice lines 14 words at most, 10 on text-heavy scenes
 (a story: 18 and 14, with product scenes only in the last two before the end); one stranger keeps one nickname
