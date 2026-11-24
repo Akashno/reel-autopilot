@@ -459,5 +459,15 @@
       "Crunchy Pickle"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-24-2200",
+    "title": "Rehearsed five times",
+    "angle": "share-english-learner",
+    "summary": "Five kind, specific English-as-second-language moments, opening on rehearsing an order five times, built to send to the friend who does it.",
+    "hook": "Ordering in English? Rehearse 5 times",
+    "scenes": "hook>cards>end",
+    "names": [],
+    "status": "rendered"
   }
 ]
