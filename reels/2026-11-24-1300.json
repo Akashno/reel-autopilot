@@ -1,0 +1,92 @@
+{
+  "idea": {
+    "title": "The earl behind the sandwich",
+    "angle": "english-word-stories",
+    "format": "story",
+    "summary": "Sandwich is named after John Montagu, 4th Earl of Sandwich; the card-game legend is uncertain. Closes on asking a stranger their favourite sandwich and telling them whose name it is.",
+    "hookOptions": [
+      "Your lunch is named after a real earl",
+      "A sandwich is named after a real man",
+      "Nobody agrees why sandwiches have that name",
+      "I said sandwich all my life, never knew why"
+    ],
+    "sources": [
+      "Wikipedia: Sandwich: named after John Montagu, 4th Earl of Sandwich (1718-1792); the card-game story is the popular tale, others say he ate at his desk, so it is uncertain.",
+      "Wikipedia: John Montagu, 4th Earl of Sandwich: title from the town of Sandwich in Kent."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "bigword",
+      "word": "Sandwich",
+      "sub": "Named after a real man",
+      "say": "Your lunch is named after a real English earl. Nobody agrees why."
+    },
+    {
+      "type": "photo",
+      "query": "John Montagu, 4th Earl of Sandwich portrait",
+      "caption": "The Earl, 1718-1792",
+      "on": "Montagu",
+      "say": "John Montagu was the fourth Earl of Sandwich, a title from a town in Kent."
+    },
+    {
+      "type": "prop",
+      "prop": "sandwich",
+      "move": "pop",
+      "on": "cards",
+      "text": "The card game legend",
+      "textOn": "Legend",
+      "say": "Legend says he wanted food to eat while playing cards."
+    },
+    {
+      "type": "bigword",
+      "word": "Maybe",
+      "sub": "Dictionaries aren't sure",
+      "say": "Or he ate at his desk. Nobody knows."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Crunchy Pickle",
+      "say": "Ask a stranger their favourite sandwich. Then tell them it's an earl's name."
+    },
+    {
+      "type": "end",
+      "tagline": "Every word has a story",
+      "ask": "What's the best sandwich you've had?",
+      "say": "Try it on randomtalker.com."
+    }
+  ],
+  "props": [
+    {
+      "name": "sandwich",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"345\" rx=\"140\" ry=\"22\" fill=\"#000\" opacity=\".15\"/><path d=\"M60 200 Q60 90 200 90 Q340 90 340 200 Z\" fill=\"#d9953f\"/><path d=\"M90 180 Q100 115 190 108 Q130 120 110 180 Z\" fill=\"#efb768\"/><path d=\"M55 200 Q80 225 110 200 Q140 225 170 200 Q200 225 230 200 Q260 225 290 200 Q320 225 345 200 L345 218 L55 218 Z\" fill=\"#5fae4a\"/><rect x=\"62\" y=\"216\" width=\"276\" height=\"26\" rx=\"8\" fill=\"#d9484a\"/><rect x=\"58\" y=\"240\" width=\"284\" height=\"30\" rx=\"10\" fill=\"#f5c84c\"/><path d=\"M60 272 H340 Q340 320 300 320 H100 Q60 320 60 272 Z\" fill=\"#c8802f\"/><path d=\"M80 282 H200 Q190 305 120 305 Q85 305 80 282 Z\" fill=\"#e3a355\"/><circle cx=\"150\" cy=\"150\" r=\"5\" fill=\"#f3d19a\"/><circle cx=\"230\" cy=\"135\" r=\"5\" fill=\"#f3d19a\"/><circle cx=\"270\" cy=\"170\" r=\"5\" fill=\"#f3d19a\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "Sandwich was a man's title before it was lunch. Nobody agrees on why he got the credit. What's the best sandwich you've ever had? Ask a stranger theirs on randomtalker.com.\n\nPhotos via Wikimedia Commons: Johann Zoffany (Public domain)",
+    "hashtags": [
+      "#randomtalker",
+      "#english",
+      "#learnenglish",
+      "#wordorigin",
+      "#englishwords",
+      "#sandwich"
+    ],
+    "youtubeTitle": "Your lunch is named after a real English earl #shorts",
+    "xText": "Your lunch is named after a real English earl. Ask a stranger their favourite sandwich: randomtalker.com"
+  },
+  "photos": [
+    {
+      "query": "John Montagu, 4th Earl of Sandwich portrait",
+      "title": "File:John Montagu, 4th Earl of Sandwich by Johann Zoffany.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/John_Montagu%2C_4th_Earl_of_Sandwich_by_Johann_Zoffany.jpg/1280px-John_Montagu%2C_4th_Earl_of_Sandwich_by_Johann_Zoffany.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "page": "https://commons.wikimedia.org/wiki/File:John_Montagu,_4th_Earl_of_Sandwich_by_Johann_Zoffany.jpg",
+      "width": 1280,
+      "height": 1555,
+      "licence": "Public domain",
+      "artist": "Johann Zoffany",
+      "description": "John Montagu, 4th Earl of Sandwich , by Johann Zoffany (died 1810). See source website for additional information. This set of images was gathered by User:Dcoetzee from the National Portrait Gallery, "
+    }
+  ]
+}

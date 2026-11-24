@@ -447,5 +447,17 @@
       "Grumpy Noodle"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-24-1300",
+    "title": "The earl behind the sandwich",
+    "angle": "english-word-stories",
+    "summary": "Sandwich is named after John Montagu, 4th Earl of Sandwich; the card-game legend is uncertain. Closes on asking a stranger their favourite sandwich and telling them whose name it is.",
+    "hook": "Sandwich Named after a real man",
+    "scenes": "bigword>photo>prop>bigword>match>end",
+    "names": [
+      "Crunchy Pickle"
+    ],
+    "status": "rendered"
   }
 ]
