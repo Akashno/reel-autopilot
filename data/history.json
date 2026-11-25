@@ -481,5 +481,15 @@
       "Patient Biscuit"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-25-2200",
+    "title": "Five ways to end a call",
+    "angle": "share-caller-types",
+    "summary": "Five types at the very end of a call, opened on a concrete 'said bye 4 times' moment, ending on the viewer and a this-or-that.",
+    "hook": "Said bye 4 times. Still talking.",
+    "scenes": "hook>cards>question>end",
+    "names": [],
+    "status": "rendered"
   }
 ]
