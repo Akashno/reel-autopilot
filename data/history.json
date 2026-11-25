@@ -469,5 +469,17 @@
     "scenes": "hook>cards>end",
     "names": [],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-25-1900",
+    "title": "Fourteen no's",
+    "angle": "thread-interview-practice",
+    "summary": "A nervous night-before interview rehearsal where the stranger interviewer is brutally good because he has failed fourteen interviews himself, ending on a sweet line.",
+    "hook": "he failed 14 interviews, then coached mine",
+    "scenes": "thread>end",
+    "names": [
+      "Patient Biscuit"
+    ],
+    "status": "rendered"
   }
 ]

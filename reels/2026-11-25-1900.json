@@ -1,0 +1,85 @@
+{
+  "idea": {
+    "title": "Fourteen no's",
+    "angle": "thread-interview-practice",
+    "format": "thread",
+    "summary": "A nervous night-before interview rehearsal where the stranger interviewer is brutally good because he has failed fourteen interviews himself, ending on a sweet line.",
+    "hookOptions": [
+      "he failed 14 interviews, then coached mine",
+      "interview at 9 tomorrow. panicking at midnight",
+      "a stranger interviewed me for practice",
+      "my mock interviewer had 14 rejections"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "thread",
+      "hook": "he failed 14 interviews, then coached mine",
+      "highlight": "14 interviews",
+      "avatar": "KenjiJP",
+      "name": "Patient Biscuit",
+      "say": "He failed fourteen interviews, then coached mine.",
+      "messages": [
+        {
+          "from": "me",
+          "text": "i have an interview at 9 tomorrow and i'm panicking"
+        },
+        {
+          "from": "them",
+          "text": "ok. i'll be the interviewer. sit up straight"
+        },
+        {
+          "from": "them",
+          "text": "tell me about yourself. 30 seconds"
+        },
+        {
+          "from": "me",
+          "text": "i'm a hard worker and a team player"
+        },
+        {
+          "from": "them",
+          "text": "boring. what did you do last saturday"
+        },
+        {
+          "from": "me",
+          "text": "i fixed my neighbour's wifi for free",
+          "beat": true
+        },
+        {
+          "from": "them",
+          "text": "that's the answer. say that tomorrow"
+        },
+        {
+          "from": "me",
+          "text": "wait, why are you so good at this"
+        },
+        {
+          "from": "them",
+          "text": "i've had 14 interviews and zero offers yet"
+        },
+        {
+          "from": "them",
+          "text": "so i know what a yes sounds like. you sound like one"
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "tagline": "Practise on someone new",
+      "ask": "What's your worst interview question?",
+      "say": "Practise tonight on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "Night before an interview? Say your answers out loud to someone who isn't your mirror. What's the worst interview question you've been asked? Try it on randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#interviewprep",
+      "#englishpractice",
+      "#jobinterview",
+      "#talktostrangers"
+    ],
+    "youtubeTitle": "He failed 14 interviews, then coached mine #shorts",
+    "xText": "Practise your interview out loud with a stranger tonight. randomtalker.com"
+  }
+}
