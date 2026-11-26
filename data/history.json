@@ -491,5 +491,17 @@
     "scenes": "hook>cards>question>end",
     "names": [],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-26-1300",
+    "title": "Tuesday is a cat",
+    "angle": "mini-drama",
+    "summary": "Fiction: a man mourns 'Tuesday' on a call, the stranger assumes a person died, and the reveal is that Tuesday is his cat, found on a neighbour's balcony.",
+    "hook": "He cried to a stranger about Tuesday",
+    "scenes": "hook>chat>prop>bigword>people>end",
+    "names": [
+      "Soggy Bison"
+    ],
+    "status": "rendered"
   }
 ]
