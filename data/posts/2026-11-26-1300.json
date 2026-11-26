@@ -1,0 +1,17 @@
+{
+  "instagram": {
+    "id": "6b07acb2a791bea1b24f4c3f",
+    "dueAt": "2026-11-26T07:30:00.000Z",
+    "status": "scheduled"
+  },
+  "facebook": {
+    "id": "6b07acb29f6dda31ccbf3749",
+    "dueAt": "2026-11-26T07:30:00.000Z",
+    "status": "scheduled"
+  },
+  "twitter": {
+    "id": "6b07acb3a791bea1b24f4c70",
+    "dueAt": "2026-11-26T07:30:00.000Z",
+    "status": "scheduled"
+  }
+}
