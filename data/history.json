@@ -503,5 +503,15 @@
       "Soggy Bison"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-26-2200",
+    "title": "Desi family phone cards",
+    "angle": "share-desi-phone",
+    "summary": "Five affectionate Indian family phone habits, opened on 14 missed calls from Mummy and ending on the viewer's 'bas 5 min'.",
+    "hook": "14 missed calls from Mummy. You were showering.",
+    "scenes": "bigword>cards>question>end",
+    "names": [],
+    "status": "rendered"
   }
 ]
