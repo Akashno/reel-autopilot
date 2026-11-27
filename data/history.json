@@ -535,5 +535,15 @@
       "Cosmic Dumpling"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-27-2200",
+    "title": "Texters who drive you mad",
+    "angle": "share-texting-habits",
+    "summary": "Five maddening texting habits, opened on 14 messages ending in 'nvm', ending on the viewer who replies in three days; a call has no nvm.",
+    "hook": "POV: Your friend sends 14 messages in a row, then types: nvm",
+    "scenes": "pov>cards>end",
+    "names": [],
+    "status": "rendered"
   }
 ]

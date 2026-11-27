@@ -1,0 +1,73 @@
+{
+  "idea": {
+    "title": "Texters who drive you mad",
+    "angle": "share-texting-habits",
+    "format": "share",
+    "summary": "Five maddening texting habits, opened on 14 messages ending in 'nvm', ending on the viewer who replies in three days; a call has no nvm.",
+    "hookOptions": [
+      "14 messages in a row, then nvm",
+      "Seen 3 days ago. Replied today.",
+      "He replied k. with a full stop",
+      "Your friend sends 4-minute voice notes",
+      "Typing... stops. Typing... stops."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "pov",
+      "text": "Your friend sends 14 messages in a row, then types: nvm",
+      "say": "Fourteen messages. Then nvm. We all know one."
+    },
+    {
+      "type": "cards",
+      "title": "texters who drive you mad",
+      "items": [
+        {
+          "title": "14 texts, then 'nvm'",
+          "line": "Fourteen pings in a row. The last one cancels all of them.",
+          "on": "nvm"
+        },
+        {
+          "title": "The 3-day reply",
+          "line": "'sorry just saw this!' They saw it on Monday.",
+          "on": "Monday"
+        },
+        {
+          "title": "Just 'k.'",
+          "line": "With the full stop. Now you're checking what you did.",
+          "on": "k"
+        },
+        {
+          "title": "Voice note novelist",
+          "line": "Four minutes long. Starts with 'okay so basically'.",
+          "on": "voice"
+        },
+        {
+          "title": "You, reading this",
+          "line": "You'll send this to them and reply 'haha' tomorrow.",
+          "on": "tomorrow"
+        }
+      ],
+      "cta": "send this to your nvm friend",
+      "say": "Nvm, after fourteen. Seen on Monday. Just k. Four-minute voice notes. And you, tomorrow."
+    },
+    {
+      "type": "end",
+      "tagline": "A call has no nvm.",
+      "ask": "Which are you: nvm, k, or 3-day reply?",
+      "say": "Calls don't need three days. randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "Which are you: nvm, k, or the 3-day reply? Send this to your nvm friend, then watch them reply in three days.\nOr skip the typing and just talk to someone new: randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#texting",
+      "#relatable",
+      "#friends",
+      "#groupchat"
+    ],
+    "youtubeTitle": "14 messages, then 'nvm' #shorts",
+    "xText": "Texters who drive you mad: the 'k.', the 3-day reply, 14 messages then 'nvm'. Send to yours. randomtalker.com"
+  }
+}
