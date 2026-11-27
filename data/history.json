@@ -513,5 +513,15 @@
     "scenes": "bigword>cards>question>end",
     "names": [],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-27-1300",
+    "title": "The 108-year bottle",
+    "angle": "true-stranger-stories",
+    "summary": "A 1906 science-experiment message in a bottle was found on a German island in 2015 and returned, a 108-year wait for one stranger to answer another.",
+    "hook": "A note waited 108 years",
+    "scenes": "hook>photo>prop>count>bigword>end",
+    "names": [],
+    "status": "rendered"
   }
 ]

@@ -416,8 +416,8 @@
     }
   },
   "2026-11-18-1900": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
-    "final": false,
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
+    "final": true,
     "stats": {
       "instagram": {
         "reactions": 3,
@@ -442,8 +442,8 @@
     }
   },
   "2026-11-18-2200": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
-    "final": false,
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
+    "final": true,
     "stats": {
       "instagram": {
         "reactions": 3,
@@ -468,7 +468,7 @@
     }
   },
   "2026-11-19-1300": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -494,7 +494,7 @@
     }
   },
   "2026-11-19-1900": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -520,7 +520,7 @@
     }
   },
   "2026-11-19-2200": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -546,7 +546,7 @@
     }
   },
   "2026-11-20-1300": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -572,7 +572,7 @@
     }
   },
   "2026-11-20-2200": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -598,7 +598,7 @@
     }
   },
   "2026-11-21-1300": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -624,7 +624,7 @@
     }
   },
   "2026-11-21-1900": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -650,7 +650,7 @@
     }
   },
   "2026-11-22-1300": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -676,7 +676,7 @@
     }
   },
   "2026-11-22-1900": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -702,7 +702,7 @@
     }
   },
   "2026-11-22-2200": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -720,15 +720,15 @@
         "reactions": 0,
         "comments": 0,
         "engagementRate": 0,
-        "impressions": 222,
-        "reach": 204,
+        "impressions": 226,
+        "reach": 207,
         "shares": 0,
         "clicks": 0
       }
     }
   },
   "2026-11-23-1300": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -746,7 +746,7 @@
         "reactions": 12,
         "comments": 1,
         "engagementRate": 0.28,
-        "impressions": 6045,
+        "impressions": 6046,
         "reach": 5726,
         "shares": 0,
         "clicks": 4
@@ -754,7 +754,7 @@
     }
   },
   "2026-11-24-2200": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -780,7 +780,7 @@
     }
   },
   "2026-11-25-1900": {
-    "fetchedAt": "2026-11-26T13:14:41.723Z",
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
     "final": false,
     "stats": {
       "instagram": {
@@ -798,8 +798,34 @@
         "reactions": 0,
         "comments": 0,
         "engagementRate": 0,
-        "impressions": 2,
-        "reach": 1,
+        "impressions": 241,
+        "reach": 227,
+        "shares": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "2026-11-26-1300": {
+    "fetchedAt": "2026-11-27T05:23:12.026Z",
+    "final": false,
+    "stats": {
+      "instagram": {
+        "reactions": 2,
+        "comments": 0,
+        "engagementRate": 4.26,
+        "views": 98,
+        "shares": 0,
+        "saves": 0,
+        "totalTimeWatched": 6.07,
+        "averageTimeWatched": 7.29,
+        "reach": 47
+      },
+      "facebook": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 214,
+        "reach": 201,
         "shares": 0,
         "clicks": 0
       }
