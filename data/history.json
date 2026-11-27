@@ -523,5 +523,17 @@
     "scenes": "hook>photo>prop>count>bigword>end",
     "names": [],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-27-1900",
+    "title": "Goodnight mummy dare",
+    "angle": "thread-2am-dare",
+    "summary": "Two sleepless strangers swap tiny dares, water and a goodnight text to mum, and the result is mum awake and making paratha at 2am.",
+    "hook": "she dared me to text my mum goodnight",
+    "scenes": "thread>call>end",
+    "names": [
+      "Cosmic Dumpling"
+    ],
+    "status": "rendered"
   }
 ]

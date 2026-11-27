@@ -1,0 +1,93 @@
+{
+  "idea": {
+    "title": "Goodnight mummy dare",
+    "angle": "thread-2am-dare",
+    "format": "thread",
+    "summary": "Two sleepless strangers swap tiny dares, water and a goodnight text to mum, and the result is mum awake and making paratha at 2am.",
+    "hookOptions": [
+      "she dared me to text my mum goodnight",
+      "we dared each other at 2am. mum replied.",
+      "Awake at 2am? Do this tiny dare",
+      "I texted my mum goodnight at 2am",
+      "he said it was harmless. it wasn't"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "thread",
+      "hook": "she dared me to text my mum goodnight",
+      "highlight": "text my mum",
+      "avatar": "PriyaMumbai",
+      "name": "Cosmic Dumpling",
+      "say": "She dared me to text my mum goodnight.",
+      "messages": [
+        {
+          "from": "them",
+          "text": "cant sleep. 3rd hour of staring at the ceiling"
+        },
+        {
+          "from": "me",
+          "text": "same. 4th hour. i'm winning"
+        },
+        {
+          "from": "them",
+          "text": "ok dare time. something tiny. harmless"
+        },
+        {
+          "from": "me",
+          "text": "go drink a full glass of water"
+        },
+        {
+          "from": "them",
+          "text": "fine. you text your mum goodnight"
+        },
+        {
+          "from": "me",
+          "text": "it's 2am. she'll think someone died"
+        },
+        {
+          "from": "them",
+          "text": "that's the dare"
+        },
+        {
+          "from": "me",
+          "text": "sent. 'goodnight mummy'",
+          "beat": true
+        },
+        {
+          "from": "them",
+          "text": "water done. so what did she say"
+        },
+        {
+          "from": "me",
+          "text": "update: she's awake. making me paratha. it's 2am"
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "avatar": "PriyaMumbai",
+      "name": "Cosmic Dumpling",
+      "label": "2:07 AM",
+      "say": "We stayed on the call until the paratha was done."
+    },
+    {
+      "type": "end",
+      "tagline": "Awake? Someone else is too.",
+      "ask": "Who would you text goodnight?",
+      "say": "Find your dare partner on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "A tiny 2am dare: drink water, text your mum goodnight. Who would you text? Find someone else who's awake at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#2am",
+      "#cantsleep",
+      "#talktostrangers",
+      "#desi"
+    ],
+    "youtubeTitle": "She dared me to text my mum goodnight at 2am #shorts",
+    "xText": "2am dare: drink water, text your mum goodnight. She was awake and made paratha. randomtalker.com"
+  }
+}
