@@ -1,0 +1,102 @@
+{
+  "idea": {
+    "title": "Overly shallow",
+    "angle": "stranger-science",
+    "format": "story",
+    "summary": "Kardas, Kumar and Epley 2022: strangers expected deep questions to be awkward, but deep chats felt closer and less awkward than predicted. Fresh angle: deep talk, not liking gap or commuters.",
+    "hookOptions": [
+      "Deep questions with strangers aren't awkward",
+      "Scared to ask a stranger something real?",
+      "Researchers made strangers ask deep questions",
+      "Small talk is the awkward part",
+      "Strangers wanted shallow talk. They were wrong."
+    ],
+    "sources": [
+      "Kardas, Kumar & Epley (2022), 'Overly shallow?', Journal of Personality and Social Psychology: strangers expected deeper conversations to be more awkward and less connecting than they were."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Deep questions",
+        "with strangers",
+        "aren't awkward"
+      ],
+      "highlight": "aren't awkward",
+      "say": "Deep questions with strangers feel awkward. Researchers say they're not."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "avatar": "PriyaMumbai",
+          "label": "Stranger one",
+          "on": "strangers"
+        },
+        {
+          "avatar": "SofiaMX",
+          "label": "Stranger two",
+          "on": "deep"
+        }
+      ],
+      "say": "In 2022, researchers paired up strangers and handed them deep questions."
+    },
+    {
+      "type": "prop",
+      "prop": "question-card",
+      "move": "pop",
+      "on": "guessed",
+      "text": "WILL THIS BE AWKWARD?",
+      "textOn": "awkward",
+      "say": "Before talking, they guessed it would feel awkward."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "Closer",
+          "label": "than they predicted",
+          "on": "closer"
+        },
+        {
+          "value": "Less",
+          "label": "awkward than expected",
+          "on": "awkward"
+        }
+      ],
+      "say": "They guessed wrong. The deep chats felt closer and less awkward."
+    },
+    {
+      "type": "call",
+      "avatar": "AmaraLDN",
+      "name": "Sunny Otter",
+      "label": "Question one",
+      "say": "So with your next stranger, skip the weather and ask the real thing."
+    },
+    {
+      "type": "end",
+      "tagline": "Skip small talk tonight.",
+      "ask": "Your deep question for a stranger?",
+      "say": "Try it on randomtalker.com."
+    }
+  ],
+  "props": [
+    {
+      "name": "question-card",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"350\" rx=\"130\" ry=\"14\" fill=\"#000\" opacity=\".15\"/><rect x=\"70\" y=\"60\" width=\"260\" height=\"280\" rx=\"24\" fill=\"#F2B84B\"/><rect x=\"70\" y=\"60\" width=\"260\" height=\"140\" rx=\"24\" fill=\"#FFD27A\"/><rect x=\"90\" y=\"80\" width=\"220\" height=\"240\" rx=\"14\" fill=\"#FFF6E0\"/><path d=\"M150 150 Q150 105 200 105 Q250 105 250 150 Q250 185 215 200 Q200 210 200 235\" fill=\"none\" stroke=\"#2B3A55\" stroke-width=\"22\" stroke-linecap=\"round\"/><circle cx=\"200\" cy=\"280\" r=\"15\" fill=\"#2B3A55\"/><rect x=\"110\" y=\"95\" width=\"60\" height=\"20\" rx=\"10\" fill=\"#fff\" opacity=\".6\"/><rect x=\"230\" y=\"290\" width=\"70\" height=\"30\" rx=\"10\" fill=\"#E0A030\" opacity=\".4\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "Researchers had strangers ask each other deep questions. Everyone expected awkward. It felt closer and less awkward than they guessed. What would you ask a stranger first? Try it on randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#psychology",
+      "#talktostrangers",
+      "#deepconversations",
+      "#shorts"
+    ],
+    "youtubeTitle": "Deep questions with strangers aren't awkward #shorts",
+    "xText": "Psychologists found deep talk with strangers feels less awkward than we expect. Try it: randomtalker.com"
+  }
+}

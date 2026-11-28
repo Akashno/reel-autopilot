@@ -545,5 +545,17 @@
     "scenes": "pov>cards>end",
     "names": [],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-28-1300",
+    "title": "Overly shallow",
+    "angle": "stranger-science",
+    "summary": "Kardas, Kumar and Epley 2022: strangers expected deep questions to be awkward, but deep chats felt closer and less awkward than predicted. Fresh angle: deep talk, not liking gap or commuters.",
+    "hook": "Deep questions with strangers aren't awkward",
+    "scenes": "hook>people>prop>count>call>end",
+    "names": [
+      "Sunny Otter"
+    ],
+    "status": "rendered"
   }
 ]
