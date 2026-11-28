@@ -1,0 +1,90 @@
+{
+  "idea": {
+    "title": "Deep talk, soup debate",
+    "angle": "expectation-reality",
+    "format": "skit",
+    "summary": "Expecting a deep life talk with a stranger, you get a ridiculous soup debate that turns into the best call of the week.",
+    "hookOptions": [
+      "I wanted a deep talk. We argued about soup.",
+      "Expected deep talk. Got a soup debate.",
+      "Strangers online: expectation vs reality",
+      "My first call was about cereal"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Wanted deep talk.",
+        "Got a soup debate."
+      ],
+      "highlight": "soup debate",
+      "say": "I wanted a deep talk. We argued about soup."
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "Expected",
+        "text": "Deep talk about life and dreams"
+      },
+      "right": {
+        "label": "Reality",
+        "text": "20 minutes on whether soup is a drink"
+      },
+      "say": "The plan versus the call."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Rowdy Muffin",
+      "say": "Then Rowdy Muffin said hi and asked about soup."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Rowdy Muffin",
+      "messages": [
+        {
+          "from": "them",
+          "text": "ok but is cereal a soup"
+        },
+        {
+          "from": "me",
+          "text": "no. cereal is a crime"
+        },
+        {
+          "from": "them",
+          "text": "so the milk is just broth"
+        },
+        {
+          "from": "me",
+          "text": "stop, i can't breathe"
+        }
+      ],
+      "say": "Cereal came up. It got heated."
+    },
+    {
+      "type": "bigword",
+      "word": "10/10",
+      "sub": "Best call all week",
+      "say": "Best call I had all week."
+    },
+    {
+      "type": "end",
+      "tagline": "Deep talk can wait.",
+      "say": "Deep talk can wait."
+    }
+  ],
+  "post": {
+    "caption": "Expected a deep talk about life. Got a full debate on whether cereal is soup. Zero regrets.\n\nWhat's the weirdest thing you've argued about with a stranger? Try a call at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#strangers",
+      "#funny",
+      "#expectationvsreality",
+      "#voicechat"
+    ],
+    "youtubeTitle": "I wanted a deep talk. We argued about soup. #shorts",
+    "xText": "Expected a deep talk with a stranger. Got a soup debate. Best call all week. randomtalker.com"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "idea": {
+    "title": "Both said hello at once",
+    "angle": "pov-moments",
+    "format": "skit",
+    "summary": "The first seconds of a first call: both say hello together, both say sorry, then laugh, showing nerves are shared and fade fast.",
+    "hookOptions": [
+      "You both say hello at the same time",
+      "Nervous about your first call?",
+      "I said hello. So did he. Together.",
+      "The first ten seconds are the hardest",
+      "POV: both of you say sorry twice"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "pov",
+      "text": "You and a stranger both say hello at the exact same time",
+      "say": "Then you both say sorry. Twice."
+    },
+    {
+      "type": "rating",
+      "title": "First ten seconds, ranked",
+      "items": [
+        {
+          "label": "The nervous hello",
+          "stars": 3
+        },
+        {
+          "label": "The silence",
+          "stars": 1
+        },
+        {
+          "label": "Talking at once",
+          "stars": 4
+        },
+        {
+          "label": "The shared laugh",
+          "stars": 5
+        }
+      ],
+      "say": "Everyone's nervous. That's the good part."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Giggly Parsnip",
+      "say": "Connected, and we both said hello at once."
+    },
+    {
+      "type": "call",
+      "avatar": "LeoRio",
+      "name": "Giggly Parsnip",
+      "label": "0:07",
+      "say": "Then sorry, no you go, no you go, and we were laughing."
+    },
+    {
+      "type": "bigword",
+      "word": "7 sec",
+      "sub": "That's how long the nerves lasted",
+      "say": "Seven seconds. That's all the nerves lasted."
+    },
+    {
+      "type": "end",
+      "tagline": "Say hello. Say sorry. Laugh.",
+      "say": "Try it tonight on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "The first call is awkward for everyone, and that's what makes the laugh so easy. Ever said hello at the exact same time as a stranger? Tell us below.\nTry it on randomtalker.com, free to start.",
+    "hashtags": [
+      "#randomtalker",
+      "#firstcall",
+      "#talktostrangers",
+      "#povs",
+      "#voicechat"
+    ],
+    "youtubeTitle": "We both said hello at the same time #shorts",
+    "xText": "Both said hello at once. Both said sorry. Then we laughed. randomtalker.com"
+  }
+}

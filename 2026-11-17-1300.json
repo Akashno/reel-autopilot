@@ -1,0 +1,87 @@
+{
+  "idea": {
+    "title": "Mistakenly seeking solitude",
+    "angle": "stranger-science",
+    "format": "story",
+    "summary": "Epley and Schroeder's 2014 commuter study: people expected a quiet ride alone to be better, but those asked to talk to a stranger enjoyed it more. Opens as a question so the viewer guesses first.",
+    "hookOptions": [
+      "Would you talk to a stranger on the train?",
+      "Commuters said they'd hate talking to a stranger",
+      "Silence on the train is overrated",
+      "I'd rather ride alone, said everyone"
+    ],
+    "sources": [
+      "Epley, N. & Schroeder, J. (2014). Mistakenly seeking solitude. Journal of Experimental Psychology: General. Participants were Chicago-area train and bus commuters.",
+      "Finding: commuters predicted a more positive experience in solitude, but those asked to connect with a stranger reported a more positive experience than those who kept to themselves."
+    ]
+  },
+  "props": [
+    {
+      "name": "train",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"340\" rx=\"160\" ry=\"18\" fill=\"#000\" opacity=\".15\"/><rect x=\"50\" y=\"110\" width=\"300\" height=\"190\" rx=\"40\" fill=\"#2e7bd6\"/><rect x=\"60\" y=\"120\" width=\"140\" height=\"50\" rx=\"25\" fill=\"#5a9ee8\" opacity=\".6\"/><rect x=\"80\" y=\"140\" width=\"70\" height=\"70\" rx=\"10\" fill=\"#d9efff\"/><rect x=\"165\" y=\"140\" width=\"70\" height=\"70\" rx=\"10\" fill=\"#d9efff\"/><rect x=\"250\" y=\"140\" width=\"70\" height=\"70\" rx=\"10\" fill=\"#d9efff\"/><rect x=\"50\" y=\"235\" width=\"300\" height=\"20\" fill=\"#f4c430\"/><rect x=\"50\" y=\"265\" width=\"300\" height=\"35\" rx=\"12\" fill=\"#1f5aa0\"/><circle cx=\"120\" cy=\"310\" r=\"26\" fill=\"#333\"/><circle cx=\"280\" cy=\"310\" r=\"26\" fill=\"#333\"/><circle cx=\"120\" cy=\"310\" r=\"10\" fill=\"#999\"/><circle cx=\"280\" cy=\"310\" r=\"10\" fill=\"#999\"/><rect x=\"180\" y=\"85\" width=\"40\" height=\"30\" rx=\"8\" fill=\"#555\"/></svg>"
+    },
+    {
+      "name": "headphones",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"340\" rx=\"130\" ry=\"16\" fill=\"#000\" opacity=\".15\"/><path d=\"M85 240 C70 80 330 80 315 240\" fill=\"none\" stroke=\"#333\" stroke-width=\"26\" stroke-linecap=\"round\"/><path d=\"M100 200 C110 120 190 100 230 115\" fill=\"none\" stroke=\"#666\" stroke-width=\"8\" stroke-linecap=\"round\"/><rect x=\"55\" y=\"210\" width=\"80\" height=\"120\" rx=\"34\" fill=\"#e5484d\"/><rect x=\"265\" y=\"210\" width=\"80\" height=\"120\" rx=\"34\" fill=\"#c23338\"/><rect x=\"63\" y=\"222\" width=\"26\" height=\"60\" rx=\"13\" fill=\"#ff8a8e\" opacity=\".7\"/><rect x=\"273\" y=\"222\" width=\"26\" height=\"60\" rx=\"13\" fill=\"#e5484d\" opacity=\".7\"/></svg>"
+    }
+  ],
+  "scenes": [
+    {
+      "type": "question",
+      "question": "Talk to a stranger on the train?",
+      "a": "No thanks",
+      "b": "Sure, why not",
+      "say": "Commuters said they'd hate talking to a stranger."
+    },
+    {
+      "type": "prop",
+      "prop": "train",
+      "move": "slide",
+      "on": "commuters",
+      "text": "Chicago, 2014",
+      "textOn": "predict",
+      "say": "So psychologists Nicholas Epley and Juliana Schroeder asked commuters to predict their ride."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "label": "Team silence",
+          "prop": "headphones",
+          "on": "silence"
+        }
+      ],
+      "say": "They expected silence to win, but some were told to talk anyway."
+    },
+    {
+      "type": "bigword",
+      "word": "Wrong",
+      "sub": "Talkers enjoyed the ride more",
+      "say": "And the talkers enjoyed their ride more than the quiet ones."
+    },
+    {
+      "type": "call",
+      "avatar": "LeoRio",
+      "name": "Breezy Moose",
+      "label": "Your guess, tested",
+      "say": "So if you'd rather stay quiet, test that guess on someone new."
+    },
+    {
+      "type": "end",
+      "tagline": "Test your guess out loud.",
+      "say": "You might like it more than you think."
+    }
+  ],
+  "post": {
+    "caption": "Commuters were sure a silent ride would be better. The ones asked to talk to a stranger enjoyed it more. Would you have guessed that? Test your own guess at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#psychology",
+      "#talktostrangers",
+      "#commute",
+      "#studentlife"
+    ],
+    "youtubeTitle": "Would you talk to a stranger on the train? #shorts",
+    "xText": "Commuters said they'd hate talking to a stranger. The ones who did enjoyed the ride more. Test your guess: randomtalker.com"
+  }
+}

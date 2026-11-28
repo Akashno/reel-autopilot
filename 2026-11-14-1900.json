@@ -1,0 +1,89 @@
+{
+  "idea": {
+    "title": "A friend I've never seen",
+    "angle": "make-a-friend",
+    "format": "skit",
+    "summary": "A confession that your friend is someone you've never seen: a late-night call, an add-friend tap, and a friendship built on voice alone.",
+    "hookOptions": [
+      "I have a friend I've never seen",
+      "My best friend started as a stranger",
+      "Awake at midnight with nobody to call?",
+      "A random call turned into my daily call"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "I have a friend",
+        "I've never seen"
+      ],
+      "highlight": "never seen",
+      "say": "I have a friend I've never seen."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Plucky Dumpling",
+      "say": "It started as one random call. Ten minutes, tops."
+    },
+    {
+      "type": "call",
+      "avatar": "KenjiJP",
+      "name": "Plucky Dumpling",
+      "label": "11:40 PM, two hours in",
+      "say": "We argued about cereal until almost two in the morning."
+    },
+    {
+      "type": "chat",
+      "avatar": "KenjiJP",
+      "name": "Plucky Dumpling",
+      "messages": [
+        {
+          "from": "them",
+          "text": "wait, add me as a friend before you go"
+        },
+        {
+          "from": "me",
+          "text": "you can do that?"
+        },
+        {
+          "from": "them",
+          "text": "button's right there. hurry"
+        },
+        {
+          "from": "me",
+          "text": "done. same time tomorrow?"
+        }
+      ],
+      "say": "One tap after the call, and it stuck."
+    },
+    {
+      "type": "features",
+      "headline": "After a good call",
+      "items": [
+        "add-friend",
+        "voice",
+        "no-camera"
+      ],
+      "say": "Still no faces. Just a friend."
+    },
+    {
+      "type": "end",
+      "tagline": "Next friend: one call away",
+      "say": "Your next friend might be one call away."
+    }
+  ],
+  "post": {
+    "caption": "I've never seen his face, but I know exactly how he laughs. Who's the friend you made in the strangest way? Add someone after your next good call at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#makefriends",
+      "#talktostrangers",
+      "#voicechat",
+      "#latenight"
+    ],
+    "youtubeTitle": "I have a friend I've never seen #shorts",
+    "xText": "A random call, a friend button, and a friend I've never seen. randomtalker.com"
+  }
+}

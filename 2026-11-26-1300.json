@@ -1,0 +1,112 @@
+{
+  "idea": {
+    "title": "Tuesday is a cat",
+    "angle": "mini-drama",
+    "format": "story",
+    "summary": "Fiction: a man mourns 'Tuesday' on a call, the stranger assumes a person died, and the reveal is that Tuesday is his cat, found on a neighbour's balcony.",
+    "hookOptions": [
+      "He cried to a stranger about Tuesday",
+      "He lost Tuesday. Nobody helped.",
+      "A stranger mourned Tuesday with him",
+      "I lost Tuesday last night"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "He cried to a",
+        "stranger about",
+        "Tuesday"
+      ],
+      "highlight": "Tuesday",
+      "say": "A man cried to a stranger about losing Tuesday."
+    },
+    {
+      "type": "chat",
+      "avatar": "KenjiJP",
+      "name": "Soggy Bison",
+      "messages": [
+        {
+          "from": "them",
+          "text": "i lost tuesday last night"
+        },
+        {
+          "from": "me",
+          "text": "oh no. i'm so sorry. were you close?"
+        },
+        {
+          "from": "them",
+          "text": "she slept on my chest every morning"
+        },
+        {
+          "from": "me",
+          "text": "take all the time you need"
+        },
+        {
+          "from": "them",
+          "text": "she hated mondays too"
+        }
+      ],
+      "say": "He said Tuesday was gone. She stayed on the line."
+    },
+    {
+      "type": "prop",
+      "prop": "cat",
+      "move": "pop",
+      "on": "Tuesday's",
+      "text": "Tuesday is a cat",
+      "textOn": "balcony",
+      "say": "Then his neighbour texted: Tuesday's on my balcony, eating my plant."
+    },
+    {
+      "type": "bigword",
+      "word": "Phew.",
+      "sub": "Tuesday was never gone",
+      "say": "Tuesday was a cat. Alive, fed, and not sorry."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "avatar": "KenjiJP",
+          "label": "Soggy Bison",
+          "on": "He"
+        },
+        {
+          "avatar": "AmaraLDN",
+          "label": "Calm Panda",
+          "on": "stranger"
+        }
+      ],
+      "item": "cat",
+      "text": "Tuesday came home",
+      "textOn": "laughed",
+      "say": "He told the stranger. She laughed so hard she cried."
+    },
+    {
+      "type": "end",
+      "tagline": "Strangers listen, even to cats.",
+      "ask": "What did your pet do to scare you?",
+      "say": "Find yours on randomtalker.com."
+    }
+  ],
+  "props": [
+    {
+      "name": "cat",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"340\" rx=\"120\" ry=\"22\" fill=\"#000\" opacity=\".15\"/><path d=\"M290 330 C360 320 370 230 330 210 C350 250 320 290 270 300 Z\" fill=\"#e08a2e\"/><ellipse cx=\"200\" cy=\"270\" rx=\"95\" ry=\"70\" fill=\"#f29a38\"/><ellipse cx=\"170\" cy=\"245\" rx=\"45\" ry=\"30\" fill=\"#f7b25e\"/><polygon points=\"115,150 125,80 175,125\" fill=\"#f29a38\"/><polygon points=\"285,150 275,80 225,125\" fill=\"#d9822a\"/><polygon points=\"128,135 130,102 158,125\" fill=\"#f4a9a0\"/><polygon points=\"272,135 270,102 242,125\" fill=\"#f4a9a0\"/><circle cx=\"200\" cy=\"170\" r=\"85\" fill=\"#f29a38\"/><rect x=\"170\" y=\"115\" width=\"10\" height=\"30\" rx=\"5\" fill=\"#c9731f\"/><rect x=\"195\" y=\"108\" width=\"10\" height=\"34\" rx=\"5\" fill=\"#c9731f\"/><rect x=\"220\" y=\"115\" width=\"10\" height=\"30\" rx=\"5\" fill=\"#c9731f\"/><ellipse cx=\"170\" cy=\"175\" rx=\"14\" ry=\"18\" fill=\"#2d2a1f\"/><ellipse cx=\"230\" cy=\"175\" rx=\"14\" ry=\"18\" fill=\"#2d2a1f\"/><circle cx=\"175\" cy=\"168\" r=\"5\" fill=\"#fff\"/><circle cx=\"235\" cy=\"168\" r=\"5\" fill=\"#fff\"/><polygon points=\"190,200 210,200 200,212\" fill=\"#e0707a\"/><path d=\"M200 212 C195 225 180 225 175 218 M200 212 C205 225 220 225 225 218\" stroke=\"#6b3a12\" stroke-width=\"4\" fill=\"none\"/><path d=\"M140 200 L95 192 M140 212 L95 220 M260 200 L305 192 M260 212 L305 220\" stroke=\"#fff\" stroke-width=\"3\"/><rect x=\"150\" y=\"315\" width=\"34\" height=\"22\" rx=\"11\" fill=\"#f7b25e\"/><rect x=\"216\" y=\"315\" width=\"34\" height=\"22\" rx=\"11\" fill=\"#f7b25e\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "A made-up story: a man mourned Tuesday on a call, and Tuesday is a cat. What did your pet do to scare you? Tell us below. Talk to someone new at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#minidrama",
+      "#strangers",
+      "#storytime",
+      "#pets"
+    ],
+    "youtubeTitle": "He cried to a stranger about Tuesday #shorts",
+    "xText": "A made-up story: he mourned Tuesday on a call. Tuesday is a cat. randomtalker.com"
+  }
+}

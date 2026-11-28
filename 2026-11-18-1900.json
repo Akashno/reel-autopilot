@@ -1,0 +1,82 @@
+{
+  "idea": {
+    "title": "The oldest thing you own",
+    "angle": "tiny-challenges",
+    "format": "skit",
+    "summary": "A tiny challenge: ask your next stranger what the oldest thing they own is, and comment the answer. Ours was a cereal spoon.",
+    "hookOptions": [
+      "I asked a stranger: what's the oldest thing you own?",
+      "The answer was a spoon",
+      "Ask your next stranger this one question",
+      "He's had the same spoon since he was six"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "pov",
+      "text": "I asked a stranger: what's the oldest thing you own?",
+      "say": "I asked one question. The answer was a spoon."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Brave Pigeon",
+      "say": "Brave Pigeon picked up, and he did not hesitate."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Brave Pigeon",
+      "messages": [
+        {
+          "from": "me",
+          "text": "what's the oldest thing you own?"
+        },
+        {
+          "from": "them",
+          "text": "a spoon. my cereal spoon since i was 6"
+        },
+        {
+          "from": "me",
+          "text": "you've had it 15 years??"
+        },
+        {
+          "from": "them",
+          "text": "it knows me. i won't use another"
+        }
+      ],
+      "say": "Not a watch. A cereal spoon, since age six."
+    },
+    {
+      "type": "call",
+      "avatar": "LeoRio",
+      "name": "Brave Pigeon",
+      "label": "11:42 PM",
+      "say": "Twenty minutes later, he was telling me the spoon's whole life story."
+    },
+    {
+      "type": "question",
+      "question": "What's the oldest thing you own?",
+      "a": "Something sentimental",
+      "b": "Something weird",
+      "say": "Your turn. Ask it, then comment the answer."
+    },
+    {
+      "type": "end",
+      "tagline": "One question. One new voice.",
+      "say": "Random Talker. Your next stranger is waiting."
+    }
+  ],
+  "post": {
+    "caption": "Tiny challenge: ask your next stranger \"what's the oldest thing you own?\" Then tell us their answer in the comments. Ours was a cereal spoon.\n\nTry it free at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#challenge",
+      "#strangers",
+      "#talktostrangers",
+      "#voicechat"
+    ],
+    "youtubeTitle": "I asked a stranger what he's owned longest #shorts",
+    "xText": "Tiny challenge: ask your next stranger the oldest thing they own. Tell us the answer. randomtalker.com"
+  }
+}

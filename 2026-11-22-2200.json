@@ -1,0 +1,82 @@
+{
+  "idea": {
+    "title": "Blurred until you tap",
+    "angle": "safety-control",
+    "format": "skit",
+    "summary": "A stranger sends a photo you didn't ask for; it stays blurred, you skip in one tap, and the next call is just snack talk.",
+    "hookOptions": [
+      "A stranger sends you a photo. You didn't ask.",
+      "POV: a photo you never asked for",
+      "Blurred until you say so",
+      "Not feeling it? One tap."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "question",
+      "question": "A stranger sends a photo you didn't ask for.",
+      "a": "Tap to open it",
+      "b": "Leave it blurred",
+      "say": "Photo from a stranger. You didn't ask."
+    },
+    {
+      "type": "chat",
+      "avatar": "KenjiJP",
+      "name": "Salty Panda",
+      "messages": [
+        {
+          "from": "them",
+          "text": "sent you an image"
+        },
+        {
+          "from": "me",
+          "text": "it's blurred, i'm good thanks"
+        },
+        {
+          "from": "them",
+          "text": "fair, want to talk about ramen instead"
+        },
+        {
+          "from": "me",
+          "text": "nah, i'm out. bye"
+        }
+      ],
+      "say": "It stays blurred until you tap it."
+    },
+    {
+      "type": "appclip",
+      "clip": "safety",
+      "headline": "Not feeling it? Skip.",
+      "sub": "One tap. Next person.",
+      "say": "One tap, gone. No explaining."
+    },
+    {
+      "type": "match",
+      "avatar": "AmaraLDN",
+      "name": "Wavy Pudding"
+    },
+    {
+      "type": "bigword",
+      "word": "Snacks",
+      "sub": "Next call: Wavy Pudding. Snacks only.",
+      "say": "Blurred. Skipped. Still got snack talk."
+    },
+    {
+      "type": "end",
+      "tagline": "Your call, always.",
+      "say": "Your call, always. randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "Images stay blurred until you tap them. Skip in one tap. Report in seconds. You pick what happens next. What would you do first?\n\nTry it on randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#talktostrangers",
+      "#voicechat",
+      "#skip",
+      "#blurred"
+    ],
+    "youtubeTitle": "A stranger sends a photo you didn't ask for #shorts",
+    "xText": "Blurred until you tap. Skip in one tap. Report in seconds. Your call, always. randomtalker.com"
+  }
+}

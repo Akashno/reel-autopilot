@@ -1,0 +1,84 @@
+{
+  "idea": {
+    "title": "Five ways to end a call",
+    "angle": "share-caller-types",
+    "format": "share",
+    "summary": "Five types at the very end of a call, opened on a concrete 'said bye 4 times' moment, ending on the viewer and a this-or-that.",
+    "hookOptions": [
+      "Said bye 4 times. Still talking.",
+      "The call ended 10 minutes ago",
+      "Five people who can't say bye",
+      "Confession: I say bye six times",
+      "Who hangs up first?"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Said bye 4 times.",
+        "Still talking."
+      ],
+      "highlight": "bye 4 times",
+      "say": "I said bye four times. Still talking."
+    },
+    {
+      "type": "cards",
+      "title": "5 ways calls end",
+      "items": [
+        {
+          "title": "The 'okay bye' times six",
+          "line": "Says bye, then one more question. Bye. Wait, actually.",
+          "on": "bye"
+        },
+        {
+          "title": "The 'anyway...' one",
+          "line": "Says anyway like a closing door, then stays ten more minutes.",
+          "on": "anyway"
+        },
+        {
+          "title": "The mid-laugh hang-up",
+          "line": "Your best joke lands. Call ends. No notes.",
+          "on": "click"
+        },
+        {
+          "title": "The 'you first' one",
+          "line": "Both waiting. Nobody moves. The timer keeps going.",
+          "on": "first"
+        },
+        {
+          "title": "You, after the bye",
+          "line": "Still on the call, reading this card instead of hanging up.",
+          "on": "you"
+        }
+      ],
+      "cta": "send to who never hangs up",
+      "say": "Bye, bye, bye. Anyway. Mid-laugh click. You first. Then there's you."
+    },
+    {
+      "type": "question",
+      "question": "Who hangs up first?",
+      "a": "Me, every time",
+      "b": "Never me",
+      "say": "Who hangs up first? Me, every time, or never me?"
+    },
+    {
+      "type": "end",
+      "tagline": "Still here? Say bye already.",
+      "ask": "Which one are you: bye x6 or you first?",
+      "say": "Say bye on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "Five people at the end of every call. You're at least two of them.\nWhich one are you: bye x6 or you first? Send this to the friend who never hangs up.\nTalk to someone new at randomtalker.com (link in bio).",
+    "hashtags": [
+      "#randomtalker",
+      "#talktostrangers",
+      "#voicechat",
+      "#relatable",
+      "#friends"
+    ],
+    "youtubeTitle": "Said bye 4 times. Still on the call. #shorts",
+    "xText": "Five types of people at the end of a call. Which one are you? randomtalker.com"
+  }
+}

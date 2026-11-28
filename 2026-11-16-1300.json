@@ -1,0 +1,102 @@
+{
+  "idea": {
+    "title": "The wrong-number Thanksgiving",
+    "angle": "true-stranger-stories",
+    "format": "story",
+    "summary": "A grandmother's mistyped Thanksgiving invite reaches a teenage stranger in 2016, he asks if he can still come, and they keep sharing the holiday.",
+    "hookOptions": [
+      "A grandma texted the wrong number. A stranger came.",
+      "Wrong number. Best dinner invite ever.",
+      "She invited a stranger to Thanksgiving by accident",
+      "A teen got a Thanksgiving invite from a stranger"
+    ],
+    "sources": [
+      "Wikipedia/news coverage: In 2016 Wanda Dench of Arizona sent a Thanksgiving invitation text meant for her grandson to a wrong number; it reached Jamal Hinton, then 17.",
+      "Hinton asked if he could still come and she said yes; their photo spread online, and they have shared Thanksgiving together in the years since."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "bigword",
+      "word": "Wrong",
+      "sub": "number, right dinner",
+      "say": "A grandma texted the wrong number, and a stranger came to Thanksgiving."
+    },
+    {
+      "type": "prop",
+      "prop": "phone",
+      "move": "pop",
+      "on": "invite",
+      "text": "COME FOR THANKSGIVING",
+      "textOn": "Thanksgiving",
+      "say": "Wanda Dench, 2016. She texted her grandson a Thanksgiving invite. Wrong number."
+    },
+    {
+      "type": "people",
+      "people": [
+        {
+          "label": "Jamal Hinton",
+          "avatar": "LeoRio",
+          "on": "Jamal"
+        },
+        {
+          "label": "Wanda Dench",
+          "prop": "wanda",
+          "on": "stranger"
+        }
+      ],
+      "say": "It reached Jamal Hinton, 17, a total stranger she had never met."
+    },
+    {
+      "type": "prop",
+      "prop": "phone",
+      "move": "shake",
+      "on": "texted",
+      "say": "He texted back, asking if he could still come. She said of course."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "2016",
+          "label": "Still sharing dinner",
+          "on": "since"
+        }
+      ],
+      "say": "Their photo went online, and they've shared Thanksgiving most years since."
+    },
+    {
+      "type": "bigword",
+      "word": "Hi",
+      "sub": "Every friend was a stranger once",
+      "say": "Every friend you have was a stranger once."
+    },
+    {
+      "type": "end",
+      "tagline": "Say hi to someone new",
+      "say": "Say hi to one today."
+    }
+  ],
+  "props": [
+    {
+      "name": "phone",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"365\" rx=\"110\" ry=\"16\" fill=\"#000\" opacity=\".15\"/><rect x=\"110\" y=\"30\" width=\"180\" height=\"330\" rx=\"32\" fill=\"#2b3a55\"/><rect x=\"122\" y=\"50\" width=\"156\" height=\"290\" rx=\"20\" fill=\"#f4f7fb\"/><rect x=\"118\" y=\"34\" width=\"60\" height=\"120\" rx=\"20\" fill=\"#fff\" opacity=\".15\"/><rect x=\"140\" y=\"80\" width=\"110\" height=\"36\" rx=\"16\" fill=\"#4fb0ff\"/><rect x=\"150\" y=\"130\" width=\"110\" height=\"36\" rx=\"16\" fill=\"#d9e0ea\"/><rect x=\"140\" y=\"180\" width=\"90\" height=\"36\" rx=\"16\" fill=\"#4fb0ff\"/><circle cx=\"200\" cy=\"318\" r=\"10\" fill=\"#d9e0ea\"/></svg>"
+    },
+    {
+      "name": "wanda",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"375\" rx=\"130\" ry=\"14\" fill=\"#000\" opacity=\".15\"/><path d=\"M70 380 Q80 270 200 260 Q320 270 330 380 Z\" fill=\"#d9487a\"/><path d=\"M90 380 Q100 290 190 270 Q130 300 130 380 Z\" fill=\"#e9719a\"/><rect x=\"175\" y=\"225\" width=\"50\" height=\"45\" fill=\"#f1c7a0\"/><circle cx=\"200\" cy=\"170\" r=\"72\" fill=\"#f1c7a0\"/><path d=\"M125 170 Q120 90 200 90 Q280 90 275 170 Q250 120 200 120 Q150 120 125 170 Z\" fill=\"#d8d8de\"/><circle cx=\"125\" cy=\"150\" r=\"22\" fill=\"#d8d8de\"/><circle cx=\"275\" cy=\"150\" r=\"22\" fill=\"#d8d8de\"/><circle cx=\"175\" cy=\"175\" r=\"8\" fill=\"#3a2a20\"/><circle cx=\"225\" cy=\"175\" r=\"8\" fill=\"#3a2a20\"/><path d=\"M170 205 Q200 235 230 205\" stroke=\"#a3403a\" stroke-width=\"8\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"160\" cy=\"200\" r=\"10\" fill=\"#ef9a8a\" opacity=\".6\"/><circle cx=\"240\" cy=\"200\" r=\"10\" fill=\"#ef9a8a\" opacity=\".6\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "A grandma mistyped a number in 2016. The stranger who got it asked if he could still come, and they've kept sharing Thanksgiving since. Would you have said yes?\n\nSay hi to someone new at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#truestory",
+      "#thanksgiving",
+      "#strangers",
+      "#wrongnumber"
+    ],
+    "youtubeTitle": "She texted the wrong number. A stranger came to Thanksgiving #shorts",
+    "xText": "A grandma texted the wrong number in 2016. The stranger asked if he could still come. Say hi to someone new: randomtalker.com"
+  }
+}

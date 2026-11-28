@@ -1,0 +1,79 @@
+{
+  "idea": {
+    "title": "Rehearsed five times",
+    "angle": "share-english-learner",
+    "format": "share",
+    "summary": "Five kind, specific English-as-second-language moments, opening on rehearsing an order five times, built to send to the friend who does it.",
+    "hookOptions": [
+      "Ordering in English? Rehearse 5 times",
+      "I said 'you too' to the waiter",
+      "Thought of the perfect reply two hours later",
+      "You nod when you don't understand",
+      "Sorry for my English, then perfect English"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Ordering in",
+        "English?",
+        "Rehearse 5 times"
+      ],
+      "highlight": "Rehearse 5 times",
+      "say": "You rehearse one sentence five times. The waiter leaves."
+    },
+    {
+      "type": "cards",
+      "title": "English learners you definitely know",
+      "items": [
+        {
+          "title": "The silent rehearser",
+          "line": "Says it five times in their head. The waiter has left.",
+          "on": "Rehearsed"
+        },
+        {
+          "title": "The 'same to you' one",
+          "line": "Waiter says enjoy your meal. They say, you too!",
+          "on": "Same"
+        },
+        {
+          "title": "The confident nodder",
+          "line": "Understood nothing. Nodded with full confidence.",
+          "on": "Nodded"
+        },
+        {
+          "title": "The accent apologiser",
+          "line": "Says sorry for their English, then speaks it perfectly.",
+          "on": "Sorry"
+        },
+        {
+          "title": "You, in the shower",
+          "line": "Thinks of the perfect reply two hours late.",
+          "on": "Perfect"
+        }
+      ],
+      "cta": "send this to the nodder you know",
+      "say": "Rehearsed five times. Same to you, waiter. Nodded, understood nothing. Sorry, then perfect. Perfect reply, two hours late."
+    },
+    {
+      "type": "end",
+      "tagline": "Rehearse it with a stranger.",
+      "ask": "Which one are you: #1, #3 or #5?",
+      "say": "Say it out loud, no waiter. randomtalker.com"
+    }
+  ],
+  "post": {
+    "caption": "Rehearsing it five times, saying 'you too' to the waiter, the perfect reply two hours late. Which one are you: #1, #3 or #5? Send this to the friend who nods at everything. Say it out loud with real people on randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#english",
+      "#englishlearners",
+      "#esl",
+      "#speakenglish",
+      "#relatable"
+    ],
+    "youtubeTitle": "You rehearse it 5 times. The waiter leaves. #shorts",
+    "xText": "You rehearse one sentence five times. The waiter leaves. Send this to the friend who does it. randomtalker.com"
+  }
+}

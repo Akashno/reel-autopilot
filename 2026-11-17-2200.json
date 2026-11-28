@@ -1,0 +1,93 @@
+{
+  "idea": {
+    "title": "What's on your desk",
+    "angle": "conversation-starters",
+    "format": "skit",
+    "summary": "Ditch 'how are you' for a small, specific question about what's in front of you right now, and watch a stranger's call take off.",
+    "hookOptions": [
+      "Never ask a stranger 'how are you'",
+      "Hi, how are you. Call over.",
+      "The best opener is about their desk",
+      "How to start a call that goes somewhere",
+      "I asked a stranger what's on their desk"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Never ask a",
+        "stranger",
+        "how are you"
+      ],
+      "highlight": "how are you",
+      "say": "Never ask a stranger how are you."
+    },
+    {
+      "type": "versus",
+      "left": {
+        "label": "Dead end",
+        "text": "hey, how are you? good, you?"
+      },
+      "right": {
+        "label": "Goes places",
+        "text": "what's on your desk right now?"
+      },
+      "say": "One of these gets a real answer."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Plain Walrus",
+      "say": "So I tried it on the next stranger."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Plain Walrus",
+      "messages": [
+        {
+          "from": "me",
+          "text": "what's on your desk right now?"
+        },
+        {
+          "from": "them",
+          "text": "a cold chai and a dead cactus"
+        },
+        {
+          "from": "me",
+          "text": "dead how?"
+        },
+        {
+          "from": "them",
+          "text": "i watered it with the chai"
+        }
+      ],
+      "say": "Small, specific questions get stories back."
+    },
+    {
+      "type": "call",
+      "avatar": "LeoRio",
+      "name": "Plain Walrus",
+      "label": "Still talking",
+      "say": "Twenty minutes later, we were still on the cactus."
+    },
+    {
+      "type": "end",
+      "tagline": "Start small. Start specific.",
+      "say": "Ask something small. See where it goes."
+    }
+  ],
+  "post": {
+    "caption": "Skip \"how are you.\" Ask what's on their desk, what they're eating, what song is stuck in their head. Small and specific wins. What's your best opener?\n\nTry it at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#conversationstarters",
+      "#talktostrangers",
+      "#voicechat",
+      "#icebreakers"
+    ],
+    "youtubeTitle": "Never ask a stranger \"how are you\" #shorts",
+    "xText": "Skip \"how are you.\" Ask what's on their desk. Free to start at randomtalker.com"
+  }
+}

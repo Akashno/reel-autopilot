@@ -1,0 +1,92 @@
+{
+  "idea": {
+    "title": "The 3 AM fridge light",
+    "angle": "late-night",
+    "format": "skit",
+    "summary": "A relatable 3 AM ritual of standing in the fridge light with nothing to do, where a stranger is also awake and doing the same thing; opens on a question, not a hook.",
+    "hookOptions": [
+      "3 AM. You're standing at the open fridge.",
+      "I've opened the fridge 4 times. I'm not hungry.",
+      "Who's awake at 3 AM? Me. Why?",
+      "Nobody texts back at 3 AM"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "question",
+      "question": "3 AM, wide awake. What do you do?",
+      "a": "Stare at the ceiling",
+      "b": "Open the fridge again",
+      "say": "Be honest, you've done both tonight."
+    },
+    {
+      "type": "rating",
+      "title": "People awake at 3 AM",
+      "items": [
+        {
+          "label": "Your group chat",
+          "stars": 1
+        },
+        {
+          "label": "Your cousin abroad",
+          "stars": 2
+        },
+        {
+          "label": "A stranger with a snack",
+          "stars": 5
+        }
+      ],
+      "say": "Your friends are asleep. Somebody else isn't."
+    },
+    {
+      "type": "match",
+      "avatar": "LeoRio",
+      "name": "Lazy Pretzel",
+      "say": "One tap, and Lazy Pretzel picks up."
+    },
+    {
+      "type": "chat",
+      "avatar": "LeoRio",
+      "name": "Lazy Pretzel",
+      "messages": [
+        {
+          "from": "them",
+          "text": "hi. sorry, i'm eating cereal"
+        },
+        {
+          "from": "me",
+          "text": "at 3 am? same, it's my second bowl"
+        },
+        {
+          "from": "them",
+          "text": "ok we're friends now"
+        }
+      ],
+      "say": "Nobody judges a bowl of cereal at this hour."
+    },
+    {
+      "type": "call",
+      "avatar": "LeoRio",
+      "name": "Lazy Pretzel",
+      "label": "3:12 AM",
+      "say": "Forty minutes later, you're actually sleepy."
+    },
+    {
+      "type": "end",
+      "tagline": "Someone's always awake.",
+      "say": "Someone is always awake."
+    }
+  ],
+  "post": {
+    "caption": "Second bowl of cereal, 3 AM, nobody to tell. Someone out there is doing the same. What's your 3 AM snack?\n\nTap call at randomtalker.com. Free to start, voice only.",
+    "hashtags": [
+      "#randomtalker",
+      "#latenight",
+      "#cantsleep",
+      "#3am",
+      "#talktostrangers"
+    ],
+    "youtubeTitle": "Awake at 3 AM with a bowl of cereal? #shorts",
+    "xText": "3 AM, second bowl of cereal, nobody to tell. Someone's awake. randomtalker.com"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "idea": {
+    "title": "The 108-year bottle",
+    "angle": "true-stranger-stories",
+    "format": "story",
+    "summary": "A 1906 science-experiment message in a bottle was found on a German island in 2015 and returned, a 108-year wait for one stranger to answer another.",
+    "hookOptions": [
+      "A note waited 108 years",
+      "A message waited 108 years for a reader",
+      "Someone finally answered a 1906 note",
+      "He never got a reply. She did, 108 years later"
+    ],
+    "sources": [
+      "Wikipedia: Message in a bottle: oldest message in a bottle, released 1906 by Captain C. Hunter Brown of the Marine Biological Association (drift experiment), found 2015 by Marianne Winkler on Amrum, Germany; Guinness World Record 108 years",
+      "Guinness World Records: Longest time for a message in a bottle to be received, 108 years 138 days"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "A note waited",
+        "108 years"
+      ],
+      "highlight": "108 years",
+      "say": "A message floated in the sea for 108 years before anyone read it."
+    },
+    {
+      "type": "photo",
+      "query": "Amrum island beach Germany North Sea",
+      "caption": "Amrum, Germany",
+      "move": "in",
+      "on": "1906",
+      "say": "It was thrown in the water in 1906, to track ocean currents."
+    },
+    {
+      "type": "prop",
+      "prop": "bottle",
+      "move": "float",
+      "on": "postcard",
+      "text": "Please send me back",
+      "textOn": "back",
+      "say": "Inside was a postcard asking whoever found it to send it back."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "2015",
+          "label": "Found on Amrum",
+          "on": "2015"
+        },
+        {
+          "value": "108",
+          "label": "Years afloat",
+          "on": "years"
+        }
+      ],
+      "say": "A woman found it in 2015, on a German beach, 108 years later."
+    },
+    {
+      "type": "bigword",
+      "word": "Answered",
+      "sub": "The longest wait on record",
+      "say": "So a stranger finally wrote back, after all that time."
+    },
+    {
+      "type": "end",
+      "tagline": "Someone will answer you",
+      "ask": "Who would you send a note to?",
+      "say": "Find your reply on randomtalker.com."
+    }
+  ],
+  "props": [
+    {
+      "name": "bottle",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"355\" rx=\"110\" ry=\"20\" fill=\"#000\" opacity=\".15\"/><rect x=\"175\" y=\"50\" width=\"50\" height=\"60\" rx=\"8\" fill=\"#7fc4a8\"/><rect x=\"168\" y=\"30\" width=\"64\" height=\"34\" rx=\"8\" fill=\"#a0522d\"/><path d=\"M175 105 Q175 150 130 190 Q110 215 110 260 L110 320 Q110 350 140 350 L260 350 Q290 350 290 320 L290 260 Q290 215 270 190 Q225 150 225 105 Z\" fill=\"#8fd3b6\"/><path d=\"M185 110 Q185 155 145 195 Q125 220 125 262 L125 320\" stroke=\"#d8f5e8\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\"/><rect x=\"165\" y=\"200\" width=\"70\" height=\"120\" rx=\"10\" fill=\"#f5e6c0\" transform=\"rotate(-8 200 260)\"/><rect x=\"165\" y=\"200\" width=\"70\" height=\"14\" rx=\"6\" fill=\"#e0c88c\" transform=\"rotate(-8 200 260)\"/><rect x=\"165\" y=\"250\" width=\"70\" height=\"10\" fill=\"#c0392b\" transform=\"rotate(-8 200 260)\"/><path d=\"M255 230 Q285 260 275 330 L290 320 L290 260 Q290 235 270 215 Z\" fill=\"#5fae90\" opacity=\".6\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "A science experiment in 1906 turned into the longest wait for a reply ever recorded. Who would you send a note to? Don't wait 108 years: talk to someone new on randomtalker.com\n\nPhotos via Wikimedia Commons: Dirk Schmidt (Celsius auf Wikivoyage), CC BY-SA 3.0",
+    "hashtags": [
+      "#randomtalker",
+      "#truestory",
+      "#messageinabottle",
+      "#strangers",
+      "#history"
+    ],
+    "youtubeTitle": "A note waited 108 years for a reply #shorts",
+    "xText": "A message in a bottle waited 108 years for a reply. Yours can be quicker: randomtalker.com"
+  },
+  "photos": [
+    {
+      "query": "Amrum island beach Germany North Sea",
+      "title": "File:Amrum kniepsand kuestenseeschwalben ds 05 2009.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Amrum_kniepsand_kuestenseeschwalben_ds_05_2009.jpg/1280px-Amrum_kniepsand_kuestenseeschwalben_ds_05_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "page": "https://commons.wikimedia.org/wiki/File:Amrum_kniepsand_kuestenseeschwalben_ds_05_2009.jpg",
+      "width": 1280,
+      "height": 1039,
+      "licence": "CC BY-SA 3.0",
+      "artist": "Dirk Schmidt (Celsius auf Wikivoyage)",
+      "description": "Germany / North Sea / Island Amrum: Küstenseeschwalben on the beach"
+    }
+  ]
+}

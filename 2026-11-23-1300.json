@@ -1,0 +1,99 @@
+{
+  "idea": {
+    "title": "Ahoy or hello",
+    "angle": "history-of-stranger-chat",
+    "format": "story",
+    "summary": "Alexander Graham Bell promoted 'ahoy' as the phone greeting while Edison pushed 'hello' in an 1877 letter, so the first word to an unseen stranger started as a fight.",
+    "hookOptions": [
+      "People almost answered the phone by saying ahoy",
+      "Phones almost started with ahoy",
+      "Bell said ahoy. Edison said hello.",
+      "The first phone greeting was a ship word"
+    ],
+    "sources": [
+      "Wikipedia: Hello: Edison suggested 'hello' in an August 1877 letter to T.B.A. David of Pittsburgh, saying a shout of hello could be heard 10 to 20 feet away.",
+      "Wikipedia: Hello: Alexander Graham Bell, who patented the telephone, used and promoted 'ahoy' as the greeting."
+    ]
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "lines": [
+        "Phones almost",
+        "answered with",
+        "Ahoy"
+      ],
+      "highlight": "Ahoy",
+      "say": "People almost answered the phone by saying ahoy."
+    },
+    {
+      "type": "prop",
+      "prop": "ship",
+      "move": "float",
+      "on": "Bell",
+      "text": "AHOY",
+      "textOn": "greeting",
+      "say": "Alexander Graham Bell, who patented the telephone, pushed that greeting."
+    },
+    {
+      "type": "count",
+      "items": [
+        {
+          "value": "1877",
+          "label": "Edison's letter",
+          "on": "1877"
+        }
+      ],
+      "say": "But in 1877, Thomas Edison wrote a letter suggesting hello instead."
+    },
+    {
+      "type": "prop",
+      "prop": "phone",
+      "move": "shake",
+      "on": "hello",
+      "text": "HELLO",
+      "textOn": "hello",
+      "say": "He said a shout of hello carries ten to twenty feet."
+    },
+    {
+      "type": "bigword",
+      "word": "Hello",
+      "sub": "first word to someone unseen",
+      "say": "Hello won, and became the first word you say to someone you can't see."
+    },
+    {
+      "type": "match",
+      "avatar": "KenjiJP",
+      "name": "Lucky Spoon",
+      "say": "Almost a hundred and fifty years later, strangers still open the same way."
+    },
+    {
+      "type": "end",
+      "tagline": "Your first word, someone new",
+      "say": "Try yours on randomtalker.com."
+    }
+  ],
+  "props": [
+    {
+      "name": "ship",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"345\" rx=\"150\" ry=\"16\" fill=\"#000\" opacity=\".15\"/><rect x=\"194\" y=\"50\" width=\"12\" height=\"220\" fill=\"#6b4a2b\"/><path d=\"M206 60 L330 230 L206 230 Z\" fill=\"#f5efe0\"/><path d=\"M194 90 L90 230 L194 230 Z\" fill=\"#ffffff\"/><path d=\"M206 60 L240 60 L206 110 Z\" fill=\"#e8453c\"/><path d=\"M50 255 L350 255 L310 325 L90 325 Z\" fill=\"#2f6fb5\"/><path d=\"M50 255 L350 255 L342 272 L58 272 Z\" fill=\"#5b9be0\"/><circle cx=\"150\" cy=\"292\" r=\"11\" fill=\"#f5efe0\"/><circle cx=\"200\" cy=\"292\" r=\"11\" fill=\"#f5efe0\"/><circle cx=\"250\" cy=\"292\" r=\"11\" fill=\"#f5efe0\"/><path d=\"M40 335 Q100 315 160 335 T280 335 T370 335\" stroke=\"#9fd0f5\" stroke-width=\"8\" fill=\"none\"/></svg>"
+    },
+    {
+      "name": "phone",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"><ellipse cx=\"200\" cy=\"352\" rx=\"110\" ry=\"14\" fill=\"#000\" opacity=\".15\"/><rect x=\"185\" y=\"110\" width=\"30\" height=\"200\" fill=\"#2b2b2b\"/><rect x=\"185\" y=\"110\" width=\"10\" height=\"200\" fill=\"#555\"/><ellipse cx=\"200\" cy=\"325\" rx=\"95\" ry=\"28\" fill=\"#2b2b2b\"/><ellipse cx=\"190\" cy=\"318\" rx=\"80\" ry=\"18\" fill=\"#555\"/><ellipse cx=\"200\" cy=\"90\" rx=\"46\" ry=\"22\" fill=\"#c9a227\"/><ellipse cx=\"196\" cy=\"84\" rx=\"34\" ry=\"12\" fill=\"#e8c84a\"/><path d=\"M250 170 Q310 160 310 230\" stroke=\"#2b2b2b\" stroke-width=\"10\" fill=\"none\"/><rect x=\"280\" y=\"150\" width=\"60\" height=\"26\" rx=\"12\" fill=\"#2b2b2b\"/><rect x=\"284\" y=\"153\" width=\"30\" height=\"8\" rx=\"4\" fill=\"#555\"/><rect x=\"270\" y=\"215\" width=\"70\" height=\"26\" rx=\"12\" fill=\"#2b2b2b\"/></svg>"
+    }
+  ],
+  "post": {
+    "caption": "Bell said ahoy. Edison said hello. Hello won, and it's still the first word you say to someone new. Which would you have picked?\n\nTry your first word at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#history",
+      "#telephone",
+      "#hello",
+      "#strangers",
+      "#didyouknow"
+    ],
+    "youtubeTitle": "Phones almost answered with \"Ahoy\" #shorts",
+    "xText": "Alexander Graham Bell said ahoy. Edison said hello. We all know who won. randomtalker.com"
+  }
+}

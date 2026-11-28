@@ -1,0 +1,81 @@
+{
+  "idea": {
+    "title": "Desi family phone cards",
+    "angle": "share-desi-phone",
+    "format": "share",
+    "summary": "Five affectionate Indian family phone habits, opened on 14 missed calls from Mummy and ending on the viewer's 'bas 5 min'.",
+    "hookOptions": [
+      "14 missed calls from Mummy",
+      "Hello? Audible? said six times",
+      "Speaker pe daal, and everyone joins",
+      "Seven-minute voice note from Papa",
+      "Bas 5 min, said for 40 minutes"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "bigword",
+      "word": "14 missed",
+      "sub": "calls from Mummy. You were showering.",
+      "say": "Fourteen missed calls from Mummy. You were showering."
+    },
+    {
+      "type": "cards",
+      "title": "family phone people you know too well",
+      "items": [
+        {
+          "title": "the 'audible?' one",
+          "line": "Says hello five times, then walks to the terrace for signal",
+          "on": "audible"
+        },
+        {
+          "title": "the speaker pe daal one",
+          "line": "Suddenly three relatives and a pressure cooker join the call",
+          "on": "speaker"
+        },
+        {
+          "title": "the missed call counter",
+          "line": "'Fourteen calls kiye, phone kyun nahi uthata?'",
+          "on": "counter"
+        },
+        {
+          "title": "the voice note novelist",
+          "line": "Seven minutes long. Starts with 'arre sun na'",
+          "on": "novelist"
+        },
+        {
+          "title": "you, saying 'bas 5 min'",
+          "line": "Forty minutes later, still saying bye",
+          "on": "five"
+        }
+      ],
+      "cta": "send this to your #2",
+      "say": "Audible, speaker, the counter, the novelist, and you saying five minutes."
+    },
+    {
+      "type": "question",
+      "question": "Who rings you first?",
+      "a": "Mummy",
+      "b": "Papa",
+      "say": "Be honest."
+    },
+    {
+      "type": "end",
+      "tagline": "Hello? Audible? Yes, finally.",
+      "ask": "Which card is your family?",
+      "say": "Talk to someone new on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "Every family has a 'hello, audible?' caller and a seven-minute voice note writer. Send this to the friend who is card #5. Which card is your family? Talk to someone new at randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#desifamily",
+      "#indianfamily",
+      "#relatable",
+      "#hellaudible"
+    ],
+    "youtubeTitle": "14 missed calls from Mummy: 5 family phone people #shorts",
+    "xText": "Hello? Audible? Five family phone people you know too well. Send it to your #2. randomtalker.com"
+  }
+}
