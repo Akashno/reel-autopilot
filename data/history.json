@@ -557,5 +557,15 @@
       "Sunny Otter"
     ],
     "status": "rendered"
+  },
+  {
+    "date": "2026-11-28-2200",
+    "title": "First ten seconds",
+    "angle": "share-first-call",
+    "summary": "Five first-ten-second caller types, opened on the 'Hiiii hello hey' moment, ending on the viewer rehearsing their opener.",
+    "hook": "Hiiii hello hey how are you",
+    "scenes": "bigword>cards>end",
+    "names": [],
+    "status": "rendered"
   }
 ]

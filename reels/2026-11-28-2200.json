@@ -1,0 +1,73 @@
+{
+  "idea": {
+    "title": "First ten seconds",
+    "angle": "share-first-call",
+    "format": "share",
+    "summary": "Five first-ten-second caller types, opened on the 'Hiiii hello hey' moment, ending on the viewer rehearsing their opener.",
+    "hookOptions": [
+      "Hiiii hello hey how are you",
+      "Picks up. Breathes. Says nothing.",
+      "Second four: my cousin's goat got loose",
+      "10 seconds into a call"
+    ]
+  },
+  "scenes": [
+    {
+      "type": "bigword",
+      "word": "Hiiii",
+      "sub": "hello hey how are you",
+      "say": "Hiiii, hello, hey, how are you."
+    },
+    {
+      "type": "cards",
+      "title": "you in the first 10 seconds of a call",
+      "items": [
+        {
+          "title": "The over-greeter",
+          "line": "hiiii hello hey how are you good you, all before you reply",
+          "on": "over-greeter"
+        },
+        {
+          "title": "The silent one",
+          "line": "Picks up, breathes, waits for you to go first",
+          "on": "silent"
+        },
+        {
+          "title": "The instant storyteller",
+          "line": "Second four: sorry, so my cousin's goat got loose",
+          "on": "goat"
+        },
+        {
+          "title": "The mic checker",
+          "line": "Can you hear me? Hello? Can you hear me now?",
+          "on": "mic"
+        },
+        {
+          "title": "You, still hovering",
+          "line": "Rehearsed the perfect opener. Thumb still over the button.",
+          "on": "you"
+        }
+      ],
+      "cta": "send this to your #3",
+      "say": "The over-greeter. The silent one. The goat story. The mic checker. And you, still hovering."
+    },
+    {
+      "type": "end",
+      "tagline": "Stop rehearsing. Just say hi.",
+      "ask": "Which one are you, 1 to 5?",
+      "say": "Stop rehearsing. Say hi on randomtalker.com."
+    }
+  ],
+  "post": {
+    "caption": "Everyone has a first-ten-seconds personality. Send this to the friend who starts with the goat story. Which one are you, 1 to 5? Say your own hello on randomtalker.com",
+    "hashtags": [
+      "#randomtalker",
+      "#talktostrangers",
+      "#firstcall",
+      "#relatable",
+      "#friends"
+    ],
+    "youtubeTitle": "Hiiii hello hey: which one are you on a first call? #shorts",
+    "xText": "Over-greeter, silent one or instant storyteller? Which are you in the first 10 seconds of a call? randomtalker.com"
+  }
+}
